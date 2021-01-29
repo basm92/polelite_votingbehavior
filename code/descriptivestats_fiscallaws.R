@@ -81,6 +81,7 @@ lowerhouse %>%
     group_by(law) %>%
     summarize(infavor = sum(vote), howmany = n(), percentage = infavor/howmany, 
               date = unique(date)) %>%
+    arrange(date) %>%
     xtable(caption = "Lower House", row.numbers = F) %>%
     print(include.rownames = FALSE, 
           file = "./tables/descriptive_stats_fiscal_tk.tex")
@@ -160,6 +161,7 @@ upperhouse %>%
     group_by(law) %>%
     summarize(infavor = sum(vote), howmany = n(), percentage = infavor/howmany, 
               date = unique(date)) %>%
+    arrange(date) %>%
     xtable(caption = "Lower House", row.numbers = F) %>%
     print(include.rownames = FALSE, 
           file = "./tables/descriptive_stats_fiscal_ek.tex")
