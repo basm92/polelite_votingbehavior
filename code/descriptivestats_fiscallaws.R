@@ -73,11 +73,11 @@ data <- list(inkomstenbelasting1893, inkomstenbelasting1914,
              successiewet1916, successiewet1921)
 
 laws <- lapply(data, get_polid_tk)
-lowerhouse <- purrr::reduce(laws, bind_rows)
+lowerhouse <- purrr::reduce(laws, bind_rows) %>%
+    mutate(vote = as.numeric(vote)) 
 
 # Some descriptives
 lowerhouse %>%
-    mutate(vote = as.numeric(vote)) %>%
     group_by(law) %>%
     summarize(infavor = sum(vote), howmany = n(), percentage = infavor/howmany, 
               date = unique(date)) %>%
@@ -164,4 +164,7 @@ upperhouse %>%
     print(include.rownames = FALSE, 
           file = "./tables/descriptive_stats_fiscal_ek.tex")
 
+# Write a csv file with the data
 
+voting_fiscal_tk_ek <- bind_rows(lowerhouse, upperhouse)
+readr::write_csv(voting_fiscal_tk_ek, path = "./data/voting_behavior/votingbehavior_together.csv")

@@ -1,0 +1,829 @@
+politician,vote,law,date,house,b1_nummer
+Plate,1,Inkomstenbelasting 1893,1893-06-23,Tweede Kamer,01036
+Smit,1,Inkomstenbelasting 1893,1893-06-23,Tweede Kamer,01273
+Goekoop,1,Inkomstenbelasting 1893,1893-06-23,Tweede Kamer,00468
+Roessingh,1,Inkomstenbelasting 1893,1893-06-23,Tweede Kamer,01120
+Ferf,1,Inkomstenbelasting 1893,1893-06-23,Tweede Kamer,00404
+van Houten,1,Inkomstenbelasting 1893,1893-06-23,Tweede Kamer,00607
+van der Feltz,1,Inkomstenbelasting 1893,1893-06-23,Tweede Kamer,00400
+van Gijn,1,Inkomstenbelasting 1893,1893-06-23,Tweede Kamer,00500
+W.H. de Beaufort,1,Inkomstenbelasting 1893,1893-06-23,Tweede Kamer,00071
+Lucasse,1,Inkomstenbelasting 1893,1893-06-23,Tweede Kamer,00849
+Pijnacker Hordijk,1,Inkomstenbelasting 1893,1893-06-23,Tweede Kamer,01067
+Rutgers van Rozenburg,1,Inkomstenbelasting 1893,1893-06-23,Tweede Kamer,01148
+Cremer,1,Inkomstenbelasting 1893,1893-06-23,Tweede Kamer,00279
+van Delden,1,Inkomstenbelasting 1893,1893-06-23,Tweede Kamer,00299
+A. van Dedem,1,Inkomstenbelasting 1893,1893-06-23,Tweede Kamer,00293
+Rink,1,Inkomstenbelasting 1893,1893-06-23,Tweede Kamer,01113
+Levy,1,Inkomstenbelasting 1893,1893-06-23,Tweede Kamer,00809
+Guyot,1,Inkomstenbelasting 1893,1893-06-23,Tweede Kamer,00498
+Schimmelpenninck van der Oye,1,Inkomstenbelasting 1893,1893-06-23,Tweede Kamer,01204
+van der Kaay,1,Inkomstenbelasting 1893,1893-06-23,Tweede Kamer,00666
+Tydeman,1,Inkomstenbelasting 1893,1893-06-23,Tweede Kamer,01384
+Conrad,1,Inkomstenbelasting 1893,1893-06-23,Tweede Kamer,00264
+Hartogh,1,Inkomstenbelasting 1893,1893-06-23,Tweede Kamer,00525
+Ae. Mackay,1,Inkomstenbelasting 1893,1893-06-23,Tweede Kamer,00862
+Roijaards van den Ham,1,Inkomstenbelasting 1893,1893-06-23,Tweede Kamer,01135
+Goeman Borgesius,1,Inkomstenbelasting 1893,1893-06-23,Tweede Kamer,00469
+Kerdijk,1,Inkomstenbelasting 1893,1893-06-23,Tweede Kamer,00682
+Lieftinck,1,Inkomstenbelasting 1893,1893-06-23,Tweede Kamer,00815
+Bahlmann,1,Inkomstenbelasting 1893,1893-06-23,Tweede Kamer,00057
+Kolkman,1,Inkomstenbelasting 1893,1893-06-23,Tweede Kamer,00727
+Schepel,1,Inkomstenbelasting 1893,1893-06-23,Tweede Kamer,01191
+Kielstra,1,Inkomstenbelasting 1893,1893-06-23,Tweede Kamer,00696
+Veegens,1,Inkomstenbelasting 1893,1893-06-23,Tweede Kamer,01391
+Valette,1,Inkomstenbelasting 1893,1893-06-23,Tweede Kamer,01389
+Hintzen,1,Inkomstenbelasting 1893,1893-06-23,Tweede Kamer,00584
+Mees,1,Inkomstenbelasting 1893,1893-06-23,Tweede Kamer,00889
+Roell,1,Inkomstenbelasting 1893,1893-06-23,Tweede Kamer,01118
+Land,1,Inkomstenbelasting 1893,1893-06-23,Tweede Kamer,00781
+van Alphen,1,Inkomstenbelasting 1893,1893-06-23,Tweede Kamer,00019
+Schaepman,1,Inkomstenbelasting 1893,1893-06-23,Tweede Kamer,01180
+Tijdens,1,Inkomstenbelasting 1893,1893-06-23,Tweede Kamer,01385
+de Kanter,1,Inkomstenbelasting 1893,1893-06-23,Tweede Kamer,00671
+de Meijier,1,Inkomstenbelasting 1893,1893-06-23,Tweede Kamer,00917
+van Beuningen,1,Inkomstenbelasting 1893,1893-06-23,Tweede Kamer,00107
+van Berckel,1,Inkomstenbelasting 1893,1893-06-23,Tweede Kamer,00089
+Bool,1,Inkomstenbelasting 1893,1893-06-23,Tweede Kamer,00160
+Smeenge,1,Inkomstenbelasting 1893,1893-06-23,Tweede Kamer,01269
+van Kerkwijk,1,Inkomstenbelasting 1893,1893-06-23,Tweede Kamer,00684
+Zijp,1,Inkomstenbelasting 1893,1893-06-23,Tweede Kamer,01613
+Houwing,1,Inkomstenbelasting 1893,1893-06-23,Tweede Kamer,00609
+Heldt,1,Inkomstenbelasting 1893,1893-06-23,Tweede Kamer,00553
+Hennequin,1,Inkomstenbelasting 1893,1893-06-23,Tweede Kamer,00562
+van Velzen,1,Inkomstenbelasting 1893,1893-06-23,Tweede Kamer,01404
+Viruly Verbrugge,1,Inkomstenbelasting 1893,1893-06-23,Tweede Kamer,01437
+Gleichman,1,Inkomstenbelasting 1893,1893-06-23,Tweede Kamer,00462
+Pyttersen,0,Inkomstenbelasting 1893,1893-06-23,Tweede Kamer,01069
+Brantsen van de Zijp,0,Inkomstenbelasting 1893,1893-06-23,Tweede Kamer,00198
+Seret,0,Inkomstenbelasting 1893,1893-06-23,Tweede Kamer,01238
+van der Borch van Verwolde,0,Inkomstenbelasting 1893,1893-06-23,Tweede Kamer,00163
+Travaglino,0,Inkomstenbelasting 1893,1893-06-23,Tweede Kamer,01374
+Donner,0,Inkomstenbelasting 1893,1893-06-23,Tweede Kamer,00334
+Bevers,0,Inkomstenbelasting 1893,1893-06-23,Tweede Kamer,00108
+Walter,0,Inkomstenbelasting 1893,1893-06-23,Tweede Kamer,01507
+Lambrechts,0,Inkomstenbelasting 1893,1893-06-23,Tweede Kamer,00778
+van der Schrieck,0,Inkomstenbelasting 1893,1893-06-23,Tweede Kamer,01229
+Keuchenius,0,Inkomstenbelasting 1893,1893-06-23,Tweede Kamer,00691
+van der Kun,0,Inkomstenbelasting 1893,1893-06-23,Tweede Kamer,00763
+Smits van Oijen,0,Inkomstenbelasting 1893,1893-06-23,Tweede Kamer,01280
+T. Mackay,0,Inkomstenbelasting 1893,1893-06-23,Tweede Kamer,00864
+van de Velde,0,Inkomstenbelasting 1893,1893-06-23,Tweede Kamer,01400
+Reekers,0,Inkomstenbelasting 1893,1893-06-23,Tweede Kamer,01091
+Poelman,0,Inkomstenbelasting 1893,1893-06-23,Tweede Kamer,01042
+Dobbelmann,0,Inkomstenbelasting 1893,1893-06-23,Tweede Kamer,00318
+Gerritsen,0,Inkomstenbelasting 1893,1893-06-23,Tweede Kamer,00450
+Farncombe Sanders,0,Inkomstenbelasting 1893,1893-06-23,Tweede Kamer,00397
+Heemskerk,0,Inkomstenbelasting 1893,1893-06-23,Tweede Kamer,00540
+Harte,0,Inkomstenbelasting 1893,1893-06-23,Tweede Kamer,00607
+de Ras,0,Inkomstenbelasting 1893,1893-06-23,Tweede Kamer,01085
+"G. 
+Dedem",0,Inkomstenbelasting 1893,1893-06-23,Tweede Kamer,00294
+van Karnebeek,0,Inkomstenbelasting 1893,1893-06-23,Tweede Kamer,00676
+Vermeulen,0,Inkomstenbelasting 1893,1893-06-23,Tweede Kamer,01422
+van Löben Sels,0,Inkomstenbelasting 1893,1893-06-23,Tweede Kamer,00833
+van den Berch van Heemstede,0,Inkomstenbelasting 1893,1893-06-23,Tweede Kamer,00087
+Mutsaers,0,Inkomstenbelasting 1893,1893-06-23,Tweede Kamer,00951
+"de Geer 
+Jutfaas",0,Inkomstenbelasting 1893,1893-06-23,Tweede Kamer,00438
+van Vlijmen,0,Inkomstenbelasting 1893,1893-06-23,Tweede Kamer,01458
+van Bylandt,0,Inkomstenbelasting 1893,1893-06-23,Tweede Kamer,00245
+Haffmans,0,Inkomstenbelasting 1893,1893-06-23,Tweede Kamer,00508
+Beelaerts van Blokland,0,Inkomstenbelasting 1893,1893-06-23,Tweede Kamer,00076
+K. ter Laan,1,Inkomstenbelasting 1914,1914-06-03,Tweede Kamer,00773
+Duys,1,Inkomstenbelasting 1914,1914-06-03,Tweede Kamer,00357
+Gerhard,1,Inkomstenbelasting 1914,1914-06-03,Tweede Kamer,00447
+Nierstrasz,1,Inkomstenbelasting 1914,1914-06-03,Tweede Kamer,00967
+van Vliet,1,Inkomstenbelasting 1914,1914-06-03,Tweede Kamer,01454
+Roodenburg,1,Inkomstenbelasting 1914,1914-06-03,Tweede Kamer,01124
+Helsdingen,1,Inkomstenbelasting 1914,1914-06-03,Tweede Kamer,00557
+Rink,1,Inkomstenbelasting 1914,1914-06-03,Tweede Kamer,01113
+Juten,1,Inkomstenbelasting 1914,1914-06-03,Tweede Kamer,00665
+van Wijnbergen,1,Inkomstenbelasting 1914,1914-06-03,Tweede Kamer,01583
+Teenstra,1,Inkomstenbelasting 1914,1914-06-03,Tweede Kamer,01344
+Vliegen,1,Inkomstenbelasting 1914,1914-06-03,Tweede Kamer,01451
+Hugenholtz,1,Inkomstenbelasting 1914,1914-06-03,Tweede Kamer,00615
+Patijn,1,Inkomstenbelasting 1914,1914-06-03,Tweede Kamer,01023
+Aalberse,1,Inkomstenbelasting 1914,1914-06-03,Tweede Kamer,00001
+Heeres,1,Inkomstenbelasting 1914,1914-06-03,Tweede Kamer,00544
+Eerdmans,1,Inkomstenbelasting 1914,1914-06-03,Tweede Kamer,00369
+van den Berch van Heemstede,1,Inkomstenbelasting 1914,1914-06-03,Tweede Kamer,00087
+Jannink,1,Inkomstenbelasting 1914,1914-06-03,Tweede Kamer,00634
+Ruys de Beerenbrouck,1,Inkomstenbelasting 1914,1914-06-03,Tweede Kamer,01152
+Beumer,1,Inkomstenbelasting 1914,1914-06-03,Tweede Kamer,00106
+van Deventer,1,Inkomstenbelasting 1914,1914-06-03,Tweede Kamer,00303
+de Savornin Lohman,1,Inkomstenbelasting 1914,1914-06-03,Tweede Kamer,01177
+Dolk,1,Inkomstenbelasting 1914,1914-06-03,Tweede Kamer,00325
+Roodhuyzen,1,Inkomstenbelasting 1914,1914-06-03,Tweede Kamer,01125
+Fock,1,Inkomstenbelasting 1914,1914-06-03,Tweede Kamer,00410
+de Muralt,1,Inkomstenbelasting 1914,1914-06-03,Tweede Kamer,00949
+van Raalte,1,Inkomstenbelasting 1914,1914-06-03,Tweede Kamer,01075
+Nolens,1,Inkomstenbelasting 1914,1914-06-03,Tweede Kamer,00981
+van Vollenhoven,1,Inkomstenbelasting 1914,1914-06-03,Tweede Kamer,01460
+Bos,1,Inkomstenbelasting 1914,1914-06-03,Tweede Kamer,00175
+Schim van der Loeff,1,Inkomstenbelasting 1914,1914-06-03,Tweede Kamer,00835
+J.W.J.C.M. van Nispen tot Sevenaer,1,Inkomstenbelasting 1914,1914-06-03,Tweede Kamer,00975
+Hubrecht,1,Inkomstenbelasting 1914,1914-06-03,Tweede Kamer,00613
+de Jong,1,Inkomstenbelasting 1914,1914-06-03,Tweede Kamer,00655
+O.F.A.M. van Nispen tot Sevenaer,1,Inkomstenbelasting 1914,1914-06-03,Tweede Kamer,00977
+Marchant,1,Inkomstenbelasting 1914,1914-06-03,Tweede Kamer,00875
+de Beaufort,1,Inkomstenbelasting 1914,1914-06-03,Tweede Kamer,00071
+Rutgers,1,Inkomstenbelasting 1914,1914-06-03,Tweede Kamer,01147
+Eleskens,1,Inkomstenbelasting 1914,1914-06-03,Tweede Kamer,00408
+Duynstee,1,Inkomstenbelasting 1914,1914-06-03,Tweede Kamer,00356
+Janssen,1,Inkomstenbelasting 1914,1914-06-03,Tweede Kamer,00638
+de Meester,1,Inkomstenbelasting 1914,1914-06-03,Tweede Kamer,00892
+Boissevain,1,Inkomstenbelasting 1914,1914-06-03,Tweede Kamer,00152
+Otto,1,Inkomstenbelasting 1914,1914-06-03,Tweede Kamer,01009
+Gerretson,1,Inkomstenbelasting 1914,1914-06-03,Tweede Kamer,00448
+Tydeman,1,Inkomstenbelasting 1914,1914-06-03,Tweede Kamer,01384
+van Wichen,1,Inkomstenbelasting 1914,1914-06-03,Tweede Kamer,01538
+Smeenge,1,Inkomstenbelasting 1914,1914-06-03,Tweede Kamer,01269
+Lieftinck,1,Inkomstenbelasting 1914,1914-06-03,Tweede Kamer,00815
+Schimmelpenninck,1,Inkomstenbelasting 1914,1914-06-03,Tweede Kamer,01201
+Visser van IJzendcorn,1,Inkomstenbelasting 1914,1914-06-03,Tweede Kamer,01445
+Albarda,1,Inkomstenbelasting 1914,1914-06-03,Tweede Kamer,00011
+van de Velde,1,Inkomstenbelasting 1914,1914-06-03,Tweede Kamer,01400
+Schaper,1,Inkomstenbelasting 1914,1914-06-03,Tweede Kamer,01189
+Jansen,1,Inkomstenbelasting 1914,1914-06-03,Tweede Kamer,00635
+ter Spul,1,Inkomstenbelasting 1914,1914-06-03,Tweede Kamer,01375
+Limburg,1,Inkomstenbelasting 1914,1914-06-03,Tweede Kamer,00822
+de Geer,1,Inkomstenbelasting 1914,1914-06-03,Tweede Kamer,00432
+J. ter Laan,1,Inkomstenbelasting 1914,1914-06-03,Tweede Kamer,00772
+van Bijlandt,1,Inkomstenbelasting 1914,1914-06-03,Tweede Kamer,00245
+Sannes,1,Inkomstenbelasting 1914,1914-06-03,Tweede Kamer,01170
+Knobel,1,Inkomstenbelasting 1914,1914-06-03,Tweede Kamer,00709
+Bichon van IJsselmonde,1,Inkomstenbelasting 1914,1914-06-03,Tweede Kamer,00111
+Koolen,1,Inkomstenbelasting 1914,1914-06-03,Tweede Kamer,00733
+Oosterbaan,1,Inkomstenbelasting 1914,1914-06-03,Tweede Kamer,01003
+Spiekman,1,Inkomstenbelasting 1914,1914-06-03,Tweede Kamer,01288
+Goeman Borgesius,1,Inkomstenbelasting 1914,1914-06-03,Tweede Kamer,00469
+Brummelkamp,0,Inkomstenbelasting 1914,1914-06-03,Tweede Kamer,00228
+Bongaerts,0,Inkomstenbelasting 1914,1914-06-03,Tweede Kamer,00157
+de Monte verLoren,0,Inkomstenbelasting 1914,1914-06-03,Tweede Kamer,00940
+van Vuuren,0,Inkomstenbelasting 1914,1914-06-03,Tweede Kamer,01494
+de Wijkerslooth de Weerdesteyn,0,Inkomstenbelasting 1914,1914-06-03,Tweede Kamer,01580
+Duymaer van Twist,0,Inkomstenbelasting 1914,1914-06-03,Tweede Kamer,00354
+Beckers,0,Inkomstenbelasting 1914,1914-06-03,Tweede Kamer,00072
+Bogaardt,0,Inkomstenbelasting 1914,1914-06-03,Tweede Kamer,00150
+Arts,0,Inkomstenbelasting 1914,1914-06-03,Tweede Kamer,00034
+van der Voort van Zijp,0,Inkomstenbelasting 1914,1914-06-03,Tweede Kamer,01470
+Scheurer,0,Inkomstenbelasting 1914,1914-06-03,Tweede Kamer,01194
+van Vlijmen,0,Inkomstenbelasting 1914,1914-06-03,Tweede Kamer,01458
+Vliet,0,Staatsschuldwet 1914,1914-12-11,Tweede Kamer,01454
+Eland,0,Staatsschuldwet 1914,1914-12-11,Tweede Kamer,00374
+van Doorn,0,Staatsschuldwet 1914,1914-12-11,Tweede Kamer,00337
+van de Velde,0,Staatsschuldwet 1914,1914-12-11,Tweede Kamer,01400
+Juten,0,Staatsschuldwet 1914,1914-12-11,Tweede Kamer,00665
+Fock,0,Staatsschuldwet 1914,1914-12-11,Tweede Kamer,00410
+Nolens,0,Staatsschuldwet 1914,1914-12-11,Tweede Kamer,00981
+van Bylandt,0,Staatsschuldwet 1914,1914-12-11,Tweede Kamer,00245
+Jannink,0,Staatsschuldwet 1914,1914-12-11,Tweede Kamer,00634
+Loeff,0,Staatsschuldwet 1914,1914-12-11,Tweede Kamer,00835
+Duynstee,0,Staatsschuldwet 1914,1914-12-11,Tweede Kamer,00356
+van Wichen,0,Staatsschuldwet 1914,1914-12-11,Tweede Kamer,01538
+Heercs,0,Staatsschuldwet 1914,1914-12-11,Tweede Kamer,00544
+van den  Berch van Heemstede,0,Staatsschuldwet 1914,1914-12-11,Tweede Kamer,00087
+de Visser,0,Staatsschuldwet 1914,1914-12-11,Tweede Kamer,01446
+Beumer,0,Staatsschuldwet 1914,1914-12-11,Tweede Kamer,00106
+van Sasse van Ysselt,0,Staatsschuldwet 1914,1914-12-11,Tweede Kamer,01172
+Fleskens,0,Staatsschuldwet 1914,1914-12-11,Tweede Kamer,00408
+van Best,0,Staatsschuldwet 1914,1914-12-11,Tweede Kamer,00104
+Boissevain,0,Staatsschuldwet 1914,1914-12-11,Tweede Kamer,00152
+van Hamel,0,Staatsschuldwet 1914,1914-12-11,Tweede Kamer,00517
+van Idsinga,0,Staatsschuldwet 1914,1914-12-11,Tweede Kamer,00624
+Jansen,0,Staatsschuldwet 1914,1914-12-11,Tweede Kamer,00635
+Lieftiuck,0,Staatsschuldwet 1914,1914-12-11,Tweede Kamer,00815
+Gerretson,0,Staatsschuldwet 1914,1914-12-11,Tweede Kamer,00448
+van derVoort van Zijp,0,Staatsschuldwet 1914,1914-12-11,Tweede Kamer,01470
+J.W.J.C.M. van Nispen tot Sevenaer,0,Staatsschuldwet 1914,1914-12-11,Tweede Kamer,00975
+Smeenge,0,Staatsschuldwet 1914,1914-12-11,Tweede Kamer,01269
+Hubrecht,0,Staatsschuldwet 1914,1914-12-11,Tweede Kamer,00613
+de Geer,0,Staatsschuldwet 1914,1914-12-11,Tweede Kamer,00432
+Visser van IJzendoorn,0,Staatsschuldwet 1914,1914-12-11,Tweede Kamer,01445
+Duymaer van Twist,0,Staatsschuldwet 1914,1914-12-11,Tweede Kamer,00354
+van Veen,0,Staatsschuldwet 1914,1914-12-11,Tweede Kamer,01392
+Rutgers,0,Staatsschuldwet 1914,1914-12-11,Tweede Kamer,01147
+Roodhuizen,0,Staatsschuldwet 1914,1914-12-11,Tweede Kamer,01125
+Drion,0,Staatsschuldwet 1914,1914-12-11,Tweede Kamer,00344
+Rink,0,Staatsschuldwet 1914,1914-12-11,Tweede Kamer,01113
+de Meester,0,Staatsschuldwet 1914,1914-12-11,Tweede Kamer,00892
+van Raalte,0,Staatsschuldwet 1914,1914-12-11,Tweede Kamer,01075
+van Foreest,0,Staatsschuldwet 1914,1914-12-11,Tweede Kamer,00417
+Oosterbaan,0,Staatsschuldwet 1914,1914-12-11,Tweede Kamer,01003
+ter Spill,0,Staatsschuldwet 1914,1914-12-11,Tweede Kamer,01289
+van Vuuren,0,Staatsschuldwet 1914,1914-12-11,Tweede Kamer,01494
+de Monté ver Loren,0,Staatsschuldwet 1914,1914-12-11,Tweede Kamer,00940
+Bichon van Ijsselmonde,0,Staatsschuldwet 1914,1914-12-11,Tweede Kamer,00111
+Patijn,0,Staatsschuldwet 1914,1914-12-11,Tweede Kamer,01023
+Bongaerts,0,Staatsschuldwet 1914,1914-12-11,Tweede Kamer,00157
+Tydeman,0,Staatsschuldwet 1914,1914-12-11,Tweede Kamer,01384
+Schim van der Loeff,0,Staatsschuldwet 1914,1914-12-11,Tweede Kamer,00835
+van Deventer,0,Staatsschuldwet 1914,1914-12-11,Tweede Kamer,00303
+O.F.A.M. van Nispen tot Sevenaer,0,Staatsschuldwet 1914,1914-12-11,Tweede Kamer,00977
+Bogaardt,0,Staatsschuldwet 1914,1914-12-11,Tweede Kamer,00150
+Brummelkamp,0,Staatsschuldwet 1914,1914-12-11,Tweede Kamer,00228
+Knobel,0,Staatsschuldwet 1914,1914-12-11,Tweede Kamer,00709
+van Vollenhoven,0,Staatsschuldwet 1914,1914-12-11,Tweede Kamer,01460
+Beckers,0,Staatsschuldwet 1914,1914-12-11,Tweede Kamer,00072
+Aalberse,0,Staatsschuldwet 1914,1914-12-11,Tweede Kamer,00001
+Dolk,0,Staatsschuldwet 1914,1914-12-11,Tweede Kamer,00325
+de Beaufort,0,Staatsschuldwet 1914,1914-12-11,Tweede Kamer,00071
+van Wijnbergen,0,Staatsschuldwet 1914,1914-12-11,Tweede Kamer,01583
+Goeman Borgesius,0,Staatsschuldwet 1914,1914-12-11,Tweede Kamer,00469
+Bos,1,Staatsschuldwet 1914,1914-12-11,Tweede Kamer,00175
+Teenstra,1,Staatsschuldwet 1914,1914-12-11,Tweede Kamer,01344
+Troelstra,1,Staatsschuldwet 1914,1914-12-11,Tweede Kamer,01376
+Limburg,1,Staatsschuldwet 1914,1914-12-11,Tweede Kamer,00822
+J. ter Laan,1,Staatsschuldwet 1914,1914-12-11,Tweede Kamer,00772
+Spiekman,1,Staatsschuldwet 1914,1914-12-11,Tweede Kamer,01288
+van Leeuwen,1,Staatsschuldwet 1914,1914-12-11,Tweede Kamer,00796
+Mendels,1,Staatsschuldwet 1914,1914-12-11,Tweede Kamer,00902
+Kleerekoper,1,Staatsschuldwet 1914,1914-12-11,Tweede Kamer,00702
+Otto,1,Staatsschuldwet 1914,1914-12-11,Tweede Kamer,01009
+de Jong,1,Staatsschuldwet 1914,1914-12-11,Tweede Kamer,00655
+Hugenholtz,1,Staatsschuldwet 1914,1914-12-11,Tweede Kamer,00615
+Schaper,1,Staatsschuldwet 1914,1914-12-11,Tweede Kamer,01189
+Albarda,1,Staatsschuldwet 1914,1914-12-11,Tweede Kamer,00011
+Roodenburg,1,Staatsschuldwet 1914,1914-12-11,Tweede Kamer,01124
+Marchant,1,Staatsschuldwet 1914,1914-12-11,Tweede Kamer,00875
+Vliegen,1,Staatsschuldwet 1914,1914-12-11,Tweede Kamer,01451
+de Muralt,1,Staatsschuldwet 1914,1914-12-11,Tweede Kamer,00949
+Gerhard,1,Staatsschuldwet 1914,1914-12-11,Tweede Kamer,00447
+Ketelaar,1,Staatsschuldwet 1914,1914-12-11,Tweede Kamer,00689
+Helsdingen,1,Staatsschuldwet 1914,1914-12-11,Tweede Kamer,00557
+K. ter Laan,1,Staatsschuldwet 1914,1914-12-11,Tweede Kamer,00773
+de Jong,1,Successiewet1878,1878-05-24,Tweede Kamer,00650
+de Beaufort,1,Successiewet1878,1878-05-24,Tweede Kamer,00071
+Idzerda,1,Successiewet1878,1878-05-24,Tweede Kamer,00625
+Verniers van der Loeff,1,Successiewet1878,1878-05-24,Tweede Kamer,00273
+Bredius jr,1,Successiewet1878,1878-05-24,Tweede Kamer,00202
+Patijn,1,Successiewet1878,1878-05-24,Tweede Kamer,01022
+Rombach,1,Successiewet1878,1878-05-24,Tweede Kamer,01121
+Hingst,1,Successiewet1878,1878-05-24,Tweede Kamer,00583
+de Vos van Steenwijk,1,Successiewet1878,1878-05-24,Tweede Kamer,01479
+Blussé,1,Successiewet1878,1878-05-24,Tweede Kamer,00132
+van der Kaay,1,Successiewet1878,1878-05-24,Tweede Kamer,00666
+Sandberg,1,Successiewet1878,1878-05-24,Tweede Kamer,01168
+Stieltjes,1,Successiewet1878,1878-05-24,Tweede Kamer,01303
+Mees,1,Successiewet1878,1878-05-24,Tweede Kamer,00889
+Viruly Verbrugge,1,Successiewet1878,1878-05-24,Tweede Kamer,01437
+van de Werk,1,Successiewet1878,1878-05-24,Tweede Kamer,01522
+van Stolk,1,Successiewet1878,1878-05-24,Tweede Kamer,01311
+van der Feltz,1,Successiewet1878,1878-05-24,Tweede Kamer,00400
+van Harinxma thoe Slooten,1,Successiewet1878,1878-05-24,Tweede Kamer,00520
+Oldenhuis gratama,1,Successiewet1878,1878-05-24,Tweede Kamer,00998
+Sickesz,1,Successiewet1878,1878-05-24,Tweede Kamer,01246
+Bastert,1,Successiewet1878,1878-05-24,Tweede Kamer,00066
+Gevers Deynoot,1,Successiewet1878,1878-05-24,Tweede Kamer,00455
+Luyben,1,Successiewet1878,1878-05-24,Tweede Kamer,00851
+Moens,1,Successiewet1878,1878-05-24,Tweede Kamer,00931
+Bredius,1,Successiewet1878,1878-05-24,Tweede Kamer,00202
+van Delden,1,Successiewet1878,1878-05-24,Tweede Kamer,00299
+Schepel,1,Successiewet1878,1878-05-24,Tweede Kamer,01191
+Lenting,1,Successiewet1878,1878-05-24,Tweede Kamer,00808
+Godefroi,1,Successiewet1878,1878-05-24,Tweede Kamer,00464
+de Meijier,1,Successiewet1878,1878-05-24,Tweede Kamer,00917
+Goeman Borgesius,1,Successiewet1878,1878-05-24,Tweede Kamer,00469
+Bergsma,1,Successiewet1878,1878-05-24,Tweede Kamer,00102
+de Ruiter Zylker,1,Successiewet1878,1878-05-24,Tweede Kamer,01142
+van Tienlioven,1,Successiewet1878,1878-05-24,Tweede Kamer,01365
+Dijckmeester,1,Successiewet1878,1878-05-24,Tweede Kamer,00360
+Roell,1,Successiewet1878,1878-05-24,Tweede Kamer,01118
+Vening Meinesz,1,Successiewet1878,1878-05-24,Tweede Kamer,01405
+van Houten,1,Successiewet1878,1878-05-24,Tweede Kamer,00607
+Cremers,1,Successiewet1878,1878-05-24,Tweede Kamer,00280
+Mirandolle,1,Successiewet1878,1878-05-24,Tweede Kamer,00930
+Fransen van de Putte,1,Successiewet1878,1878-05-24,Tweede Kamer,00421
+de Bruyn Kops,1,Successiewet1878,1878-05-24,Tweede Kamer,00232
+Wybenga,1,Successiewet1878,1878-05-24,Tweede Kamer,01572
+van Heukelom,1,Successiewet1878,1878-05-24,Tweede Kamer,00569
+Holtzman,1,Successiewet1878,1878-05-24,Tweede Kamer,00594
+van Eek,1,Successiewet1878,1878-05-24,Tweede Kamer,00368
+Dullert,1,Successiewet1878,1878-05-24,Tweede Kamer,00349
+Cremer van den Berch van Heemstede,0,Successiewet1878,1878-05-24,Tweede Kamer,00088
+Schimmelpenninck van der Oye,0,Successiewet1878,1878-05-24,Tweede Kamer,01203
+Bichon van IJsselmonde,0,Successiewet1878,1878-05-24,Tweede Kamer,00112
+Reekers,0,Successiewet1878,1878-05-24,Tweede Kamer,01091
+van Asch van Wijck,0,Successiewet1878,1878-05-24,Tweede Kamer,00041
+Heydenrijck,0,Successiewet1878,1878-05-24,Tweede Kamer,00578
+de Casembroot,0,Successiewet1878,1878-05-24,Tweede Kamer,00255
+Kerens de Wylre,0,Successiewet1878,1878-05-24,Tweede Kamer,00683
+van Kerkwijk,0,Successiewet1878,1878-05-24,Tweede Kamer,00684
+de Bieberstein,0,Successiewet1878,1878-05-24,Tweede Kamer,00280
+van Nispen tot Sevenaer,0,Successiewet1878,1878-05-24,Tweede Kamer,00973
+Corver Hooft,0,Successiewet1878,1878-05-24,Tweede Kamer,00273
+Begram,0,Successiewet1878,1878-05-24,Tweede Kamer,00082
+van der Schrieck,0,Successiewet1878,1878-05-24,Tweede Kamer,01229
+Teding van Berkhout,0,Successiewet1878,1878-05-24,Tweede Kamer,01343
+Haffmans,0,Successiewet1878,1878-05-24,Tweede Kamer,00508
+van Baar,0,Successiewet1878,1878-05-24,Tweede Kamer,00049
+Borret,0,Successiewet1878,1878-05-24,Tweede Kamer,00168
+Verheijen,0,Successiewet1878,1878-05-24,Tweede Kamer,01414
+Maekay,0,Successiewet1878,1878-05-24,Tweede Kamer,00862
+Lambrechts,0,Successiewet1878,1878-05-24,Tweede Kamer,00778
+van Zinnicq Bergmann,0,Successiewet1878,1878-05-24,Tweede Kamer,01601
+Saaymans Vader,0,Successiewet1878,1878-05-24,Tweede Kamer,01166
+Insinger,0,Successiewet1878,1878-05-24,Tweede Kamer,00628
+Schagen van Leeuwen,0,Successiewet1878,1878-05-24,Tweede Kamer,01183
+de Jonge,0,Successiewet1878,1878-05-24,Tweede Kamer,00656
+Schimmelpenninck,0,Successiewet1878,1878-05-24,Tweede Kamer,00578
+H.A. Amorie Hoeven,0,Successiewet1878,1878-05-24,Tweede Kamer,00022
+Arnoldts,0,Successiewet1878,1878-05-24,Tweede Kamer,00031
+Brouwers,0,Successiewet1878,1878-05-24,Tweede Kamer,00217
+van Wassenaer van Catwijck,0,Successiewet1878,1878-05-24,Tweede Kamer,01509
+Wintgens,0,Successiewet1878,1878-05-24,Tweede Kamer,01557
+Elhorst,1,Successiewet 1911,1911-03-10,Tweede Kamer,00376
+O.F.A.M. van Nispen tot Sevenaer,1,Successiewet 1911,1911-03-10,Tweede Kamer,00977
+ter Laan,1,Successiewet 1911,1911-03-10,Tweede Kamer,00773
+Patijn,1,Successiewet 1911,1911-03-10,Tweede Kamer,01023
+de Monte verLoren,1,Successiewet 1911,1911-03-10,Tweede Kamer,00940
+Ketelaar,1,Successiewet 1911,1911-03-10,Tweede Kamer,00689
+van Hamel,1,Successiewet 1911,1911-03-10,Tweede Kamer,00517
+Ferf,1,Successiewet 1911,1911-03-10,Tweede Kamer,00404
+Dolk,1,Successiewet 1911,1911-03-10,Tweede Kamer,00325
+Schaper,1,Successiewet 1911,1911-03-10,Tweede Kamer,01189
+Aalberse,1,Successiewet 1911,1911-03-10,Tweede Kamer,00001
+Rink,1,Successiewet 1911,1911-03-10,Tweede Kamer,01113
+Vliegen,1,Successiewet 1911,1911-03-10,Tweede Kamer,01451
+Snoeck Henkemans,1,Successiewet 1911,1911-03-10,Tweede Kamer,01283
+Roodkuyzen,1,Successiewet 1911,1911-03-10,Tweede Kamer,01125
+Smidt,1,Successiewet 1911,1911-03-10,Tweede Kamer,01271
+de Klerk,1,Successiewet 1911,1911-03-10,Tweede Kamer,00704
+Heemskerk,1,Successiewet 1911,1911-03-10,Tweede Kamer,00540
+de Geer,1,Successiewet 1911,1911-03-10,Tweede Kamer,00432
+van Karnebeek,1,Successiewet 1911,1911-03-10,Tweede Kamer,00676
+van der Voort van Zijp,1,Successiewet 1911,1911-03-10,Tweede Kamer,01470
+J.W.J.C.M. van Nispen tot Sevenaer,1,Successiewet 1911,1911-03-10,Tweede Kamer,00975
+Limburg,1,Successiewet 1911,1911-03-10,Tweede Kamer,00822
+de Ram,1,Successiewet 1911,1911-03-10,Tweede Kamer,01079
+Ankerman,1,Successiewet 1911,1911-03-10,Tweede Kamer,00029
+Ros,1,Successiewet 1911,1911-03-10,Tweede Kamer,00175
+Smeenge,1,Successiewet 1911,1911-03-10,Tweede Kamer,01269
+Hubrecht,1,Successiewet 1911,1911-03-10,Tweede Kamer,00613
+Thomson,1,Successiewet 1911,1911-03-10,Tweede Kamer,01359
+Lieftinck,1,Successiewet 1911,1911-03-10,Tweede Kamer,00815
+Goeman Borgesius,1,Successiewet 1911,1911-03-10,Tweede Kamer,00469
+de Visser,1,Successiewet 1911,1911-03-10,Tweede Kamer,01446
+de Vlugt,1,Successiewet 1911,1911-03-10,Tweede Kamer,01456
+de Kanter,1,Successiewet 1911,1911-03-10,Tweede Kamer,00672
+Kuyper,1,Successiewet 1911,1911-03-10,Tweede Kamer,00766
+Duys,1,Successiewet 1911,1911-03-10,Tweede Kamer,00357
+van Best,1,Successiewet 1911,1911-03-10,Tweede Kamer,00104
+Duymaer van Twist,1,Successiewet 1911,1911-03-10,Tweede Kamer,00354
+van Vuuren,1,Successiewet 1911,1911-03-10,Tweede Kamer,01494
+van Wijnbergen,1,Successiewet 1911,1911-03-10,Tweede Kamer,01583
+Drucker,1,Successiewet 1911,1911-03-10,Tweede Kamer,00348
+Fleskens,1,Successiewet 1911,1911-03-10,Tweede Kamer,00408
+Jannink,1,Successiewet 1911,1911-03-10,Tweede Kamer,00634
+van Sasse van Ysselt,1,Successiewet 1911,1911-03-10,Tweede Kamer,01172
+Teenstra,1,Successiewet 1911,1911-03-10,Tweede Kamer,01344
+van Foresst,1,Successiewet 1911,1911-03-10,Tweede Kamer,00417
+van Lennep,1,Successiewet 1911,1911-03-10,Tweede Kamer,00806
+de Wijkorslooth de Weerdesteyn,1,Successiewet 1911,1911-03-10,Tweede Kamer,01580
+Eland,1,Successiewet 1911,1911-03-10,Tweede Kamer,00374
+Middelberg,1,Successiewet 1911,1911-03-10,Tweede Kamer,00925
+de Jongh,1,Successiewet 1911,1911-03-10,Tweede Kamer,00662
+de Savornin Lohman,1,Successiewet 1911,1911-03-10,Tweede Kamer,01177
+Helsdingen,1,Successiewet 1911,1911-03-10,Tweede Kamer,00557
+Kooien,1,Successiewet 1911,1911-03-10,Tweede Kamer,00733
+van Vliet,1,Successiewet 1911,1911-03-10,Tweede Kamer,01454
+vau Veen,1,Successiewet 1911,1911-03-10,Tweede Kamer,01392
+Duynstee,1,Successiewet 1911,1911-03-10,Tweede Kamer,00356
+Roessingh,1,Successiewet 1911,1911-03-10,Tweede Kamer,01120
+Verheij,1,Successiewet 1911,1911-03-10,Tweede Kamer,01411
+de Beaufort,1,Successiewet 1911,1911-03-10,Tweede Kamer,00071
+Loeff,1,Successiewet 1911,1911-03-10,Tweede Kamer,00835
+Nolens,1,Successiewet 1911,1911-03-10,Tweede Kamer,00981
+Treub,1,Successiewet 1911,1911-03-10,Tweede Kamer,01375
+van Bylandt,1,Successiewet 1911,1911-03-10,Tweede Kamer,00245
+van Idsinga,0,Successiewet 1911,1911-03-10,Tweede Kamer,00624
+van Dedem,0,Successiewet 1911,1911-03-10,Tweede Kamer,00293
+van Wassenaer van Catwijck,0,Successiewet 1911,1911-03-10,Tweede Kamer,01510
+van Lynden van Sandenburg,0,Successiewet 1911,1911-03-10,Tweede Kamer,00858
+van Hoogstrate,0,Successiewet 1911,1911-03-10,Tweede Kamer,00601
+Limburg,1,Successiewet 1916,1916-07-18,Tweede Kamer,00822
+Eerdmans,1,Successiewet 1916,1916-07-18,Tweede Kamer,00369
+Fock,1,Successiewet 1916,1916-07-18,Tweede Kamer,00410
+Bichon van IJsselmonde,1,Successiewet 1916,1916-07-18,Tweede Kamer,00111
+Ankerman,1,Successiewet 1916,1916-07-18,Tweede Kamer,00029
+Marchant,1,Successiewet 1916,1916-07-18,Tweede Kamer,00875
+Spiekman,1,Successiewet 1916,1916-07-18,Tweede Kamer,01288
+van Raalte,1,Successiewet 1916,1916-07-18,Tweede Kamer,01075
+de Beaufort,1,Successiewet 1916,1916-07-18,Tweede Kamer,00071
+Teenstra,1,Successiewet 1916,1916-07-18,Tweede Kamer,01344
+van Leeuwen,1,Successiewet 1916,1916-07-18,Tweede Kamer,00796
+Heeres,1,Successiewet 1916,1916-07-18,Tweede Kamer,00544
+Boissevain,1,Successiewet 1916,1916-07-18,Tweede Kamer,00152
+de Meester,1,Successiewet 1916,1916-07-18,Tweede Kamer,00892
+van Hamel,1,Successiewet 1916,1916-07-18,Tweede Kamer,00517
+Lieftinck,1,Successiewet 1916,1916-07-18,Tweede Kamer,00815
+Schaper,1,Successiewet 1916,1916-07-18,Tweede Kamer,01189
+van den Tempel,1,Successiewet 1916,1916-07-18,Tweede Kamer,01347
+Sannes,1,Successiewet 1916,1916-07-18,Tweede Kamer,01170
+de Muralt,1,Successiewet 1916,1916-07-18,Tweede Kamer,00949
+Drion,1,Successiewet 1916,1916-07-18,Tweede Kamer,00344
+Kleerekoper,1,Successiewet 1916,1916-07-18,Tweede Kamer,00702
+Duijs,1,Successiewet 1916,1916-07-18,Tweede Kamer,00357
+de Jong,1,Successiewet 1916,1916-07-18,Tweede Kamer,00655
+van Doorn,1,Successiewet 1916,1916-07-18,Tweede Kamer,00337
+Jansen,1,Successiewet 1916,1916-07-18,Tweede Kamer,00635
+Jannink,1,Successiewet 1916,1916-07-18,Tweede Kamer,00634
+Hubrecht,1,Successiewet 1916,1916-07-18,Tweede Kamer,00613
+Roodenburg,1,Successiewet 1916,1916-07-18,Tweede Kamer,01124
+ter Spill,1,Successiewet 1916,1916-07-18,Tweede Kamer,01289
+Smeenge,1,Successiewet 1916,1916-07-18,Tweede Kamer,01269
+Rink,1,Successiewet 1916,1916-07-18,Tweede Kamer,01113
+van Foreest,1,Successiewet 1916,1916-07-18,Tweede Kamer,00417
+Rutgers,1,Successiewet 1916,1916-07-18,Tweede Kamer,01147
+J. ter Laan,1,Successiewet 1916,1916-07-18,Tweede Kamer,00772
+de Geer,1,Successiewet 1916,1916-07-18,Tweede Kamer,00432
+van Beresteyn,1,Successiewet 1916,1916-07-18,Tweede Kamer,00090
+Koster,1,Successiewet 1916,1916-07-18,Tweede Kamer,00742
+Schim van der Loeff,1,Successiewet 1916,1916-07-18,Tweede Kamer,00835
+Nierstrasz,1,Successiewet 1916,1916-07-18,Tweede Kamer,00967
+Knobel,1,Successiewet 1916,1916-07-18,Tweede Kamer,00709
+Patijn,1,Successiewet 1916,1916-07-18,Tweede Kamer,01023
+Snoeck Henkemans,1,Successiewet 1916,1916-07-18,Tweede Kamer,01283
+Eland,1,Successiewet 1916,1916-07-18,Tweede Kamer,00374
+Tydeman,1,Successiewet 1916,1916-07-18,Tweede Kamer,01384
+Albarda,1,Successiewet 1916,1916-07-18,Tweede Kamer,00011
+K. ter Laan,1,Successiewet 1916,1916-07-18,Tweede Kamer,00773
+Goeman Borgesius,1,Successiewet 1916,1916-07-18,Tweede Kamer,00469
+Gerretson,0,Successiewet 1916,1916-07-18,Tweede Kamer,00448
+van Best,0,Successiewet 1916,1916-07-18,Tweede Kamer,00104
+Ruys de Beerenbrouck,0,Successiewet 1916,1916-07-18,Tweede Kamer,01152
+Bogaardt,0,Successiewet 1916,1916-07-18,Tweede Kamer,00150
+Arts,0,Successiewet 1916,1916-07-18,Tweede Kamer,00034
+de Monté ver Loren,0,Successiewet 1916,1916-07-18,Tweede Kamer,00940
+van der Voort van Zijp,0,Successiewet 1916,1916-07-18,Tweede Kamer,01470
+van Wijnbergen,0,Successiewet 1916,1916-07-18,Tweede Kamer,01583
+Janssen,0,Successiewet 1916,1916-07-18,Tweede Kamer,00638
+van Sasse van Ysselt,0,Successiewet 1916,1916-07-18,Tweede Kamer,01172
+de Visser,0,Successiewet 1916,1916-07-18,Tweede Kamer,01446
+Scheurer,0,Successiewet 1916,1916-07-18,Tweede Kamer,01194
+van Vliet,0,Successiewet 1916,1916-07-18,Tweede Kamer,01454
+Fruytier,0,Successiewet 1916,1916-07-18,Tweede Kamer,00430
+Juten,0,Successiewet 1916,1916-07-18,Tweede Kamer,00665
+van Nispen tot Sevenaer,0,Successiewet 1916,1916-07-18,Tweede Kamer,00975
+Brummelkamp,0,Successiewet 1916,1916-07-18,Tweede Kamer,00228
+Bongaerts,0,Successiewet 1916,1916-07-18,Tweede Kamer,00157
+van Vuuren,0,Successiewet 1916,1916-07-18,Tweede Kamer,01494
+Kooien,0,Successiewet 1916,1916-07-18,Tweede Kamer,00733
+Schimmelpenninck,0,Successiewet 1916,1916-07-18,Tweede Kamer,01201
+de Savornin Lohman,0,Successiewet 1916,1916-07-18,Tweede Kamer,01177
+Kolkman,0,Successiewet 1916,1916-07-18,Tweede Kamer,00727
+Duymaer van Twist,0,Successiewet 1916,1916-07-18,Tweede Kamer,00354
+van Veen,0,Successiewet 1916,1916-07-18,Tweede Kamer,01392
+Fleskens,0,Successiewet 1916,1916-07-18,Tweede Kamer,00408
+de Wijkerslooth de Weerdesteyn,0,Successiewet 1916,1916-07-18,Tweede Kamer,01580
+van Wichen,0,Successiewet 1916,1916-07-18,Tweede Kamer,01538
+van de Velde,0,Successiewet 1916,1916-07-18,Tweede Kamer,01400
+de Groot,1,Successiewet 1921,1921-04-14,Tweede Kamer,00491
+Fleskens,1,Successiewet 1921,1921-04-14,Tweede Kamer,00408
+L.M. Hermans,1,Successiewet 1921,1921-04-14,Tweede Kamer,00565
+Schokking,1,Successiewet 1921,1921-04-14,Tweede Kamer,01215
+Treub,1,Successiewet 1921,1921-04-14,Tweede Kamer,01375
+Ossendorp,1,Successiewet 1921,1921-04-14,Tweede Kamer,01007
+Bomans,1,Successiewet 1921,1921-04-14,Tweede Kamer,00154
+Reijmer,1,Successiewet 1921,1921-04-14,Tweede Kamer,01105
+Kleerekoper,1,Successiewet 1921,1921-04-14,Tweede Kamer,00702
+van Zadelhoff,1,Successiewet 1921,1921-04-14,Tweede Kamer,01592
+Haazevoet,1,Successiewet 1921,1921-04-14,Tweede Kamer,00506
+Deckers,1,Successiewet 1921,1921-04-14,Tweede Kamer,00292
+Ter Hall,1,Successiewet 1921,1921-04-14,Tweede Kamer,00514
+H. Hermans,1,Successiewet 1921,1921-04-14,Tweede Kamer,00563
+Nolens,1,Successiewet 1921,1921-04-14,Tweede Kamer,00981
+Bongaerts,1,Successiewet 1921,1921-04-14,Tweede Kamer,00157
+A.P. Staalman,1,Successiewet 1921,1921-04-14,Tweede Kamer,01293
+Duys,1,Successiewet 1921,1921-04-14,Tweede Kamer,00357
+Zijlstra,1,Successiewet 1921,1921-04-14,Tweede Kamer,01610
+Kolkman,1,Successiewet 1921,1921-04-14,Tweede Kamer,00727
+Stulemeijer,1,Successiewet 1921,1921-04-14,Tweede Kamer,01322
+de Wilde,1,Successiewet 1921,1921-04-14,Tweede Kamer,01548
+van Stapele,1,Successiewet 1921,1921-04-14,Tweede Kamer,01295
+de Muralt,1,Successiewet 1921,1921-04-14,Tweede Kamer,00949
+van Schaik,1,Successiewet 1921,1921-04-14,Tweede Kamer,01184
+van Rijckevorsel,1,Successiewet 1921,1921-04-14,Tweede Kamer,01157
+Duymaer van Twist,1,Successiewet 1921,1921-04-14,Tweede Kamer,00354
+Oud,1,Successiewet 1921,1921-04-14,Tweede Kamer,01010
+Rutgers,1,Successiewet 1921,1921-04-14,Tweede Kamer,01147
+Scheurer,1,Successiewet 1921,1921-04-14,Tweede Kamer,01194
+van de Bilt,1,Successiewet 1921,1921-04-14,Tweede Kamer,00121
+Rugge,1,Successiewet 1921,1921-04-14,Tweede Kamer,01140
+Wintermans,1,Successiewet 1921,1921-04-14,Tweede Kamer,01555
+Poels,1,Successiewet 1921,1921-04-14,Tweede Kamer,01043
+van der Molen,1,Successiewet 1921,1921-04-14,Tweede Kamer,00934
+Smeenk,1,Successiewet 1921,1921-04-14,Tweede Kamer,01270
+de Jonge,1,Successiewet 1921,1921-04-14,Tweede Kamer,00657
+van Vuuren,1,Successiewet 1921,1921-04-14,Tweede Kamer,01494
+G.J. ter Laan,1,Successiewet 1921,1921-04-14,Tweede Kamer,00672
+Schaper,1,Successiewet 1921,1921-04-14,Tweede Kamer,01189
+Troelstra,1,Successiewet 1921,1921-04-14,Tweede Kamer,01376
+Groeneweg,1,Successiewet 1921,1921-04-14,Tweede Kamer,00488
+van den Tempel,1,Successiewet 1921,1921-04-14,Tweede Kamer,01347
+K. ter Laan,1,Successiewet 1921,1921-04-14,Tweede Kamer,00773
+Ketelaar,1,Successiewet 1921,1921-04-14,Tweede Kamer,00689
+Teenstra,1,Successiewet 1921,1921-04-14,Tweede Kamer,01344
+Engels,1,Successiewet 1921,1921-04-14,Tweede Kamer,00385
+Bulten,1,Successiewet 1921,1921-04-14,Tweede Kamer,00237
+van Wijnbergen,1,Successiewet 1921,1921-04-14,Tweede Kamer,01583
+Bakker,1,Successiewet 1921,1921-04-14,Tweede Kamer,00059
+van Beresteyn,1,Successiewet 1921,1921-04-14,Tweede Kamer,00090
+Marchant,1,Successiewet 1921,1921-04-14,Tweede Kamer,00875
+Hugenholtz,1,Successiewet 1921,1921-04-14,Tweede Kamer,00615
+Schouten,1,Successiewet 1921,1921-04-14,Tweede Kamer,01225
+van Dijk,1,Successiewet 1921,1921-04-14,Tweede Kamer,00363
+Albarda,1,Successiewet 1921,1921-04-14,Tweede Kamer,00011
+Drion,0,Successiewet 1921,1921-04-14,Tweede Kamer,00344
+Gerretson,0,Successiewet 1921,1921-04-14,Tweede Kamer,00448
+Rink,0,Successiewet 1921,1921-04-14,Tweede Kamer,01113
+Dresselhuys,0,Successiewet 1921,1921-04-14,Tweede Kamer,00341
+A. Staalman,0,Successiewet 1921,1921-04-14,Tweede Kamer,01292
+de Monté ver Loren,0,Successiewet 1921,1921-04-14,Tweede Kamer,00940
+de Kanter,0,Successiewet 1921,1921-04-14,Tweede Kamer,00672
+Heemskerk,0,Successiewet 1921,1921-04-14,Tweede Kamer,00540
+van Rappard,0,Successiewet 1921,1921-04-14,Tweede Kamer,01082
+Fruytier,0,Successiewet 1921,1921-04-14,Tweede Kamer,00430
+de Wijkerslooth de Weerdesteyn,0,Successiewet 1921,1921-04-14,Tweede Kamer,01580
+van Sasse van Ysselt,0,Successiewet 1921,1921-04-14,Tweede Kamer,01172
+Swane,0,Successiewet 1921,1921-04-14,Tweede Kamer,01328
+Braat,0,Successiewet 1921,1921-04-14,Tweede Kamer,00191
+Beumer,0,Successiewet 1921,1921-04-14,Tweede Kamer,00106
+Weitkamp,0,Successiewet 1921,1921-04-14,Tweede Kamer,01514
+Snoeck Henkemans,0,Successiewet 1921,1921-04-14,Tweede Kamer,01283
+Koelen,0,Successiewet 1921,1921-04-14,Tweede Kamer,00733
+Viruly,1,Inkomstenbelasting 1893,1893-09-28,Eerste Kamer,01436
+ Magnée,1,Inkomstenbelasting 1893,1893-09-28,Eerste Kamer,00871
+ Vlielander Hein,1,Inkomstenbelasting 1893,1893-09-28,Eerste Kamer,01452
+ van Lier,1,Inkomstenbelasting 1893,1893-09-28,Eerste Kamer,00818
+ de Jong,1,Inkomstenbelasting 1893,1893-09-28,Eerste Kamer,00651
+ E. Gremers,1,Inkomstenbelasting 1893,1893-09-28,Eerste Kamer,00280
+ Pijnappel,1,Inkomstenbelasting 1893,1893-09-28,Eerste Kamer,01068
+ Vening Meinesz,1,Inkomstenbelasting 1893,1893-09-28,Eerste Kamer,01405
+ Blijdenstein,1,Inkomstenbelasting 1893,1893-09-28,Eerste Kamer,00139
+ Fransen van de Putte,1,Inkomstenbelasting 1893,1893-09-28,Eerste Kamer,00421
+ Bultman,1,Inkomstenbelasting 1893,1893-09-28,Eerste Kamer,00238
+ Welt,1,Inkomstenbelasting 1893,1893-09-28,Eerste Kamer,01065
+ Kist,1,Inkomstenbelasting 1893,1893-09-28,Eerste Kamer,00701
+ Wertheim,1,Inkomstenbelasting 1893,1893-09-28,Eerste Kamer,01524
+ van Alphen,1,Inkomstenbelasting 1893,1893-09-28,Eerste Kamer,00018
+ Nebbens Sterling,1,Inkomstenbelasting 1893,1893-09-28,Eerste Kamer,00958
+ Muller,1,Inkomstenbelasting 1893,1893-09-28,Eerste Kamer,00948
+ Stork,1,Inkomstenbelasting 1893,1893-09-28,Eerste Kamer,01313
+ A. Prins,1,Inkomstenbelasting 1893,1893-09-28,Eerste Kamer,01060
+ Merkelbach,1,Inkomstenbelasting 1893,1893-09-28,Eerste Kamer,00905
+ J. Prins,1,Inkomstenbelasting 1893,1893-09-28,Eerste Kamer,01061
+ Fokker,1,Inkomstenbelasting 1893,1893-09-28,Eerste Kamer,00413
+ Alberda van Ekenstein,1,Inkomstenbelasting 1893,1893-09-28,Eerste Kamer,00014
+ Coenen,1,Inkomstenbelasting 1893,1893-09-28,Eerste Kamer,00260
+ Breebaart,1,Inkomstenbelasting 1893,1893-09-28,Eerste Kamer,00204
+ van Roijen en van Gennep,1,Inkomstenbelasting 1893,1893-09-28,Eerste Kamer,NA
+Engelberts,0,Inkomstenbelasting 1893,1893-09-28,Eerste Kamer,00381
+ Rahusen,0,Inkomstenbelasting 1893,1893-09-28,Eerste Kamer,01077
+ Verheijen,0,Inkomstenbelasting 1893,1893-09-28,Eerste Kamer,01414
+ L. van Nispen,0,Inkomstenbelasting 1893,1893-09-28,Eerste Kamer,01077
+ Melvil van Lynden,0,Inkomstenbelasting 1893,1893-09-28,Eerste Kamer,00260
+ Smitz,0,Inkomstenbelasting 1893,1893-09-28,Eerste Kamer,01281
+ Godin de Beaufort,0,Inkomstenbelasting 1893,1893-09-28,Eerste Kamer,00465
+ Pyls,0,Inkomstenbelasting 1893,1893-09-28,Eerste Kamer,01065
+ W. Cremers,0,Inkomstenbelasting 1893,1893-09-28,Eerste Kamer,00282
+ de Savornin Lohman,0,Inkomstenbelasting 1893,1893-09-28,Eerste Kamer,01177
+ Prinzen,0,Inkomstenbelasting 1893,1893-09-28,Eerste Kamer,01062
+ van Nispen tot Pannerdeu,0,Inkomstenbelasting 1893,1893-09-28,Eerste Kamer,00971
+ Sassen,0,Inkomstenbelasting 1893,1893-09-28,Eerste Kamer,01174
+ Regout,0,Inkomstenbelasting 1893,1893-09-28,Eerste Kamer,01095
+ van Pallandt van Waardenburg,0,Inkomstenbelasting 1893,1893-09-28,Eerste Kamer,01016
+Neerijnen,0,Inkomstenbelasting 1893,1893-09-28,Eerste Kamer,00260
+van Naamen van Eemnes,0,Inkomstenbelasting 1893,1893-09-28,Eerste Kamer,00954
+van Kol,1,Inkomstenbelasting 1914,1914-12-18,Eerste Kamer,00723
+ Haffmans,1,Inkomstenbelasting 1914,1914-12-18,Eerste Kamer,00509
+ Franssen,1,Inkomstenbelasting 1914,1914-12-18,Eerste Kamer,00423
+ Reekers,1,Inkomstenbelasting 1914,1914-12-18,Eerste Kamer,01091
+ Zijlma,1,Inkomstenbelasting 1914,1914-12-18,Eerste Kamer,01609
+ Woltjer,1,Inkomstenbelasting 1914,1914-12-18,Eerste Kamer,01565
+ de Vos van Steenwijk,1,Inkomstenbelasting 1914,1914-12-18,Eerste Kamer,01482
+ van Weideren Reugers,1,Inkomstenbelasting 1914,1914-12-18,Eerste Kamer,01517
+ van Holthe tot Echten,1,Inkomstenbelasting 1914,1914-12-18,Eerste Kamer,00593
+ van Houten,1,Inkomstenbelasting 1914,1914-12-18,Eerste Kamer,00605
+ de Boer,1,Inkomstenbelasting 1914,1914-12-18,Eerste Kamer,00144
+ Drucker,1,Inkomstenbelasting 1914,1914-12-18,Eerste Kamer,00348
+ Kraus,1,Inkomstenbelasting 1914,1914-12-18,Eerste Kamer,00751
+ Dojes,1,Inkomstenbelasting 1914,1914-12-18,Eerste Kamer,00324
+ Bergsma,1,Inkomstenbelasting 1914,1914-12-18,Eerste Kamer,00101
+ Polak,1,Inkomstenbelasting 1914,1914-12-18,Eerste Kamer,01046
+ van Swaay,1,Inkomstenbelasting 1914,1914-12-18,Eerste Kamer,01291
+ van Waterschoot van der Gracht,1,Inkomstenbelasting 1914,1914-12-18,Eerste Kamer,01512
+ de Gijselaar,1,Inkomstenbelasting 1914,1914-12-18,Eerste Kamer,00501
+ van Nierop,1,Inkomstenbelasting 1914,1914-12-18,Eerste Kamer,00965
+ 't Hooft,1,Inkomstenbelasting 1914,1914-12-18,Eerste Kamer,00598
+ Fokker,1,Inkomstenbelasting 1914,1914-12-18,Eerste Kamer,00144
+ van Wassenaar van Catwijck,1,Inkomstenbelasting 1914,1914-12-18,Eerste Kamer,01510
+ Gilissen,1,Inkomstenbelasting 1914,1914-12-18,Eerste Kamer,00459
+ van Lamsweerde,1,Inkomstenbelasting 1914,1914-12-18,Eerste Kamer,00780
+ Staal,1,Inkomstenbelasting 1914,1914-12-18,Eerste Kamer,01291
+ van den Biesen,1,Inkomstenbelasting 1914,1914-12-18,Eerste Kamer,00117
+ Bosch van Oud-Ainelisweerd,1,Inkomstenbelasting 1914,1914-12-18,Eerste Kamer,00181
+de Boer,1,Staatsschuldwet 1914,1914-12-23,Eerste Kamer,00144
+ Zijlma,1,Staatsschuldwet 1914,1914-12-23,Eerste Kamer,01609
+ Colijn,1,Staatsschuldwet 1914,1914-12-23,Eerste Kamer,00263
+ Drucker,1,Staatsschuldwet 1914,1914-12-23,Eerste Kamer,00348
+ Reekers,1,Staatsschuldwet 1914,1914-12-23,Eerste Kamer,01091
+ Franssen,1,Staatsschuldwet 1914,1914-12-23,Eerste Kamer,00423
+ Cremer,1,Staatsschuldwet 1914,1914-12-23,Eerste Kamer,00279
+ van Waterschoot van der Gracht,1,Staatsschuldwet 1914,1914-12-23,Eerste Kamer,01512
+ van Holthe tot Echten,1,Staatsschuldwet 1914,1914-12-23,Eerste Kamer,00593
+ Bosch van Oud-Amelisweerd,1,Staatsschuldwet 1914,1914-12-23,Eerste Kamer,00181
+ van Nierop,1,Staatsschuldwet 1914,1914-12-23,Eerste Kamer,00965
+ van den Berg,1,Staatsschuldwet 1914,1914-12-23,Eerste Kamer,00092
+ Kraus,1,Staatsschuldwet 1914,1914-12-23,Eerste Kamer,00751
+ van Wassenaer van Catwiick,1,Staatsschuldwet 1914,1914-12-23,Eerste Kamer,01510
+ Regout,1,Staatsschuldwet 1914,1914-12-23,Eerste Kamer,01097
+ Gilissen,1,Staatsschuldwet 1914,1914-12-23,Eerste Kamer,00459
+ Smits,1,Staatsschuldwet 1914,1914-12-23,Eerste Kamer,01275
+ van Swaay,1,Staatsschuldwet 1914,1914-12-23,Eerste Kamer,01291
+ van Houten,1,Staatsschuldwet 1914,1914-12-23,Eerste Kamer,00605
+ van Welderen Rengers,1,Staatsschuldwet 1914,1914-12-23,Eerste Kamer,01517
+ van der Hoeven,1,Staatsschuldwet 1914,1914-12-23,Eerste Kamer,00588
+ Dojes,1,Staatsschuldwet 1914,1914-12-23,Eerste Kamer,00324
+ de Vos van Steenwijk,1,Staatsschuldwet 1914,1914-12-23,Eerste Kamer,01482
+ van den Biesen,1,Staatsschuldwet 1914,1914-12-23,Eerste Kamer,00117
+ de Gijselaar,1,Staatsschuldwet 1914,1914-12-23,Eerste Kamer,00501
+ Tjarda van Starkenborgh Stachouwer,1,Staatsschuldwet 1914,1914-12-23,Eerste Kamer,01369
+ van Kol,1,Staatsschuldwet 1914,1914-12-23,Eerste Kamer,00723
+ Polak,1,Staatsschuldwet 1914,1914-12-23,Eerste Kamer,01046
+ Michiels van Kessenich,1,Staatsschuldwet 1914,1914-12-23,Eerste Kamer,00920
+ van Lamsweerde,1,Staatsschuldwet 1914,1914-12-23,Eerste Kamer,00780
+ Bavinck,1,Staatsschuldwet 1914,1914-12-23,Eerste Kamer,00068
+ Staal,1,Staatsschuldwet 1914,1914-12-23,Eerste Kamer,01291
+ van der Does de Willebois,1,Staatsschuldwet 1914,1914-12-23,Eerste Kamer,00323
+ van der Feltz,1,Staatsschuldwet 1914,1914-12-23,Eerste Kamer,00399
+ Woltjer,1,Staatsschuldwet 1914,1914-12-23,Eerste Kamer,01565
+ Bergsma,1,Staatsschuldwet 1914,1914-12-23,Eerste Kamer,00101
+ van der Maesen de Sombreff,1,Staatsschuldwet 1914,1914-12-23,Eerste Kamer,00869
+ van der Lande,1,Staatsschuldwet 1914,1914-12-23,Eerste Kamer,00782
+van Basten Batenburg,1,Staatsschuldwet 1914,1914-12-23,Eerste Kamer,00065
+van Voorst tot Voorst,1,Staatsschuldwet 1914,1914-12-23,Eerste Kamer,01468
+Teding van Berkhout,1,Successiewet 1878,1878-06-04,Eerste Kamer,01342
+ Borsius ,1,Successiewet 1878,1878-06-04,Eerste Kamer,00170
+ Pincoffs,1,Successiewet 1878,1878-06-04,Eerste Kamer,01035
+ Hein,1,Successiewet 1878,1878-06-04,Eerste Kamer,00551
+ Smit,1,Successiewet 1878,1878-06-04,Eerste Kamer,01274
+ du Marchie van Voorthuysen ,1,Successiewet 1878,1878-06-04,Eerste Kamer,00878
+ Viruly,1,Successiewet 1878,1878-06-04,Eerste Kamer,01436
+ Stork,1,Successiewet 1878,1878-06-04,Eerste Kamer,01313
+ Buchner,1,Successiewet 1878,1878-06-04,Eerste Kamer,00233
+ Schot,1,Successiewet 1878,1878-06-04,Eerste Kamer,01224
+ de Sitter,1,Successiewet 1878,1878-06-04,Eerste Kamer,01252
+ Dumbar,1,Successiewet 1878,1878-06-04,Eerste Kamer,00350
+ van Rhemen van Rhemenshuizen,1,Successiewet 1878,1878-06-04,Eerste Kamer,01107
+ Duymaer van Twist,1,Successiewet 1878,1878-06-04,Eerste Kamer,00353
+ Prins,1,Successiewet 1878,1878-06-04,Eerste Kamer,01060
+ de Raadt,1,Successiewet 1878,1878-06-04,Eerste Kamer,01074
+ van Eysinga,1,Successiewet 1878,1878-06-04,Eerste Kamer,00393
+ van Volïenhoven ,1,Successiewet 1878,1878-06-04,Eerste Kamer,01459
+Pické,1,Successiewet 1878,1878-06-04,Eerste Kamer,01033
+Smits,0,Successiewet 1878,1878-06-04,Eerste Kamer,01274
+ Thooft,0,Successiewet 1878,1878-06-04,Eerste Kamer,01360
+ van Sasse van Ysselt,0,Successiewet 1878,1878-06-04,Eerste Kamer,01173
+ Hengst,0,Successiewet 1878,1878-06-04,Eerste Kamer,00561
+ Beerenbroek,0,Successiewet 1878,1878-06-04,Eerste Kamer,00080
+ Geertsema,0,Successiewet 1878,1878-06-04,Eerste Kamer,00436
+ Huydecoper van Maarsseveen,0,Successiewet 1878,1878-06-04,Eerste Kamer,00622
+ de Villers de Pité,0,Successiewet 1878,1878-06-04,Eerste Kamer,01434
+ Michiels van Kessenich,0,Successiewet 1878,1878-06-04,Eerste Kamer,00921
+ van Akerlaken,0,Successiewet 1878,1878-06-04,Eerste Kamer,00009
+ Blussé,0,Successiewet 1878,1878-06-04,Eerste Kamer,00136
+ Coenen,0,Successiewet 1878,1878-06-04,Eerste Kamer,00260
+ Aylva baron van Pallandt van Waardenburg en Neerijnen,0,Successiewet 1878,1878-06-04,Eerste Kamer,00047
+ van Rijckevorsel,0,Successiewet 1878,1878-06-04,Eerste Kamer,01158
+ Vos de Wael,0,Successiewet 1878,1878-06-04,Eerste Kamer,01483
+de Vos van Steenwijk,0,Successiewet 1878,1878-06-04,Eerste Kamer,01478
+Lucasse,1,Successiewet 1911,1911-05-18,Eerste Kamer,00849
+ Eranssen,1,Successiewet 1911,1911-05-18,Eerste Kamer,00423
+ de Jong,1,Successiewet 1911,1911-05-18,Eerste Kamer,00651
+ van Nierop,1,Successiewet 1911,1911-05-18,Eerste Kamer,00965
+ van den Berg,1,Successiewet 1911,1911-05-18,Eerste Kamer,00092
+" 
+    van der Maesen de Sombreff",1,Successiewet 1911,1911-05-18,Eerste Kamer,00869
+ van den Biesen,1,Successiewet 1911,1911-05-18,Eerste Kamer,00117
+" 
+    van der Does de Willebois",1,Successiewet 1911,1911-05-18,Eerste Kamer,00323
+ van Lamsweerde,1,Successiewet 1911,1911-05-18,Eerste Kamer,00780
+ Bloembergen,1,Successiewet 1911,1911-05-18,Eerste Kamer,00129
+" 
+    van Waterschoot van der Gracht",1,Successiewet 1911,1911-05-18,Eerste Kamer,01512
+" 
+    van Voorst tot Voorst",1,Successiewet 1911,1911-05-18,Eerste Kamer,01468
+ Prinzen,1,Successiewet 1911,1911-05-18,Eerste Kamer,01062
+ van Leeuwen,1,Successiewet 1911,1911-05-18,Eerste Kamer,00797
+"
+    van Lanschot",1,Successiewet 1911,1911-05-18,Eerste Kamer,00787
+ van Pallandt,1,Successiewet 1911,1911-05-18,Eerste Kamer,01505
+ Verheijen,1,Successiewet 1911,1911-05-18,Eerste Kamer,01413
+ Laan,1,Successiewet 1911,1911-05-18,Eerste Kamer,00769
+" 
+    Breebaart",1,Successiewet 1911,1911-05-18,Eerste Kamer,00204
+ Havelaar,1,Successiewet 1911,1911-05-18,Eerste Kamer,00530
+ Barge,1,Successiewet 1911,1911-05-18,Eerste Kamer,00063
+ Staal,1,Successiewet 1911,1911-05-18,Eerste Kamer,01291
+ Kist,1,Successiewet 1911,1911-05-18,Eerste Kamer,00701
+" 
+    Woltjer",1,Successiewet 1911,1911-05-18,Eerste Kamer,01565
+ do Marez Oyens,1,Successiewet 1911,1911-05-18,Eerste Kamer,00879
+Aumale baron van Hardenbroek van Hardenbroek,1,Successiewet 1911,1911-05-18,Eerste Kamer,00045
+ Welt,1,Successiewet 1911,1911-05-18,Eerste Kamer,00399
+"
+    Dojes",1,Successiewet 1911,1911-05-18,Eerste Kamer,00324
+ van der Feltz,1,Successiewet 1911,1911-05-18,Eerste Kamer,00399
+ Lely,1,Successiewet 1911,1911-05-18,Eerste Kamer,00802
+ van Löben Sels,1,Successiewet 1911,1911-05-18,Eerste Kamer,00833
+ van der Kun,1,Successiewet 1911,1911-05-18,Eerste Kamer,00763
+ Bosch van Drakestein,1,Successiewet 1911,1911-05-18,Eerste Kamer,00180
+ Pelinck,1,Successiewet 1911,1911-05-18,Eerste Kamer,01025
+ Sickenga,1,Successiewet 1911,1911-05-18,Eerste Kamer,01245
+ van Weideren Rengers,1,Successiewet 1911,1911-05-18,Eerste Kamer,01518
+  Röell,1,Successiewet 1911,1911-05-18,Eerste Kamer,01118
+ van Wassenaer van Rosande,1,Successiewet 1911,1911-05-18,Eerste Kamer,01511
+Schimmelpenninck van der Oye,1,Successiewet 1911,1911-05-18,Eerste Kamer,01204
+van Wichen,0,Successiewet 1916,1916-11-29,Eerste Kamer,01538
+ Bosch van Oud-Amelisweerd,0,Successiewet 1916,1916-11-29,Eerste Kamer,00181
+ van Swaay,0,Successiewet 1916,1916-11-29,Eerste Kamer,01291
+ van den Berg,0,Successiewet 1916,1916-11-29,Eerste Kamer,00092
+ Smits,0,Successiewet 1916,1916-11-29,Eerste Kamer,01275
+ Diepen,0,Successiewet 1916,1916-11-29,Eerste Kamer,00306
+ van Wassenaer van Catwijck,0,Successiewet 1916,1916-11-29,Eerste Kamer,01510
+ Verheijen,0,Successiewet 1916,1916-11-29,Eerste Kamer,01413
+ de Vos van Steen- wijk,0,Successiewet 1916,1916-11-29,Eerste Kamer,01482
+ van Lamsweerde,0,Successiewet 1916,1916-11-29,Eerste Kamer,00780
+ van der Maesen de Sombreff,0,Successiewet 1916,1916-11-29,Eerste Kamer,00869
+ Gilissen,0,Successiewet 1916,1916-11-29,Eerste Kamer,00459
+ van der Does de Willebois,0,Successiewet 1916,1916-11-29,Eerste Kamer,00323
+ Haffmans,0,Successiewet 1916,1916-11-29,Eerste Kamer,00509
+ Michiels van Kessenich,0,Successiewet 1916,1916-11-29,Eerste Kamer,00920
+ Franssen,0,Successiewet 1916,1916-11-29,Eerste Kamer,00423
+ van den Biesen,0,Successiewet 1916,1916-11-29,Eerste Kamer,00117
+ van Lanschot,0,Successiewet 1916,1916-11-29,Eerste Kamer,00787
+ van Basten Batenburg,0,Successiewet 1916,1916-11-29,Eerste Kamer,00065
+ Reekers,0,Successiewet 1916,1916-11-29,Eerste Kamer,01091
+Aumale baron van Hardenbroek van Hardenbroek,0,Successiewet 1916,1916-11-29,Eerste Kamer,00045
+van Voorst tot Voorst,0,Successiewet 1916,1916-11-29,Eerste Kamer,01468
+de Boer,1,Successiewet 1916,1916-11-29,Eerste Kamer,00144
+ Staal,1,Successiewet 1916,1916-11-29,Eerste Kamer,01291
+ van Nierop,1,Successiewet 1916,1916-11-29,Eerste Kamer,00965
+ van Houten,1,Successiewet 1916,1916-11-29,Eerste Kamer,00605
+ Kappeyne van de Coppello,1,Successiewet 1916,1916-11-29,Eerste Kamer,00673
+ Binnerts,1,Successiewet 1916,1916-11-29,Eerste Kamer,00124
+ van Kol,1,Successiewet 1916,1916-11-29,Eerste Kamer,00723
+ Bergsma,1,Successiewet 1916,1916-11-29,Eerste Kamer,00101
+ Laan,1,Successiewet 1916,1916-11-29,Eerste Kamer,00769
+ Stork,1,Successiewet 1916,1916-11-29,Eerste Kamer,01314
+ van der Feltz,1,Successiewet 1916,1916-11-29,Eerste Kamer,00399
+ Dojes,1,Successiewet 1916,1916-11-29,Eerste Kamer,00324
+ Kraus,1,Successiewet 1916,1916-11-29,Eerste Kamer,00751
+ Drucker,1,Successiewet 1916,1916-11-29,Eerste Kamer,00348
+ van Holthe tot Echten,1,Successiewet 1916,1916-11-29,Eerste Kamer,00593
+ Polak,1,Successiewet 1916,1916-11-29,Eerste Kamer,01046
+ Cremer,1,Successiewet 1916,1916-11-29,Eerste Kamer,00279
+Tjarda van Starkenborgh Stachouwer,1,Successiewet 1916,1916-11-29,Eerste Kamer,01369
+Cremer,1,Successiewet 1921,1921-06-09,Eerste Kamer,00279
+ Kraus,1,Successiewet 1921,1921-06-09,Eerste Kamer,00751
+ Binnerts,1,Successiewet 1921,1921-06-09,Eerste Kamer,00124
+ Van der Maesen de Sombreff,1,Successiewet 1921,1921-06-09,Eerste Kamer,00869
+ van der Hoeven,1,Successiewet 1921,1921-06-09,Eerste Kamer,00588
+ Bergsma,1,Successiewet 1921,1921-06-09,Eerste Kamer,00101
+ Idenburg,1,Successiewet 1921,1921-06-09,Eerste Kamer,00623
+ Wittert van Hoogland,1,Successiewet 1921,1921-06-09,Eerste Kamer,01561
+ Pothuis-Smit,1,Successiewet 1921,1921-06-09,Eerste Kamer,01059
+ van Embden,1,Successiewet 1921,1921-06-09,Eerste Kamer,00378
+ Vliegen,1,Successiewet 1921,1921-06-09,Eerste Kamer,01451
+ van der Lande,1,Successiewet 1921,1921-06-09,Eerste Kamer,00782
+ Polak,1,Successiewet 1921,1921-06-09,Eerste Kamer,01046
+ Mendels,1,Successiewet 1921,1921-06-09,Eerste Kamer,00902
+ Dojes,1,Successiewet 1921,1921-06-09,Eerste Kamer,00324
+ Diepenhorst,1,Successiewet 1921,1921-06-09,Eerste Kamer,00310
+ van Houten,1,Successiewet 1921,1921-06-09,Eerste Kamer,00605
+ Smeenge,1,Successiewet 1921,1921-06-09,Eerste Kamer,01269
+ van Swaay,1,Successiewet 1921,1921-06-09,Eerste Kamer,01327
+ Gilissen,1,Successiewet 1921,1921-06-09,Eerste Kamer,00459
+ Geertsema,1,Successiewet 1921,1921-06-09,Eerste Kamer,00435
+ de Waal Malefijt,1,Successiewet 1921,1921-06-09,Eerste Kamer,01498
+ van Nierop,1,Successiewet 1921,1921-06-09,Eerste Kamer,00965
+ van der Feltz,1,Successiewet 1921,1921-06-09,Eerste Kamer,00399
+ Lucasse,1,Successiewet 1921,1921-06-09,Eerste Kamer,00849
+ van den Berg,1,Successiewet 1921,1921-06-09,Eerste Kamer,00092
+ van Loon,1,Successiewet 1921,1921-06-09,Eerste Kamer,00840
+ Slingenberg,1,Successiewet 1921,1921-06-09,Eerste Kamer,01258
+ Bosch van Oud-Amelisweerd,1,Successiewet 1921,1921-06-09,Eerste Kamer,00181
+ van Basten Batenburg,1,Successiewet 1921,1921-06-09,Eerste Kamer,00065
+ van Lanschot,1,Successiewet 1921,1921-06-09,Eerste Kamer,00787
+ van der Does de Willebois,1,Successiewet 1921,1921-06-09,Eerste Kamer,00323
+ Haffmans,1,Successiewet 1921,1921-06-09,Eerste Kamer,00509
+van Voorst tot Voorst,1,Successiewet 1921,1921-06-09,Eerste Kamer,01468
+Verheijen,0,Successiewet 1921,1921-06-09,Eerste Kamer,01413
+Reekers,0,Successiewet 1921,1921-06-09,Eerste Kamer,01091
+Fokker,0,Successiewet 1921,1921-06-09,Eerste Kamer,00144
+ van Wassenaer van Catwijck,0,Successiewet 1921,1921-06-09,Eerste Kamer,01510
+ 't Hooft,0,Successiewet 1921,1921-06-09,Eerste Kamer,00598
+Smits,0,Successiewet 1921,1921-06-09,Eerste Kamer,01275
+de Vos van Steenwijk,0,Successiewet 1921,1921-06-09,Eerste Kamer,01482
