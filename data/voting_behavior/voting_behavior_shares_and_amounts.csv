@@ -1,0 +1,15 @@
+law,howmanyyes_confessional,n_confessional,share_confessional,howmanyyes_liberal,n_liberal,share_liberal,howmanyyes_socialist,n_socialist,share_socialist,howmanyyes_neutral,n_neutral,share_neutral,house
+Successiewet 1878,12,41,0.2926829268292683,36,39,0.9230769230769231,NA,NA,NA,NA,NA,NA,Tweede Kamer
+Inkomstenbelasting 1893,12,39,0.3076923076923077,42,48,0.875,1,2,0.5,NA,NA,NA,Tweede Kamer
+Successiewet 1911,31,36,0.8611111111111112,22,22,1,10,10,1,1,1,1,Tweede Kamer
+Inkomstenbelasting 1914,25,37,0.6756756756756757,25,25,1,17,17,1,1,1,1,Tweede Kamer
+Staatsschuldwet 1914,34,34,1,25,28,0.8928571428571429,2,21,0.09523809523809523,NA,NA,NA,Tweede Kamer
+Successiewet 1916,6,35,0.17142857142857143,25,25,1,16,16,1,1,1,1,Tweede Kamer
+Successiewet 1921,31,42,0.7380952380952381,6,12,0.5,18,18,1,1,2,0.5,Tweede Kamer
+Successiewet 1878,1,4,0.25,18,31,0.5806451612903226,NA,NA,NA,NA,NA,NA,Eerste Kamer
+Inkomstenbelasting 1893,4,15,0.26666666666666666,22,28,0.7857142857142857,1,1,1,NA,NA,NA,Eerste Kamer
+Successiewet 1911,23,23,1,16,16,1,NA,NA,NA,NA,NA,NA,Eerste Kamer
+Inkomstenbelasting 1914,13,13,1,10,10,1,5,5,1,NA,NA,NA,Eerste Kamer
+Staatsschuldwet 1914,23,23,1,13,13,1,4,4,1,NA,NA,NA,Eerste Kamer
+Successiewet 1916,0,21,0,14,15,0.9333333333333333,4,4,1,NA,NA,NA,Eerste Kamer
+Successiewet 1921,18,24,0.75,10,10,1,6,7,0.8571428571428571,NA,NA,NA,Eerste Kamer

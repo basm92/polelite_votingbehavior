@@ -1,0 +1,186 @@
+---
+title: "Personal Wealth and Voting Behavior of Politicians"
+author: "Bas Machielsen"
+institute: "Utrecht University"
+email: "a.h.machielsen@uu.nl"
+date: "1/29/2021"
+output: 
+  beamer_presentation:
+    includes:
+      in_header: preamble.tex
+classoption: "aspectratio=169"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+
+figures <- readRDS("../figures/figures_presentation.RDS")
+```
+
+# Motivation
+
+
+## Motivation
+
+- Many (Western) European countries underwent radical changes between roughly 1850 and 1920.
+
+    - All of them experienced high economic growth and were rapidly industrializing.
+    - Most of them transitioned to universal suffrage
+    - Some of them established the groundwork of social security.
+
+- Politicians can either obstruct or facilitate these changes
+
+- What determines the behavior of politicians to do so?
+
+
+## Motivation
+
+- Common visions on what determines the voting behavior of politicians:
+    
+    - Electoral responsiveness: the principal-agent view of politics implies that well-monitoring politicians act in the interest of their principal, the electorate (Peltzman, 1982; Levitt, 1996)
+    
+    - Special cases of which are the threat of revolution (Aidt & Franck, 2019), or more broader constituent interests (Kalt & Zupan, 1984; Mian et al., 2010)
+    
+    - Ideology: politicians have an innate conviction or preference for a certain degree of redistribution.
+    
+- In this paper:
+
+    - Does self-interest of politicians influence their voting behavior?
+    
+## Motivation
+
+- I focus on several important laws that instigated __fiscal reforms__ in the Netherlands throughout the late 19th and early 20th centuries
+
+- Excellent case to find out whether politicians prioritize their self-interest:
+
+    - Fiscal reforms are very likely to affect politicians' personal finances. 
+    - Various parliaments, laws with varying impact
+    - Other high-profile laws to check robustness
+    
+- Implications for the role of politicians in (inclusive) economic development 
+
+# Fiscal Reforms
+
+## How far did fiscal reforms reach?
+
+- After about 1870, majority of government revenues came from __taxation__. 
+
+```{r echo=FALSE, out.width="250px", out.height="175px", fig.align='center'}
+figures[[1]]
+```
+
+## Fiscal Reforms
+
+- The share of tax revenue that came from real estate and wealth remained low
+  - Steadily rising after the introduction of the 1893 income tax
+  - Fiscal reforms encompassed (mildly) _progressive_ taxes
+  - Lagged Effects
+
+```{r echo = FALSE, out.width="250px", out.height="150px", fig.align='center'}
+figures[[2]]
+```
+
+## Fiscal Reforms
+
+- Variation in plausible impact on politicians' personal wealth:
+
+- Politicians' wealth would have certainly have been impacted by the Successiewet:
+  - Tariffs up to 10 % (1878)
+  - The poorest (net wealth < 1,000 guilders) were exempted
+  - The 1911 implied a sharp increase in tariffs for lineal descendants
+
+- The income tax was progressive, but the maximum tariff implied liability of only 3,2% of earned income (Fritschy, 2005)
+
+- The revision in 1914 implied a maximum marginal tariff of 5%. (Own calculations, IB1914)
+
+# Data
+
+## Voting Records
+
+- My principal research question is about the influence of politicians' self-interest on their voting behavior in various important votes that lead to the acceptance or rejection of various far-reaching laws throughout the period 1870-1920.
+
+- More precisely, I attempt to identify the influence of politicians' personal wealth on their voting behavior on laws that **potentially affect** politicians' personal wealth.
+
+- By paying close attention to the theory, I attempt to incorporate as many insights in the behavior of politicians as possible.
+
+- I try to measure both factors suggested by political historians, as well as factors suggested by economists and political scientists.
+
+## Descriptive Statistics
+
+- 
+
+## Politicians' Wealth
+
+- I use the _Memories van Successie_: probate inventories were administered by the Dutch tax administration for the purpose of levying inheritance taxes 
+    - Universal from 1877 onwards
+    - Publicly available until 1927
+
+- Detailing the inventory of all assets and debts held by the deceased. 
+
+- Detailed description also allows us to research the effect of **asset composition** on likelihood to vote in favor of fiscal legislation. 
+
+## Controls
+
+- Data regarding politicians' careers, district representation, ideological and party affiliation, and social origin from the [Politiek Documentatie Centrum](https://www.pdc.nl/)
+
+- Electoral controls: turnout, nearest competitor, newspaper recommendation, etc. (for lower house members) from [this repository](http://resources.huygens.knaw.nl/verkiezingentweedekamer) by Ron De Jong
+
+- Data on the frequency and location of strikes from the [IISG Labour Conflicts database](https://collab.iisg.nl/web/labourconflicts/datafiles)
+
+- Data on demographic and economic characteristics of districts from a [database administered by Onno Boonstra](https://datasets.iisg.amsterdam/dataverse/HDNG?q=&types=files&sort=dateSort&order=desc&page=1)
+    - Aggregated from the municipality to the district level (if applicable)
+
+
+# Method
+
+## Empirical Challenges
+
+- Reverse causality: 
+    - Politicians' voting behavior might be rewarded by interest groups. 
+    - Politicians who vote against laws
+    - Risk to __overestimate__ the effect of personal wealth on voting behavior
+    
+- Instrumental variable: parental wealth
+    - Assumed to be strongly correlated with politicians' wealth before voting
+    - No direct influence on politicians' voting behavior (other than through politicians' wealth)
+    
+## Empirical Model
+
+- Baseline model (politician $i$, roll-call vote $k$):
+
+\[
+V_{i, k} = \alpha + \beta_1 \cdot \text{Wealth}_{i,k} + \beta_2 \cdot \text{Wealth}_{i,k} \cdot \text{LawDum}_k + \gamma \cdot \text{Controls}_{i,k} + u{i,k}
+\]
+
+- In other words, I pool laws and estimate a linear probability model
+
+- Calculate wealth at the time of voting from wealth at death:
+\[
+\text{Wealth}_{i,t+1} = \sum_{J} \text{AssetShare}_{i,j,t} \cdot \text{AssetReturn}_{i,j,[t,t+1]}
+\]
+
+- Since I know wealth at death, and the portfolio composition, calculate the (average) real returns on asset class $j$ and estimate the wealth at the time of voting.
+
+- Historical returns provided by Jorda et al. (2019)
+
+
+# Results
+
+## Baseline Results
+
+## IV Estimates (Preliminary)
+
+## Robustness Checks: Other Laws
+
+[Effect on Electoral Expansion (0)]
+
+[Effect on Social Intervention (0)]
+
+## Robustness Checks: Wealth Composition
+
+[With Real Estate Share etc. as Indep Vars]
+
+# Conclusion
+
+## Conclusion
+

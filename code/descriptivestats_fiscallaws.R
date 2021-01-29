@@ -162,7 +162,7 @@ upperhouse %>%
     summarize(infavor = sum(vote), howmany = n(), percentage = infavor/howmany, 
               date = unique(date)) %>%
     arrange(date) %>%
-    xtable(caption = "Lower House", row.numbers = F) %>%
+    xtable(caption = "Upper House", row.numbers = F) %>%
     print(include.rownames = FALSE, 
           file = "./tables/descriptive_stats_fiscal_ek.tex")
 

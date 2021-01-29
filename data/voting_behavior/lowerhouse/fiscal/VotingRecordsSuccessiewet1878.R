@@ -29,5 +29,5 @@ politician <- c("Cremer van den Berch van Heemstede"," Schimmelpenninck van der 
 vote <- rep(0, length(politician))
 
 successiewet1878 <- rbind(successiewet1878, cbind(politician, vote)) %>%
-  mutate(law = "Successiewet1878", date = "1878-05-24", house = "Tweede Kamer")
+  mutate(law = "Successiewet 1878", date = "1878-05-24", house = "Tweede Kamer")
 

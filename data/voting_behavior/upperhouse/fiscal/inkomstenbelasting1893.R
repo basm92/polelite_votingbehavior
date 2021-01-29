@@ -8,7 +8,7 @@ voor <- c("Viruly", " Magnée", " Vlielander Hein", " van Lier",
 " Merkelbach", " J. Prins", " Fokker", 
 " Alberda van Ekenstein", 
 " Coenen", " Breebaart", 
-" van Roijen en van Gennep")
+" van Roijen"," van Gennep")
 
 vote_1 <- rep(1, length(voor))
 

@@ -1,0 +1,53 @@
+%\documentclass[aspectratio = 169, 12pt]{beamer}
+%
+% Choose how your presentation looks.
+%
+% For more themes, color themes and font themes, see:
+% http://deic.uab.es/~iblanes/beamer_gallery/index_by_theme.html
+%
+\mode<presentation>
+{
+  \usetheme{default}      % or try Darmstadt, Madrid, Warsaw, ...
+  \usecolortheme{default} % or try albatross, beaver, crane, ...
+  \usefonttheme{default}  % or try serif, structurebold, ...
+  \setbeamertemplate{navigation symbols}{}
+  \setbeamertemplate{caption}[numbered]
+  \setbeamertemplate{itemize item}{\textbullet}
+  \setbeamertemplate{itemize subitem}{\textbullet}
+} 
+
+%Header color
+\setbeamercolor{title}{fg=brown}
+\setbeamercolor{frametitle}{fg = purple}
+
+%Page numbers
+\addtobeamertemplate{navigation symbols}{}{%
+    \usebeamerfont{footline}%
+    \usebeamercolor[fg]{footline}%
+    \hspace{1em}%
+    \insertframenumber/\inserttotalframenumber
+}
+
+%Figures per chapter
+\usepackage{chngcntr}
+\counterwithin*{figure}{lecture}
+
+
+%packages
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+%\usepackage[default]{lato} %font
+\usepackage{hyperref}
+\usepackage{verbatim}
+
+%Table of contents markup
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd{\beamer@sectionintoc}
+  {\vfill}
+  {\vskip\itemsep}
+  {}
+  {}
+\makeatother  
