@@ -15,6 +15,8 @@ classoption: "aspectratio=169"
 knitr::opts_chunk$set(echo = FALSE)
 
 figures <- readRDS("../figures/figures_presentation.RDS")
+map1878 <- readRDS("../figures/presentation_map_1878.RDS")
+map1893 <- readRDS("../figures/presentation_map_1893.RDS")
 ```
 
 # Motivation
@@ -39,7 +41,9 @@ figures <- readRDS("../figures/figures_presentation.RDS")
     
     - Electoral responsiveness: the principal-agent view of politics implies that well-monitoring politicians act in the interest of their principal, the electorate (Peltzman, 1982; Levitt, 1996)
     
-    - Special cases of which are the threat of revolution (Aidt & Franck, 2019), or more broader constituent interests (Kalt & Zupan, 1984; Mian et al., 2010)
+    - Special cases of which are the threat of revolution (Aidt & Franck, 2019), or more broader constituent interests (Kalt & Zupan, 1984)
+    
+    - Interest groups (Fisman et al., 2004; Mian et al., 2010)
     
     - Ideology: politicians have an innate conviction or preference for a certain degree of redistribution.
     
@@ -55,6 +59,7 @@ figures <- readRDS("../figures/figures_presentation.RDS")
 
     - Fiscal reforms are very likely to affect politicians' personal finances. 
     - Various parliaments, laws with varying impact
+    - Varying degree of consensus
     - Other high-profile laws to check robustness
     
 - Implications for the role of politicians in (inclusive) economic development 
@@ -74,7 +79,7 @@ figures[[1]]
 - The share of tax revenue that came from real estate and wealth remained low
   - Steadily rising after the introduction of the 1893 income tax
   - Fiscal reforms encompassed (mildly) _progressive_ taxes
-  - Lagged Effects
+  - Lagged effects
 
 ```{r echo = FALSE, out.width="250px", out.height="150px", fig.align='center'}
 figures[[2]]
@@ -97,17 +102,16 @@ figures[[2]]
 
 ## Voting Records
 
-- My principal research question is about the influence of politicians' self-interest on their voting behavior in various important votes that lead to the acceptance or rejection of various far-reaching laws throughout the period 1870-1920.
+- Voting behavior in various important votes that lead to the acceptance or rejection of various far-reaching laws throughout the period 1870-1920.
 
-- More precisely, I attempt to identify the influence of politicians' personal wealth on their voting behavior on laws that **potentially affect** politicians' personal wealth.
+- _Handelingen_, [statengeneraaldigitaal.nl](http://www.statengeneraaldigitaal.nl)
+  
+  - Find the data on which the final roll call vote on a law took place
 
-- By paying close attention to the theory, I attempt to incorporate as many insights in the behavior of politicians as possible.
+  - Data contain a _verbatim_ transcription of debates leading up to a vote
+  
+  - List of names of politicians who voted in favor, and against
 
-- I try to measure both factors suggested by political historians, as well as factors suggested by economists and political scientists.
-
-## Descriptive Statistics
-
-- 
 
 ## Politicians' Wealth
 
@@ -129,7 +133,24 @@ figures[[2]]
 
 - Data on demographic and economic characteristics of districts from a [database administered by Onno Boonstra](https://datasets.iisg.amsterdam/dataverse/HDNG?q=&types=files&sort=dateSort&order=desc&page=1)
     - Aggregated from the municipality to the district level (if applicable)
+    
+## Descriptive Statistics
 
+[Simple table of covariates]
+
+## Descriptive Statistics
+
+- A correlation between region (religion) and voting behavior?
+
+```{r echo = FALSE, out.width="300px", out.height="150px", fig.align='center'}
+map1878
+```
+
+## Descriptive Statistics
+
+```{r  echo = FALSE, out.width="250px", out.height="150px", fig.align='center'}
+map1893
+```
 
 # Method
 
@@ -149,7 +170,7 @@ figures[[2]]
 - Baseline model (politician $i$, roll-call vote $k$):
 
 \[
-V_{i, k} = \alpha + \beta_1 \cdot \text{Wealth}_{i,k} + \beta_2 \cdot \text{Wealth}_{i,k} \cdot \text{LawDum}_k + \gamma \cdot \text{Controls}_{i,k} + u{i,k}
+V_{i, k} = \alpha + \beta_1 \cdot \text{Wealth}_{i,k} + \beta_2 \cdot \text{Wealth}_{i,k} \cdot \text{LawDum}_k + \gamma \cdot \text{Controls}_{i,k} + u_{i,k}
 \]
 
 - In other words, I pool laws and estimate a linear probability model
@@ -168,7 +189,22 @@ V_{i, k} = \alpha + \beta_1 \cdot \text{Wealth}_{i,k} + \beta_2 \cdot \text{Weal
 
 ## Baseline Results
 
+[Simple table, infavor vs. not and wealth]
+
+[No controls, party controls]
+
+[Full controls]
+
+- This estimate addresses _within-party_ differences
+- Control for religion, region, constituent interests
+
 ## IV Estimates (Preliminary)
+
+- Control for the possible influence of interest groups
+
+## Robustness: Died Shortly After Vote
+
+- Shortly dying after voting leaves little time to accumulate wealth from interest groups
 
 ## Robustness Checks: Other Laws
 
@@ -183,4 +219,15 @@ V_{i, k} = \alpha + \beta_1 \cdot \text{Wealth}_{i,k} + \beta_2 \cdot \text{Weal
 # Conclusion
 
 ## Conclusion
+
+- I find a large and significant effect of personal interests on voting behavior of politicians.
+
+- Consistent with the view that politicians are imperfectly monitored
+  - They are imperfect agents of the principal
+  
+- Politicians prioritize not only their ideology, but also their finances
+  - But only when faced with imminent and real prospects of losing/winning
+  - No convincing "general equilibrium" effects
+  
+# Thank you for your attention!
 
