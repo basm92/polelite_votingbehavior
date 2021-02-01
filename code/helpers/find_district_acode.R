@@ -123,10 +123,11 @@ find_district <- function(df) {
            
             TRUE ~  helper_extract_correct_from_string2(toelichting, date)
         )
-    )## Attempt to match them as well as possible 
+    ) %>%
+        filter(!is.na(toelichting))## Attempt to match them as well as possible 
     ## with the districts municipality data
     
-    updated_df <- merge(df,temp %>%
+    updated_df <- left_join(df,temp %>%
                             select(b1_nummer, kiesdistrict),
                         by = "b1_nummer"
     )
