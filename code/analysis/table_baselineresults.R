@@ -120,13 +120,27 @@ df <- df %>%
 ## Simple districtive statistics table
 
 ## Then, simple analysis, no controls
-glm(vote ~ log(1+wealth_timevote) + class, data = df, family="binomial") %>%
-    stargazer()
+
+model1 <- lm(data = df %>%
+       filter(house == "Tweede Kamer"),
+   formula = vote ~ log(1+wealth_timevote) + class)
+
+model2 <- lm(data = df %>%
+       filter(house == "Eerste Kamer"),
+   formula = vote ~ log(1+wealth_timevote) + class) 
+
+model3 <- lm(data = df %>%
+       filter(house == "Tweede Kamer"),
+   formula = vote ~ log(1+wealth_timevote) + class + law)
+
+model4 <- lm(data = df %>%
+       filter(house == "Eerste Kamer"),
+   formula = vote ~ log(1+wealth_timevote) + class + law) 
 
 
-lm(data = df,
-   formula = vote ~ log(1+wealth_timevote) + class + rk_pct) %>%
-    summary()
+stargazer(model1, model2, model3, model4, 
+          omit = c("law", "class"),
+          omit.labels = c("hoi", "bas"))
 ## Analysis: All Controls
 
 ## Analysis: Separate laws

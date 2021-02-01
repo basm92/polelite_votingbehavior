@@ -148,7 +148,7 @@ map1878
 
 ## Descriptive Statistics
 
-```{r  echo = FALSE, out.width="250px", out.height="150px", fig.align='center'}
+```{r  echo = FALSE, out.width="300px", out.height="150px", fig.align='center'}
 map1893
 ```
 

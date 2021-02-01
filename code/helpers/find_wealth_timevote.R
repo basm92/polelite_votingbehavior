@@ -45,16 +45,16 @@ find_wealth_timevote <- function(df) {
         summarize(foreign_bond_ret = 
                       (0.2 * sum(across(bonds[[1]])) + 
                            0.1 * sum(across(bonds[[2]])) +
-                           0.05 * sum(across(bonds[[3]]), na.rm = T)),# I think this should be 0.02, change later
+                           0.02 * sum(across(bonds[[3]]), na.rm = T)),# I think this should be 0.02, change later
                   foreign_prbonds = 
                       ((0.2 * sum(across(prbonds[[1]]), na.rm = T) +
                             0.1 * sum(across(prbonds[[2]]), na.rm = T) +
-                            0.05 * sum(across(prbonds[[3]]), na.rm = T)) / 100),
+                            0.02 * sum(across(prbonds[[3]]), na.rm = T)) / 100),
                   
                   foreign_shares = 
                       (0.2 * sum(across(shares[[1]]), na.rm = T) +
                            0.1 * sum(across(shares[[2]]), na.rm = T) +
-                           0.05 * sum(across(shares[[3]]), na.rm = T))
+                           0.02 * sum(across(shares[[3]]), na.rm = T))
         )
     
     #domestic
@@ -102,15 +102,15 @@ find_wealth_timevote <- function(df) {
     ## Use NW0 to find the value
     temp <- temp %>%
         ungroup() %>%
-        mutate(re_v =  share_re * nw0 * exp(-dutch_re_ret),
-               dubo_v = share_dugobo * nw0 * exp(-dutch_bond_ret),
-               duprbo_v = share_duprbo * nw0 * exp(-dutch_prbond_ret),
-               dush_v = share_dush * nw0 * exp(-dutch_sh_ret),
-               fobo_v = share_fogobo * nw0 * exp(-foreign_bond_ret),
-               foprbo_v = share_foprbo * nw0 * exp(-foreign_prbond_ret),
-               fosh_v = share_fosh * nw0 * exp(-foreign_shares_ret),
-               cash_v = share_cash * nw0,
-               misc_v = share_misc * nw0, 
+        mutate(re_v =  share_re * w_deflated * exp(-dutch_re_ret),
+               dubo_v = share_dugobo * w_deflated * exp(-dutch_bond_ret),
+               duprbo_v = share_duprbo * w_deflated * exp(-dutch_prbond_ret),
+               dush_v = share_dush * w_deflated * exp(-dutch_sh_ret),
+               fobo_v = share_fogobo * w_deflated * exp(-foreign_bond_ret),
+               foprbo_v = share_foprbo * w_deflated * exp(-foreign_prbond_ret),
+               fosh_v = share_fosh * w_deflated * exp(-foreign_shares_ret),
+               cash_v = share_cash * w_deflated,
+               misc_v = share_misc * w_deflated, 
                wealth_timevote = rowSums(across(ends_with("_v"), na.rm = T))
         )
     
