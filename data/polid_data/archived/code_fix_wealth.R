@@ -38,18 +38,16 @@ old_wealth_clean <- old_wealth_clean %>%
 
 ## Import new data
 library(readODS)
-setwd("~/Downloads")
-
 
 # Dataset
-new_data <- readODS::read_ods("memories_invoer.ods")
+new_data <- readODS::read_ods("./data/polid_data/archived/memories_invoer.ods")
 
 # Var names
-code <- readODS::read_ods("memories_invoer.ods", sheet = 2) %>%
+code <- readODS::read_ods("./data/polid_data/archived/memories_invoer.ods", sheet = 2) %>%
     mutate(number = as.character(number))
 
 # Deflator
-deflator <- readODS::read_ods("memories_invoer.ods", sheet = 3)
+deflator <- readODS::read_ods("./data/polid_data/archived/memories_invoer.ods", sheet = 3)
 
 # Make a dataframe
 new_data <- new_data %>%
@@ -70,8 +68,7 @@ new_wealth <- new_wealth %>%
     janitor::clean_names() %>%
     rowwise() %>%
     mutate(deflator = deflator$Deflator[match(year_for_deflator, deflator$Year)]) %>%
-    mutate(w_deflated = nw0*deflator) 
-
-setwd("~/Documents/git/polelite_votingbehavior/")
+    mutate(w_deflated = nw0*deflator) %>%
+    select(-c(year_for_deflator, deflator))
 
 readr::write_csv(new_wealth, "./data/polid_data/wealth_politicians.csv")

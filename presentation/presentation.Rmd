@@ -13,10 +13,17 @@ classoption: "aspectratio=169"
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
+library(stargazer)
+library(tidyverse)
 
 figures <- readRDS("../figures/figures_presentation.RDS")
 map1878 <- readRDS("../figures/presentation_map_1878.RDS")
 map1893 <- readRDS("../figures/presentation_map_1893.RDS")
+
+descr <- readRDS("../figures/descr.RDS")
+
+first_regs <- readRDS("../figures/first_regs.RDS")
+second_order <- readRDS("../figures/second_order_regs.RDS")
 ```
 
 # Motivation
@@ -136,8 +143,22 @@ figures[[2]]
     
 ## Descriptive Statistics
 
-[Simple table of covariates]
+- Preliminary evidence of the importance of wealth
 
+```{r echo = FALSE}
+descr[[1]] %>%
+  knitr::kable(caption = "Eerste Kamer", 
+               digits = 0)
+
+```
+
+## Descriptive Statistics
+
+```{r echo = FALSE}
+descr[[2]] %>%
+  knitr::kable(caption = "Tweede Kamer",
+               digits = 0)
+```
 ## Descriptive Statistics
 
 - A correlation between region (religion) and voting behavior?
@@ -191,12 +212,35 @@ V_{i, k} = \alpha + \beta_1 \cdot \text{Wealth}_{i,k} + \beta_2 \cdot \text{Weal
 
 [Simple table, infavor vs. not and wealth]
 
-[No controls, party controls]
 
-[Full controls]
 
-- This estimate addresses _within-party_ differences
-- Control for religion, region, constituent interests
+## Baseline Results - Regression
+
+- This estimate addresses the influence of wealth  _within-party_.
+- Plausible magnitude: a 1% increase in wealth decreases the probability of voting in favor with 1.8 percentage point.
+
+```{r echo = FALSE, results='asis'}
+stargazer(first_regs,
+          covariate.labels = c("Wealth"),
+          dep.var.labels = "Vote",
+          omit = c("law", "class"),
+          omit.stat = c("adj.rsq", "ser","f"),
+          add.lines = list(c("House", "Both", "Both", "TK", "EK"),
+                           c("Controls", "None", "Party", "Party", "Party")
+          ),
+          notes.append = T,
+          notes = c("Robust standard errors in parentheses"),
+          header = F,
+          font.size = "tiny",
+          column.sep.width = "1pt",
+          title = "Baseline regressions"
+)
+
+```
+
+## Baseline Results - Full controls
+
+- Effect keeps existing after controlling for religion, region, constituent interests
 
 ## IV Estimates (Preliminary)
 
@@ -214,7 +258,26 @@ V_{i, k} = \alpha + \beta_1 \cdot \text{Wealth}_{i,k} + \beta_2 \cdot \text{Weal
 
 ## Robustness Checks: Wealth Composition
 
-[With Real Estate Share etc. as Indep Vars]
+```{r echo = FALSE, results='asis'}
+stargazer(second_order,
+          covariate.labels = c("Real Estate", "Foreign Assets", "Shares"),
+          dep.var.labels = "Vote",
+          omit = c("law", "class"),
+          omit.stat = c("adj.rsq", "ser","f"),
+          add.lines = list(c("House", "Both", "Both", "Both", "Both", "Both", "Both"),
+                           c("Controls", "Party", "Party+Law", 
+                             "Party", "Party+Law",
+                             "Party", "Party+Law")
+          ),
+          notes.append = T,
+          notes = c("Robust standard errors in parentheses"),
+          header = F,
+          font.size = "tiny",
+          column.sep.width = "1pt",
+          title = "Second-order effects"
+)
+
+```
 
 # Conclusion
 

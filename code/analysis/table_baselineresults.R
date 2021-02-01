@@ -19,8 +19,7 @@ source("./code/helpers/find_wealth_timevote.R")
 df <- read_csv("./data/voting_behavior/votingbehavior_together.csv")
 
 wealth <- read_csv("./data/polid_data/wealth_politicians.csv") %>%
-    janitor::clean_names() %>%
-    mutate(across(c(re:w_deflated2), as.numeric))
+    janitor::clean_names() 
 
 df <- left_join(df, 
           wealth,
@@ -95,9 +94,9 @@ districtvotes_tk <- districtvotes_tk %>%
     lapply(find_econcontrols) %>%
     bind_rows()
 
-#### Final variable: electoral controls
+#### Electoral controls
 
-#districtvotes_tk %>%
+#districtvotes_tk <- districtvotes_tk %>%
 #    group_split(law) %>%
 #    lapply(find_elec_controls) %>%
 #    bind_rows()
@@ -119,32 +118,99 @@ df <- df %>%
 
 ## Simple districtive statistics table
 
-## Then, simple analysis, no controls
+descriptives <- df %>%
+    group_split(house)
 
+descr_ek <- descriptives[[1]] %>%
+    group_split(law) %>%
+    lapply(group_by, vote) %>%
+    lapply(summarize, law = law[1], 
+           median = median(wealth_timevote, na.rm = T),
+           sd = sd(wealth_timevote, na.rm = T)) %>%
+    lapply(pivot_wider, names_from = vote, 
+           values_from = c(median,sd)) %>%
+    purrr::reduce(bind_rows) %>%
+    relocate(law,contains("0")) %>%
+    rename("Median No" = median_0,
+           "Sd No" = sd_0,
+           "Median Yes" = median_1,
+           "Sd Yes" = sd_1) 
+
+descr_tk <- descriptives[[2]] %>%
+    group_split(law) %>%
+    lapply(group_by, vote) %>%
+    lapply(summarize, law = law[1], 
+           median = median(wealth_timevote, na.rm = T),
+           sd = sd(wealth_timevote, na.rm = T)) %>%
+    lapply(pivot_wider, names_from = vote, 
+           values_from = c(median,sd)) %>%
+    purrr::reduce(bind_rows) %>%
+    relocate(law,contains("0")) %>%
+    rename("Median No" = median_0,
+           "Sd No" = sd_0,
+           "Median Yes" = median_1,
+           "Sd Yes" = sd_1) 
+
+descr <- list(descr_ek, descr_tk)
+saveRDS(descr, "./figures/descr.RDS")
+
+## Baseline results
+model_begin <- lm(data = df,
+                  formula = vote ~ log(1 + wealth_timevote))
+model0 <- lm(data = df,
+             formula = vote ~ log(1+wealth_timevote) + class)
 model1 <- lm(data = df %>%
        filter(house == "Tweede Kamer"),
    formula = vote ~ log(1+wealth_timevote) + class)
-
 model2 <- lm(data = df %>%
        filter(house == "Eerste Kamer"),
    formula = vote ~ log(1+wealth_timevote) + class) 
 
+first_regs <- list(model_begin, model0, model1, model2)
+saveRDS(first_regs, "./figures/first_regs.RDS")
+
+## Baseline Results - Full controls
+
+# Both
+
+
+# Tweede Kamer
 model3 <- lm(data = df %>%
        filter(house == "Tweede Kamer"),
-   formula = vote ~ log(1+wealth_timevote) + class + law)
+   formula = vote ~ log(1+wealth_timevote) + class + law + rk_pct)
 
+# Eerste Kamer
 model4 <- lm(data = df %>%
        filter(house == "Eerste Kamer"),
-   formula = vote ~ log(1+wealth_timevote) + class + law) 
+   formula = vote ~ log(1+wealth_timevote):class + class + tenure + age_of_vote) 
 
 
-stargazer(model1, model2, model3, model4, 
-          omit = c("law", "class"),
-          omit.labels = c("hoi", "bas"))
-## Analysis: All Controls
+## Robustness: Died Shortly After Vote
 
+               
+               
 ## Analysis: Separate laws
 
+
+
 ## Analysis: Second order effects
+model_re <- lm(data = df,
+   formula = vote ~ share_re + class)
+model_re2 <- lm(data = df,
+                formula = vote ~ share_re + class + law)
+model_foreign <- lm(data = df,
+                    formula = vote ~ share_foreign + class)
+model_foreign2 <- lm(data = df,
+                    formula = vote ~ share_foreign + class + law)
+model_shares <- lm(data = df,
+                   formula = vote ~ share_shares + class)
+model_shares2 <- lm(data = df,
+   formula = vote ~ share_shares + class + law)
+
+secondorder <- list(model_re, model_re2,
+                    model_foreign, model_foreign2,
+                    model_shares, model_shares2)
+
+saveRDS(secondorder, "./figures/second_order_regs.RDS")
 
 ## Analysis: Other Laws
