@@ -15,6 +15,7 @@ classoption: "aspectratio=169"
 knitr::opts_chunk$set(echo = FALSE)
 library(stargazer)
 library(tidyverse)
+library(ivreg)
 
 figures <- readRDS("../figures/figures_presentation.RDS")
 map1878 <- readRDS("../figures/presentation_map_1878.RDS")
@@ -23,6 +24,12 @@ map1893 <- readRDS("../figures/presentation_map_1893.RDS")
 descr <- readRDS("../figures/descr.RDS")
 
 first_regs <- readRDS("../figures/first_regs.RDS")
+
+tk_fullctrls <- readRDS("../figures/tk_fullctrls.RDS")
+ek_fullctrls <- readRDS("../figures/ek_fullctrls.RDS")
+
+ivresults <- readRDS("../figures/ivresults.RDS")
+harnas <- readRDS("../figures/harnas.RDS")
 second_order <- readRDS("../figures/second_order_regs.RDS")
 ```
 
@@ -208,12 +215,6 @@ V_{i, k} = \alpha + \beta_1 \cdot \text{Wealth}_{i,k} + \beta_2 \cdot \text{Weal
 
 # Results
 
-## Baseline Results
-
-[Simple table, infavor vs. not and wealth]
-
-
-
 ## Baseline Results - Regression
 
 - This estimate addresses the influence of wealth  _within-party_.
@@ -242,19 +243,101 @@ stargazer(first_regs,
 
 - Effect keeps existing after controlling for religion, region, constituent interests
 
+```{r echo = FALSE, results = 'asis'}
+stargazer(tk_fullctrls,
+          covariate.labels = c("Wealth"),
+          dep.var.labels = "Vote",
+          omit = c("law", "class", "rk_pct", "agricul_share","strikes"),
+          omit.stat = c("adj.rsq", "ser","f"),
+          add.lines = list(c("House", "TK", "TK", "TK", "TK"),
+                           c("Basic Controls", "Law+Party", "Law+Party", "Law+Party", "Law+Party"),
+                           c("Other Controls", "None", "Strikes", "2 + Religion", "3 + Economy")
+          ),
+          notes.append = T,
+          header = F,
+          font.size = "tiny",
+          column.sep.width = "1pt",
+          title = "Estimates with various sets of controls"
+          )
+```
+
+## Baseline Results - Full controls
+
+- In the Upper house, the results are less robust to the inclusion of controls
+  - Though the coefficient borders on significance and the point estimate is negative
+  
+```{r echo = FALSE, results='asis'}
+stargazer(ek_fullctrls,
+          covariate.labels = c("Wealth"),
+          dep.var.labels = "Vote",
+          omit = c("law", "class", "age_of_entrance", "age_of_vote", "tenure"),
+          omit.stat = c("adj.rsq", "ser","f"),
+          add.lines = list(c("House", "EK", "EK", "EK", "EK"),
+                           c("Controls", "Party", "1 + Tenure", "2 + Age of Vote", "3 + Age of Entry")
+          ),
+          notes.append = T,
+          notes = c("Robust standard errors in parentheses"),
+          header = F,
+          font.size = "tiny",
+          column.sep.width = "1pt",
+          title = "Estimates with various sets of controls")
+
+```
+
 ## IV Estimates (Preliminary)
 
 - Control for the possible influence of interest groups
 
+```{r echo = FALSE, warning = FALSE, out.width="200px", out.height="150px", fig.align='center'}
+ivresults[[1]]
+```
+
+## IV Estimates (Preliminary)
+
+- No significance yet, but same magnitude as OLS estimates. 
+
+```{r echo = FALSE, warning = FALSE, message = FALSE, results = 'asis'}
+stargazer(ivresults[[2]], ivresults[[3]],
+          dep.var.labels = c("Wealth", "Vote"),
+          omit = c("class"),
+          omit.stat = c("adj.rsq", "ser","f"),
+          notes.append = T,
+          header = F,
+          font.size = "tiny",
+          column.sep.width = "1pt",
+          add.lines = list(c("Controls", "Party", "Party")),
+          title = "IV estimates")
+```
+
 ## Robustness: Died Shortly After Vote
 
-- Shortly dying after voting leaves little time to accumulate wealth from interest groups
+- Dying shortly after leaving office leaves little time to accumulate wealth from interest groups
+  
+```{r echo = FALSE, results='asis'}
+stargazer(harnas,
+          column.labels = c("<2 yr", "<2 yr", "<5 yr", "<5 yr"),
+          covariate.labels = c("Wealth x No", "Wealth x Yes"),
+          dep.var.labels = "Vote",
+          omit = c("law", "class"),
+          omit.stat = c("adj.rsq", "ser","f"),
+          add.lines = list(c("House", "Both", "Both", "Both", "Both"),
+                           c("Controls", "Party", "Party+Law",   "Party", "Party+Law")
+                           ),
+          notes.append = T,
+          notes = c("Robust standard errors in parentheses"),
+          header = F,
+          font.size = "tiny",
+          column.sep.width = "1pt",
+          title = "Robustness analyses")
+
+```
+
 
 ## Robustness Checks: Other Laws
 
-[Effect on Electoral Expansion (0)]
+[Effect on Electoral Expansion (Null effect)]
 
-[Effect on Social Intervention (0)]
+[Effect on Social Intervention (Null effect)]
 
 ## Robustness Checks: Wealth Composition
 
@@ -283,7 +366,9 @@ stargazer(second_order,
 
 ## Conclusion
 
-- I find a large and significant effect of personal interests on voting behavior of politicians.
+- I find a significant and persistent effect of personal interests on voting behavior of politicians.
+  - The counterfactual implies that if you make a politician 20% richer, personal interests subsume party or ideological allegiance. 
+  - The effect seems to be persistent in the **lower house**. 
 
 - Consistent with the view that politicians are imperfectly monitored
   - They are imperfect agents of the principal

@@ -177,21 +177,89 @@ saveRDS(first_regs, "./figures/first_regs.RDS")
 # Tweede Kamer
 model3 <- lm(data = df %>%
        filter(house == "Tweede Kamer"),
-   formula = vote ~ log(1+wealth_timevote) + class + law + rk_pct)
+   formula = vote ~ log(1+wealth_timevote) + law + class)
+
+model4 <- update(model3, . ~ . + strikes) 
+model5 <- update(model4, . ~ . + rk_pct)
+model6 <- update(model5, . ~ . + agricul_share)
+
+tk_fullctrls <- list(model3, model4, model5, model6)
+
+saveRDS(tk_fullctrls, "./figures/tk_fullctrls.RDS")
 
 # Eerste Kamer
-model4 <- lm(data = df %>%
+modelek1 <- lm(data = df %>%
        filter(house == "Eerste Kamer"),
-   formula = vote ~ log(1+wealth_timevote):class + class + tenure + age_of_vote) 
+   formula = vote ~ log(1+wealth_timevote) + class)
 
+modelek2 <- update(modelek1, . ~ . + tenure)
+modelek3 <- update(modelek2, . ~ . + age_of_vote)
+modelek4 <- update(modelek3, . ~ . + age_of_entrance)
+
+
+ek_fullctrls <- list(modelek1, modelek2, modelek3, modelek4)
+saveRDS(ek_fullctrls, "./figures/ek_fullctrls.RDS")
 
 ## Robustness: Died Shortly After Vote
+harnas_2yr <- df %>%
+    mutate(harnas = (date_of_death - einde_periode) < 730) %>%
+    #filter(harnas == TRUE) %>%
+    lm(formula = vote ~ log(1+wealth_timevote):harnas + class) 
 
-               
-               
-## Analysis: Separate laws
+harnas_2yr_ctrls <- df %>%
+    mutate(harnas = (date_of_death - einde_periode) < 730) %>%
+    #filter(harnas == TRUE) %>%
+    lm(formula = vote ~ log(1+wealth_timevote):harnas + class + law) 
+
+harnas_5yr <- df %>%
+    mutate(harnas = (date_of_death - einde_periode) < 1825) %>%
+    #filter(harnas == TRUE) %>%
+    lm(formula = vote ~ log(1+wealth_timevote):harnas + class) 
+
+harnas_5yr_ctrls <- df %>%
+    mutate(harnas = (date_of_death - einde_periode) < 1825) %>%
+    #filter(harnas == TRUE) %>%
+    lm(formula = vote ~ log(1+wealth_timevote):harnas + class + law) 
+
+harnas <- list(harnas_2yr, harnas_2yr_ctrls, harnas_5yr, harnas_5yr_ctrls)
+saveRDS(harnas, "./figures/harnas.RDS")
+
+## Instrumental Variables
+
+parwealth <- read_csv("./data/polid_data/instrumental_variable_est.csv") %>%
+    mutate(across(c(wealth_father, wealth_mother, wealth_misc), ~ as.numeric(.))) %>%
+    mutate(par_wealth = pmax(wealth_father, wealth_mother, wealth_misc, na.rm = TRUE)
+    )
 
 
+ivdata <- df %>%
+    filter(house == "Tweede Kamer") %>%
+    left_join(parwealth,
+              by = c("b1_nummer"="polid"))
+
+library(ivreg) 
+
+firststage_plot <- ggplot(data = ivdata, 
+       aes(y = log(1+wealth_timevote), 
+           x = log(par_wealth))) + 
+    geom_point() +
+    ggtitle("Instrument relevance") + 
+    xlab("Log (Parental Wealth)") + 
+    ylab("Log (Politician Wealth)")
+
+saveRDS(ivdata, "./figures/ivdata.RDS")
+
+#firststage_reg
+firststage_reg <- lm(data = ivdata, 
+                     formula = log(1+wealth_timevote) ~ log(1+par_wealth))
+
+#ivreg
+iv_reg_prelim <- ivreg(data = ivdata, 
+                       formula = vote ~ log(1+wealth_timevote) + class | log(1+par_wealth) + class)
+
+ivresults <- list(firststage_plot, firststage_reg, iv_reg_prelim)
+
+saveRDS(ivresults, "./figures/ivresults.RDS")
 
 ## Analysis: Second order effects
 model_re <- lm(data = df,
