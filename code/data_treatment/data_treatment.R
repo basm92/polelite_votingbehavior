@@ -10,7 +10,7 @@ source("./code/helpers/find_district_acode.R")
 source("./code/helpers/find_religion.R")
 source("./code/helpers/find_strikes.R")
 source("./code/helpers/find_econcontrols.R")
-
+source("./code/helpers/find_election_ctrls.R")
 source("./code/helpers/find_wealth_timevote.R")
 
 ## First, merge all the necessary data
@@ -68,7 +68,8 @@ df_ek <- find_demographics_ek(df_ek)
 
 ### Politicians and District controls (TK only)
 districtvotes_tk <- df_tk %>%
-    filter(law != "Successiewet 1921") %>%
+    filter(stringr::str_extract(law, "[0-9]{4}") %>%
+        as.numeric() > 1916) %>%
     group_split(law) %>%
     lapply(find_district) %>%
     bind_rows()
@@ -96,10 +97,10 @@ districtvotes_tk <- districtvotes_tk %>%
 
 #### Electoral controls
 
-#districtvotes_tk <- districtvotes_tk %>%
-#    group_split(law) %>%
-#    lapply(find_election_ctrls) %>%
-#    bind_rows()
+districtvotes_tk <- districtvotes_tk %>%
+    group_split(law) %>%
+    lapply(find_election_ctrls) %>%
+    bind_rows()
 
 ## Now go back to all laws again:
 ### Calculate the shares, and correct for portfolio distribution

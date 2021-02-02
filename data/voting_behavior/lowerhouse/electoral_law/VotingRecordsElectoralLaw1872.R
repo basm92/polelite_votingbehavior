@@ -37,4 +37,4 @@ kieswet1872 <- rbind(kieswet1872,
                            vote))
 
 kieswet1872 <- kieswet1872 %>%
-    mutate(law = "Kieswet 1872", date = "1874-06-19")
+    mutate(law = "Kieswet 1872", date = "1874-06-19", house = "Tweede Kamer")
