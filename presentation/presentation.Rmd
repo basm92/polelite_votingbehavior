@@ -3,7 +3,7 @@ title: "Personal Wealth and Voting Behavior of Politicians"
 author: "Bas Machielsen"
 institute: "Utrecht University"
 email: "a.h.machielsen@uu.nl"
-date: "1/29/2021"
+date: "12 February 2021"
 output: 
   beamer_presentation:
     includes:
@@ -106,7 +106,7 @@ figures[[2]]
 - Politicians' wealth would have certainly have been impacted by the Successiewet:
   - Tariffs up to 10 % (1878)
   - The poorest (net wealth < 1,000 guilders) were exempted
-  - The 1911 implied a sharp increase in tariffs for lineal descendants
+  - The 1911 revision implied a sharp increase in tariffs for lineal descendants
 
 - The income tax was progressive, but the maximum tariff implied liability of only 3,2% of earned income (Fritschy, 2005)
 
@@ -120,7 +120,7 @@ figures[[2]]
 
 - _Handelingen_, [statengeneraaldigitaal.nl](http://www.statengeneraaldigitaal.nl)
   
-  - Find the data on which the final roll call vote on a law took place
+  - Find the dates on which the final roll call vote on a law took place
 
   - Data contain a _verbatim_ transcription of debates leading up to a vote
   
