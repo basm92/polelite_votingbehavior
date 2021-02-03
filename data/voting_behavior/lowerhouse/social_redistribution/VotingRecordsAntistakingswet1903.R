@@ -30,4 +30,6 @@ Bos"," Ketelaar") %>%
 vote <- rep(0, length(politician))
 
 antistakingswet1903 <- rbind(antistakingswet1903, cbind(politician, vote)) %>%
-    mutate(law = "Antistakingswet 1893", date = "1903-04-09")
+    mutate(law = "Antistakingswet 1893", date = "1903-04-09", house = "Tweede Kamer")
+
+antistakingswet1903

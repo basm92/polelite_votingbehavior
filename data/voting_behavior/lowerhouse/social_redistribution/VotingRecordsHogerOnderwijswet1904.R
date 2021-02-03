@@ -31,4 +31,6 @@ Passtoors"," Seret"," Mackay") %>%
 vote <- rep(0, length(politician))
 
 hogeronderwijswet1904 <- rbind(hogeronderwijswet1904, cbind(politician, vote)) %>%
-    mutate(law = "Hoger Onderwijswet 1904", date = "1904-03-24")
+    mutate(law = "Hoger Onderwijswet 1904", date = "1904-03-24", house = "Tweede Kamer")
+
+hogeronderwijswet1904

@@ -34,5 +34,7 @@ van Bylandt"," van Vliet"," Schokking")  %>%
 vote <- rep(0, length(politician))
 
 arbeidscontractwet1907 <- rbind(arbeidscontractwet1907, cbind(politician, vote)) %>%
-    mutate(law = "Arbeidscontractwet 1907", date = "1906-06-21")
+    mutate(law = "Arbeidscontractwet 1907", date = "1906-06-21", house = "Tweede Kamer")
+
+arbeidscontractwet1907
 

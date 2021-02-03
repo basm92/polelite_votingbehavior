@@ -38,7 +38,7 @@ politician <- c("Van der Schrieck", "Smeele", "Borret", "Ruland",
                 "A. Schimmelpenninck van der Oye",
                 "Ruys van Beerenbroek", "Haffmans", "Heldt", 
                 "Keuchenius", "Brouwers", "Corver Hooft", 
-                "Lintelo De Geer van Jutfaas", "Reuther")
+                "Lintelo baron de Geer van Jutphaas", "Reuther")
 
 vote <- rep(0, length(politician))
 
@@ -49,3 +49,5 @@ kieswet1887 <- rbind(kieswet1887,
 
 kieswet1887 <- kieswet1887 %>%
     mutate(law = "Kieswet 1887", date = "1887-03-23", house = "Tweede Kamer")
+
+kieswet1887

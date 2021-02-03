@@ -37,4 +37,7 @@ politician <- c(
 vote <- rep(1, length(politician))
 
 amendementrutgers <- rbind(amendementrutgers, cbind(politician, vote)) %>%
-    mutate(law = "Amendement Rutgers: Presentiegeld", date = "1916-11-17")
+    mutate(law = "Amendement Rutgers: Presentiegeld", house = "Tweede Kamer", date = "1916-11-17")
+
+amendementrutgers 
+

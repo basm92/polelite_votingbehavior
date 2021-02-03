@@ -69,7 +69,7 @@ df_ek <- find_demographics_ek(df_ek)
 ### Politicians and District controls (TK only)
 districtvotes_tk <- df_tk %>%
     filter(stringr::str_extract(law, "[0-9]{4}") %>%
-        as.numeric() > 1916) %>%
+        as.numeric() < 1917) %>%
     group_split(law) %>%
     lapply(find_district) %>%
     bind_rows()
@@ -108,7 +108,8 @@ districtvotes_tk <- districtvotes_tk %>%
 
 df <- bind_rows(districtvotes_tk,
                 df_tk %>%
-                    filter(law == "Successiewet 1921"),
+                    filter(stringr::str_extract(law, "[0-9]{4}") %>%
+                               as.numeric() > 1917),
                 df_ek)
 
 #### Calculate the shares at the time of voting per law/house (df)

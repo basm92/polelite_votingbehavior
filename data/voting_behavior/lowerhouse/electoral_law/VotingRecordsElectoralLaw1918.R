@@ -34,3 +34,5 @@ kieswet1918 <- rbind(kieswet1918,
                          cbind(politician, 
                                vote))
 kieswet1918 <- cbind(kieswet1918, law = "Kieswet 1918", date = "1919-05-09", house = "Tweede Kamer")
+
+kieswet1918

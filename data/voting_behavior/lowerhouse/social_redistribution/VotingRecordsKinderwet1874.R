@@ -48,5 +48,7 @@ vote <- rep(0, length(politician))
 
 kinderwet1874 <- rbind(kinderwet1874, cbind(politician, vote))
 kinderwet1874 <- kinderwet1874 %>%
-    mutate(law = "Kinderwetje 1874", date = "1874-05-05")
+    mutate(law = "Kinderwetje 1874", date = "1874-05-05", house = "Tweede Kamer")
+
+kinderwet1874
     

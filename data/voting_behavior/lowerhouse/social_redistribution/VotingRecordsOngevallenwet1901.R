@@ -29,6 +29,8 @@ W.K.F.P. van Bylandt"," Everts") %>%
 vote <- rep(0, length(politician))
 
 ongevallenwet1901 <- rbind(ongevallenwet1901, cbind(politician, vote)) %>%
-    mutate(law = "Ongevallenwet 1901", date = "1899-12-13")
+    mutate(law = "Ongevallenwet 1901", date = "1899-12-13", house = "Tweede Kamer")
+
+ongevallenwet1901
                                                
  

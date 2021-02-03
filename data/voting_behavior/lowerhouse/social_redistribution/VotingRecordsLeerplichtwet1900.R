@@ -34,4 +34,7 @@ Everts"," Donner"," Staalman"," Van Alphen", "Nolens") %>%
 vote <- rep(0, length(politician))
 
 leerplichtwet1901 <- rbind(leerplichtwet1901, cbind(politician, vote)) %>%
-    mutate(law = "Leerplichtwet 1901", date = "1900-03-30")
+    mutate(law = "Leerplichtwet 1901", date = "1900-03-30", house = "Tweede Kamer")
+
+
+leerplichtwet1901

@@ -31,4 +31,6 @@ politician <- c("Arts"," Bolsius"," Ruys de Beerenbrouck"," van Best","
 vote <- rep(0, length(politician))
 
 wetouderdominvaliditeit1913 <- rbind(wetouderdominvaliditeit1913, cbind(politician, vote)) %>%
-    mutate(law = "Wet Ouderdom Invaliditeit 1913", date = "1913-03-07")
+    mutate(law = "Wet Ouderdom Invaliditeit 1913", house = "Tweede Kamer", date = "1913-03-07")
+
+wetouderdominvaliditeit1913

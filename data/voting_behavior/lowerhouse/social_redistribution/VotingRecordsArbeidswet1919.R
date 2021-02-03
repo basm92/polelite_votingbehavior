@@ -19,4 +19,6 @@ politician <- c("van Ravesteijn", "Wijnkoop", "Kolthek")
 vote <- rep(0, length(politician))
 
 arbeidswet1919 <- rbind(arbeidswet1919, cbind(politician, vote)) %>%
-  mutate(law = "Arbeidswet 1919", date = "1919-07-11")
+  mutate(law = "Arbeidswet 1919", date = "1919-07-11", house = "Tweede Kamer")
+
+arbeidswet1919

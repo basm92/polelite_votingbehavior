@@ -29,5 +29,7 @@ politician <- c(
 vote <- rep(0, length(politician))
 
 staatspensioen1916 <- rbind(staatspensioen1916, cbind(politician, vote)) %>%
-  mutate(law = "Staatspensioen 1916", date = "1916-05-18")
+  mutate(law = "Staatspensioen 1916", date = "1916-05-18", house = "Tweede Kamer")
+
+staatspensioen1916
   
