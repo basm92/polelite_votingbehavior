@@ -5,8 +5,7 @@ staatspensioen1916 <- data.frame(politician = c(
   "Duys"," Fook"," de Beaufort"," de Jong"," J. ter Laan","
   Schaper"," Albarda"," ter Spill"," Utto"," Nierstrasz"," van Doorn","
   Roodenburg"," Tydeman"," Kleerekoper"," Hubrecht"," Troelstra","
-  de Muralt"," Eerdmans"," Smeenge"," Lieftinck"," Hugenkoltz","
-  Jansen (den Haag)"," van Foreest"," Knobel"," van Leeuwen","
+  de Muralt"," Eerdmans"," Smeenge"," Lieftinck"," Hugenkoltz"," J.C. Jansen"," van Foreest"," Knobel"," van Leeuwen","
   Heeres"," Gerkard"," Visser van IJzendoorn"," K. ter Laan"," 
   Patijn"," Helsdingen"," Eland"," Drion"," Limburg"," Schim van der Loeff",
   " Boissevain"," van Hamel"," Koster"," Marchant","

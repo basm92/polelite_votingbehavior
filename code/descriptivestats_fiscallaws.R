@@ -5,6 +5,11 @@ library(lubridate)
 library(knitr)
 library(xtable)
 
+
+# This file makes the basic dataset from which we in other scripts extract the 
+# variables and perform the analysis
+# Here is the place to add new laws to the analysis and supplement them with b1_nummers
+
 # first, lower house
 
 # List files

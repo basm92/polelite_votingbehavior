@@ -6,7 +6,7 @@
 ## Additional arguments: minist, decreases sensitivity
 
 find_election_ctrls <- function(df){
-    
+    print(df$law[1])
     ## Read in the datasets
     #politicians3 <- read_excel("./Data/tk_1815tot1950uu.xlsx")
     allcandidates <- read.csv("./data/elections/functiondata_allcandidates.csv") %>%
@@ -43,6 +43,7 @@ find_election_ctrls <- function(df){
        mutate(Turnout = Opkomst/Kiesgerechtigden) %>%
        janitor::clean_names()
    
+   
    district_data <- left_join(district_data, allcandidates %>%
        filter(district %in% df$kiesdistrict) %>% #smallcase district and smallcase date are function arguments
        group_by(district) %>%
@@ -78,7 +79,7 @@ find_election_ctrls <- function(df){
    politician_vars <- vector(mode = "list", length = nrow(politicus_naam))
    
    for(i in 1:nrow(politicus_naam)){
-       
+       print(politicus_naam[i,2])
        #Create all distances
        distances_to_politician <- stringdist::afind(allelections$kandidaat,
                          politicus_naam[i,2])
@@ -94,6 +95,10 @@ find_election_ctrls <- function(df){
            mutate(diff = date - side) %>%
            filter(diff > 0) %>%
            slice_min(diff)
+       
+       if(nrow(closest_elections_before_date) < 1){
+           next
+       }
        
        # from this election and match: compute nearest comp marg, am of votes, 
        # total votes

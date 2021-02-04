@@ -6,7 +6,7 @@ kinderwet1874 <- data.frame(politician = c(
     Schimmelpenninck van der  Oye","  
     Sandberg  "," 
     van  Kerkwijk","  Brouwer","  Bredius","  van  Baar","    
-    de  Jong","   van den Berch van Heemstede"," 
+    de  Jong","Cremer van den Berch van Heemstede"," 
     Hingst","   van  Loon","  Rombach","  Heydenryck","  
     Bichon  van  IJsselmonde","  van  Houten  "," Lenting"," 
     Oldenhuis  Gratama","  Jonckbloet","    
