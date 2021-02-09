@@ -76,12 +76,16 @@ model6 <- lm(data = data,
              formula = vote ~ log(1+wealth_timevote) + class + law + 
                  strikes + rk_pct + agricul_share + ncm)
 
+#presdata <- list(model3, model4, model5, model6)
+#saveRDS(presdata, "./figures/social_redistribution_regressions.RDS")
+
 stargazer(model3, model4, model5, model6,
           covariate.labels = c("Wealth"),
           dep.var.labels = "Vote",
           omit = c("law", "class", "strikes", "rk_pct", "agricul_share", "ncm"),
           omit.stat = c("adj.rsq", "ser","f"),
-          add.lines = list(c("Controls", "Strikes", "1+Religion", "2+Economy", "3+Electoral")
+          add.lines = list(c("Controls", "Strikes", "1+Religion", "2+Economy", "3+Electoral"),
+                           c("House", "TK", "TK", "TK", "TK")
           ),
           #          notes.append = T,
           #          notes = c("Robust standard errors in parentheses"),

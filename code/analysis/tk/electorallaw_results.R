@@ -83,6 +83,9 @@ model6 <- lm(data = data,
                        formula = vote ~ log(1+wealth_timevote) + class + law + 
                  strikes + rk_pct + agricul_share + ncm)
 
+#elect_law_res_tk <- list(model3, model4, model5, model6)
+#saveRDS(elect_law_res_tk, "./figures/electoral_law_regressions.RDS")
+
 stargazer(model3, model4, model5, model6,
           covariate.labels = c("Wealth"),
           dep.var.labels = "Vote",

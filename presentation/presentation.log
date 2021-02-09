@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2020.10.9)  2 FEB 2021 09:04
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2020.10.9)  9 FEB 2021 18:56
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -804,27 +804,33 @@ LaTeX Warning: Label `' multiply defined.
 
 LaTeX Warning: Label `' multiply defined.
 
+
+LaTeX Warning: Label `' multiply defined.
+
+
+LaTeX Warning: Label `' multiply defined.
+
 )
 \openout1 = `presentation.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 153.
-LaTeX Font Info:    ... okay on input line 153.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 153.
-LaTeX Font Info:    ... okay on input line 153.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 153.
-LaTeX Font Info:    ... okay on input line 153.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 153.
-LaTeX Font Info:    ... okay on input line 153.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 153.
-LaTeX Font Info:    ... okay on input line 153.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 153.
-LaTeX Font Info:    ... okay on input line 153.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 153.
-LaTeX Font Info:    ... okay on input line 153.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 153.
-LaTeX Font Info:    ... okay on input line 153.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 153.
-LaTeX Font Info:    ... okay on input line 153.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 154.
+LaTeX Font Info:    ... okay on input line 154.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 154.
+LaTeX Font Info:    ... okay on input line 154.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 154.
+LaTeX Font Info:    ... okay on input line 154.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 154.
+LaTeX Font Info:    ... okay on input line 154.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 154.
+LaTeX Font Info:    ... okay on input line 154.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 154.
+LaTeX Font Info:    ... okay on input line 154.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 154.
+LaTeX Font Info:    ... okay on input line 154.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 154.
+LaTeX Font Info:    ... okay on input line 154.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 154.
+LaTeX Font Info:    ... okay on input line 154.
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
 *geometry* verbose mode - [ preamble ] result:
@@ -881,7 +887,7 @@ File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 )) ABD: EveryShipout initializing macros
 \AtBeginShipoutBox=\box80
-Package hyperref Info: Link coloring OFF on input line 153.
+Package hyperref Info: Link coloring OFF on input line 154.
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2019/09/16 v2.46 Cross-referencing by name of section
 (/usr/share/texlive/texmf-dist/tex/latex/refcount/refcount.sty
@@ -891,55 +897,55 @@ Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 )
 \c@section@level=\count343
 )
-LaTeX Info: Redefining \ref on input line 153.
-LaTeX Info: Redefining \pageref on input line 153.
-LaTeX Info: Redefining \nameref on input line 153.
+LaTeX Info: Redefining \ref on input line 154.
+LaTeX Info: Redefining \pageref on input line 154.
+LaTeX Info: Redefining \nameref on input line 154.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
-(Font)                  OT1/lmr/m/n --> OT1/cmss/m/n on input line 153.
+(Font)                  OT1/lmr/m/n --> OT1/cmss/m/n on input line 154.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
-(Font)                  OT1/lmr/bx/n --> OT1/cmss/b/n on input line 153.
+(Font)                  OT1/lmr/bx/n --> OT1/cmss/b/n on input line 154.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
-(Font)                  OT1/cmss/m/n --> OT1/lmss/m/n on input line 153.
+(Font)                  OT1/cmss/m/n --> OT1/lmss/m/n on input line 154.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
-(Font)                  OT1/cmss/b/n --> OT1/lmss/b/n on input line 153.
+(Font)                  OT1/cmss/b/n --> OT1/lmss/b/n on input line 154.
 \symnumbers=\mathgroup6
 \sympureletters=\mathgroup7
 LaTeX Font Info:    Overwriting math alphabet `\mathrm' in version `normal'
-(Font)                  OT1/lmss/m/n --> T1/lmr/m/n on input line 153.
-LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 153.
+(Font)                  OT1/lmss/m/n --> T1/lmr/m/n on input line 154.
+LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 154.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `normal'
-(Font)                  OT1/lmr/bx/n --> T1/lmss/b/n on input line 153.
+(Font)                  OT1/lmr/bx/n --> T1/lmss/b/n on input line 154.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `bold'
-(Font)                  OT1/lmr/bx/n --> T1/lmss/b/n on input line 153.
-LaTeX Font Info:    Redeclaring math alphabet \mathsf on input line 153.
+(Font)                  OT1/lmr/bx/n --> T1/lmss/b/n on input line 154.
+LaTeX Font Info:    Redeclaring math alphabet \mathsf on input line 154.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `normal'
-(Font)                  OT1/lmss/m/n --> T1/lmss/m/n on input line 153.
+(Font)                  OT1/lmss/m/n --> T1/lmss/m/n on input line 154.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
-(Font)                  OT1/lmss/bx/n --> T1/lmss/m/n on input line 153.
-LaTeX Font Info:    Redeclaring math alphabet \mathit on input line 153.
+(Font)                  OT1/lmss/bx/n --> T1/lmss/m/n on input line 154.
+LaTeX Font Info:    Redeclaring math alphabet \mathit on input line 154.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
-(Font)                  OT1/lmr/m/it --> T1/lmss/m/it on input line 153.
+(Font)                  OT1/lmr/m/it --> T1/lmss/m/it on input line 154.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
-(Font)                  OT1/lmr/bx/it --> T1/lmss/m/it on input line 153.
-LaTeX Font Info:    Redeclaring math alphabet \mathtt on input line 153.
+(Font)                  OT1/lmr/bx/it --> T1/lmss/m/it on input line 154.
+LaTeX Font Info:    Redeclaring math alphabet \mathtt on input line 154.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `normal'
-(Font)                  OT1/lmtt/m/n --> T1/lmtt/m/n on input line 153.
+(Font)                  OT1/lmtt/m/n --> T1/lmtt/m/n on input line 154.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
-(Font)                  OT1/lmtt/m/n --> T1/lmtt/m/n on input line 153.
+(Font)                  OT1/lmtt/m/n --> T1/lmtt/m/n on input line 154.
 LaTeX Font Info:    Overwriting symbol font `numbers' in version `bold'
-(Font)                  T1/lmss/m/n --> T1/lmss/b/n on input line 153.
+(Font)                  T1/lmss/m/n --> T1/lmss/b/n on input line 154.
 LaTeX Font Info:    Overwriting symbol font `pureletters' in version `bold'
-(Font)                  T1/lmss/m/it --> T1/lmss/b/it on input line 153.
+(Font)                  T1/lmss/m/it --> T1/lmss/b/it on input line 154.
 LaTeX Font Info:    Overwriting math alphabet `\mathrm' in version `bold'
-(Font)                  OT1/lmss/b/n --> T1/lmr/b/n on input line 153.
+(Font)                  OT1/lmss/b/n --> T1/lmr/b/n on input line 154.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `bold'
-(Font)                  T1/lmss/b/n --> T1/lmss/b/n on input line 153.
+(Font)                  T1/lmss/b/n --> T1/lmss/b/n on input line 154.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
-(Font)                  T1/lmss/m/n --> T1/lmss/b/n on input line 153.
+(Font)                  T1/lmss/m/n --> T1/lmss/b/n on input line 154.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
-(Font)                  T1/lmss/m/it --> T1/lmss/b/it on input line 153.
+(Font)                  T1/lmss/m/it --> T1/lmss/b/it on input line 154.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
-(Font)                  T1/lmtt/m/n --> T1/lmtt/b/n on input line 153.
+(Font)                  T1/lmtt/m/n --> T1/lmtt/b/n on input line 154.
 
 (/usr/share/texlive/texmf-dist/tex/latex/translator/translator-basic-dictionary
 -English.dict
@@ -965,14 +971,14 @@ Dictionary: translator-numbers-dictionary, Language: English
 ry-English.dict
 Dictionary: translator-theorem-dictionary, Language: English 
 )
-LaTeX Info: Redefining \microtypecontext on input line 153.
+LaTeX Info: Redefining \microtypecontext on input line 154.
 Package microtype Info: Generating PDF output.
 Package microtype Info: Character protrusion enabled (level 2).
 Package microtype Info: Using protrusion set `basicmath'.
 Package microtype Info: Automatic font expansion enabled (level 2),
 (microtype)             stretch: 20, shrink: 20, step: 1, non-selected.
 Package microtype Info: Using default expansion set `basictext'.
-LaTeX Info: Redefining \showhyphens on input line 153.
+LaTeX Info: Redefining \showhyphens on input line 154.
 Package microtype Info: No adjustment of tracking.
 Package microtype Info: No adjustment of interword spacing.
 Package microtype Info: No adjustment of character kerning.
@@ -988,10 +994,61 @@ Package caption Info: End \AtBeginDocument code.
 
 ]
 LaTeX Font Info:    Trying to load font information for TS1+lmss on input line 
-183.
+182.
 (/usr/share/texmf/tex/latex/lm/ts1lmss.fd
 File: ts1lmss.fd 2009/10/30 v1.6 Font defs for Latin Modern
-) [3
+)
+LaTeX Font Info:    Trying to load font information for OT1+lmss on input line 
+182.
+(/usr/share/texmf/tex/latex/lm/ot1lmss.fd
+File: ot1lmss.fd 2009/10/30 v1.6 Font defs for Latin Modern
+)
+Package microtype Info: Loading generic protrusion settings for font family
+(microtype)             `lmss' (encoding: OT1).
+(microtype)             For optimal results, create family-specific settings.
+(microtype)             See the microtype manual for details.
+LaTeX Font Info:    Trying to load font information for OML+lmm on input line 1
+82.
+(/usr/share/texmf/tex/latex/lm/omllmm.fd
+File: omllmm.fd 2009/10/30 v1.6 Font defs for Latin Modern
+)
+LaTeX Font Info:    Trying to load font information for OMS+lmsy on input line 
+182.
+(/usr/share/texmf/tex/latex/lm/omslmsy.fd
+File: omslmsy.fd 2009/10/30 v1.6 Font defs for Latin Modern
+)
+LaTeX Font Info:    Trying to load font information for OMX+lmex on input line 
+182.
+(/usr/share/texmf/tex/latex/lm/omxlmex.fd
+File: omxlmex.fd 2009/10/30 v1.6 Font defs for Latin Modern
+)
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <10.95> on input line 182.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <8> on input line 182.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <6> on input line 182.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 182
+.
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+) (/usr/share/texlive/texmf-dist/tex/latex/microtype/mt-msa.cfg
+File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
+)
+LaTeX Font Info:    Trying to load font information for U+msb on input line 182
+.
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+) (/usr/share/texlive/texmf-dist/tex/latex/microtype/mt-msb.cfg
+File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
+)
+LaTeX Font Info:    Font shape `T1/lmss/m/it' in size <10.95> not available
+(Font)              Font shape `T1/lmss/m/sl' tried instead on input line 182.
+LaTeX Font Info:    Font shape `T1/lmss/m/it' in size <8> not available
+(Font)              Font shape `T1/lmss/m/sl' tried instead on input line 182.
+LaTeX Font Info:    Font shape `T1/lmss/m/it' in size <6> not available
+(Font)              Font shape `T1/lmss/m/sl' tried instead on input line 182.
+[3
 
 ] [4
 
@@ -1000,183 +1057,152 @@ File: ts1lmss.fd 2009/10/30 v1.6 Font defs for Latin Modern
 ] [6
 
 ]
-<presentation_files/figure-beamer/unnamed-chunk-1-1.pdf, id=56, 710.655pt x 493
-.845pt>
-File: presentation_files/figure-beamer/unnamed-chunk-1-1.pdf Graphic file (type
- pdf)
-<use presentation_files/figure-beamer/unnamed-chunk-1-1.pdf>
-Package pdftex.def Info: presentation_files/figure-beamer/unnamed-chunk-1-1.pdf
-  used on input line 264.
-(pdftex.def)             Requested size: 250.93425pt x 175.65152pt.
+LaTeX Font Info:    Font shape `T1/lmss/m/it' in size <10> not available
+(Font)              Font shape `T1/lmss/m/sl' tried instead on input line 301.
 [7
 
- <./presentation_files/figure-beamer/unnamed-chunk-1-1.pdf>]
-LaTeX Font Info:    Font shape `T1/lmss/m/it' in size <10> not available
-(Font)              Font shape `T1/lmss/m/sl' tried instead on input line 288.
-<presentation_files/figure-beamer/unnamed-chunk-2-1.pdf, id=71, 710.655pt x 493
-.845pt>
-File: presentation_files/figure-beamer/unnamed-chunk-2-1.pdf Graphic file (type
- pdf)
-<use presentation_files/figure-beamer/unnamed-chunk-2-1.pdf>
-Package pdftex.def Info: presentation_files/figure-beamer/unnamed-chunk-2-1.pdf
-  used on input line 288.
-(pdftex.def)             Requested size: 250.93425pt x 150.55844pt.
-[8
+] [8
 
- <./presentation_files/figure-beamer/unnamed-chunk-2-1.pdf>] [9
+] [9
 
 ] [10
 
 ]
-LaTeX Font Info:    Font shape `T1/lmss/m/it' in size <10.95> not available
-(Font)              Font shape `T1/lmss/m/sl' tried instead on input line 346.
+
+Package hyperref Warning: Ignoring empty anchor on input line 405.
+
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <5> on input line 405.
+LaTeX Font Info:    Font shape `T1/lmss/m/it' in size <5> not available
+(Font)              Font shape `T1/lmss/m/sl' tried instead on input line 405.
 [11
 
-] [12
+]
 
-] [13
+Package hyperref Warning: Ignoring empty anchor on input line 447.
 
-] [14
-
-] [15
+[12
 
 ]
-<presentation_files/figure-beamer/unnamed-chunk-5-1.pdf, id=137, 703.62875pt x 
-359.3425pt>
-File: presentation_files/figure-beamer/unnamed-chunk-5-1.pdf Graphic file (type
+
+Package hyperref Warning: Ignoring empty anchor on input line 496.
+
+[13
+
+]
+
+Package hyperref Warning: Ignoring empty anchor on input line 542.
+
+[14
+
+]
+<presentation_files/figure-beamer/unnamed-chunk-7-1.pdf, id=122, 716.6775pt x 4
+96.85625pt>
+File: presentation_files/figure-beamer/unnamed-chunk-7-1.pdf Graphic file (type
  pdf)
-<use presentation_files/figure-beamer/unnamed-chunk-5-1.pdf>
-Package pdftex.def Info: presentation_files/figure-beamer/unnamed-chunk-5-1.pdf
-  used on input line 474.
-(pdftex.def)             Requested size: 301.12651pt x 150.5664pt.
+<use presentation_files/figure-beamer/unnamed-chunk-7-1.pdf>
+Package pdftex.def Info: presentation_files/figure-beamer/unnamed-chunk-7-1.pdf
+  used on input line 565.
+(pdftex.def)             Requested size: 160.60028pt x 120.44579pt.
+[15
+
+ <./presentation_files/figure-beamer/unnamed-chunk-7-1.pdf>]
+
+Package hyperref Warning: Ignoring empty anchor on input line 611.
+
 [16
 
- <./presentation_files/figure-beamer/unnamed-chunk-5-1.pdf>]
-<presentation_files/figure-beamer/unnamed-chunk-6-1.pdf, id=154, 703.62875pt x 
-359.3425pt>
-File: presentation_files/figure-beamer/unnamed-chunk-6-1.pdf Graphic file (type
- pdf)
-<use presentation_files/figure-beamer/unnamed-chunk-6-1.pdf>
-Package pdftex.def Info: presentation_files/figure-beamer/unnamed-chunk-6-1.pdf
-  used on input line 481.
-(pdftex.def)             Requested size: 301.12651pt x 150.5664pt.
-[17
+] [17
 
- <./presentation_files/figure-beamer/unnamed-chunk-6-1.pdf>] [18
+] [18
 
 ] [19
 
-]
-LaTeX Font Info:    Trying to load font information for OT1+lmss on input line 
-548.
-(/usr/share/texmf/tex/latex/lm/ot1lmss.fd
-File: ot1lmss.fd 2009/10/30 v1.6 Font defs for Latin Modern
-)
-Package microtype Info: Loading generic protrusion settings for font family
-(microtype)             `lmss' (encoding: OT1).
-(microtype)             For optimal results, create family-specific settings.
-(microtype)             See the microtype manual for details.
-LaTeX Font Info:    Trying to load font information for OML+lmm on input line 5
-48.
-(/usr/share/texmf/tex/latex/lm/omllmm.fd
-File: omllmm.fd 2009/10/30 v1.6 Font defs for Latin Modern
-)
-LaTeX Font Info:    Trying to load font information for OMS+lmsy on input line 
-548.
-(/usr/share/texmf/tex/latex/lm/omslmsy.fd
-File: omslmsy.fd 2009/10/30 v1.6 Font defs for Latin Modern
-)
-LaTeX Font Info:    Trying to load font information for OMX+lmex on input line 
-548.
-(/usr/share/texmf/tex/latex/lm/omxlmex.fd
-File: omxlmex.fd 2009/10/30 v1.6 Font defs for Latin Modern
-)
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10.95> on input line 548.
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <8> on input line 548.
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <6> on input line 548.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 548
-.
-(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
-File: umsa.fd 2013/01/14 v3.01 AMS symbols A
-) (/usr/share/texlive/texmf-dist/tex/latex/microtype/mt-msa.cfg
-File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
-)
-LaTeX Font Info:    Trying to load font information for U+msb on input line 548
-.
-(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
-File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-) (/usr/share/texlive/texmf-dist/tex/latex/microtype/mt-msb.cfg
-File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
-)
-LaTeX Font Info:    Font shape `T1/lmss/m/it' in size <8> not available
-(Font)              Font shape `T1/lmss/m/sl' tried instead on input line 548.
-LaTeX Font Info:    Font shape `T1/lmss/m/it' in size <6> not available
-(Font)              Font shape `T1/lmss/m/sl' tried instead on input line 548.
-[20
-
-] [21
+] [20
 
 ]
+<presentation_files/figure-beamer/unnamed-chunk-9-1.pdf, id=173, 710.655pt x 49
+3.845pt>
+File: presentation_files/figure-beamer/unnamed-chunk-9-1.pdf Graphic file (type
+ pdf)
+<use presentation_files/figure-beamer/unnamed-chunk-9-1.pdf>
+Package pdftex.def Info: presentation_files/figure-beamer/unnamed-chunk-9-1.pdf
+  used on input line 673.
+(pdftex.def)             Requested size: 250.93425pt x 175.65152pt.
+[21
 
-Package hyperref Warning: Ignoring empty anchor on input line 595.
-
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <5> on input line 595.
-LaTeX Font Info:    Font shape `T1/lmss/m/it' in size <5> not available
-(Font)              Font shape `T1/lmss/m/sl' tried instead on input line 595.
-[22
-
-]
-
-Package hyperref Warning: Ignoring empty anchor on input line 637.
-
-[23
-
-]
-
-Package hyperref Warning: Ignoring empty anchor on input line 686.
-
-[24
-
-]
-<presentation_files/figure-beamer/unnamed-chunk-10-1.pdf, id=225, 716.6775pt x 
-496.85625pt>
+ <./presentation_files/figure-beamer/unnamed-chunk-9-1.pdf>]
+<presentation_files/figure-beamer/unnamed-chunk-10-1.pdf, id=187, 710.655pt x 4
+93.845pt>
 File: presentation_files/figure-beamer/unnamed-chunk-10-1.pdf Graphic file (typ
 e pdf)
 <use presentation_files/figure-beamer/unnamed-chunk-10-1.pdf>
 Package pdftex.def Info: presentation_files/figure-beamer/unnamed-chunk-10-1.pd
-f  used on input line 699.
-(pdftex.def)             Requested size: 200.74489pt x 150.55913pt.
-[25
+f  used on input line 697.
+(pdftex.def)             Requested size: 250.93425pt x 150.55844pt.
+[22
 
- <./presentation_files/figure-beamer/unnamed-chunk-10-1.pdf>]
+ <./presentation_files/figure-beamer/unnamed-chunk-10-1.pdf>] [23
 
-Package hyperref Warning: Ignoring empty anchor on input line 743.
+] [24
 
-[26
+] [25
 
-]
+] [26
 
-Package hyperref Warning: Ignoring empty anchor on input line 789.
-
-[27
+] [27
 
 ] [28
 
 ]
-
-Package hyperref Warning: Ignoring empty anchor on input line 839.
-
+<presentation_files/figure-beamer/unnamed-chunk-11-1.pdf, id=247, 703.62875pt x
+ 359.3425pt>
+File: presentation_files/figure-beamer/unnamed-chunk-11-1.pdf Graphic file (typ
+e pdf)
+<use presentation_files/figure-beamer/unnamed-chunk-11-1.pdf>
+Package pdftex.def Info: presentation_files/figure-beamer/unnamed-chunk-11-1.pd
+f  used on input line 834.
+(pdftex.def)             Requested size: 301.12651pt x 150.5664pt.
 [29
 
-] [30
+ <./presentation_files/figure-beamer/unnamed-chunk-11-1.pdf>]
+<presentation_files/figure-beamer/unnamed-chunk-12-1.pdf, id=263, 703.62875pt x
+ 359.3425pt>
+File: presentation_files/figure-beamer/unnamed-chunk-12-1.pdf Graphic file (typ
+e pdf)
+<use presentation_files/figure-beamer/unnamed-chunk-12-1.pdf>
+Package pdftex.def Info: presentation_files/figure-beamer/unnamed-chunk-12-1.pd
+f  used on input line 841.
+(pdftex.def)             Requested size: 301.12651pt x 150.5664pt.
+[30
 
-] [31
+ <./presentation_files/figure-beamer/unnamed-chunk-12-1.pdf>] [31
 
 ] [32
+
+] [33
+
+] [34
+
+]
+
+Package hyperref Warning: Ignoring empty anchor on input line 948.
+
+[35
+
+]
+
+Package hyperref Warning: Ignoring empty anchor on input line 982.
+
+[36
+
+]
+
+Package hyperref Warning: Ignoring empty anchor on input line 1023.
+
+[37
+
+] [38
 
 ]
 \tf@nav=\write5
@@ -1188,40 +1214,40 @@ Package hyperref Warning: Ignoring empty anchor on input line 839.
 \tf@snm=\write7
 \openout7 = `presentation.snm'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 889.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 889.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1028.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1028.
 (./presentation.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 889.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 889.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1028.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 1028.
 
 LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 25414 strings out of 481239
- 458576 string characters out of 5920377
- 734458 words of memory out of 5000000
- 39995 multiletter control sequences out of 15000+600000
- 589686 words of font info for 78 fonts, out of 8000000 for 9000
+ 25544 strings out of 481239
+ 461216 string characters out of 5920377
+ 738636 words of memory out of 5000000
+ 40094 multiletter control sequences out of 15000+600000
+ 593159 words of font info for 83 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  58i,11n,69p,907b,615s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/share/texmf/fonts/en
-c/dvips/lm/lm-mathsy.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathex.enc}{/u
-sr/share/texmf/fonts/enc/dvips/lm/lm-rm.enc}{/usr/share/texmf/fonts/enc/dvips/l
-m/lm-ec.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-ts1.enc}</usr/share/texmf/f
+{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathex.enc}{/usr/share/texmf/fonts/en
+c/dvips/lm/lm-rm.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/s
+hare/texmf/fonts/enc/dvips/lm/lm-ec.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm
+-mathsy.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-ts1.enc}</usr/share/texmf/f
 onts/type1/public/lm/lmex10.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi10.
 pfb></usr/share/texmf/fonts/type1/public/lm/lmmi6.pfb></usr/share/texmf/fonts/t
 ype1/public/lm/lmmi8.pfb></usr/share/texmf/fonts/type1/public/lm/lmss10.pfb></u
 sr/share/texmf/fonts/type1/public/lm/lmss12.pfb></usr/share/texmf/fonts/type1/p
-ublic/lm/lmss8.pfb></usr/share/texmf/fonts/type1/public/lm/lmssbx10.pfb></usr/s
-hare/texmf/fonts/type1/public/lm/lmsso10.pfb></usr/share/texmf/fonts/type1/publ
-ic/lm/lmsso8.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy10.pfb></usr/share
-/texmf/fonts/type1/public/lm/lmsy5.pfb></usr/share/texmf/fonts/type1/public/lm/
-lmsy6.pfb>
-Output written on presentation.pdf (32 pages, 770440 bytes).
+ublic/lm/lmss8.pfb></usr/share/texmf/fonts/type1/public/lm/lmss9.pfb></usr/shar
+e/texmf/fonts/type1/public/lm/lmssbx10.pfb></usr/share/texmf/fonts/type1/public
+/lm/lmsso10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsso8.pfb></usr/share/
+texmf/fonts/type1/public/lm/lmsy10.pfb></usr/share/texmf/fonts/type1/public/lm/
+lmsy5.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy6.pfb>
+Output written on presentation.pdf (38 pages, 793185 bytes).
 PDF statistics:
- 381 PDF objects out of 1000 (max. 8388607)
- 305 compressed objects within 4 object streams
- 96 named destinations out of 1000 (max. 500000)
- 10364 words of extra memory for PDF output out of 12000 (max. 10000000)
+ 456 PDF objects out of 1000 (max. 8388607)
+ 373 compressed objects within 4 object streams
+ 119 named destinations out of 1000 (max. 500000)
+ 12444 words of extra memory for PDF output out of 14400 (max. 10000000)
 
