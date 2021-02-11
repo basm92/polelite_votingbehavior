@@ -29,6 +29,11 @@ data <- data %>%
 
 #readr::write_csv(data, "./electoral_law_lh_votes_entire_dataset.csv")
 
+# write list of laws
+list_of_laws_elections <- data %>%
+    distinct(law)
+
+saveRDS(list_of_laws_elections, "./figures/list_of_laws_elections.RDS")
 ## Descriptive statistics
 
 descr_tk <- data %>%

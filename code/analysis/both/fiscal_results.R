@@ -11,31 +11,33 @@ descr_ek <- descriptives[[1]] %>%
     group_split(law) %>%
     lapply(group_by, vote) %>%
     lapply(summarize, law = law[1], 
-           median = median(wealth_timevote, na.rm = T),
-           sd = sd(wealth_timevote, na.rm = T)) %>%
+           median = median(wealth_timevote, na.rm = T)
+           ) %>%
     lapply(pivot_wider, names_from = vote, 
-           values_from = c(median,sd)) %>%
+           values_from = c(median)) %>%
     purrr::reduce(bind_rows) %>%
     relocate(law,contains("0")) %>%
-    rename("Median No" = median_0,
-           "Sd No" = sd_0,
-           "Median Yes" = median_1,
-           "Sd Yes" = sd_1) 
+    rename("Median No" = `0`,
+           #"Sd No" = sd_0,
+           "Median Yes" = `1`#,
+           #"Sd Yes" = sd_1
+           ) 
 
 descr_tk <- descriptives[[2]] %>%
     group_split(law) %>%
     lapply(group_by, vote) %>%
     lapply(summarize, law = law[1], 
-           median = median(wealth_timevote, na.rm = T),
-           sd = sd(wealth_timevote, na.rm = T)) %>%
+           median = median(wealth_timevote, na.rm = T)
+           ) %>%
     lapply(pivot_wider, names_from = vote, 
-           values_from = c(median,sd)) %>%
+           values_from = c(median)) %>%
     purrr::reduce(bind_rows) %>%
     relocate(law,contains("0")) %>%
-    rename("Median No" = median_0,
-           "Sd No" = sd_0,
-           "Median Yes" = median_1,
-           "Sd Yes" = sd_1) 
+    rename("Median No" = `0`,
+           #"Sd No" = sd_0,
+           "Median Yes" = `1`#,
+           #"Sd Yes" = sd_1
+           ) 
 
 descr <- list(descr_ek, descr_tk)
 saveRDS(descr, "./figures/descr.RDS")

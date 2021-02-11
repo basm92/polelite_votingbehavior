@@ -16,6 +16,7 @@ knitr::opts_chunk$set(echo = FALSE)
 library(stargazer)
 library(tidyverse)
 library(ivreg)
+library(knitr)
 
 figures <- readRDS("../figures/figures_presentation.RDS")
 map1878 <- readRDS("../figures/presentation_map_1878.RDS")
@@ -34,16 +35,19 @@ ek_fullctrls <- readRDS("../figures/ek_fullctrls.RDS")
 ivresults <- readRDS("../figures/ivresults.RDS")
 harnas <- readRDS("../figures/harnas.RDS")
 second_order <- readRDS("../figures/second_order_regs.RDS")
+
+list_of_laws_social <- readRDS("../figures/list_of_laws_social.RDS")
+list_of_laws_elections <- readRDS("../figures/list_of_laws_elections.RDS")
 ```
 
-# Context
+# Dissertation
 
 ## PhD Thesis
 
-- Overarching theme: Politicians and personal interests
+- Theme: Politicians and personal interests
   - Consequences for economic growth & development (Netherlands, 19th and early 20th centuries)
 
-- Ch. 1: The Wealth of the Dutch Political Elite
+- Ch. 1: The wealth of the Dutch political elite
 
 - Ch. 2: Does personal wealth influence voting behavior? (This paper)
 
@@ -54,29 +58,27 @@ second_order <- readRDS("../figures/second_order_regs.RDS")
 ## Motivation
 
 - Theoretical:
-    - Principal-agent views of politics hold that politicians are agents on behalf of the electoral (the principals) (Duggan & Martinelli, 2017)
-    - Politicians can decide to pursue their own interest (Mian et al., 2010)
-    - One of the forms of pursuing self-interest is by increasing (non-decreasing) their wealth 
+    - Politicians as agents of electorate as principals (Duggan & Martinelli, 2017)
+    - Politicians have opportunities to pursue their own interest (Mian et al., 2010)
+    - Wealth effects of voting outcomes
 
 - Historical:
-    - Historiography points at party discipline and ideology as most important factors in late 19th and early 20th century (e.g. Lijphart 1975, De Jong, 1999)
-    - Personal interests overlooked, even though:
-      - Small political elite
-      - Uncompetitive electoral system
+    - Party discipline and ideology as most important factors in late 19th and early 20th century (e.g. Lijphart 1975, De Jong, 1999)
+    - Personal interests overlooked
 
 ## Results - Overview
 
 - Major finding: richer politicians are more likely to vote against fiscal legislation than _ceteris paribus_ poorer politicians
 
-  - There is (likely) a direct effect of legislation on personal future wealth \hyperlink{fiscal}{\beamerbutton{Background}}
+  - There is a direct effect of fiscal legislation on personal future wealth \hyperlink{fiscal}{\beamerbutton{Background}}
 
-- The effects seem to be absent in legislation _not directly affecting_ politicians' personal wealth:
+- The effects are absent in legislation _not directly affecting_ politicians' personal wealth:
 
   - Suffrage expansion, other gov't intervention \hyperlink{otherresults}{\beamerbutton{Results}}
   
 - Consistent with the historiography, ideology and party are major determinants of voting behavior
 
-  - But the effect of personal wealth implies that a 20% increase/decrease would suffice to dominant the effect of party affiliation. 
+  - But the effect of personal wealth implies that a 20% increase/decrease would suffice to dominate the effect of party affiliation. 
 
 ## Approach
 
@@ -86,11 +88,9 @@ second_order <- readRDS("../figures/second_order_regs.RDS")
 
   - Wealth: \textit{Memories van Successie} \hyperlink{memories}{\beamerbutton{Wealth Data}}
   - Control variables suggested by the literature
+  - Various specifications in upper and lower houses
   
-- Robustness checks: 
-
-  - Take into account alternative explanations (interest-groups)
-  - Compare with laws that do not directly affect personal finances
+- Robustness checks
   
 ## Descriptive Statistics
 
@@ -110,6 +110,18 @@ descr[[2]] %>%
   knitr::kable(caption = "Tweede Kamer",
                digits = 0)
 ```
+
+## Descriptive Statistics 
+
+- Variation in the degree of unanimity per party
+
+\input{../tables/descriptive_stats_per_party_lh.tex}
+
+## Descriptive Statistics
+
+- Variation is lower in upper house
+
+\input{../tables/descriptive_stats_per_party_uh.tex}
 
 # Results
 
@@ -182,6 +194,19 @@ stargazer(ek_fullctrls,
 
 ```
 
+## Alternative Explanations
+
+- The effect of personal wealth on the likelihood to vote in favor of fiscal legislation seems to be robust to many controls. 
+- But: politicians who vote against could have been rewarded by interest groups 
+  - Wealth at death higher because of voting profile: coefficient might be _overestimated_
+  
+- Analysis of politicians who died shortly after last vote
+  - No opportunity to amass rents
+  
+- IV using parental wealth
+  - Parental wealth is a good proxy for wealth at the time of voting
+  - Parental wealth correlated with politicians' wealth, but no direct effect on voting behavior.
+
 ## Alternative Explanations: Died Shortly After Vote
 
 - Dying shortly after leaving office leaves little time to accumulate wealth from interest groups
@@ -208,7 +233,6 @@ stargazer(harnas,
 ## Alternative Explanations: Parental Wealth
 
 - Wealth of politicians' parents proxies for politicians' wealth before voting
-    - Assumed to be strongly correlated with politicians' wealth
     - No direct influence on politicians' voting behavior (other than through politicians' wealth)
     
 ```{r echo = FALSE, warning = FALSE, out.width="160px", out.height="120px", fig.align='center'}
@@ -240,8 +264,8 @@ stargazer(ivresults[[2]], ivresults[[3]],
 
 - I find a significant and persistent effect of personal interests on voting behavior of politicians.
 
-  - The counterfactual implies that if you make a politician 20% richer, personal interests subsume party or ideological allegiance. 
-  - The effect seems to be persistent in the **lower house**. 
+  - The counterfactual implies that if a politician's wealth would increase by 20%, the effects of personal interests subsume party or ideological allegiance. 
+  - The effect seems to be persistent in the lower house. 
 
 - Politicians prioritize not only their ideology, but also their finances
   - But only when faced with imminent and real prospects of losing/winning
@@ -379,6 +403,23 @@ V_{i, k} = \alpha + \beta_1 \cdot \text{Wealth}_{i,k} + \beta_2 \cdot \text{Weal
 
 
 # Appendix: Additional results
+
+## Robustness Checks: Other Laws
+
+
+```{r, echo=FALSE}
+list_of_laws_elections %>%
+  knitr::kable()
+```
+
+## Robustness Checks: Other Laws
+
+```{r, echo=FALSE}
+list_of_laws_social %>%
+  knitr::kable()
+```
+
+
 
 ## Robustness Checks: Social Redistribution
 

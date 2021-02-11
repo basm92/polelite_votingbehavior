@@ -21,7 +21,11 @@ data <- data %>%
 data <- data %>%
     get_dataset_from_initial_voting_records()
 
+## save laws
+#list_of_laws_social <- data %>%
+    distinct(law) 
 
+#saveRDS(list_of_laws_social, "./figures/list_of_laws_social.RDS")
 ## Descriptive Statistics
 
 descr_tk <- data %>%
