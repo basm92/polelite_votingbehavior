@@ -2,6 +2,11 @@
 
 source("./code/data_treatment/data_treatment.R")
 
+ihs <- function(x) {
+    y <- log(x + sqrt(x ^ 2 + 1))
+    return(y)
+}
+
 ## Simple districtive statistics table
 
 descriptives <- df %>%
@@ -114,11 +119,10 @@ saveRDS(harnas, "./figures/harnas.RDS")
 
 ## Instrumental Variables
 
-parwealth <- read_csv("./data/polid_data/instrumental_variable_est.csv") %>%
+parwealth <- readxl::read_xlsx("./data/polid_data/instrumental_variable_est.xlsx") %>%
     mutate(across(c(wealth_father, wealth_mother, wealth_misc), ~ as.numeric(.))) %>%
     mutate(par_wealth = pmax(wealth_father, wealth_mother, wealth_misc, na.rm = TRUE)
     )
-
 
 ivdata <- df %>%
     filter(house == "Tweede Kamer") %>%
@@ -148,6 +152,25 @@ iv_reg_prelim <- ivreg(data = ivdata,
 ivresults <- list(firststage_plot, firststage_reg, iv_reg_prelim)
 
 saveRDS(ivresults, "./figures/ivresults.RDS")
+
+## Alternative iv specification: parent already died before first vote:
+ivdata2 <- left_join(df, parwealth %>%
+              mutate(dod_father = lubridate::ymd(dod_father)),
+          by = c("b1_nummer"="polid")) %>%
+    mutate(intr = date > dod_father) %>%
+    filter(!is.na(intr))
+
+firststage_plot <- ggplot(data = ivdata2, 
+                          aes(y = log(1+wealth_timevote), 
+                              x = intr)) + 
+    geom_point() +
+    ggtitle("Instrument relevance") + 
+    xlab("Log (Parental Wealth)") + 
+    ylab("Log (Politician Wealth)")
+
+iv_reg_prelim <- ivreg(data = ivdata2, 
+                       formula = vote ~ log(1+wealth_timevote) + class | intr + class)
+
 
 ## Analysis: Second order effects
 model_re <- lm(data = df,
