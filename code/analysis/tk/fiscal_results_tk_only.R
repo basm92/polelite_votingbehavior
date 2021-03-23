@@ -1,4 +1,6 @@
 #fiscal law tk results
+library(tidyverse);library(readxl);library(lubridate)
+
 source("./code/data_treatment/get_data_from_voting_records_df.R")
 source("./code/data_treatment/get_polid_tk_and_get_polid_ek.R")
 files <- list.files("./data/voting_behavior/lowerhouse/fiscal/")
