@@ -80,7 +80,6 @@ districtvotes_tk <- districtvotes_tk %>%
     lapply(find_strikes) %>%
     bind_rows()
 
-
 #### Find religion, economy variables (also on the basis of district)
 
 #### Religion
@@ -96,6 +95,8 @@ districtvotes_tk <- districtvotes_tk %>%
     bind_rows()
 
 #### Electoral controls
+
+# Hieronder zit het probleem
 
 districtvotes_tk <- districtvotes_tk %>%
     group_split(law) %>%

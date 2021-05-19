@@ -75,7 +75,7 @@ find_election_ctrls <- function(df){
             na.rm = TRUE, sep = " ") %>%
        select(b1_nummer, truename) 
     
-   # Match all politicians and retreive the necessary info within the for loop
+   # Match all politicians and retreive the necessary info within the for loop - in de loop zit het probleem
    politician_vars <- vector(mode = "list", length = nrow(politicus_naam))
    
    for(i in 1:nrow(politicus_naam)){
