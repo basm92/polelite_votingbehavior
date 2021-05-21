@@ -146,12 +146,44 @@ firststage_reg <- lm(data = ivdata,
                      formula = log(1+wealth_timevote) ~ log(1+par_wealth))
 
 #ivreg
-iv_reg_prelim <- ivreg(data = ivdata, 
+baseline <- ivreg(data = ivdata, 
                        formula = vote ~ log(1+wealth_timevote) + class | log(1+par_wealth) + class)
 
-ivresults <- list(firststage_plot, firststage_reg, iv_reg_prelim)
+model2 <- ivreg(data = ivdata, 
+      formula = vote ~ log(1+wealth_timevote) + class + law  | log(1+par_wealth) + class + law)
 
+model3 <- update(baseline, . ~ . + strikes | . + strikes) 
+model4 <- update(model3, . ~ . + rk_pct | . + rk_pct)
+model5 <- update(model4, . ~ . + agricul_share | . + agricul_share)
+
+ivresults <- list(firststage_plot, firststage_reg, iv_reg_prelim)
 saveRDS(ivresults, "./figures/ivresults.RDS")
+
+stargazer(baseline, model2, model3, model4, model5, type = "text")
+
+# other models
+baseline <- ivreg(data = ivdata, 
+                  formula = vote ~ log(1+wealth_timevote) + class | log(1+par_wealth) + class)
+model2 <- update(baseline, . ~ . + class + law | . + class + law)
+model3 <- update(model2, . ~ . + tenure | . + tenure)
+model4 <- update(model3, . ~ . + age_of_vote | . + age_of_vote)
+model5 <- update(model4, . ~ . + age_of_entrance | . + age_of_entrance)
+
+stargazer(baseline, model2, model3, model4, model5, type = "text")
+
+# combination
+model6 <- update(model5, . ~ . + strikes | . + strikes) 
+model7 <- update(model6, . ~ . + rk_pct | . + rk_pct)
+model8 <- update(model7, . ~ . + agricul_share | . + agricul_share)
+
+stargazer(baseline, model6, model7, model8, type = "text")
+
+model9 <- update(baseline, . ~ . + law + age_of_vote | . + law + age_of_vote)
+model10 <- update(model9 , . ~ . + turnout | . + turnout)
+model11 <- update(model10, . ~ . + hervormd_pct | . + hervormd_pct)
+model12 <- update(model11, . ~ . + industry_share | . + industry_share)
+
+stargazer(baseline, model9, model10, model11, model12, type = "text")
 
 ## Alternative iv specification: parent already died before first vote:
 ivdata2 <- left_join(df, parwealth %>%
