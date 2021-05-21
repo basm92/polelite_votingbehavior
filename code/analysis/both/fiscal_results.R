@@ -60,6 +60,8 @@ model2 <- lm(data = df %>%
    formula = vote ~ log(1+wealth_timevote) + class) 
 
 first_regs <- list(model_begin, model0, model1, model2)
+
+stargazer(first_regs, type = "text")
 saveRDS(first_regs, "./figures/first_regs.RDS")
 
 ## Baseline Results - Full controls
