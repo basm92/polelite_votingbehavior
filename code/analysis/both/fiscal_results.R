@@ -67,8 +67,6 @@ saveRDS(first_regs, "./figures/first_regs.RDS")
 ## Baseline Results - Full controls
 
 # Both
-
-
 # Tweede Kamer
 model3 <- lm(data = df %>%
        filter(house == "Tweede Kamer"),
@@ -125,6 +123,12 @@ parwealth <- readxl::read_xlsx("./data/polid_data/instrumental_variable_est.xlsx
     mutate(across(c(wealth_father, wealth_mother, wealth_misc), ~ as.numeric(.))) %>%
     mutate(par_wealth = pmax(wealth_father, wealth_mother, wealth_misc, na.rm = TRUE),
     ) 
+
+## Check - wat te doen met deze obs?
+
+setdiff(df %>%
+            filter(house == "Tweede Kamer", !is.na(w_deflated)) %>%
+            .$b1_nummer, parwealth$polid)
 
 ivdata <- df %>%
     filter(house == "Tweede Kamer") %>%
