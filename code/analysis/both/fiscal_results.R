@@ -123,8 +123,8 @@ saveRDS(harnas, "./figures/harnas.RDS")
 
 parwealth <- readxl::read_xlsx("./data/polid_data/instrumental_variable_est.xlsx") %>%
     mutate(across(c(wealth_father, wealth_mother, wealth_misc), ~ as.numeric(.))) %>%
-    mutate(par_wealth = pmax(wealth_father, wealth_mother, wealth_misc, na.rm = TRUE)
-    )
+    mutate(par_wealth = pmax(wealth_father, wealth_mother, wealth_misc, na.rm = TRUE),
+    ) 
 
 ivdata <- df %>%
     filter(house == "Tweede Kamer") %>%
@@ -149,12 +149,15 @@ firststage_reg <- lm(data = ivdata,
 
 #ivreg
 baseline <- ivreg(data = ivdata, 
-                       formula = vote ~ log(1+wealth_timevote) + class | log(1+par_wealth) + class)
+                       formula = vote ~ ihs(wealth_timevote) + class | ihs(par_wealth) + class)
 
-model2 <- ivreg(data = ivdata, 
-      formula = vote ~ log(1+wealth_timevote) + class + law  | log(1+par_wealth) + class + law)
+baseline <- ivreg(data = ivdata %>%
+                    mutate(wealth_timevote = wealth_timevote / 100000,
+                           par_wealth = par_wealth / 100000), 
+                  formula = vote ~ wealth_timevote + class | par_wealth + class)
 
-model3 <- update(baseline, . ~ . + strikes | . + strikes) 
+model2 <- update(baseline, . ~ . + law | . + law)
+model3 <- update(model2, . ~ . + strikes | . + strikes) 
 model4 <- update(model3, . ~ . + rk_pct | . + rk_pct)
 model5 <- update(model4, . ~ . + agricul_share | . + agricul_share)
 
@@ -165,7 +168,13 @@ stargazer(baseline, model2, model3, model4, model5, type = "text")
 
 # other models
 baseline <- ivreg(data = ivdata, 
-                  formula = vote ~ log(1+wealth_timevote) + class | log(1+par_wealth) + class)
+                  formula = vote ~ ihs(wealth_timevote) + class | ihs(par_wealth) + class)
+
+baseline <- ivreg(data = ivdata %>%
+                    mutate(wealth_timevote = wealth_timevote / 100000,
+                           par_wealth = par_wealth / 100000), 
+                  formula = vote ~ wealth_timevote + class | par_wealth + class)
+
 model2 <- update(baseline, . ~ . + class + law | . + class + law)
 model3 <- update(model2, . ~ . + tenure | . + tenure)
 model4 <- update(model3, . ~ . + age_of_vote | . + age_of_vote)
