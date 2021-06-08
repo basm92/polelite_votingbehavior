@@ -79,6 +79,7 @@ model5 <- update(model4, . ~ . + rk_pct)
 model6 <- update(model5, . ~ . + agricul_share)
 
 tk_fullctrls <- list(model3, model4, model5, model6)
+stargazer(tk_fullctrls, type = "text")
 
 saveRDS(tk_fullctrls, "./figures/tk_fullctrls.RDS")
 
@@ -93,6 +94,7 @@ modelek4 <- update(modelek3, . ~ . + age_of_entrance)
 
 
 ek_fullctrls <- list(modelek1, modelek2, modelek3, modelek4)
+stargazer(ek_fullctrls, type = "text")
 saveRDS(ek_fullctrls, "./figures/ek_fullctrls.RDS")
 
 ## Robustness: Died Shortly After Vote
@@ -117,6 +119,8 @@ harnas_5yr_ctrls <- df %>%
     lm(formula = vote ~ log(1+wealth_timevote):harnas + class + law) 
 
 harnas <- list(harnas_2yr, harnas_2yr_ctrls, harnas_5yr, harnas_5yr_ctrls)
+
+stargazer(harnas, type = "text")
 saveRDS(harnas, "./figures/harnas.RDS")
 
 ## Instrumental Variables
