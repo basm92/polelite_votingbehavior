@@ -153,16 +153,34 @@ deflate <- function(parwealthdf){
 
 parwealth <- deflate(parwealth)
 
-## Check - wat te doen met deze obs?
+### Get the other instrument
 
-setdiff(df %>%
-            filter(house == "Tweede Kamer", !is.na(w_deflated)) %>%
-            .$b1_nummer, parwealth$polid)
+test <- parwealth %>%
+    mutate(profdummy1 = case_when(father_profession == "Jurist" ~ 1,
+                                father_profession == "Politicus" ~ 1,
+                                TRUE ~ 0),
+           profdummy2 = case_when(father_profession == "Jurist" ~ 1,
+                                  TRUE ~ 0),
+           profdummy3 = case_when(father_profession == "Politicus" ~ 1,
+                                  TRUE ~ 0)
+           ) %>%
+    filter(!is.na(father_profession)) ### This can be removed once we have all obs
 
 ivdata <- df %>%
     filter(house == "Tweede Kamer") %>%
     left_join(parwealth,
               by = c("b1_nummer"="polid"))
+
+ivdata <- df %>%
+    filter(house == "Tweede Kamer") %>%
+    left_join(test,
+              by = c("b1_nummer"="polid"))
+
+### Check - wat te doen met deze obs?
+
+setdiff(df %>%
+            filter(house == "Tweede Kamer", !is.na(w_deflated)) %>%
+            .$b1_nummer, parwealth$polid)
 
 library(ivreg) 
 
@@ -180,11 +198,21 @@ saveRDS(ivdata, "./figures/ivdata.RDS")
 firststage_reg <- lm(data = ivdata, 
                      formula = log(1+wealth_timevote) ~ log(1+par_wealth))
 
-summary(firststage_reg)
+firststage_reg1 <- lm(data = ivdata, 
+                     formula = log(1+wealth_timevote) ~ profdummy1)
+firststage_reg2 <- lm(data = ivdata, 
+                     formula = log(1+wealth_timevote) ~ profdummy2)
+firststage_reg3 <- lm(data = ivdata, 
+                     formula = log(1+wealth_timevote) ~ profdummy3)
+
+stargazer(firststage_reg1, firststage_reg2, firststage_reg3, type = "text")
 
 #ivreg
 baseline <- ivreg(data = ivdata, 
                        formula = vote ~ ihs(wealth_timevote) + class | ihs(par_wealth) + class)
+
+baseline <- ivreg(data = ivdata, 
+                  formula = vote ~ ihs(wealth_timevote) + class | profdummy1 + class)
 
 baseline <- ivreg(data = ivdata %>%
                     mutate(wealth_timevote = wealth_timevote / 100000,
@@ -212,6 +240,10 @@ baseline <- ivreg(data = ivdata %>%
                     mutate(wealth_timevote = wealth_timevote / 100000,
                            par_wealth = par_wealth / 100000), 
                   formula = vote ~ wealth_timevote + class | par_wealth + class)
+
+baseline <- ivreg(data = ivdata %>%
+                      mutate(wealth_timevote = wealth_timevote / 100000), 
+                  formula = vote ~ wealth_timevote + class | profdummy1 + class)
 
 model2 <- update(baseline, . ~ . + class + law | . + class + law)
 model3 <- update(model2, . ~ . + tenure | . + tenure)
