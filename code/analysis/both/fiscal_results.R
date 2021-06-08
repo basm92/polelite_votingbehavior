@@ -144,7 +144,7 @@ library(ivreg)
 firststage_plot <- ggplot(data = ivdata, 
        aes(y = log(1+wealth_timevote), 
            x = log(par_wealth))) + 
-    geom_point() +
+    geom_point(alpha = 0.5) +
     ggtitle("Instrument relevance") + 
     xlab("Log (Parental Wealth)") + 
     ylab("Log (Politician Wealth)")
@@ -154,6 +154,8 @@ saveRDS(ivdata, "./figures/ivdata.RDS")
 #firststage_reg
 firststage_reg <- lm(data = ivdata, 
                      formula = log(1+wealth_timevote) ~ log(1+par_wealth))
+
+summary(firststage_reg)
 
 #ivreg
 baseline <- ivreg(data = ivdata, 
