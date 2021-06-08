@@ -153,7 +153,11 @@ deflate <- function(parwealthdf){
 
 parwealth <- deflate(parwealth)
 
-### Get the other instrument
+### Get the other instruments
+workingclass <- c("Bakker, Predikant, Schipper", "Lijfwacht", "Ambtenaar",
+                  "Kleermaker", "Rentmeester", "Horlogemaker","Musicus",
+                  "Secretaris", "Leraar","Inspecteur", "Onderwijzer/Rabbijn",
+                  "Boer", "Machinist", "Artiest")
 
 test <- parwealth %>%
     mutate(profdummy1 = case_when(father_profession == "Jurist" ~ 1,
@@ -162,9 +166,15 @@ test <- parwealth %>%
            profdummy2 = case_when(father_profession == "Jurist" ~ 1,
                                   TRUE ~ 0),
            profdummy3 = case_when(father_profession == "Politicus" ~ 1,
+                                  TRUE ~ 0),
+           profdummy4 = case_when(father_profession == "Jurist" ~ 1,
+                                   father_profession == "Politicus" ~ 1,
+                                   father_profession == "Ambtenaar" ~ 1,
+                                   TRUE ~ 0),
+           profdummy5 = case_when(is.element(father_profession, workingclass) ~ 1,
                                   TRUE ~ 0)
            ) %>%
-    filter(!is.na(father_profession)) ### This can be removed once we have all obs
+  select(polid, par_wealth, profdummy1, profdummy2, profdummy3, profdummy4, profdummy5)
 
 ivdata <- df %>%
     filter(house == "Tweede Kamer") %>%
@@ -204,87 +214,74 @@ firststage_reg2 <- lm(data = ivdata,
                      formula = log(1+wealth_timevote) ~ profdummy2)
 firststage_reg3 <- lm(data = ivdata, 
                      formula = log(1+wealth_timevote) ~ profdummy3)
+firststage_reg4 <- lm(data = ivdata, 
+                      formula = log(1+wealth_timevote) ~ profdummy4)
+firststage_reg5 <- lm(data = ivdata, 
+                      formula = log(1+wealth_timevote) ~ profdummy5)
 
-stargazer(firststage_reg1, firststage_reg2, firststage_reg3, type = "text")
+stargazer(firststage_reg1, firststage_reg2, firststage_reg3, 
+          firststage_reg4, firststage_reg5, type = "text")
 
-#ivreg
+#ivreg - couple of different baselines
+baseline <- ivreg(data = ivdata %>%
+                    mutate(wealth_timevote = wealth_timevote / 100000), 
+                  formula = vote ~ wealth_timevote + class | profdummy1 + class)
+baseline <- ivreg(data = ivdata %>%
+                    mutate(wealth_timevote = wealth_timevote / 100000), 
+                  formula = vote ~ wealth_timevote + class | profdummy2 + class)
+baseline <- ivreg(data = ivdata %>%
+                    mutate(wealth_timevote = wealth_timevote / 100000), 
+                  formula = vote ~ wealth_timevote + class | profdummy3 + class)
+baseline <- ivreg(data = ivdata %>%
+                    mutate(wealth_timevote = wealth_timevote / 100000), 
+                  formula = vote ~ wealth_timevote + class | profdummy4 + class)
+baseline <- ivreg(data = ivdata %>%
+                    mutate(wealth_timevote = wealth_timevote / 100000), 
+                  formula = vote ~ wealth_timevote + class | profdummy5 + class)
+
+
 baseline <- ivreg(data = ivdata, 
-                       formula = vote ~ ihs(wealth_timevote) + class | ihs(par_wealth) + class)
-
-baseline <- ivreg(data = ivdata, 
-                  formula = vote ~ ihs(wealth_timevote) + class | profdummy1 + class)
-
+                  formula = vote ~ log(1+wealth_timevote) + class | profdummy1 + class)
 baseline <- ivreg(data = ivdata %>%
                     mutate(wealth_timevote = wealth_timevote / 100000,
                            par_wealth = par_wealth / 100000), 
                   formula = vote ~ wealth_timevote + class | par_wealth + class)
-
 baseline <- ivreg(data = ivdata, 
                   formula = vote ~ log(1+wealth_timevote) + class | log(1+par_wealth) + class)
 
+# All models
 model2 <- update(baseline, . ~ . + law | . + law)
 model3 <- update(model2, . ~ . + strikes | . + strikes) 
 model4 <- update(model3, . ~ . + rk_pct | . + rk_pct)
 model5 <- update(model4, . ~ . + agricul_share | . + agricul_share)
 
-ivresults <- list(firststage_plot, firststage_reg, iv_reg_prelim)
-saveRDS(ivresults, "./figures/ivresults.RDS")
+#ivresults <- list(firststage_plot, firststage_reg, iv_reg_prelim)
+#saveRDS(ivresults, "./figures/ivresults.RDS")
 
 stargazer(baseline, model2, model3, model4, model5, type = "text")
 
 # other models
-baseline <- ivreg(data = ivdata, 
-                  formula = vote ~ ihs(wealth_timevote) + class | ihs(par_wealth) + class)
+model6 <- update(baseline, . ~ . + class + law | . + class + law)
+model7 <- update(model6, . ~ . + tenure | . + tenure)
+model8 <- update(model7, . ~ . + age_of_vote | . + age_of_vote)
+model9 <- update(model8, . ~ . + age_of_entrance | . + age_of_entrance)
 
-baseline <- ivreg(data = ivdata %>%
-                    mutate(wealth_timevote = wealth_timevote / 100000,
-                           par_wealth = par_wealth / 100000), 
-                  formula = vote ~ wealth_timevote + class | par_wealth + class)
-
-baseline <- ivreg(data = ivdata %>%
-                      mutate(wealth_timevote = wealth_timevote / 100000), 
-                  formula = vote ~ wealth_timevote + class | profdummy1 + class)
-
-model2 <- update(baseline, . ~ . + class + law | . + class + law)
-model3 <- update(model2, . ~ . + tenure | . + tenure)
-model4 <- update(model3, . ~ . + age_of_vote | . + age_of_vote)
-model5 <- update(model4, . ~ . + age_of_entrance | . + age_of_entrance)
-
-stargazer(baseline, model2, model3, model4, model5, type = "text")
+stargazer(baseline, model6, model7, model8, model9, type = "text")
 
 # combination
-model6 <- update(model5, . ~ . + strikes | . + strikes) 
-model7 <- update(model6, . ~ . + rk_pct | . + rk_pct)
-model8 <- update(model7, . ~ . + agricul_share | . + agricul_share)
+model10 <- update(model5, . ~ . + strikes | . + strikes) 
+model11 <- update(model6, . ~ . + rk_pct | . + rk_pct)
+model12 <- update(model7, . ~ . + agricul_share | . + agricul_share)
 
-stargazer(baseline, model6, model7, model8, type = "text")
+stargazer(baseline, model10, model11, model12, type = "text")
 
-model9 <- update(baseline, . ~ . + law + age_of_vote | . + law + age_of_vote)
-model10 <- update(model9 , . ~ . + turnout | . + turnout)
-model11 <- update(model10, . ~ . + hervormd_pct | . + hervormd_pct)
-model12 <- update(model11, . ~ . + industry_share | . + industry_share)
+# yet other models
+model13 <- update(baseline, . ~ . + law + age_of_vote | . + law + age_of_vote)
+model14 <- update(model13 , . ~ . + turnout | . + turnout)
+model15 <- update(model14, . ~ . + hervormd_pct | . + hervormd_pct)
+model16 <- update(model15, . ~ . + industry_share | . + industry_share)
 
-stargazer(baseline, model9, model10, model11, model12, type = "text")
-
-## Alternative iv specification: parent already died before first vote:
-ivdata2 <- left_join(df, parwealth %>%
-              mutate(dod_father = lubridate::ymd(dod_father)),
-          by = c("b1_nummer"="polid")) %>%
-    mutate(intr = date > dod_father) %>%
-    filter(!is.na(intr))
-
-firststage_plot <- ggplot(data = ivdata2, 
-                          aes(y = log(1+wealth_timevote), 
-                              x = intr)) + 
-    geom_point() +
-    ggtitle("Instrument relevance") + 
-    xlab("Log (Parental Wealth)") + 
-    ylab("Log (Politician Wealth)")
-
-iv_reg_prelim <- ivreg(data = ivdata2, 
-                       formula = vote ~ log(1+wealth_timevote) + class | intr + class)
-
-summary(iv_reg_prelim)
+stargazer(baseline, model13, model14, model15, model16, type = "text")
 
 ## Analysis: Second order effects
 model_re <- lm(data = df,
