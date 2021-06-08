@@ -126,7 +126,32 @@ saveRDS(harnas, "./figures/harnas.RDS")
 parwealth <- readxl::read_xlsx("./data/polid_data/instrumental_variable_est.xlsx") %>%
     mutate(across(c(wealth_father, wealth_mother, wealth_misc), ~ as.numeric(.))) %>%
     mutate(par_wealth = pmax(wealth_father, wealth_mother, wealth_misc, na.rm = TRUE),
-    ) 
+    )
+
+### Deflate them
+deflator <- readr::read_csv("./data/polid_data/deflator.csv") %>%
+  janitor::clean_names()
+
+deflate <- function(parwealthdf){
+  
+  parwealthdf <- parwealthdf %>%
+    mutate(a = as.numeric(stringr::str_extract(dod_father, "\\d{4}")))
+  
+  parwealthdf <- parwealthdf %>%
+    mutate(index = purrr::map_dbl(parwealthdf$a, function(x) match(x, deflator$year, nomatch = 999)))
+  
+  parwealthdf <- parwealthdf %>%
+    mutate(deflator = purrr::map_dbl(parwealthdf$index, function(x) deflator$deflator[x]))
+  
+  parwealthdf <- parwealthdf %>%
+    mutate(par_wealth = par_wealth * deflator)
+  
+  return(parwealthdf)
+  
+}
+
+
+parwealth <- deflate(parwealth)
 
 ## Check - wat te doen met deze obs?
 
@@ -165,6 +190,9 @@ baseline <- ivreg(data = ivdata %>%
                     mutate(wealth_timevote = wealth_timevote / 100000,
                            par_wealth = par_wealth / 100000), 
                   formula = vote ~ wealth_timevote + class | par_wealth + class)
+
+baseline <- ivreg(data = ivdata, 
+                  formula = vote ~ log(1+wealth_timevote) + class | log(1+par_wealth) + class)
 
 model2 <- update(baseline, . ~ . + law | . + law)
 model3 <- update(model2, . ~ . + strikes | . + strikes) 
