@@ -252,6 +252,7 @@ firststage_plot <- ggplot(data = ivdata2,
 iv_reg_prelim <- ivreg(data = ivdata2, 
                        formula = vote ~ log(1+wealth_timevote) + class | intr + class)
 
+summary(iv_reg_prelim)
 
 ## Analysis: Second order effects
 model_re <- lm(data = df,
