@@ -1,13 +1,11 @@
 # take the data file
+library(ivreg)
 
 source("./code/data_treatment/data_treatment.R")
 
-ihs <- function(x) {
-    y <- log(x + sqrt(x ^ 2 + 1))
-    return(y)
-}
+## This is the script for all the results in the paper
 
-## Simple districtive statistics table
+## Simple districtive statistics tables
 
 descriptives <- df %>%
     group_split(house)
@@ -95,7 +93,7 @@ ek_fullctrls <- list(modelek1, modelek2, modelek3, modelek4)
 stargazer(ek_fullctrls, type = "text")
 saveRDS(ek_fullctrls, "./figures/ek_fullctrls.RDS")
 
-## Robustness: Died Shortly After Vote
+## Harnas: Died Shortly After Vote
 harnas_2yr <- df %>%
     mutate(harnas = (date_of_death - einde_periode) < 730) %>%
     #filter(harnas == TRUE) %>%
