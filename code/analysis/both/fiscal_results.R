@@ -186,11 +186,11 @@ ivdata <- df %>%
     left_join(test,
               by = c("b1_nummer"="polid"))
 
-### Check - wat te doen met deze obs?
+### Check - distribution of dummy per party
 
-setdiff(df %>%
-            filter(house == "Tweede Kamer", !is.na(w_deflated)) %>%
-            .$b1_nummer, parwealth$polid)
+ivdata %>%
+  group_by(class) %>%
+  summarize(mean = mean(profdummy1, na.rm = TRUE), sd = sd(profdummy1, na.rm = TRUE))
 
 library(ivreg) 
 
