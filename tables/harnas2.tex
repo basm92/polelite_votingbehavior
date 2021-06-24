@@ -1,0 +1,37 @@
+\begin{table}
+
+\caption{\label{tab:harnas2}OLS Estimates of Wealth on the Propensity to Vote for Fiscal Reforms - Endogeneity Test}
+\centering
+\begin{tabular}[t]{lccccccc}
+\toprule
+  & (1) & (2) & (3) & (4) & (5) & (6) & (7)\\
+\midrule
+Personal Wealth & -0.041* & -0.038* & -0.039* & -0.038+ & -0.039* & -0.037* & -0.037*\\
+ & (0.016) & (0.017) & (0.017) & (0.023) & (0.017) & (0.018) & (0.018)\\
+Died Within 2 Years & -0.397 & -0.425+ & -0.307 & -0.350 & -0.320 & -0.286 & -0.285\\
+ & (0.241) & (0.250) & (0.257) & (0.326) & (0.262) & (0.266) & (0.267)\\
+Wealth x Died Within 2 Years & 0.034 & 0.036 & 0.027 & 0.031 & 0.029 & 0.025 & 0.025\\
+ & (0.022) & (0.023) & (0.024) & (0.030) & (0.024) & (0.025) & (0.025)\\
+Amount of Strikes &  & 0.000 & 0.000 & -0.008+ & 0.000 & 0.000 & 0.000\\
+ &  & (0.001) & (0.001) & (0.004) & (0.001) & (0.001) & (0.001)\\
+\% Catholics in district &  &  & -0.003** & -0.003* & -0.003** & -0.003** & -0.003**\\
+ &  &  & (0.001) & (0.001) & (0.001) & (0.001) & (0.001)\\
+Share Industrial &  &  &  & -0.097 &  &  & \\
+ &  &  &  & (0.350) &  &  & \\
+Vote Share (\% Total) &  &  &  &  & 0.031 & 0.029 & 0.028\\
+ &  &  &  &  & (0.092) & (0.094) & (0.097)\\
+Competed Against Socialist &  &  &  &  &  & 0.056 & 0.056\\
+ &  &  &  &  &  & (0.092) & (0.092)\\
+Tenure &  &  &  &  &  &  & 0.000\\
+ &  &  &  &  &  &  & (0.000)\\
+\midrule
+Party + Law Controls & Yes & Yes & Yes & Yes & Yes & Yes & Yes\\
+N & 313 & 295 & 285 & 209 & 285 & 283 & 283\\
+Adj. R2 & 0.45 & 0.48 & 0.49 & 0.48 & 0.48 & 0.48 & 0.48\\
+\bottomrule
+\multicolumn{8}{l}{\rule{0pt}{1em}Vote is defined as 1 if the politician is in favor of the reform, 0 otherwise.}\\
+\multicolumn{8}{l}{\rule{0pt}{1em}Personal Wealth is defined as log(1+Wealth at Death).}\\
+\multicolumn{8}{l}{\rule{0pt}{1em}Heteroskedasticity-robust standard errors in parenthesis. Results for lower house voting outcomes.}\\
+\multicolumn{8}{l}{\rule{0pt}{1em}+ p $<$ 0.1, * p $<$ 0.05, ** p $<$ 0.01, *** p $<$ 0.001}\\
+\end{tabular}
+\end{table}

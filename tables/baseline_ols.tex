@@ -1,0 +1,21 @@
+\begin{table}
+
+\caption{\label{tab:baseline_ols}OLS Estimates of Wealth on the Propensity to Vote for Fiscal Reforms}
+\centering
+\begin{tabular}[t]{lccccccc}
+\toprule
+  & (1) & (2) & (3) & (4) & (5) & (6) & (7)\\
+\midrule
+Personal Wealth & -0.024* & -0.018+ & -0.022 & -0.031* & -0.016 & -0.026* & 0.003\\
+ & (0.011) & (0.010) & (0.013) & (0.014) & (0.010) & (0.012) & (0.014)\\
+\midrule
+House & Both & Both & Tweede Kamer & Eerste Kamer & Both & Tweede Kamer & Eerste Kamer\\
+Controls & None & Party & Party & Party & Party+Law & Party+Law & Party+Law\\
+N & 482 & 480 & 313 & 167 & 480 & 313 & 167\\
+Adj. R2 & 0.01 & 0.19 & 0.28 & 0.09 & 0.30 & 0.45 & 0.38\\
+\bottomrule
+\multicolumn{8}{l}{\rule{0pt}{1em}Personal Wealth is defined as log(1+Wealth at Death). Vote is defined as 1 if the politician is in favor of the reform, 0 otherwise.}\\
+\multicolumn{8}{l}{\rule{0pt}{1em}Heteroskedasticity-robust standard errors in parentheses.}\\
+\multicolumn{8}{l}{\rule{0pt}{1em}+ p $<$ 0.1, * p $<$ 0.05, ** p $<$ 0.01, *** p $<$ 0.001}\\
+\end{tabular}
+\end{table}

@@ -1,0 +1,33 @@
+\begin{table}
+
+\caption{\label{tab:controls_ols}OLS Estimates of Wealth on the Propensity to Vote for Fiscal Reforms - Controls}
+\centering
+\begin{tabular}[t]{lccccccc}
+\toprule
+  & (1) & (2) & (3) & (4) & (5) & (6) & (7)\\
+\midrule
+Personal Wealth & -0.026* & -0.020 & -0.026* & -0.023 & -0.026* & -0.025* & -0.025+\\
+ & (0.012) & (0.012) & (0.013) & (0.016) & (0.013) & (0.013) & (0.013)\\
+Amount of Strikes &  & 0.000 & 0.000 & -0.008+ & 0.000 & 0.000 & 0.000\\
+ &  & (0.001) & (0.001) & (0.004) & (0.001) & (0.001) & (0.001)\\
+\% Catholics in district &  &  & -0.003** & -0.003* & -0.003** & -0.003** & -0.003**\\
+ &  &  & (0.001) & (0.001) & (0.001) & (0.001) & (0.001)\\
+Share Industrial &  &  &  & -0.011 &  &  & \\
+ &  &  &  & (0.348) &  &  & \\
+Vote Share (\% Total) &  &  &  &  & 0.016 & 0.016 & 0.014\\
+ &  &  &  &  & (0.091) & (0.093) & (0.096)\\
+Competed Against Socialist &  &  &  &  &  & 0.062 & 0.062\\
+ &  &  &  &  &  & (0.092) & (0.092)\\
+Tenure &  &  &  &  &  &  & 0.000\\
+ &  &  &  &  &  &  & (0.000)\\
+\midrule
+Party + Law Controls & Yes & Yes & Yes & Yes & Yes & Yes & Yes\\
+N & 313 & 295 & 285 & 209 & 285 & 283 & 283\\
+Adj. R2 & 0.45 & 0.47 & 0.49 & 0.48 & 0.48 & 0.48 & 0.48\\
+\bottomrule
+\multicolumn{8}{l}{\rule{0pt}{1em}Vote is defined as 1 if the politician is in favor of the reform, 0 otherwise.}\\
+\multicolumn{8}{l}{\rule{0pt}{1em}Personal Wealth is defined as log(1+Wealth at Death).}\\
+\multicolumn{8}{l}{\rule{0pt}{1em}Heteroskedasticity-robust standard errors in parenthesis. Results for lower house voting outcomes.}\\
+\multicolumn{8}{l}{\rule{0pt}{1em}+ p $<$ 0.1, * p $<$ 0.05, ** p $<$ 0.01, *** p $<$ 0.001}\\
+\end{tabular}
+\end{table}
