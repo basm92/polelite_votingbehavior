@@ -752,7 +752,15 @@ plot1 <- coefplot(model10,
          intercept = FALSE,
          coefficients = c("ncm", "turnout", "industry_share", "rk_pct", "long_elec_horiz",
                            "age_of_entrance", "age_of_death", "age_of_vote", "vote"),
-         #newNames = c("ncm" = "Nearest Competitor Margin"),
+         newNames = c("ncm" = "Nearest Competitor Margin",
+                      "turnout" = "Turnout", 
+                      "industry_share" = "Industry Share (%)",
+                      "rk_pct" = "Catholic Share (%)",
+                      "long_elec_horiz" = "Time to Retirement",
+                      "age_of_entrance" = "Age of Entry",
+                      "age_of_death" = "Age of Death",
+                      "age_of_vote" = "Age of Vote",
+                      "vote" = "Vote Yes/No"),
          pointSize = 3) + theme_bw() 
 
 plot2 <- coefplot(model10, 
@@ -765,10 +773,34 @@ plot2 <- coefplot(model10,
                                    "lawSuccessiewet 1878", "lawSuccessiewet 1914",
                                    "lawInkomstenbelasting 1914", "lawStaatsschuldwet 1914",
                                    "classsocialist", "classliberal"),
-                  #newNames = c("ncm" = "Nearest Competitor Margin"),
+                  newNames = c("lawSuccessiewet 1916" = "Successiewet 1916", 
+                               "lawSuccessiewet 1911" = "Successiewet 1911",
+                               "lawSuccessiewet 1878" = "Successiewet 1878",
+                               "lawSuccessiewet 1914" = "Successiewet 1914",
+                               "lawInkomstenbelasting 1914" = "Inkomstenbelasting 1914",
+                               "lawStaatsschuldwet 1914" = "Staatsschuldwet 1914",
+                               "classsocialist" = "Party (Socialist)",
+                               "classliberal" = "Party (Liberal)"),
                   pointSize = 3) + theme_bw() + labs(caption = "Reference categories: Confessional Politicians, Inkomstenbelasting 1914")
 
 library(cowplot)
-test <- cowplot::plot_grid(plot1, plot2, rel_widths = c(1,1.2))
+plotje <- cowplot::plot_grid(plot1, plot2, rel_widths = c(0.8, 1))
 
-cowplot::save_plot(plot=test, filename= "test.pdf")
+title <- ggdraw() + 
+  draw_label(
+    "Selection bias: Coefficient estimates for various variables",
+    fontface = 'bold',
+    x = 0,
+    hjust = 0
+  ) +
+  theme(
+    # add margin on the left of the drawing canvas,
+    # so title is aligned with left edge of first plot
+    plot.margin = margin(0, 0, 0, 7)
+  )
+
+plotje <- cowplot::plot_grid(title, plotje,
+                   ncol = 1,
+                   rel_heights = c(0.1, 1))
+
+cowplot::save_plot(filename = "./figures/selection_bias.pdf", plot = plotje, base_width = 10, base_height = 6)
