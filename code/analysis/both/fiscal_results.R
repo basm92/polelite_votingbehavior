@@ -653,19 +653,84 @@ model16 <- update(model15, . ~ . + industry_share | . + industry_share)
 
 
 ### Analysis: Second order effects
-re <- lm(data = df, formula = vote ~ share_re + class + law)
-shares <- lm(data = df, formula = vote ~ share_shares + class + law)
-bonds <- lm(data = df, formula = vote ~ share_bonds + class + law)
-domestic <- lm(data = df, formula = vote ~ share_domestic + class + law)
-foreign <- lm(data = df, formula = vote ~ share_foreign + class + law)
-domestic_bonds <- lm(df, formula = vote ~ share_domestic:share_bonds + class + law)
-domestic_shares <- lm(df, formula = vote ~ share_domestic: share_shares + class + law)
+
+### Lower house only
+df2 <- df %>%
+  filter(house == "Tweede Kamer")
+
+re <- lm(data = df2, formula = vote ~ share_re + class + log(1+wealth_timevote)+ law)
+shares <- lm(data = df2, formula = vote ~ share_shares + log(1+wealth_timevote) + class + law)
+bonds <- lm(data = df2, formula = vote ~ share_bonds + log(1+wealth_timevote)+ class + law)
+domestic <- lm(data = df2, formula = vote ~ share_domestic + log(1+wealth_timevote)+ class + law)
+foreign <- lm(data = df2, formula = vote ~ share_foreign+ log(1+wealth_timevote) + class + law)
+domestic_bonds <- lm(df2, formula = vote ~ share_domestic:share_bonds+ log(1+wealth_timevote) + class + law)
+domestic_shares <- lm(df2, formula = vote ~ share_domestic:share_shares+ log(1+wealth_timevote) + class + law)
+all <- lm(df2, formula = vote ~ share_domestic + share_bonds + share_shares + share_re + share_domestic:share_shares + log(1+wealth_timevote) + class + law)
 
 
-secondorder <- list(re, foreign, shares, bonds, domestic, domestic_bonds, domestic_shares)
-
+secondorder <- list("(1)" = re, "(2)" = shares, "(3)" = bonds, "(4)" = domestic, 
+                    "(5)" = foreign, "(6)" = domestic_shares, "(7)" = domestic_bonds, 
+                    "(8)" = all)
 
 ## modelsummary settings
+coefconvert <- c("share_re" = "Real estate (%)",
+                 "share_shares" = "Shares (%)",
+                 "share_bonds" = "Bonds (%)",
+                 "share_domestic" = "Domestic Assets (%)",
+                 "share_foreign" = "Foreign Assets (%)",
+                 "share_domestic:share_shares" = "Domestic Shares (%)",
+                 "share_domestic:share_bonds" = "Domestic Bonds (%)"
+                 )
+
+description <- tribble(
+  ~term, ~model1, ~model2, ~model3, ~model4, ~model5, ~model6, ~model7, ~model8,
+  "Party + Law + Wealth Controls", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes"
+)
+
+attr(description, 'position') <- c(15,16,17)
+
+
+knitr::opts_current$set(label = "secondorder")
+modelsummary(secondorder, 
+             stars=TRUE, 
+             vcov = vcovHC,
+             notes = list("Heteroskedasticity-robust standard errors in parentheses.",
+                          "Results are for Lower House only. Vote is defined as 1 if the politician is in favor of the reform, 0 otherwise."),
+             coef_omit = "Intercept|class|law|log(1 + wealth_timevote)",
+             coef_map = coefconvert,
+             gof_map = gm,
+             out = "kableExtra",
+             add_rows = description,
+             output = "./tables/secondorder.tex",
+             title = "OLS Estimates of Portfolio Composition on the Propensity to Vote for Fiscal Reforms") %>%
+  kableExtra::kable_styling(latex_options = "hold_position",
+                            font_size = 9) 
 
 #saveRDS(secondorder, "./figures/second_order_regs.RDS")
+
+
+### selection bias
+
+#### first, selection bias for voting (easiest to do)
+selbi <- df %>%
+  filter(house == "Tweede Kamer") %>%
+  mutate(found = if_else(is.na(re), 0, 1),
+         tenure = tenure/10000,
+         age_of_vote = age_of_vote/365)
+  
+model1 <- lm(data = selbi, 
+             formula = found ~ class + law)
+
+model2 <- lm(data = selbi, found ~ tenure)
+model3 <- update(model2, . ~ . + age_of_vote)
+model4 <- lm(data = selbi, found ~ vote)
+
+selection_models <- list("(1)" = model1,
+                         "(2)" = model2,
+                         "(3)" = model3,
+                         "(4)" = model4)
+
+modelsummary(selection_models, 
+             stars = TRUE, 
+             vcov = vcovHC)
 
