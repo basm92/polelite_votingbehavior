@@ -713,24 +713,62 @@ modelsummary(secondorder,
 
 #### first, selection bias for voting (easiest to do)
 selbi <- df %>%
-  filter(house == "Tweede Kamer") %>%
+  filter(house == "Tweede Kamer", class != "neutral") %>%
   mutate(found = if_else(is.na(re), 0, 1),
-         tenure = tenure/10000,
-         age_of_vote = age_of_vote/365)
+         tenure = tenure/365,
+         age_of_vote = age_of_vote/365,
+         age_of_death = age_of_death/365,
+         age_of_entrance = age_of_entrance/365)
   
 model1 <- lm(data = selbi, 
              formula = found ~ class + law)
-
-model2 <- lm(data = selbi, found ~ tenure)
+model2 <- update(model1, . ~ . + vote)
 model3 <- update(model2, . ~ . + age_of_vote)
-model4 <- lm(data = selbi, found ~ vote)
+model4 <- update(model3, . ~ . + age_of_death)
+model5 <- update(model4, . ~ . + age_of_entrance)
+model6 <- update(model5, . ~ . + long_elec_horiz)
+model7 <- update(model6, . ~ . + rk_pct)
+model8 <- update(model7, . ~ . + industry_share)
+model9 <- update(model8, . ~ . + turnout)
+model10 <- update(model9, . ~ . + ncm)
 
-selection_models <- list("(1)" = model1,
+selection_models<- list("(1)" = model1,
                          "(2)" = model2,
                          "(3)" = model3,
-                         "(4)" = model4)
+                         "(4)" = model4,
+                         "(5)" = model5,
+                         "(6)" = model6,
+                         "(7)" = model7,
+                         "(8)" = model8,
+                         "(9)" = model9,
+                         "(10)" = model10)
 
-modelsummary(selection_models, 
-             stars = TRUE, 
-             vcov = vcovHC)
+library(coefplot)
+plot1 <- coefplot(model10, 
+         xlab = "Point Estimate",
+         ylab = "Variable",
+         title = NULL,
+         color = "black",
+         intercept = FALSE,
+         coefficients = c("ncm", "turnout", "industry_share", "rk_pct", "long_elec_horiz",
+                           "age_of_entrance", "age_of_death", "age_of_vote", "vote"),
+         #newNames = c("ncm" = "Nearest Competitor Margin"),
+         pointSize = 3) + theme_bw() 
 
+plot2 <- coefplot(model10, 
+                  xlab = "Point Estimate",
+                  ylab = "Variable",
+                  title = NULL,
+                  color = "black",
+                  intercept = FALSE,
+                  coefficients = c("lawSuccessiewet 1916", "lawSuccessiewet 1911",
+                                   "lawSuccessiewet 1878", "lawSuccessiewet 1914",
+                                   "lawInkomstenbelasting 1914", "lawStaatsschuldwet 1914",
+                                   "classsocialist", "classliberal"),
+                  #newNames = c("ncm" = "Nearest Competitor Margin"),
+                  pointSize = 3) + theme_bw() + labs(caption = "Reference categories: Confessional Politicians, Inkomstenbelasting 1914")
+
+library(cowplot)
+test <- cowplot::plot_grid(plot1, plot2, rel_widths = c(1,1.2))
+
+cowplot::save_plot(plot=test, filename= "test.pdf")
