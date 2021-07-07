@@ -54,53 +54,63 @@ descr_tk <- data %>%
 
 ## Regression - baseline
 
-model_begin <- lm(data = data,
-                  formula = vote ~ log(1 + wealth_timevote))
-model0 <- lm(data = data,
-             formula = vote ~ log(1+wealth_timevote) + class)
 model1 <- lm(data = data %>%
-                 filter(house == "Tweede Kamer"),
+                 filter(house == "Tweede Kamer") %>%
+                 mutate(tenure = tenure/365),
              formula = vote ~ log(1+wealth_timevote) + class + law)
 
-stargazer(model_begin, model0, model1,
-          covariate.labels = c("Wealth"),
-          dep.var.labels = "Vote",
-          omit = c("law", "class"),
-          omit.stat = c("adj.rsq", "ser","f"),
-          add.lines = list(c("Controls", "None", "Party", "Party+Law")
-          ),
-#          notes.append = T,
-#          notes = c("Robust standard errors in parentheses"),
-          header = F,
-#          font.size = "tiny",
-          column.sep.width = "1pt",
-          title = "Baseline regressions")
 
 ## More extensive analysis
-model3 <- lm(data = data,
-             formula = vote ~ log(1+wealth_timevote) + class + law + strikes)
-model4 <- lm(data = data,
-             formula = vote ~ log(1+wealth_timevote) + class + law + strikes + rk_pct)
-model5 <- lm(data = data,
-             formula = vote ~ log(1+wealth_timevote) + class + 
-                 law + strikes + rk_pct + agricul_share)
-model6 <- lm(data = data,
-                       formula = vote ~ log(1+wealth_timevote) + class + law + 
-                 strikes + rk_pct + agricul_share + ncm)
+model2 <- update(model1, . ~ . + strikes)
+model3 <- update(model2, . ~ . + rk_pct)
+model4 <- update(model3, . ~ . + industry_share)
+model5 <- update(model3, . ~ . + tvs)
+model6 <- update(model5, . ~ . + turnout)
+model7 <- update(model6, . ~ . + tenure)
 
-#elect_law_res_tk <- list(model3, model4, model5, model6)
+electorallaw_ols <- list("(1)" = model1, 
+                         "(2)" = model2, 
+                         "(3)" = model3, 
+                         "(4)" = model4, 
+                         "(5)" = model5, 
+                         "(6)" = model6, 
+                         "(7)" = model7)
+
 #saveRDS(elect_law_res_tk, "./figures/electoral_law_regressions.RDS")
+gm <- tibble::tribble(
+    ~raw,        ~clean,          ~fmt,
+    "nobs",      "N",             0,
+    "adj.r.squared","Adj. R2", 2)
 
-stargazer(model3, model4, model5, model6,
-          covariate.labels = c("Wealth"),
-          dep.var.labels = "Vote",
-          omit = c("law", "class", "strikes", "rk_pct", "agricul_share", "ncm"),
-          omit.stat = c("adj.rsq", "ser","f"),
-          add.lines = list(c("Controls", "Strikes", "1+Religion", "2+Economy", "3+Electoral")
-          ),
-          #          notes.append = T,
-          #          notes = c("Robust standard errors in parentheses"),
-          header = F,
-          #          font.size = "tiny",
-          column.sep.width = "1pt",
-          title = "Controls included")
+
+description <- tribble(
+    ~term, ~model1, ~model2, ~model3, ~model4, ~model5, ~model6, ~model7,
+    "Party + Law Controls", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes")
+attr(description, 'position') <- c(15, 16, 17)
+
+coefconvert <- c("log(1 + wealth_timevote)" = "Personal Wealth",
+                 "log(1 + wealth_timevote):harnasTRUE" = "Wealth x Died Within 2 Years",
+                 "strikes" = "Amount of Strikes",
+                 "rk_pct" = "% Catholics in district",
+                 "industry_share" = "Share Industrial",
+                 "tvs" = "Vote Share (% Total)",
+                 "turnout" = "Electoral Turnout (%)",
+                 "tenure" = "Tenure"
+)
+
+modelsummary(electorallaw_ols, 
+             stars=TRUE, 
+             vcov = vcovHC,
+             gof_map = gm,
+             coef_map = coefconvert,
+             coef_omit = "Intercept|law|class",
+             out = "kableExtra",
+             add_rows = description,
+             output = "./tables/electorallaw_ols.tex",
+             title = "OLS Estimates of Wealth on the Propensity to Vote for Suffrage Expansion",
+             notes = list("Heteroskedasticity-robust standard errors in parenthesis. Results for lower house voting outcomes.",
+                          "Personal Wealth is defined as log(1+Wealth at Death).",
+                          "Vote is defined as 1 if the politician is in favor of the reform, 0 otherwise."
+             )) %>%
+    kableExtra::kable_styling(latex_options = "hold_position",
+                              font_size = 9) 

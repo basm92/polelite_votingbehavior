@@ -421,7 +421,7 @@ ivdata %>%
 #ivreg - baseline with profdummy3
 baseline <- ivreg(data = ivdata %>%
                     mutate(#wealth_timevote = wealth_timevote / 100000,
-                           tenure = tenure/10000), 
+                           tenure = tenure/365), 
                   formula = vote ~ log(1+wealth_timevote) + class + law | profdummy3 + class + law)
 
 # All models
@@ -565,12 +565,11 @@ modelsummary(ivresults,
 
 
 
-## again different baseline (hisclass, other profdummy3)
+## again different baseline (hisclass, other profdummy1)
 
 baseline <- ivreg(data = ivdata %>%
-                    mutate(#wealth_timevote = wealth_timevote / 100000,
-                      tenure = tenure/10000), 
-                  formula = vote ~ log(1+wealth_timevote) + class + law | profdummy3 + class + law)
+                    mutate(tenure = tenure/10000), 
+                  formula = vote ~ log(1+wealth_timevote) + class + law | profdummy1 + class + law)
 
 # All models
 model2 <- update(baseline, . ~ . + strikes | . + strikes) 
@@ -619,7 +618,7 @@ description <- tribble(
 
 attr(description, 'position') <- c(15,16,17)
 
-knitr::opts_current$set(label = "ivresults")
+knitr::opts_current$set(label = "ivresults_profdummy1")
 modelsummary(ivresults, 
              stars=TRUE, 
              vcov = "HC0",
@@ -628,7 +627,7 @@ modelsummary(ivresults,
              coef_omit = "Intercept|law|class",
              out = "kableExtra",
              add_rows = description,
-             output = "./tables/iv_results_profdummy3.tex",
+             output = "./tables/iv_results_profdummy1.tex",
              title = "IV Estimates of Wealth on the Propensity to Vote for Fiscal Reforms",
              notes = list("Heteroskedasticity-robust standard errors in parenthesis. Results for lower house voting outcomes.",
                           "Personal Wealth is defined as log(1+Wealth at Death), and instrumented by Hisclass.",
@@ -637,19 +636,145 @@ modelsummary(ivresults,
   kableExtra::kable_styling(latex_options = "hold_position",
                             font_size = 9) 
 
-# other iv models
+# other iv models (1)
+baseline <- ivreg(data = ivdata %>%
+                    mutate(tenure = tenure/365,
+                           age_of_death = age_of_death/365,
+                           age_of_entrance = age_of_entrance/365,
+                           long_elec_horiz = long_elec_horiz/365,
+                           age_of_vote = age_of_vote/365), 
+                  formula = vote ~ log(1+wealth_timevote) + class + law | profdummy3 + class + law)
 
-model6 <- update(baseline, . ~ . + class + law | . + class + law)
-model7 <- update(model6, . ~ . + tenure | . + tenure)
-model8 <- update(model7, . ~ . + age_of_vote | . + age_of_vote)
-model9 <- update(model8, . ~ . + age_of_entrance | . + age_of_entrance)
-model10 <- update(model5, . ~ . + strikes | . + strikes) 
-model11 <- update(model6, . ~ . + rk_pct | . + rk_pct)
-model12 <- update(model7, . ~ . + agricul_share | . + agricul_share)
-model13 <- update(baseline, . ~ . + law + age_of_vote | . + law + age_of_vote)
-model14 <- update(model13 , . ~ . + turnout | . + turnout)
-model15 <- update(model14, . ~ . + hervormd_pct | . + hervormd_pct)
-model16 <- update(model15, . ~ . + industry_share | . + industry_share)
+model7 <- update(baseline, . ~ . + age_of_vote | . + age_of_vote)
+model8 <- update(model7, . ~ . + age_of_entrance | . + age_of_entrance)
+model9 <- update(model8, . ~ . + age_of_death | . + age_of_death)
+model10 <- update(model9, .~ . + long_elec_horiz | . + long_elec_horiz)
+model11 <- update(model10, . ~ . + strikes | . + strikes) 
+model12 <- update(model11, . ~ . + rk_pct | . + rk_pct)
+
+othermodels1 <- list("(1)" = baseline,
+                    "(2)" = model7,
+                    "(3)" = model8,
+                    "(4)" = model9,
+                    "(5)" = model10,
+                    "(6)" = model11,
+                    "(7)" = model12)
+
+# other iv models (2)
+model13 <- update(baseline, . ~ . + agricul_share | . + agricul_share)
+model14 <- update(baseline, . ~ . + industry_share | . + industry_share)
+model15 <- update(baseline, . ~ . + hervormd_pct | . + hervormd_pct)
+model16 <- update(model15, . ~ . + ncm | . + ncm)
+model17 <- update(model16 , . ~ . + turnout | . + turnout)
+model18 <- update(model17, . ~ . + tvs | . + tvs)
+model19 <- update(model18, . ~ . + socialistpercentage | . + socialistpercentage)
+
+othermodels2 <- list("(1)" = baseline,
+                     "(2)" = model13,
+                     "(3)" = model14,
+                     "(4)" = model15,
+                     "(5)" = model17,
+                     "(6)" = model18,
+                     "(7)" = model19)
+
+### Now make tables for both of them
+#### First, the first :)
+
+fstats <- othermodels1 %>%
+  map_dbl(.f = ~ summary(.x) %>%
+            .$diagnostics %>%
+            .[1,3]) %>%
+  round(2) %>%
+  as.character()
+
+pvals <- othermodels1 %>%
+  map_dbl(.f = ~ summary(.x) %>%
+            .$diagnostics %>%
+            .[1,4])
+
+coefconvert <- c("log(1 + wealth_timevote)" = "Personal Wealth",
+                 "age_of_vote" = "Age (Time of Vote)",
+                 "age_of_entrance" = "Age (Time of Entry)",
+                 "age_of_death" = "Age of Death",
+                 "long_elec_horiz" = "Time to Retirement",
+                 "strikes" = "Amount of Strikes",
+                 "rk_pct" = "% Catholics in district"
+)
+
+description <- tribble(
+  ~term, ~model1, ~model2, ~model3, ~model4, ~model5, ~model6, ~model7,
+  "Party + Law Controls", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes",
+  "F-Stat. First stage", fstats[1], fstats[2], fstats[3], fstats[4], fstats[5], fstats[6], fstats[7])
+
+attr(description, 'position') <- c(15,16,17)
+
+knitr::opts_current$set(label = "ivresults_othermodels1")
+modelsummary(othermodels1, 
+             stars=TRUE, 
+             vcov = "HC0",
+             gof_map = gm,
+             coef_map = coefconvert,
+             coef_omit = "Intercept|law|class",
+             out = "kableExtra",
+             add_rows = description,
+             output = "./tables/iv_results_othermodels1.tex",
+             title = "IV Estimates of Wealth on the Propensity to Vote for Fiscal Reforms",
+             notes = list("Heteroskedasticity-robust standard errors in parenthesis. Results for lower house voting outcomes.",
+                          "Personal Wealth is defined as log(1+Wealth at Death), and instrumented by Fathers profession.",
+                          "Vote is defined as 1 if the politician is in favor of the reform, 0 otherwise."
+             )) %>%
+  kableExtra::kable_styling(latex_options = "hold_position",
+                            font_size = 9) 
+
+
+#### Now the second one
+
+fstats <- othermodels2 %>%
+  map_dbl(.f = ~ summary(.x) %>%
+            .$diagnostics %>%
+            .[1,3]) %>%
+  round(2) %>%
+  as.character()
+
+pvals <- othermodels2 %>%
+  map_dbl(.f = ~ summary(.x) %>%
+            .$diagnostics %>%
+            .[1,4])
+
+coefconvert <- c("log(1 + wealth_timevote)" = "Personal Wealth",
+                 "agricul_share" = "% of District in Agriculture",
+                 "industry_share" = "% of District in Industry",
+                 "hervormd_pct" = "% Dutch Reformed in District",
+                 "ncm" = "Nearest Competitor Margin (%)",
+                 "turnout" = "Electoral Turnout Latest Election (%)",
+                 "tvs" = "Total Vote Share (%)",
+                 "socialistpercentage" = "% Socialist Vote in District"
+)
+
+description <- tribble(
+  ~term, ~model1, ~model2, ~model3, ~model4, ~model5, ~model6, ~model7,
+  "Party + Law Controls", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes",
+  "F-Stat. First stage", fstats[1], fstats[2], fstats[3], fstats[4], fstats[5], fstats[6], fstats[7])
+
+attr(description, 'position') <- c(17,18,19)
+
+knitr::opts_current$set(label = "ivresults_othermodels2")
+modelsummary(othermodels2, 
+             stars=TRUE, 
+             vcov = "HC0",
+             gof_map = gm,
+             coef_map = coefconvert,
+             coef_omit = "Intercept|law|class",
+             out = "kableExtra",
+             add_rows = description,
+             output = "./tables/iv_results_othermodels2.tex",
+             title = "IV Estimates of Wealth on the Propensity to Vote for Fiscal Reforms",
+             notes = list("Heteroskedasticity-robust standard errors in parenthesis. Results for lower house voting outcomes.",
+                          "Personal Wealth is defined as log(1+Wealth at Death), and instrumented by Fathers profession.",
+                          "Vote is defined as 1 if the politician is in favor of the reform, 0 otherwise."
+             )) %>%
+  kableExtra::kable_styling(latex_options = "hold_position",
+                            font_size = 9) 
 
 
 ### Analysis: Second order effects
@@ -804,3 +929,65 @@ plotje <- cowplot::plot_grid(title, plotje,
                    rel_heights = c(0.1, 1))
 
 cowplot::save_plot(filename = "./figures/selection_bias.pdf", plot = plotje, base_width = 10, base_height = 6)
+
+
+### Robustness checks - only in first world war
+
+
+#### ols 
+df2 <- df %>%
+  filter(law == "Inkomstenbelasting 1914" | law == "Staatsschuldwet 1914" | law == "Successiewet 1916")
+
+coefconvert <- c("log(1 + wealth_timevote)" = "Personal Wealth",
+                 "strikes" = "Amount of Strikes",
+                 "rk_pct" = "% Catholics in district",
+                 "industry_share" = "Share Industrial",
+                 "tvs" = "Vote Share (% Total)",
+                 "socialistdum1" = "Competed Against Socialist",
+                 "tenure" = "Tenure"
+)
+
+description <- tribble(
+  ~term, ~model1, ~model2, ~model3, ~model4, ~model5, ~model6, ~model7,
+  "Party + Law Controls", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes")
+attr(description, 'position') <- c(15,16,17)
+
+#### Tweede Kamer
+baseline <- lm(data = df2 %>%
+                 filter(house == "Tweede Kamer"),
+               formula = vote ~ log(1+wealth_timevote) + law + class)
+
+model1 <- update(baseline, . ~ . + strikes) 
+model2 <- update(model1, . ~ . + rk_pct)
+model3 <- update(model2, . ~ . + industry_share)
+model4 <- update(model2, . ~ . + tvs)
+model5 <- update(model4, . ~ . + socialistdum)
+model6 <- update(model5, . ~ . + tenure)
+
+tk_fullctrls <- list("(1)" = baseline, 
+                     "(2)" = model1, 
+                     "(3)" = model2, 
+                     "(4)" = model3, 
+                     "(5)" = model4,
+                     "(6)" = model5,
+                     "(7)" = model6)
+
+knitr::opts_current$set(label = "robust_firstww_ols")
+
+modelsummary(tk_fullctrls, 
+             stars=TRUE, 
+             vcov = "HC1",
+             gof_map = gm,
+             coef_map = coefconvert,
+             coef_omit = "Intercept|law|class",
+             out = "kableExtra",
+             add_rows = description,
+             output = "./tables/robust_firstww_ols.tex",
+             title = "OLS Estimates of Wealth on the Propensity to Vote for Fiscal Reforms - World War I",
+             notes = list("Heteroskedasticity-robust standard errors in parenthesis. Results for lower house voting outcomes.",
+                          "Personal Wealth is defined as log(1+Wealth at Death).",
+                          "Vote is defined as 1 if the politician is in favor of the reform, 0 otherwise."
+             )) %>%
+  kableExtra::kable_styling(latex_options = "hold_position",
+                            font_size = 9) 
+

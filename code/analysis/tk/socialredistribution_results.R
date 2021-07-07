@@ -23,7 +23,8 @@ data <- data %>%
 
 ## save laws
 #list_of_laws_social <- data %>%
-    distinct(law) 
+data$law %>%
+    unique()
 
 #saveRDS(list_of_laws_social, "./figures/list_of_laws_social.RDS")
 ## Descriptive Statistics
@@ -46,54 +47,62 @@ descr_tk <- data %>%
 
 ## Regression - baseline
 
-model_begin <- lm(data = data,
-                  formula = vote ~ log(1 + wealth_timevote))
-model0 <- lm(data = data,
-             formula = vote ~ log(1+wealth_timevote) + class)
-model1 <- lm(data = data %>%
-                 filter(house == "Tweede Kamer"),
-             formula = vote ~ log(1+wealth_timevote) + class + law)
+#### Tweede Kamer
+baseline <- lm(data = data%>%
+                   filter(house == "Tweede Kamer"),
+               formula = vote ~ log(1+wealth_timevote) +law + class)
 
-stargazer(model_begin, model0, model1,
-          covariate.labels = c("Wealth"),
-          dep.var.labels = "Vote",
-          omit = c("law", "class"),
-          omit.stat = c("adj.rsq", "ser","f"),
-          add.lines = list(c("Controls", "None", "Party", "Party+Law")
-          ),
-          #          notes.append = T,
-          #          notes = c("Robust standard errors in parentheses"),
-          header = F,
-          #          font.size = "tiny",
-          column.sep.width = "1pt",
-          title = "Baseline regressions")
+model1 <- update(baseline, . ~ . + strikes) 
+model2 <- update(model1, . ~ . + rk_pct)
+model3 <- update(model2, . ~ . + industry_share)
+model4 <- update(model2, . ~ . + tvs)
+model5 <- update(model4, . ~ . + socialistdum)
+model6 <- update(model5, . ~ . + tenure)
 
-## More extensive analysis
-model3 <- lm(data = data,
-             formula = vote ~ log(1+wealth_timevote) + class + law + strikes)
-model4 <- lm(data = data,
-             formula = vote ~ log(1+wealth_timevote) + class + law + strikes + rk_pct)
-model5 <- lm(data = data,
-             formula = vote ~ log(1+wealth_timevote) + class + 
-                 law + strikes + rk_pct + agricul_share)
-model6 <- lm(data = data,
-             formula = vote ~ log(1+wealth_timevote) + class + law + 
-                 strikes + rk_pct + agricul_share + ncm)
+tk_fullctrls <- list("(1)" = baseline, 
+                     "(2)" = model1, 
+                     "(3)" = model2, 
+                     "(4)" = model3, 
+                     "(5)" = model4,
+                     "(6)" = model5,
+                     "(7)" = model6)
 
-#presdata <- list(model3, model4, model5, model6)
-#saveRDS(presdata, "./figures/social_redistribution_regressions.RDS")
+gm <- tibble::tribble(
+    ~raw,        ~clean,          ~fmt,
+    "nobs",      "N",             0,
+    "adj.r.squared","Adj. R2", 2)
 
-stargazer(model3, model4, model5, model6,
-          covariate.labels = c("Wealth"),
-          dep.var.labels = "Vote",
-          omit = c("law", "class", "strikes", "rk_pct", "agricul_share", "ncm"),
-          omit.stat = c("adj.rsq", "ser","f"),
-          add.lines = list(c("Controls", "Strikes", "1+Religion", "2+Economy", "3+Electoral"),
-                           c("House", "TK", "TK", "TK", "TK")
-          ),
-          #          notes.append = T,
-          #          notes = c("Robust standard errors in parentheses"),
-          header = F,
-          #          font.size = "tiny",
-          column.sep.width = "1pt",
-          title = "Controls included")
+coefconvert <- c("log(1 + wealth_timevote)" = "Personal Wealth",
+                 "strikes" = "Amount of Strikes",
+                 "rk_pct" = "% Catholics in district",
+                 "industry_share" = "Share Industrial",
+                 "tvs" = "Vote Share (% Total)",
+                 "socialistdum1" = "Competed Against Socialist",
+                 "tenure" = "Tenure"
+)
+
+description <- tribble(
+    ~term, ~model1, ~model2, ~model3, ~model4, ~model5, ~model6, ~model7,
+    "Party + Law Controls", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes")
+attr(description, 'position') <- c(15,16,17)
+
+knitr::opts_current$set(label = "socialred_ols")
+
+modelsummary(tk_fullctrls, 
+             stars=TRUE, 
+             vcov = vcovHC,
+             gof_map = gm,
+             coef_map = coefconvert,
+             coef_omit = "Intercept|law|class",
+             out = "kableExtra",
+             add_rows = description,
+             output = "./tables/socialred_ols.tex",
+             title = "OLS Estimates of Wealth on the Propensity to Vote for Social Redistribution - Controls",
+             notes = list("Heteroskedasticity-robust standard errors in parenthesis. Results for lower house voting outcomes.",
+                          "Personal Wealth is defined as log(1+Wealth at Death).",
+                          "Vote is defined as 1 if the politician is in favor of the reform, 0 otherwise."
+             )) %>%
+    kableExtra::kable_styling(latex_options = "hold_position",
+                              font_size = 9) 
+
+
