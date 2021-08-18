@@ -47,27 +47,45 @@ descr <- list(descr_ek, descr_tk)
 #saveRDS(descr, "./figures/descr.RDS")
 
 ### Table on voting behavior
+### Create impact of each law, and merge it with the dataframe data that we create here:
+impact <- data.frame(law = c(
+  "Successiewet 1878","Inkomstenbelasting 1893",
+  "Successiewet 1911","Staatsschuldwet 1914",
+  "Inkomstenbelasting 1914", "Successiewet 1916",
+  "Successiewet 1921"), 
+  impact = c("1%", "1.6% - 2.65%",
+             "2%", "0",
+             "1.9% - 3.55%", "5%",
+             "7%"))
+
+hihi <- df %>%
+  filter(class != "neutral",
+         !is.na(class)) %>%
+  select(vote, law, house, class) %>%
+  mutate(law = factor(law, 
+                      levels = c(
+                        "Successiewet 1878","Inkomstenbelasting 1893",
+                        "Successiewet 1911","Staatsschuldwet 1914",
+                        "Inkomstenbelasting 1914", "Successiewet 1916",
+                        "Successiewet 1921")
+  )
+  ) %>%
+  left_join(impact)
+
 knitr::opts_current$set(label = "votespercentage")
-datasummary(data = df %>%
-              filter(class != "neutral",
-                     !is.na(class)) %>%
-              select(vote, law, house, class) %>%
-              mutate(law = factor(law, 
-                                  levels = c(
-                                    "Successiewet 1878","Inkomstenbelasting 1893",
-                                    "Successiewet 1911","Staatsschuldwet 1914",
-                                    "Inkomstenbelasting 1914", "Successiewet 1916",
-                                    "Successiewet 1921")
-                                  )
-                     ),
-            law ~ vote * Mean * house * class,
+
+datasummary(data = hihi,
+            law*impact ~  vote * Mean * house * class * DropEmpty(),
             output = "./tables/votespercentage.tex",
             out = "kableExtra",
             title = "Votes in favor of Laws",
             notes = list(
+              "\\\\footnotesize{regime with a wealth of 100,000 1900 guilders.}",
+              "\\\\footnotesize{Impact calculated as one-off (Successiewet) or yearly (Inkomstenbelasting) expected payments in the standard}",
               "\\\\footnotesize{Percentage of upper house and lower house members having voted in favor of fiscal reforms.}"
             )) %>%
-  kableExtra::kable_styling(latex_options = "hold_position") 
+  kableExtra::kable_styling(latex_options = "hold_position",
+                            font_size = 10) 
 
 
 ## Baseline results (OLS)
@@ -933,7 +951,6 @@ cowplot::save_plot(filename = "./figures/selection_bias.pdf", plot = plotje, bas
 
 ### Robustness checks - only in first world war
 
-
 #### ols 
 df2 <- df %>%
   filter(law == "Inkomstenbelasting 1914" | law == "Staatsschuldwet 1914" | law == "Successiewet 1916")
@@ -991,3 +1008,8 @@ modelsummary(tk_fullctrls,
   kableExtra::kable_styling(latex_options = "hold_position",
                             font_size = 9) 
 
+#### Graph - effect sizes of ideology in OLS regressions
+
+#### Fiscal results OLS
+# To be found in tk_fullctrls
+# Social & Electoral - see later
