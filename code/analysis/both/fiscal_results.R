@@ -1,6 +1,7 @@
 # take the data file
 library(ivreg); library(modelsummary); 
-library(xtable) ; library(kableExtra)
+library(xtable) ; library(kableExtra); library(viridis)
+
 source("./code/data_treatment/data_treatment.R")
 
 ## This is the script for all the results in the paper
@@ -1011,5 +1012,54 @@ modelsummary(tk_fullctrls,
 #### Graph - effect sizes of ideology in OLS regressions
 
 #### Fiscal results OLS
-# To be found in tk_fullctrls
-# Social & Electoral - see later
+## To be found in tk_fullctrls
+## Social & Electoral - in RDS files
+electorallaw <- readRDS("./figures/electoral_law_regressions.RDS")
+socred <- readRDS("./figures/social_redistribution_regressions.RDS")
+
+soc <- purrr::map(socred, ~ broom::tidy(.x)) %>%
+  purrr::map( ~ .x %>%
+                filter(term == "(Intercept)" | term == "classsocialist" | term == "classliberal" | term == "classneutral")) %>%
+  purrr::reduce(bind_rows) %>%
+  group_by(term) %>%
+  summarize(mean_coef = mean(estimate), sd_coef = sd(estimate)) %>%
+  mutate(cat = "Social")
+
+elec <- purrr::map(electorallaw, ~ broom::tidy(.x)) %>%
+  purrr::map( ~ .x %>%
+                filter(term == "(Intercept)" | term == "classsocialist" | term == "classliberal" | term == "classneutral")) %>%
+  purrr::reduce(bind_rows) %>%
+  group_by(term) %>%
+  summarize(mean_coef = mean(estimate), sd_coef = sd(estimate)) %>%
+  mutate(cat = "Electoral")
+
+fisc <- purrr::map(tk_fullctrls, ~ broom::tidy(.x)) %>%
+  purrr::map( ~ .x %>%
+                filter(term == "(Intercept)" | term == "classsocialist" | term == "classliberal" | term == "classneutral")) %>%
+  purrr::reduce(bind_rows) %>%
+  group_by(term) %>%
+  summarize(mean_coef = mean(estimate), sd_coef = sd(estimate)) %>%
+  mutate(cat = "Fiscal")
+
+all <- bind_rows(soc, elec, fisc)
+
+
+## Graph with the coefficients and standard errors
+all %>%
+  mutate(term = recode(term, 
+                       "(Intercept)" = "Confessional",
+                       "classliberal" = "Liberal",
+                       "classsocialist" = "Socialist",
+                       "classneutral" = "Neutral")) %>%
+  ggplot(aes(x = cat, 
+             y = mean_coef,
+             ymin=mean_coef - 1.96*sd_coef, 
+             ymax = mean_coef + 1.96*sd_coef, 
+             fill = term)) + 
+  geom_bar(aes(y = mean_coef), stat="identity", position="dodge") + 
+  geom_errorbar(position = position_dodge(0.9), width = 0.4) + scale_fill_viridis("Party", discrete = TRUE) +
+  ggtitle("Coefficient Magnitudes on Ideology/Party in OLS Regressions") + 
+  ylab("Coefficient Size") + 
+  xlab("Category")
+
+                                                                                  

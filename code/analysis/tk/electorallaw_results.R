@@ -76,7 +76,9 @@ electorallaw_ols <- list("(1)" = model1,
                          "(6)" = model6, 
                          "(7)" = model7)
 
-#saveRDS(elect_law_res_tk, "./figures/electoral_law_regressions.RDS")
+# Save for the comparison of coefficients
+saveRDS(electorallaw_ols, "./figures/electoral_law_regressions.RDS")
+
 gm <- tibble::tribble(
     ~raw,        ~clean,          ~fmt,
     "nobs",      "N",             0,

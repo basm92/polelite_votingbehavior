@@ -59,13 +59,16 @@ model4 <- update(model2, . ~ . + tvs)
 model5 <- update(model4, . ~ . + socialistdum)
 model6 <- update(model5, . ~ . + tenure)
 
-tk_fullctrls <- list("(1)" = baseline, 
+socred_tk_fullctrls <- list("(1)" = baseline, 
                      "(2)" = model1, 
                      "(3)" = model2, 
                      "(4)" = model3, 
                      "(5)" = model4,
                      "(6)" = model5,
                      "(7)" = model6)
+
+# Save for the comparison of coefficients
+saveRDS(socred_tk_fullctrls, "./figures/social_redistribution_regressions.RDS")
 
 gm <- tibble::tribble(
     ~raw,        ~clean,          ~fmt,
@@ -88,7 +91,7 @@ attr(description, 'position') <- c(15,16,17)
 
 knitr::opts_current$set(label = "socialred_ols")
 
-modelsummary(tk_fullctrls, 
+modelsummary(socred_tk_fullctrls, 
              stars=TRUE, 
              vcov = vcovHC,
              gof_map = gm,
