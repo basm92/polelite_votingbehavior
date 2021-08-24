@@ -1,0 +1,187 @@
+---
+title: "Synopsis Paper II"
+author: "Bas Machielsen"
+date: "8/23/2021"
+fontsize: 8pt
+output: 
+  beamer_presentation:
+    includes:
+      in_header: preamble.tex
+classoption: "aspectratio=169"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+# Introduction
+
+## Transformation of European Politics
+
+One of the most important and influential developments in modern history has been the rise and gradual expansion of democratic governments in Western Europe. Over the course of the nineteenth century, many European countries adopted a parliamentary system, the rule of law, and implemented a separation of powers and accountable government. Additionally, arguably the most significant reforms have been the rise of suffrage and eligibility expansions, making the political arena accessible for virtually every citizen, and fiscal reforms encompassing taxation to help secure a small amount of unemployment insurance and pensions. By contrast, in the early 19th century, many (Western) European countries were virtually indistinguishable from autocracies, and were dominated by a small oligarchical elite around the autocrat, usually the king or emperor. 
+
+Yet, most of these countries embarked on a series of reforms that started with the establishment of parliamentary sovereignty and increasing its power vis-a-vis the autocrat, and culminated about a century later with universal suffrage. Simultaneously, and in face of changing economic circumstances, these states have also seen a transition from a minimalist government, occupying itself primarily with defense spending, to a government actively intervening in the lives of its citizens, for example, by securing unemployment benefits and pensions, and by actively levying taxation. Strikingly, despite all this, governments and parliaments were dominated by a small political elite for a long time, and remained far from reaching the proportion of present-day (post-WWII) welfare spending. Illustrative examples of this trajectory include Sweden, Germany, the United Kingdom and the Netherlands. 
+
+## What do we already know?
+
+This transition from autocracy to democracy has been widely studied in various disciplines. In particular, political scientists and economists have offered both theoretical and empirical explanations for why incumbent politicians in an oligarchic political system in which they stood to benefit would agree to potentially far-reaching reforms. Theoretically, various authors have pointed to factors as electoral expediency (Lizzeri and Persico, 2004; Aidt, Franck, and Dutta, 2010), the threat of revolution and mobilization (Acemoglu and Robinson, 2000), or strategic behavior and bargaining between various factors of the elite (Llavadar and Oxoby, 2005). Przeworski (2009), summarizing the literature up until then, largely agrees that suffrage was conquered rather than granted.
+
+The aforementioned largely theoretical work spawned many empirical studies incorporating some micro-level research (Ziblatt, 2008; Aidt and Jensen, 2014; Aidt and Franck, 2015), focusing on specific key episodes of democratization in particular countries and institutional settings (in case: analyzing several reforms in the United Kingdom) as well as macro-level research encompassing multiple countries (Dincecco, Federico and Vindigni, 2011; Aidt and Jensen, 2017), both of which have found evidence that threats of revolution and public activity played a significant role in extending the franchise. Other research has demonstrated that politicians embrace suffrage reform (e.g., Przeworski, 2008; Ziblatt, 2008) or introduce other important changes in the rules governing national elections (Capoccia, 2010b) when it is in their electoral or strategic interest in the short term. 
+
+## What do we already know? 
+
+Secondly, there has been an active literature explaining government size and taxation. Lindert (2003) contains a detailed study about spending patterns and democratization in European and North American states, and shows several findings hinting at a positive correlation between the two. On the macro-level, Dincecco (2011) conducts an empirical study about political transformations and public finances. Similarly, Aidt et al. (2010) and Chapman (2018) find that franchise extension is not associated with increased public spending. Corvalan et al. (2015) find that the extension of suffrage does not increase or decrease government size, when eligibility requirements are in place. They do find that removal of eligibility requirements, leads to the election of less wealthy politicians and the enactment of more redistributive policies in a sample of US states. 
+
+
+## Why Does Self-Interest Matter?
+
+The above discussion illustrates that, when looking at the politicians who decided upon the reforms, the theoretical and empirical consensus in economics and political science is that their behavior is characterized by the pursuit of self-interest which can be constrained in several ways, among which are electoral mechanisms such as expedience (public opinion), competition (threat of losing the elections), and many others. One possibly important factor, *financial* self-interest, the influence of politicians' personal wealth and riches, has been left out of the focus up until now. However, according to Clark (2012), European political elites were dominated by the same groups until several decades after the installment of parliamentary regimes. Furthermore, counting from the establishment of parliamentary regimes, it took most countries about a century to arrive at universal suffrage (Przeworski, 2009). Piketty (2014), Machielsen (xxxx) and other anecdotal evidence (Magraw, 1986 for France) also confirms that politicians were often extremely wealthy, belonging to the upper quantiles of the wealth distribution in their countries, and remained so for a significant time. In many countries, the nobility was overrepresented in parliamentary arenas (REF). Hence, the literature contains a paradox that has not been resolved so far: given that politicians approved these far-reaching reforms, to what extent were politicians' financial self-interests at play, and if yes, what constrained the self-interest of the political elite? 
+
+## Approach
+
+To answer these question, I turn to the case of the Netherlands. [Explain why it is a good case among all European countries.]
+
+As mentioned, the theoretical consensus in economics and political science is that politicians' behavior is characterized by the pursuit of self-interest, and that they need to be disciplined one way or another to refrain from pursuing their self-interests and to be responsive to their electorate. When investigating these reforms from the viewpoint of individual politicians.  But what is exactly the self-interest of politicians? In this paper, I employ arguably the most obvious proxy for a politician's self-interest: their personal wealth, and I analyze the influence of politicians' personal wealth, amidst many other factors suggested by competing theories, on the probability of acceptance in a host of fiscal reforms, suffrage extensions and government interventions. [Explain there is good data]
+
+Personal wealth might causally influence voting behavior because acceptance or rejection of reforms might influence politicians' future cash flows in various ways. To ensure a causal interpretation of the estimates, we employ several estimation procedures. In particular, we provide several instrumental variable (IV) estimates of personal wealth on the propensity to vote for reforms, instrumenting parental wealth by an indicator whether the politician's father was also politically active. I also rely on various other alternatives to limit the bias caused by endogeneity by relying on (plausibly exogenous) timing of death among politicians. 
+
+
+## Theory
+
+Systemic:
+
+- Electoral System
+    - Term limits
+    - Electoral Expedience (= Gain more votes)
+    - Competition
+- Media (Information) 
+    - (Enikolopov, Makarin, Petrova, 2020)
+    - (Acemoglu, Hassan, and Tahoun, 2017)
+- Threat of Revolution/Unrest
+- Disclosure
+
+Personal: 
+
+- Ideology
+- Wealth
+- Interest groups / Networks / Clan
+- Privilege 
+
+- This paper: analyzes to which extent and in which contexts these models are appropriate. 
+<!-- --> 
+
+Four important questions in the introduction:
+
+- Main research question: What motivates politicians?
+    - Self-interest vs. Ideology
+
+- Subquestion: What determines government size?
+    - Levels of taxation
+    - Public spending
+    - Government intervention
+
+- Subquestion: Why did countries transition from oligarchy to democracy?
+    - Pol. econ. literature identifies various factors (socialism, )
+    - Dutch historical literature: compromise
+
+## Introduction
+
+- Motivation of politicians:
+    - Constraints versus ideology: _People have different self-interests, and these are still the dominant force governing how people vote. (Lindert, 2003)_
+
+- Government size: 
+    - Analysis of tax hikes and government intervention sheds light on politicians' decisions
+    - Only in tax hikes self-interest plays a role
+    - Ideology plays a major role
+
+- Suffrage extensions
+    - Literature quantitatively investigating particular episodes of democratization at the microeconomic level (such as Capoccia and Ziblatt, 2010; Berlinski and Dewan, 2011; Aidt and Franck, 2019)
+    
+I answer these questions by means of the setting Netherlands 1870-1920. 
+
+## Why the Netherlands?
+
+
+
+## Implications
+
+What lessons can be learned from the results?
+
+- Ideology major driver of voting decisions
+
+- Direct proxy of self-interest applies only in certain cases
+
+- Influence on government size, economic development
+
+- View of agency problems in politics to be revised:
+
+If (as in Trebbi, Sufi, Mian, 2010): 
+
+$$
+U(p, W) =  (p - p_i^*)^2 + \beta \cdot f(P, W_i)
+$$
+
+Then the ideological-part of the utility function is more important. 
+
+- Several commonly-thought mechanisms to be discounted (little to no influence)
+
+## Implications
+
+
+My findings are consistent with Cappocia and Ziblatt (2010), who hold that "rather than class being the single variable that explains how and why democracy came about, scholars can see how religious conflict, ethnic cleavages, and the diffusion of ideas played a much greater role in Europe’s democratization than has typically been appreciated." 
+
+Furthermore, my findings pose a question to the theories that hold that the threat of revolution, or (peaceful) agitation, or even the electorate's preferences are responsible for incentivizing politicians to approve of suffrage reforms. In particular, it seems that ideology and expedience are the most important factors driving the democratization vote, coupled with the likely fact that politicians had nothing to lose in terms of personal wealth. Hence, the certain factors mentioned by theorists and other empiricists alike were not necessary for disciplining politicians into supporting suffrage reforms. The role of these factors is further made unclear by me showing that the system did allow them to pursue personal interests when they came into play - and that this was not prevented by several monitoring mechanisms.
+
+
+## What motivates politicians?
+
+Two perspectives in the literature: 
+
+- Historico-political: ideology, personal strife and chemistry
+
+    - Case of the Netherlands: consensus within, dissensus between
+    
+- Political economy: politicians are opportunistic agents who need to be constrained in their behavior
+
+
+
+
+## What motivates politicians?: Literature
+
+## What determines government size? 
+
+- Two dimensions of government size: 
+
+    - (i): taxation and public spending
+    - (ii): government intervention in markets
+    
+- Case of the Netherlands shows that these are not necessarily correlated: Netherlands 1870-1920 taxation and public spending remains very limited, whereas government intervention increases. 
+
+- Intervention in markets: from a minimalist state to a more interventionist state 
+    - Precursor of the welfare state
+
+## What determines government size?: Literature
+
+- Lindert: _Why so big? That is, why did social spending expand to claim over one- third of national product in so many countries?_
+
+- _Why was this rise so much greater in some countries than in others?_
+
+## Why did countries transition?
+
+- Political economy literature focuses on self-interested politicians
+
+    - Benefits: electoral position, averting revolution
+    
+    - Dutch historical literature: ideological compromise 
+    
+- My findings: suffrage expansion not costly for politicians (limited fiscal changes)
+
+## Why did countries transition?: Literature
+
+## Conclusion: Implications
+
+- Lindert: _Will today’s developing countries and transition economies go through the same history?_
+
+
+
+

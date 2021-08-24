@@ -1045,7 +1045,7 @@ all <- bind_rows(soc, elec, fisc)
 
 
 ## Graph with the coefficients and standard errors
-all %>%
+graphcoef <- all %>%
   mutate(term = recode(term, 
                        "(Intercept)" = "Confessional",
                        "classliberal" = "Liberal",
@@ -1062,4 +1062,5 @@ all %>%
   ylab("Coefficient Size") + 
   xlab("Category")
 
-                                                                                  
+ggsave(filename = "./figures/graph_coefficients.pdf", plot = graphcoef)
+                                                                                    
