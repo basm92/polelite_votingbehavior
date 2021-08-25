@@ -14,7 +14,7 @@ classoption: "aspectratio=169"
 knitr::opts_chunk$set(echo = FALSE)
 ```
 
-# Introduction
+# Chapter 1: Introduction
 
 ## Transformation of European Politics
 
@@ -32,10 +32,11 @@ The aforementioned largely theoretical work spawned many empirical studies incor
 
 Secondly, there has been an active literature explaining government size and taxation. Lindert (2003) contains a detailed study about spending patterns and democratization in European and North American states, and shows several findings hinting at a positive correlation between the two. On the macro-level, Dincecco (2011) conducts an empirical study about political transformations and public finances. Similarly, Aidt et al. (2010) and Chapman (2018) find that franchise extension is not associated with increased public spending. Corvalan et al. (2015) find that the extension of suffrage does not increase or decrease government size, when eligibility requirements are in place. They do find that removal of eligibility requirements, leads to the election of less wealthy politicians and the enactment of more redistributive policies in a sample of US states. 
 
-
 ## Why Does Self-Interest Matter?
 
-The above discussion illustrates that, when looking at the politicians who decided upon the reforms, the theoretical and empirical consensus in economics and political science is that their behavior is characterized by the pursuit of self-interest which can be constrained in several ways, among which are electoral mechanisms such as expedience (public opinion), competition (threat of losing the elections), and many others. One possibly important factor, *financial* self-interest, the influence of politicians' personal wealth and riches, has been left out of the focus up until now. However, according to Clark (2012), European political elites were dominated by the same groups until several decades after the installment of parliamentary regimes. Furthermore, counting from the establishment of parliamentary regimes, it took most countries about a century to arrive at universal suffrage (Przeworski, 2009). Piketty (2014), Machielsen (xxxx) and other anecdotal evidence (Magraw, 1986 for France) also confirms that politicians were often extremely wealthy, belonging to the upper quantiles of the wealth distribution in their countries, and remained so for a significant time. In many countries, the nobility was overrepresented in parliamentary arenas (REF). Hence, the literature contains a paradox that has not been resolved so far: given that politicians approved these far-reaching reforms, to what extent were politicians' financial self-interests at play, and if yes, what constrained the self-interest of the political elite? 
+The above discussion illustrates that, when looking at the politicians who decided upon the reforms, the theoretical and empirical consensus in economics and political science is that their behavior is characterized by the pursuit of self-interest. Several ways in which the behavior of politicians can be influenced involve _incentivizing_ their self-interest towards wanted behavior. The literature has identified various mechanisms such as expedience (public opinion), competition (threat of losing the elections), and many others. Each one of these mechanisms is paired with the assumption that politicians care about something, e.g. electoral mechanisms presuppose that politicians care about being elected. There are also many reasons to suppose that politicians care about their *financial* self-interest, which has been left out of the focus up until now, both theoretically and empirically. 
+
+According to Clark (2012), European political elites were dominated by the same groups until several decades after the installment of parliamentary regimes. Other authors (REF, REF and REF) also document the persistence of political elites, which even after parliamentary reforms remained dominated by a small class of individuals. Furthermore, counting from the establishment of parliamentary regimes, it took most countries about a century to arrive at universal suffrage (Przeworski, 2009). Piketty (2014), Machielsen (xxxx) and other anecdotal evidence (Magraw, 1986 for France) also confirms that politicians were often extremely wealthy, belonging to the upper quantiles of the wealth distribution in their countries, and remained so for a significant time. In many countries, the nobility was overrepresented in parliamentary arenas (REF). Hence, the literature contains a paradox that has not been resolved so far: given that politicians approved these far-reaching reforms, to what extent were politicians' financial self-interests at play, and if they were, what constrained the self-interest of the political elite? 
 
 ## Approach
 
@@ -44,6 +45,25 @@ To answer these question, I turn to the case of the Netherlands. [Explain why it
 As mentioned, the theoretical consensus in economics and political science is that politicians' behavior is characterized by the pursuit of self-interest, and that they need to be disciplined one way or another to refrain from pursuing their self-interests and to be responsive to their electorate. When investigating these reforms from the viewpoint of individual politicians.  But what is exactly the self-interest of politicians? In this paper, I employ arguably the most obvious proxy for a politician's self-interest: their personal wealth, and I analyze the influence of politicians' personal wealth, amidst many other factors suggested by competing theories, on the probability of acceptance in a host of fiscal reforms, suffrage extensions and government interventions. [Explain there is good data]
 
 Personal wealth might causally influence voting behavior because acceptance or rejection of reforms might influence politicians' future cash flows in various ways. To ensure a causal interpretation of the estimates, we employ several estimation procedures. In particular, we provide several instrumental variable (IV) estimates of personal wealth on the propensity to vote for reforms, instrumenting parental wealth by an indicator whether the politician's father was also politically active. I also rely on various other alternatives to limit the bias caused by endogeneity by relying on (plausibly exogenous) timing of death among politicians. 
+
+# Chapter 2: Key Laws in the Transition
+
+## Political Transition and Oligarchical System
+
+- Identification of Key Legislation: Electoral system, Govt Intervention, Fiscal Legislation
+
+- Why do these laws pick up the transformation in society, politics and economy?
+
+- How can these laws influence the (long-term or short-term) position of politicians?
+
+  - Explain how politicians can care about ideology and their own finances (and that of their children)
+  
+  - Then, explain how each of these laws influences worldview (ideology) and some of them also influence finances?
+  
+  - Within finance, make a distinction between direct effects (fiscal laws) and indirect effects. 
+  
+  - In this section: graph/table detailing the effect of the laws and calculations how, as well as theoretical/historical illustrations
+
 
 
 ## Theory
@@ -68,6 +88,8 @@ Personal:
 - Privilege 
 
 - This paper: analyzes to which extent and in which contexts these models are appropriate. 
+
+- Politicians were afraid of fictionalization but not of democratization - nothing to fear, but they were concerned about their own position (and that of their descendants)
 <!-- --> 
 
 Four important questions in the introduction:
