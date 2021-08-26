@@ -50,9 +50,101 @@ Personal wealth might causally influence voting behavior because acceptance or r
 
 ## Political Transition and Oligarchical System
 
-- Identification of Key Legislation: Electoral system, Govt Intervention, Fiscal Legislation
+To a large extent, the far-reaching changes across Europe in the nineteenth century can be characterized by three major trends: first, an increase in active suffrage, usually focusing on relaxing the requirements that granted individuals the right to vote. The diversification and broadening of the electorate also caused a shift in parliamentary composition: whereas parliaments were historically dominated by the nobility and circles close the autocrat, over time, parliaments become more diverse, but still dominated by a layer of legal specialists, theologians and other trained men. The key laws underlying these changes were implemented in a series of constitutional changes, which legitimized and implemented these expansions, and happened in the Netherlands in 1887, 1896, 1917 and 1918. It is also noteworthy that the trajectory did not happen without recoil: several law projects attempting to extend the franchise (in 1872 and 1896) were also rejected on various grounds. The consensus underlying these franchise extensions also varied from project to project, allowing for sufficient variation in voting behavior to be studied. 
 
-- Why do these laws pick up the transformation in society, politics and economy?
+Secondly, as documented by Lindert (1994), the general view of the state as a passive actor guaranteeing only the security of its citizens evolved into views that accorded the state a more interventionist role, although opinions about exactly how far that should go differed sharply. The responsibility for such a shift in attitudes across the continent lies with increasing social tension and poverty that came with industrialization. This initially prompted many parliaments to approve and oversee legislation prohibited child labor and establishing legal working hours. This served as a precedent for a more interventionist role of the state in markets and economic life of its citizens more generally: in the case of the Netherlands, the era of 1870 to 1920 is marked by several laws regulating education (1900), housing (1901), higher education (1904), labor contracts (1907), among others. Significantly, and in contrast to several other countries, the majority of these laws burdened not the state, but private actors such as employers with the execution (and financing) of these provisions, rather than the state. In the decade starting from 1910, some exceptions to the rule are laws attempting to instigate a state pension (1913, 1916), which were only executed later. 
+
+## Political Transition and Oligarchical System
+
+Thirdly, despite that most government intervention targeted to limit governmental transfers, government size steadily increased, reaching levels significantly higher than ever before in history, although not nearing the standards of present-day. Increased government spending was necessitated by several exogenous trends: the stalling of revenue from colonies necessitated higher domestic taxation to balance the budget, but the aforementioned expansion of the government into many areas of life also required funds. The tax system, based predominantly on excise duties and tariffs was also widely considered to be outdated. Finally, and most significantly, social tensions and perceived inequity were widespread, and arguably shifted the consensus towards acceptability of increasing taxation, sometimes even rendering taxation progressive.
+
+The most important developments in fiscal legislation include the creating and development of an income tax (1893 and 1914), which included a progressive tax rates. The 1914 hike in turn increased basic tariffs and progressivity. The other major source of tax revenue was inheritance taxation, which established a basic tax rate on inheritance to lineal descendants in 1878. The rates were increased in 1911, 1916, and 1921, but unlike the income tax, there was no progressivity. 
+
+## Impact on Ideology
+
+In the political economy literature (as in Trebbi, Sufi, Mian, 2010), politicians' preferences are usually modeled as a function of their ideal policy and some component that reflects self-interest. In this context, the acceptance of each of these laws can influence politicians' utility in two ways: it can influence the state of the world in such a way as to come either closer to their ideal state, $p^*_i \in [0,1]$, or farther. Secondly, political are supposed to care about their financial interests. Both considerations might lead them to decide upon accepting the laws according to: 
+
+$$
+U(p, W) =  -(p - p_i^*)^2 + \beta \cdot f(p, W_i)
+$$
+
+where $p \in \{0, 1 \}$ is the acceptance of the law, and $f(p, W_i)$ is a function representing the impact of the acceptance of the law on their own wealth $W_i$. A politician's $p^*_i$ may also be thought of as *ideology*, the way in which politicians value the state of affairs in the world.
+
+## Impact of Law on Ideology
+
+Laws can impact the state of affairs in the world in various ways. First, politicians might have preferences over social and societal outcomes that might be affected by the law. For example, politicians might be convinced that the particular government intervention increases equality and equity, helps poorer individuals in general, or helps a particular ethnic, religious or economic group (all of which they may or may not value). They might also think the opposite, meaning the law can potentially disadvantage certain groups, such as employers, employees, a certain demographic, etc., all of which they might again value or disvalue according to their worldview. 
+
+Keeping their moral values and preferences over social outcomes fixed, politicians might also not be convinced that the law in question solves the problem it attempts to solve, or indeed creates additional problems outweighing the initial problem. For this reason, their preferred outcome for such a law would be $p^*_i = 0$. Furthermore, some politicians might be ideologically in favor of free markets, and any government intervention can be thought of as bringing disutility to this group of politicians, which would be reflected in $p^*_i = 1$. 
+
+It is also known that some socialists thought that government intervention did not go far enough, or that some conservatives thought that it went too far. This can be reflected in a $p^*_i \in (0, 1)$, meaning that they suffer utility loss from a law that is less than somebody who is absolutely against it if accepted or absolutely in favor of it when rejected. Finally, politicians' might also feel animosity or hostility towards a particular colleague, leading them to prefer the law to be rejected, despite any eventual merits the law might have. 
+
+## Impact of Law on Ideology: Gov't Intervention, Fiscal Legislation, Suffrage Extension
+
+In this subsection, I explain the possible channels through which the three categories of laws, government intervention, suffrage expansion and fiscal legislation, can influence a particular politician's $p^*_i$,
+
+- Government intervention: Government intervention encompasses intervening in markets that were otherwise untouched. They represent many of the special cases touches upon above. For example, the compulsory education laws in 1901 likely increased equality and equity, the 1874 law regulating child labor helped children and the poor more generally, and the law regulating strikes (1903) might have solved one problem (strikes) but caused another (more revolutionary potential) according to at least some politicians. Similarly, the 1901 housing law might have disproportionately concerned particular groups (workers), and laws regulating labor contracts (1907) and offering protection to workers might or might not have had the intended effects (securing the position of workers vs. creating unemployment), depending on the politician's ideology. 
+
+- Fiscal legislation: apart from personal financial gain, which the next session will address, fiscal laws might bring more equity and equality into the world, which politicians might value or disvalue. Fiscal legislation also increases government size. Furthermore, taxation can involve a societal dead-weight loss, which might lead some politicians to weigh this against the potential societal benefits. 
+
+- Suffrage extensions: suffrage extensions might again increase equality and equity, or the opposite, depending on the ideological viewpoint. Suffrage extensions might also represent a shock to expectations about future governments, parliaments and corresponding future laws and future states of the world, which politicians might anticipate and factor in their decisions. 
+
+## Impact on Personal Wealth: Gov't Intervention, Suffrage Extension
+
+There are also direct and indirect ways in which accepted legislation can directly influence a politician's wealth.
+
+- Government intervention: government intervention not concerning the government budget may influence politicians' wealth indirectly in ways dependent on the specific law: laws regulating labor (e.g. labor accident law 1901; labor contract law, 1907; sick leave law, 1913) might influence the wealth of politicians who own firms or shares, who might have a lower profit rate. Similarly, the 1901 housing law might have lead to increased municipality-level taxes, and might have lead to decreased equilibrium rent payments (the effect of which is positive/negative depending on the real estate holdings of the politician) because of increased housing supply. More indirectly, The anti-striking laws of 1904 might have reduced the amount of strikes, decrease the loss of firms, and increase the wealth of shareholders. The compulsory education law (1900) might have increased wages and decreased profits due to increased scarcity of labor. 
+
+- Suffrage extensions: directly, franchise extensions might increase competition, and hence decrease the likelihood of them being able to stay in politics, which might reduce their rents and employment prospects. Indirectly, it might represent a shock to expectations about future governments and parliaments, which might influence future fiscal policy. Politicians might anticipate this when deciding whether to vote in favor of a suffrage extension. 
+
+## Impact on Personal Wealth: Fiscal Legislation
+
+- The impact of fiscal legislation on politician's wealth is most obvious: in case of an increase in taxation, the expected costs $C_i$ for a politician as a function of their income (income tax Inc) or wealth (inheritance tax Inh) can be approximated: 
+
+$$
+C^{\text{Inc}}_i = \sum_{t = 0}^{T}\frac{\tau_i \cdot Y_{it}}{(1+r)^t}  \text{ and } C^{\text{Inh}}_i = \frac{\gamma \cdot W_i}{(1+r)^T}
+$$
+
+where $\tau_i$ and $\gamma$ are the income-dependent (progressive) tariff and inheritance tariff for politician $i$, $Y_{it}$ is their income and wealth respectively, $T$ is the expected lifespan from the time of acceptance of the law, and $r$ is an exogenous interest rate. 
+
+- [Do this calculation with a few numbers and stress that wealthier politicians pay more]
+
+- [Stress that wealthier politicians are less inclined to vote "no" when maximizing their utility]
+
+- [Stress that acceptance of taxation also creates public goods, which benefits politicians, but unlikely the wealthy politicians]
+
+
+# Chapter 3: Measuring Wealth and Voting Behavior
+
+## Methodology: Controlling for Wealth Composition 
+
+## Methodology: Estimating the Effect of Wealth on Voting Behavior
+
+## Sources
+
+# Chapter 4: Analysis
+
+## OLS Analysis
+
+## IV Analysis
+
+## Harnas Analysis
+
+# Chapter 5: Robustness Checks
+
+## Alternative Estimates OLS
+
+## Alternative Estimates IV
+
+# Chapter 6: Interpretation and Conclusion
+
+## Interpretation
+
+## Conclusion
+
+<!--
+## Impact on Personal Wealth
+
+What more should be in this section?
 
 - How can these laws influence the (long-term or short-term) position of politicians?
 
@@ -62,10 +154,8 @@ Personal wealth might causally influence voting behavior because acceptance or r
   
   - Within finance, make a distinction between direct effects (fiscal laws) and indirect effects. 
   
-  - In this section: graph/table detailing the effect of the laws and calculations how, as well as theoretical/historical illustrations
-
-
-
+  - Graph/table detailing the effect of the laws and calculations how, as well as theoretical/historical illustrations
+  
 ## Theory
 
 Systemic:
@@ -90,7 +180,7 @@ Personal:
 - This paper: analyzes to which extent and in which contexts these models are appropriate. 
 
 - Politicians were afraid of fictionalization but not of democratization - nothing to fear, but they were concerned about their own position (and that of their descendants)
-<!-- --> 
+
 
 Four important questions in the introduction:
 
@@ -136,12 +226,6 @@ What lessons can be learned from the results?
 - Influence on government size, economic development
 
 - View of agency problems in politics to be revised:
-
-If (as in Trebbi, Sufi, Mian, 2010): 
-
-$$
-U(p, W) =  (p - p_i^*)^2 + \beta \cdot f(P, W_i)
-$$
 
 Then the ideological-part of the utility function is more important. 
 
@@ -204,6 +288,6 @@ Two perspectives in the literature:
 
 - Lindert: _Will today’s developing countries and transition economies go through the same history?_
 
-
+--> 
 
 

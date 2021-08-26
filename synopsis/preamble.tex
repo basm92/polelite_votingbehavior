@@ -9,4 +9,11 @@
   \setbeamertemplate{itemize item}{\textbullet}
   \setbeamertemplate{itemize subitem}{\textbullet}
   \setbeamertemplate{itemize subsubitem}{\textbullet}
+  
+  \addtobeamertemplate{navigation symbols}{}{%
+    \usebeamerfont{footline}%
+    \usebeamercolor[fg]{footline}%
+    \hspace{1em}%
+    \insertframenumber/\inserttotalframenumber
+}
 } 
