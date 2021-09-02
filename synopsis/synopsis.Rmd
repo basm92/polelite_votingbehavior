@@ -42,8 +42,9 @@ There are many reasons to suppose that politicians care about their *financial* 
 
 ## Approach
 
-To answer these question, I turn to the case of the Netherlands. The Netherlands is an emblematic case from the perspective of European transition to democracy: the Netherlands became a constitutional monarchy in 1848, and took until 1918 to implement universal suffrage after the First World War. In comparison to other countries.. [Explain why it is a good case among all European countries.] During the transition period, the political system also shares many characteristics with other countries: it is a bicameral system, where lower house elections take place in a district system, and the parliamentary arena was initially populated by insiders, and gradually diversified. 
+To answer these questions, I turn to the case of the Netherlands. The Netherlands is an emblematic case from the perspective of European transition to democracy: the Netherlands became a constitutional monarchy in 1848, and took until 1918 to implement universal suffrage after the First World War. In comparison to other countries.. [Explain why it is a good case among all European countries.] During the transition period, the political system also shares many characteristics with other countries: it is a bicameral system, where lower house elections take place in a district system, and the parliamentary arena was initially populated by insiders, and gradually diversified. 
 
+<!-- Frame as similarity: Belgium, Austria, Germany - Party Formation along religious divide --> 
 This study focuses on the influence of politicians' self-interest on this transformation. But what is exactly the self-interest of politicians? In this paper, I employ arguably the most obvious proxy for a politician's self-interest: their personal wealth. Using newly-collected probate inventories collected from various archival sources, I retrieve a reliable picture of politicians' personal wealth. I then analyze the influence of politicians' personal wealth, amid many other factors suggested by competing theories, on their voting behavior in a host of important fiscal reforms, suffrage extensions and government interventions. In particular, using extensive data on asset class returns, I attempt to control for wealth differences due to portfolio allocation 
 
 Personal wealth might causally influence voting behavior because acceptance or rejection of reforms might influence politicians' future cash flows in various ways. To ensure a causal interpretation of the estimates, we employ several estimation procedures. In particular, we provide instrumental variable (IV) estimates of personal wealth on the propensity to vote for reforms, instrumenting parental wealth by an indicator whether the politician's father was also politically active. I also rely on various other alternatives to limit the bias caused by endogeneity by relying on (plausibly exogenous) timing of death among politicians. 
@@ -52,27 +53,69 @@ Personal wealth might causally influence voting behavior because acceptance or r
 
 ## Political Transition and Oligarchical System - Suffrage
 
-To a large extent, the far-reaching changes across Europe in the nineteenth century can be characterized by three ensembles of reforms: franchise extensions, government intervention and fiscal legislation. An increase in active suffrage encompasses the relaxation (or abolition) of the requirements that granted individuals the right to vote. The key laws underlying these changes were implemented in a series of constitutional changes, which legitimized and implemented these expansions, and happened in the Netherlands in 1887, 1896, 1917 and 1918. It is also noteworthy that the trajectory did not happen without recoil: several law projects attempting to extend the franchise (in 1872 and 1896) were also rejected on various grounds. 
+To a large extent, the far-reaching changes across Europe in the nineteenth century can be characterized by three ensembles of reforms: franchise extensions, government intervention and fiscal legislation. All of these can influence the state of affairs in the country, about which politicians might care, and also have the potential to influence a politician's personal interests. First, an increase in active suffrage encompasses the relaxation (or abolition) of the requirements that granted individuals the right to vote. The key laws underlying these changes were implemented in a series of constitutional changes, which legitimized and implemented these expansions, and happened in the Netherlands in 1887, 1896, 1917 and 1918. It is also noteworthy that the trajectory did not happen without recoil: several law projects attempting to extend the franchise (in 1872 and 1896) were also rejected on various grounds. 
 
-In the Netherlands, the franchise extension likely had many effects, the most obvious being that the diversification and broadening of the electorate also caused a shift in parliamentary composition: whereas parliaments were historically dominated by the nobility and circles close the autocrat, over time, parliaments become more diverse, but still dominated by a layer of legal specialists, theologians and other trained men. The degree of consensus underlying these franchise extensions also varied from project to project, allowing for sufficient variation in voting behavior to be studied. 
+In the Netherlands, the franchise extension likely had many effects, the most obvious being that the diversification and broadening of the electorate also caused a shift in parliamentary composition: whereas parliaments were historically dominated by the nobility and circles close the autocrat, over time, parliaments become more diverse, but still dominated by a layer of legal specialists, theologians and other trained men. The degree of consensus underlying these franchise extensions also varied from project to project, allowing for sufficient variation in voting behavior to be studied. Franchise extensions were also conducted in a context of political party formation. After the reforms in 1848, differences in political allegiance and ideology became more clearer, and politicians and their electorate started to organize themselves, first in electoral unions (\textit{kiesvereenigingen}), which were quickly superseded by political parties: the first political party, the Anti-Revolutionary Party, was established in 1879, and other factions of politicians followed this example. 
 
 ## Political Transition and Oligarchical System - Suffrage [2]
 
-Suffrage extensions might impact the state of the world, about which might care, in various ways: suffrage extensions might again increase equality and equity, or the opposite, depending on the ideological viewpoint. Suffrage extensions might also represent a shock to expectations about future governments, parliaments and corresponding future laws and future states of the world, which politicians might anticipate and factor in their decisions. 
+Suffrage extensions might impact transform society, about which politicians might care, in various ways: from the perspective of some politicians, suffrage extensions might increase equality and equity, or it might do the opposite, depending on the ideological viewpoint. Suffrage extensions might also represent a shock to expectations about future governments, parliaments and corresponding future laws and future states of the world, which politicians might anticipate and factor in their decisions. 
 
-Franchise extensions can also influence a politician's wealth: directly, franchise extensions might increase competition, and hence decrease the likelihood of them being able to stay in politics, which might reduce their rents and employment prospects. Indirectly, it might represent a shock to expectations about future governments and parliaments, which might influence future fiscal policy. Politicians might anticipate this when deciding whether to vote in favor of a suffrage extension. 
+<!-- Add the theory on the basis of which these are suggested, and make clear that the evidence is very limited: no historical evidence for this in NL-->
+They can also influence a politician's wealth: directly, after a franchise extensions, political competition might increase, and hence decrease the likelihood of reelection, which might reduce their rents and employment prospects. On the other hand, it might do the opposite if politicians are popular with the presently-disenfranchised electorate. Similar considerations have led to the electoral expedience hypothesis. Indirectly, suffrage extensions might represent a shock to expectations about future governments and parliaments, which might influence future fiscal policy. Politicians might anticipate this when deciding whether to vote in favor of a suffrage extension. 
+<!-- Make an hypothesis about the influence of fin. interests on voting behavior, on the basis of historical evidence (no) and theoretical literature (yes)
+
+Final hypothesis: geen private benefits of costs, dus ideology determines -->
 
 ## Political Transition and Oligarchical System - Gov't Intervention
 
-Secondly, as documented by Lindert (1994), the general view of the state as a passive actor guaranteeing only the security of its citizens evolved into views that accorded the state a more interventionist role, although opinions about exactly how far that should go differed sharply. The responsibility for such a shift in attitudes across the continent lies with increasing social tension and poverty that came with industrialization. This initially prompted many parliaments to approve and oversee legislation prohibited child labor and establishing legal working hours. This served as a precedent for a more interventionist role of the state in markets and economic life of its citizens more generally: in the case of the Netherlands, the era of 1870 to 1920 is marked by several laws regulating education (1900), housing (1901), higher education (1904), labor contracts (1907), among others. Significantly, and in contrast to several other countries, the majority of these laws burdened not the state, but private actors such as employers with the execution (and financing) of these provisions, rather than the state. In the decade starting from 1910, some exceptions to the rule are laws attempting to instigate a state pension (1913, 1916), which were only executed later.
+<!-- 
+
+Structuur voor deze sectie (Brug van suffrage naar gov't intervention):
+
+1. Veel empirisch bewijs dat changes in suffrage -> changes in public spending
+Groei verklaard door angst voor onrust? Is dat echt zo? 
+
+2. How does Lindert fit in? Voor 1940: weak link between electoral reform & public spending (zoek uit)
+
+3. How does the Netherlands fit in?
+
+Not central government -> but decentraal
+Sterk verbonden met verzuiling en sovereiniteit in eigen kring -> Ideology 
+
+Dus: weinig ruimte voor self-interest (dit is de hypothese)
+-->
+
+Secondly, as documented by Lindert (1994), the general view of the state as a passive actor guaranteeing only the security of its citizens evolved into views that accorded the state a more interventionist role, although opinions about exactly how far that should go differed sharply. The responsibility for such a shift in attitudes across the continent lies with increasing social tension and poverty that came with industrialization. This initially prompted many parliaments to approve and oversee legislation prohibited child labor and establishing legal working hours.
+
+These initial interventions marked a precedent for a more interventionist role of the state in markets and economic life of its citizens more generally: in the case of the Netherlands, the era of 1870 to 1920 is marked by several laws regulating education (1900), housing (1901), higher education (1904), labor contracts (1907), among others. Significantly, and in contrast to several other countries, the majority of these laws burdened not the state, but private actors such as employers with the execution (and financing) of these provisions, rather than the state. In the decade starting from 1910, some exceptions to the rule are laws attempting to instigate a state pension (1913, 1916), which were only executed later.
 
 ## Political Transition and Oligarchical System - Gov't Intervention
 
-Politicians might care about the state of the world through their particular ideology. Government intervention can influence the state of affairs in the world in a multitude of ways. Government intervention encompasses intervening in markets that were otherwise untouched. They represent many of the special cases touches upon above. For example, the compulsory education laws in 1901 likely increased equality and equity, the 1874 law regulating child labor helped children and the poor more generally, and the law regulating strikes (1903) might have solved one problem (strikes) but caused another (more revolutionary potential) according to at least some politicians. Similarly, the 1901 housing law might have disproportionately concerned particular groups (workers), and laws regulating labor contracts (1907) and offering protection to workers might or might not have had the intended effects (securing the position of workers vs. creating unemployment), depending on the politician's ideology. 
+Politicians might care about the state of the world through their particular ideology. Government intervention can influence the state of affairs in the world in a multitude of ways. Government intervention encompasses intervening in markets that were otherwise untouched. It represents many of the special cases touched upon above. For example, the compulsory education laws in 1901 likely increased equality and equity, the 1874 law regulating child labor helped children and the poor more generally, and the law regulating strikes (1903) might have solved one problem (strikes) but caused another (more revolutionary potential) according to at least some politicians. Similarly, the 1901 housing law might have disproportionately concerned particular groups (workers), and laws regulating labor contracts (1907) and offering protection to workers might or might not have had the intended effects (securing the position of workers vs. creating unemployment), depending on the politician's ideology. 
 
 There are also direct and indirect ways in which accepted legislation can directly influence a politician's wealth: government intervention not concerning the government budget may influence politicians' wealth indirectly in ways dependent on the specific law: laws regulating labor (e.g. labor accident law 1901; labor contract law, 1907; sick leave law, 1913) might influence the wealth of politicians who own firms or shares, who might have a lower profit rate. Similarly, the 1901 housing law might have lead to increased municipality-level taxes, and might have lead to decreased equilibrium rent payments (the effect of which is positive/negative depending on the real estate holdings of the politician) because of increased housing supply. More indirectly, The anti-striking laws of 1904 might have reduced the amount of strikes, decrease the loss of firms, and increase the wealth of shareholders. The compulsory education law (1900) might have increased wages and decreased profits due to increased scarcity of labor. 
 
 ## Political Transition and Oligarchical System - Fiscal Reforms [1]
+
+<!--
+Structuur: brug tussen pub. spending en fiscal reforms
+
+Soevereiniteit in eigen kring drives low government intervention
+Some of the law designed to keep government exp. low
+Hence, in fiscal legislations (which increases govt. exp. high)
+
+Benefits to constituency determine voting behavior on pub. expenditure
+How much is the influence on government expenditures of the fiscal reforms?
+
+If large (yes), then it is a reason to investigate, because politicians own interests come at play
+Kijk op CBS historisch:
+
+
+In previous work heb ik laten zien dat er nog steeds een oligarchische democratie is, maar wel met een aantoonbare verarming van het gemiddeld vermogen van politici plaatsvindt. 
+
+Heeft dat ook geleid tot ander stemgedrag waardoor ze minder sterke pers. incentives hadden om tegen te werken?
+-->
 
 Thirdly, despite that most government intervention targeted to limit governmental transfers, government size steadily increased, reaching levels significantly higher than ever before in history, although not nearing the standards of present-day. Increased government spending was necessitated by several exogenous trends: the stalling of revenue from colonies necessitated higher domestic taxation to balance the budget, but the aforementioned expansion of the government into many areas of life also required funds. The tax system, based predominantly on excise duties and tariffs was also widely considered to be outdated. Finally, and most significantly, social tensions and perceived inequity were widespread, and arguably shifted the consensus towards acceptability of increasing taxation, sometimes even rendering taxation progressive.
 
@@ -82,7 +125,7 @@ Fiscal legislation can influence the state of the world, to which politicians mi
 
 ## Political Transition and Oligarchical System - Fiscal Reforms [2]
 
-- Out of all law categories, the impact of fiscal legislation on politician's wealth is most obvious: in case of an increase in taxation, the expected costs $C_i$ for a politician as a function of their income (income tax Inc) or wealth (inheritance tax Inh) can be approximated: 
+Out of all law categories, the impact of fiscal legislation on politician's wealth is most obvious. First, politicians benefits from taxation in terms of public goods is likely to be negligible, so there are only expected costs. In case of an increase in taxation, the expected costs $C_i$ for a politician as a function of their income (income tax Inc) or wealth (inheritance tax Inh) can be approximated: 
 
 $$
 C^{\text{Inc}}_i = \sum_{t = 0}^{T}\frac{\tau_i \cdot Y_{it}}{(1+r)^t}  \text{ and } C^{\text{Inh}}_i = \frac{\gamma \cdot W_i}{(1+r)^T}
@@ -95,31 +138,36 @@ where $\tau_i$ and $\gamma$ are the income-dependent (progressive) tariff and in
 - [Stress that wealthier politicians are less inclined to vote "no" when maximizing their utility]
 Accepting that $Y_{it}$ and $W_{i}$ are correlated, it is easy to see that politicians who are wealthier experience higher expected costs from acceptance of the law. 
 
-- [Stress that acceptance of taxation also creates public goods, which benefits politicians, but unlikely the wealthy politicians, so that effect is aggravated]
-
 - [Stress that this calculation could happen in other laws, but less obvious, as stressed in previous examples]
 
 # Chapter 3: Measuring Wealth and Voting Behavior
 
 ## Methodology: Controlling for Wealth Composition 
 
+The probate inventories I use contain information about (i) politicians' net wealth at the time of death, and (ii) their asset composition. In order to ensure comparability between the wealth levels of politicians who died (and whose wealth was observed) at different points in time, I use data on asset class returns provided by \cite{jorda2019rate} to estimate a politician's wealth at the time of voting, thereby correcting for differential asset returns to which they might have been exposed over the course of their lifetime. Not doing so might risk overstating differences in wealth between politicians, and potentially overestimating the effect of personal wealth on voting behavior. I start out by deflating all observed wealth to 1900 guilders. Then, I use the following recursive relationship to identify a politician's wealth at the time of voting on law $k$ as a function of their (deflated) wealth at death: 
+
+\begin{equation}\label{eq:wealthreturns}
+\text{Wealth}_{i,t+1} = \sum_{J} \text{AssetShare}_{i,j,t} \cdot \text{AssetReturn}_{i,j,[t,t+1]}
+\end{equation}
+
+In words, since a politician's wealth at death, and their portfolio composition (in terms of asset classes) are known and observed, it is possible to estimate the wealth one year before using (average) real returns on asset class $j$. Applying this recursively yields an estimate of the wealth at the time of voting. In appendix X, I detail the precise assumptions used to match portfolio composition with assets class returns as provided by \cite{jorda2019rate}. 
+
+
 ## Methodology: Estimating the Effect of Wealth on Voting Behavior
 
 In the political economy literature (as in Trebbi, Sufi, Mian, 2010), politicians' preferences are usually modeled as a function of their ideal policy and some component that reflects self-interest. In this context, the acceptance of each of these laws can influence politicians' utility in two ways: it can influence the state of the world in such a way as to come either closer to their ideal state, $p^*_i \in [0,1]$, or farther. Secondly, political are supposed to care about their financial interests. Both considerations might lead them to decide upon accepting the laws according to: 
 
-$$
+\begin{equation}\label{eq:utility}
 U(p, C_i) =  -(p_i - p_i^*)^2 + \beta \cdot f(p, C_i) + \epsilon_i^p
-$$
+\end{equation}
 
-where $p \in \{0, 1 \}$ is the acceptance of the law, and $f(p, C_i)$ is a function representing the impact of the acceptance of the law on their own wealth by taking into account potential _personal_ cost to the politician $C_i$. A politician's $p^*_i$ may also be thought of as *ideology*, the way in which politicians value the state of affairs in the world. 
+where $p \in \{0, 1 \}$ is the acceptance of the law, and $f(p, C_i)$ is a function representing the impact of the acceptance of the law on their own wealth by taking into account potential _personal_ cost to the politician $C_i$. A politician's $p^*_i$ may also be thought of as *ideology*, the way in which politicians value the state of affairs in the world: politicians might have preferences over social and societal outcomes that might be affected by the law. For example, politicians might be convinced that the particular government intervention increases equality and equity, helps poorer individuals in general, or helps a particular ethnic, religious or economic group (all of which they may or may not value). They might also think the opposite, meaning the law can potentially disadvantage certain groups, such as employers, employees, a certain demographic, etc., all of which they might again value or disvalue according to their worldview. 
 
 ## Methodology: Estimating the Effect of Wealth on Voting Behavior - Ideology
 
-Laws can impact the state of affairs in the world in various ways. First, politicians might have preferences over social and societal outcomes that might be affected by the law. For example, politicians might be convinced that the particular government intervention increases equality and equity, helps poorer individuals in general, or helps a particular ethnic, religious or economic group (all of which they may or may not value). They might also think the opposite, meaning the law can potentially disadvantage certain groups, such as employers, employees, a certain demographic, etc., all of which they might again value or disvalue according to their worldview. 
+Keeping their moral values and preferences over social outcomes fixed, politicians might also not be convinced that the law in question solves the problem it attempts to solve, or indeed creates additional problems outweighing the initial problem. For this reason, their preferred outcome for such a law would be $p^*_i = 0$. Furthermore, some politicians might be ideologically in favor of free markets, and any government intervention can be thought of as bringing disutility to this group of politicians, which would be reflected in $p^*_i = 1$. 
 
-Keeping their moral values and preferences over social outcomes fixed, politicians might also not be convinced that the law in question solves the problem it attempts to solve, or indeed creates additional problems outweighing the initial problem. For this reason, their preferred outcome for such a law would be $p^*_i = 0$. Furthermore, some politicians might be ideologically in favor of free markets, and any government intervention can be thought of as bringing disutility to this group of politicians, which would be reflected in $p^*_i = 1$. It is also known that some socialists thought that government intervention did not go far enough, or that some conservatives thought that it went too far. This can be reflected in a $p^*_i \in (0, 1)$, meaning that they suffer utility loss from a law that is less than somebody who is absolutely against it if accepted or absolutely in favor of it when rejected. Finally, politicians' might also feel animosity or hostility towards a particular colleague, leading them to prefer the law to be rejected, despite any eventual merits the law might have. 
-
-## Methodology: Estimating the Effect of Wealth on Voting Behavior - Wealth
+It is also known that some socialists thought that government intervention did not go far enough, or that some conservatives thought that it went too far. This can be reflected in a $p^*_i \in (0, 1)$, meaning that they suffer utility loss from a law that is less than somebody who is absolutely against it if accepted or absolutely in favor of it when rejected. Finally, politicians' might also feel animosity or hostility towards a particular colleague, leading them to prefer the law to be rejected, despite any eventual merits the law might have. 
 
 To keep the structure as simple as possible, I assume that:
 
@@ -129,15 +177,22 @@ C_i &\mbox{ if } p_i = 1 \\
 0 &\mbox{ if } p_i = 0
 \end{cases}
 $$
+
+## Methodology: Estimating the Effect of Wealth on Voting Behavior - Wealth
+
 Meaning that politicians would factor the cost of a law in their decision, as if the acceptance would depend only on their vote. Combining this observation with the fact that $\frac{\partial C_i}{\partial W_i} > 0$, I deduce that the higher a politician's wealth, the lower the probability they vote in favor of a law. Alternatively, if politicians' self-interest would not influence their decision, there would be no relationship between a politician's personal wealth and the probability of voting in favor of a law. 
 
-- Why not structural, and what to do instead?
+In previous empirical studies of voting behavior, separating ideology from personal and constituent interests has proven difficult because ideological interests and constituent interests were (nearly) perfectly correlated, e.g. richer and more confessional politicians represent districts in which religious shares are higher. In this study however, by exploiting repeated roll call cotes, there is sufficient variation in politician-district combinations to separately identify their effects. 
+
+Ideology is measured by a classification by political historians, which is a detailed classification based on close reading of parliamentary debates, secondary works, and biographical information. I map this classification to the three basic ideological currents: $\{ Liberal, Confessional, Socialist\}$. Of course, politicians do not solve this problem without constraints: constituent interests, electoral competition or threats of instability at the district-level, or commitment-related considerations such as time until requirement or electoral position can also induce them ..
 
 ## Sources
 
-- [Table of dissent vote]
+- [Probate intenvories source and short other variables]
 
-- [Descriptive Statistics Table]
+- [Voting behavior source + Table of dissent vote + where is the variation]
+
+- [Descriptive Statistics Table and commentary]
 
 # Chapter 4: Analysis
 
@@ -156,6 +211,13 @@ Meaning that politicians would factor the cost of a law in their decision, as if
 # Chapter 6: Interpretation and Conclusion
 
 ## Interpretation
+
+<!-- Ceteris paribus regressie-informatie --> 
+<!-- Wat als een oud parlement had gestemd op die wetten? Counterfactual simulaties-->
+
+<!-- Waarom zijn politici armer geworden? 
+Antwoord: kiesrechtuitbreidingen -> andere politici -> nog steeds dezelfde ideologie -> en misschien nog steeds rijk -> maar een stuk minder rijk. Daarom konden ze toch voor die wetten stemmen en kwamen die er door
+--> 
 
 ## Conclusion
 
