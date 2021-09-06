@@ -116,3 +116,6 @@ modelsummary(electorallaw_ols,
              )) %>%
     kableExtra::kable_styling(latex_options = "hold_position",
                               font_size = 9) 
+
+# write the dataset 
+saveRDS(data, "./data/datasets/electoral_lower.RDS")

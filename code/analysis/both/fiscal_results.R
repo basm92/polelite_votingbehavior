@@ -1063,4 +1063,8 @@ graphcoef <- all %>%
   xlab("Category")
 
 ggsave(filename = "./figures/graph_coefficients.pdf", plot = graphcoef)
-                                                                                    
+                                                                               
+
+## Export dataset ivdata 
+saveRDS(df, file="./data/datasets/fiscal_lowerandupper.RDS")
+saveRDS(ivdata, file="./data/datasets/fiscal_ivdata.RDS")

@@ -109,3 +109,5 @@ modelsummary(socred_tk_fullctrls,
                               font_size = 9) 
 
 
+# save dataset
+saveRDS(data, "./data/datasets/social_lower.RDS")
