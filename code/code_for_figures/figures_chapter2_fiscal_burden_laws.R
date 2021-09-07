@@ -84,6 +84,8 @@ p1
 
 ### Make a graph, x axis = year, y axis = rate, groups = different inheritances (lineal descendants, lineal ascendants, brothers/sisters)
 tribble(~ year, ~ tariff_linealdescendents_50k, ~ tariff_linealdescendents_150k,
+        "01-01-1859", 0.00, 0.00,
+        "31-12-1877", 0.00, 0.00,
         "01-01-1878", 0.01, 0.01,
         "31-12-1910", 0.01, 0.01,
         "01-01-1911", 0.0175, 0.02,
@@ -94,6 +96,7 @@ tribble(~ year, ~ tariff_linealdescendents_50k, ~ tariff_linealdescendents_150k,
         "31-12-1925", 0.065, 0.07) %>%
     mutate(year = lubridate::dmy(year)) %>%
     pivot_longer(contains("tariff")) %>%
-    ggplot(aes(x = year, y = value, group = name, color = name)) + geom_line(size = 1, alpha = 0.5)
+    ggplot(aes(x = year, y = value, group = name, lty = name)) + 
+    geom_line(size = 1, alpha = 0.5) + ylab("Tax Rate (% Net Wealth)")
 
            
