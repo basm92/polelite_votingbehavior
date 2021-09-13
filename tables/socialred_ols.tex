@@ -1,33 +1,37 @@
 \begin{table}
 
-\caption{\label{tab:socialred_ols}OLS Estimates of Wealth on the Propensity to Vote for Social Redistribution - Controls}
+\caption{\label{tab:baseline_ols_govtint}OLS Estimates of Wealth on the Propensity to Vote for Government Intervention}
 \centering
 \begin{tabular}[t]{lccccccc}
 \toprule
   & (1) & (2) & (3) & (4) & (5) & (6) & (7)\\
 \midrule
-Personal Wealth & -0.001 & -0.001 & 0.001 & 0.001 & 0.001 & 0.001 & 0.001\\
- & (0.008) & (0.008) & (0.008) & (0.010) & (0.008) & (0.009) & (0.009)\\
-Amount of Strikes &  & 0.002+ & 0.002* & 0.001 & 0.002* & 0.002* & 0.002+\\
- &  & (0.001) & (0.001) & (0.003) & (0.001) & (0.001) & (0.001)\\
-\% Catholics in district &  &  & 0.000 & 0.000 & 0.000 & 0.000 & 0.000\\
- &  &  & (0.001) & (0.001) & (0.001) & (0.001) & (0.001)\\
-Share Industrial &  &  &  & -0.060 &  &  & \\
- &  &  &  & (0.223) &  &  & \\
-Vote Share (\% Total) &  &  &  &  & 0.002 & 0.002 & 0.000\\
- &  &  &  &  & (0.068) & (0.068) & (0.069)\\
-Competed Against Socialist &  &  &  &  &  & -0.008 & -0.009\\
- &  &  &  &  &  & (0.045) & (0.046)\\
-Tenure &  &  &  &  &  &  & 0.000\\
- &  &  &  &  &  &  & (0.000)\\
+Personal Wealth & \num{-0.001} & \num{-0.001} & \num{0.001} & \num{0.001} & \num{0.001} & \num{0.000} & \num{0.000}\\
+ & (\num{0.008}) & (\num{0.008}) & (\num{0.008}) & (\num{0.010}) & (\num{0.008}) & (\num{0.009}) & (\num{0.009})\\
+Amount of Strikes &  & \num{0.002}* & \num{0.002}** & \num{0.001} & \num{0.002}** & \num{0.002}** & \num{0.002}**\\
+ &  & (\num{0.001}) & (\num{0.001}) & (\num{0.003}) & (\num{0.001}) & (\num{0.001}) & (\num{0.001})\\
+Catholics in district &  &  & \num{0.000} & \num{0.000} & \num{0.000} & \num{0.001} & \num{0.001}\\
+ &  &  & (\num{0.001}) & (\num{0.001}) & (\num{0.001}) & (\num{0.001}) & (\num{0.001})\\
+Share Industrial &  &  &  & \num{-0.060} &  &  & \\
+ &  &  &  & (\num{0.223}) &  &  & \\
+Vote Share &  &  &  &  & \num{0.002} & \num{0.027} & \num{0.029}\\
+ &  &  &  &  & (\num{0.068}) & (\num{0.070}) & (\num{0.072})\\
+Electoral Turnout &  &  &  &  &  & \num{0.272}** & \num{0.276}**\\
+ &  &  &  &  &  & (\num{0.131}) & (\num{0.135})\\
+Tenure &  &  &  &  &  &  & \num{0.000}\\
+ &  &  &  &  &  &  & (\num{0.002})\\
+Liberal & \num{0.428}*** & \num{0.427}*** & \num{0.430}*** & \num{0.427}*** & \num{0.429}*** & \num{0.434}*** & \num{0.434}***\\
+ & (\num{0.036}) & (\num{0.037}) & (\num{0.042}) & (\num{0.053}) & (\num{0.043}) & (\num{0.043}) & (\num{0.043})\\
+Socialist & \num{0.499}*** & \num{0.500}*** & \num{0.500}*** & \num{0.471}*** & \num{0.500}*** & \num{0.507}*** & \num{0.509}***\\
+ & (\num{0.050}) & (\num{0.053}) & (\num{0.060}) & (\num{0.077}) & (\num{0.060}) & (\num{0.060}) & (\num{0.062})\\
 \midrule
 Party + Law Controls & Yes & Yes & Yes & Yes & Yes & Yes & Yes\\
-N & 573 & 556 & 532 & 373 & 532 & 532 & 532\\
-Adj. R2 & 0.44 & 0.44 & 0.43 & 0.40 & 0.43 & 0.43 & 0.43\\
+N & \num{573} & \num{556} & \num{532} & \num{373} & \num{532} & \num{530} & \num{530}\\
+Adj. R2 & \num{0.44} & \num{0.44} & \num{0.43} & \num{0.40} & \num{0.43} & \num{0.43} & \num{0.43}\\
 \bottomrule
 \multicolumn{8}{l}{\rule{0pt}{1em}Vote is defined as 1 if the politician is in favor of the reform, 0 otherwise.}\\
-\multicolumn{8}{l}{\rule{0pt}{1em}Personal Wealth is defined as log(1+Wealth at Death).}\\
+\multicolumn{8}{l}{\rule{0pt}{1em}The reference political allegiance is confessional. Personal Wealth is defined as log(1+Wealth at Death).}\\
 \multicolumn{8}{l}{\rule{0pt}{1em}Heteroskedasticity-robust standard errors in parenthesis. Results for lower house voting outcomes.}\\
-\multicolumn{8}{l}{\rule{0pt}{1em}+ p $<$ 0.1, * p $<$ 0.05, ** p $<$ 0.01, *** p $<$ 0.001}\\
+\multicolumn{8}{l}{\rule{0pt}{1em}* p $<$ 0.1, ** p $<$ 0.05, *** p $<$ 0.01}\\
 \end{tabular}
 \end{table}

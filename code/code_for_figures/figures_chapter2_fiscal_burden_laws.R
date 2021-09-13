@@ -77,7 +77,7 @@ p1 <- data.frame(income = seq(0, 30000, 100)) %>%
     rename("Law" = "name") %>%
     ggplot(aes(x = income, y = value, group = Law, color = Law)) + 
     geom_line() + ylab("Effective Tax Rate") + xlab("Yearly Taxable Income") + 
-    theme(legend.position = c(0.15, 0.90))
+    theme(legend.position = c(0.22, 0.87))
 
 p1
 # legend in graph
@@ -107,10 +107,11 @@ p2 <- tribble(~ year, ~ tariff_linealdescendants_50k, ~ tariff_linealdescendants
     ggplot(aes(x = year, y = value, group = `Net Wealth`, lty = `Net Wealth`, color = `Net Wealth`)) + 
     geom_line(size = 1, alpha = 0.5) + ylab("Tax Rate (% Net Wealth)") + 
     xlab("Year") +
-    theme(legend.position = c(0.1, 0.9))
+    theme(legend.position = c(0.15, 0.85))
 
 
 p2
 
-cowplot::plot_grid(p1, p2, nrow = 1)
+plot <- cowplot::plot_grid(p1, p2, nrow = 1)
 
+cowplot::save_plot("./figures/tax_rates.pdf", plot, base_height = 5, base_width = 8)
