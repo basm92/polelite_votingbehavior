@@ -37,12 +37,25 @@ datasets2 <- datasets %>%
 modelsummary::datasummary(data = datasets2, category*(year_law*law) ~ class * vote*Mean * DropEmpty())
 
 # Table with dissent
-dissent <- function(x=NULL) {
-    
-    mean_value <- mean(x, na.rm = TRUE)
-    min(length(x[x < mean_value])/length(x), length(x[x >= mean_value])/length(x))
+dissent <- function(x) {
+    out <- 999
+    if(!is.na(mean(x, na.rm = TRUE))) {
+        mean_value <- mean(x, na.rm = TRUE)
+        return(min(length(x[x < mean_value])/length(x), length(x[x >= mean_value])/length(x)))
+    }
+    return(out)
 } 
 
+custom_mean <- function(x){ 
+    out <- "999"
+    if(!is.na(mean(x, na.rm = TRUE))){ return(mean(x, na.rm = TRUE))}
+    return(out)
+}
+
+dissent <- function(x) {
+        mean_value <- mean(x, na.rm = TRUE)
+        min(length(x[x < mean_value])/length(x), length(x[x >= mean_value])/length(x))
+} 
 
 notes <- list("Dissent is defined as the percentage of politicians of each faction having voted against the party line.",
               "Party Line is defined as the median vote per party.")
@@ -51,8 +64,8 @@ knitr::opts_current$set(label = "descriptivestats_dissent")
 
 modelsummary::datasummary(data = datasets2, 
                           (`Category` = category)*(`Year` = year_law)*(`Law` = law) ~ N*DropEmpty() + 
-                              (vote*(`Party Line` = Median)*Arguments(fmt="%.0f") + #* Arguments(fmt="%.0f") 
-                                vote*(`Dissent` = dissent)) *class * DropEmpty(),
+                              (vote * (`Party Line` = Median)*Arguments(fmt="%.0f") + #* Arguments(fmt="%.0f") 
+                                vote * (`Dissent` = dissent))*DropEmpty(empty="-") * class ,
                           notes = notes, 
                           title = "Dissent in Voting Behavior in Key Laws",
                           out = "kableExtra",
