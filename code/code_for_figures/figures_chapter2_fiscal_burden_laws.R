@@ -75,18 +75,40 @@ p1 <- data.frame(income = seq(0, 30000, 100)) %>%
     pivot_longer(c(tax_rate1893, tax_rate1914)) %>%
     mutate(name = if_else(name == "tax_rate1893", "Income Tax 1893", "Income Tax 1914")) %>%
     rename("Law" = "name") %>%
-    ggplot(aes(x = income, y = value, group = Law, color = Law)) + 
-    geom_line() + ylab("Effective Tax Rate") + xlab("Yearly Taxable Income") + 
-    theme(legend.position = c(0.22, 0.87))
+    ggplot(aes(x = income, y = value, group = Law, lty = Law)) + 
+    geom_line() + ylab("Effective Tax Rate") + xlab("Yearly Taxable Income") + theme_bw() + 
+    theme(legend.position = c(0.22, 0.87)) 
 
 p1
 # legend in graph
+
+## p1_alt 
+p1_alt <- tribble(~year, ~tariff_2500, ~tariff_5000, ~tariff_25000,
+        "01-01-1870", 0.00, 0.00, 0.00,
+        "31-12-1893", 0.00, 0.00, 0.00,
+        "01-01-1894", tax_rate_1893(2500), tax_rate_1893(5000), tax_rate_1893(25000),
+        "31-12-1913", tax_rate_1893(2500), tax_rate_1893(5000), tax_rate_1893(25000),
+        "01-01-1914", tax_rate_1914(2500), tax_rate_1914(5000), tax_rate_1914(25000),
+        "31-12-1925", tax_rate_1914(2500), tax_rate_1914(5000), tax_rate_1914(25000)
+) %>%
+    mutate(year = lubridate::dmy(year)) %>%
+    pivot_longer(contains("tariff")) %>%
+    mutate(name = case_when(name == "tariff_2500" ~ "2,500",
+                            name == "tariff_5000" ~ "5,000",
+                            name == "tariff_25000" ~ "25,000"
+    )) %>%
+    mutate(name = factor(name, levels = c("2,500", "5,000", "25,000"))) %>%
+    rename("Gross Income" = name) %>%
+    ggplot(aes(x = year, y = value, group = `Gross Income`, lty = `Gross Income`)) + theme_bw() + 
+    geom_line(size = 1, alpha = 0.5) + ylab("Tax Rate (% Gross Income)") +
+    xlab("Year") +
+    theme(legend.position = c(0.22, 0.85)) + ylim(0,0.075)
 
 ### Inheritance Tax
 
 ### Make a graph, x axis = year, y axis = rate, groups = different inheritances (lineal descendants, lineal ascendants, brothers/sisters)
 p2 <- tribble(~ year, ~ tariff_linealdescendants_50k, ~ tariff_linealdescendants_150k, ~tariff_linealdescendants_300k,
-        "01-01-1859", 0.00, 0.00, 0.00,
+        "01-01-1870", 0.00, 0.00, 0.00,
         "31-12-1877", 0.00, 0.00, 0.00,
         "01-01-1878", 0.01, 0.01, 0.01,
         "31-12-1910", 0.01, 0.01, 0.01,
@@ -104,14 +126,14 @@ p2 <- tribble(~ year, ~ tariff_linealdescendants_50k, ~ tariff_linealdescendants
                             )) %>%
     mutate(name = fct_reorder(name, as.numeric(str_extract(name, "\\d{3}")))) %>%
     rename("Net Wealth" = name) %>%
-    ggplot(aes(x = year, y = value, group = `Net Wealth`, lty = `Net Wealth`, color = `Net Wealth`)) + 
-    geom_line(size = 1, alpha = 0.5) + ylab("Tax Rate (% Net Wealth)") + 
+    ggplot(aes(x = year, y = value, group = `Net Wealth`, lty = `Net Wealth`)) + theme_bw() + 
+    geom_line(size = 1, alpha = 0.5) + ylab("Tax Rate (% Net Wealth)") +
     xlab("Year") +
-    theme(legend.position = c(0.15, 0.85))
+    theme(legend.position = c(0.15, 0.85)) + ylim(0, 0.075)
 
 
-p2
+p2 
 
-plot <- cowplot::plot_grid(p1, p2, nrow = 1)
+plot <- cowplot::plot_grid(p1_alt, p2, nrow = 1)
 
 cowplot::save_plot("./figures/tax_rates.pdf", plot, base_height = 5, base_width = 8)

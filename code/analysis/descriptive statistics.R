@@ -1,6 +1,6 @@
 # Descriptive statistics Table
 ## Import all dataset
-library(tidyverse); library(modelsummary); library(gt)
+library(tidyverse); library(modelsummary); library(gt); library(kableExtra)
 
 electoral <- readRDS("./data/datasets/electoral_lower.RDS") %>%
     mutate(category = "Suffrage Extension")
@@ -19,6 +19,9 @@ datasets <- purrr::map_df(datasets, ~ .x %>%
 datasets2 <- datasets %>%
     filter(house == "Tweede Kamer", class != "neutral") %>%
     mutate(law = fct_reorder(law, as.numeric(stringr::str_extract(law, "\\d{4}"))),
+           year_law = stringr::str_extract(law, "[0-9]+"),
+           category = factor(category, levels = c("Suffrage Extension", "Gov't Intervention", "Fiscal Legislation")),
+           law = forcats::fct_relabel(law, ~ gsub("\\d{4}", "", .x)),
            tenure = tenure/365,
            long_elec_horiz = long_elec_horiz/365,
            age_of_vote = age_of_vote/365,
@@ -31,26 +34,34 @@ datasets2 <- datasets %>%
            socialistpercentage = socialistpercentage/100)
 
 # Table with percentages
-modelsummary::datasummary(data = datasets2, category*law ~ class * vote*Mean *DropEmpty())
+modelsummary::datasummary(data = datasets2, category*(year_law*law) ~ class * vote*Mean * DropEmpty())
 
 # Table with dissent
-dissent <- function(x) {
+dissent <- function(x=NULL) {
+    
     mean_value <- mean(x, na.rm = TRUE)
     min(length(x[x < mean_value])/length(x), length(x[x >= mean_value])/length(x))
 } 
 
-notes <- "Percentage of politicians of each faction having voted against the party line."
+
+notes <- list("Dissent is defined as the percentage of politicians of each faction having voted against the party line.",
+              "Party Line is defined as the median vote per party.")
+
 knitr::opts_current$set(label = "descriptivestats_dissent")
 
 modelsummary::datasummary(data = datasets2, 
-                          (`Category` = category)*(`Law` = law) ~ N*DropEmpty() + vote*(`Dissent` = dissent) *class * DropEmpty(),
+                          (`Category` = category)*(`Year` = year_law)*(`Law` = law) ~ N*DropEmpty() + 
+                              (vote*(`Party Line` = Median)*Arguments(fmt="%.0f") + #* Arguments(fmt="%.0f") 
+                                vote*(`Dissent` = dissent)) *class * DropEmpty(),
                           notes = notes, 
                           title = "Dissent in Voting Behavior in Key Laws",
                           out = "kableExtra",
                           output = "./tables/descriptivestats_dissent.tex"
                           ) %>%
-    kableExtra::kable_styling(latex_options = "hold_position",
-                              font_size = 9) 
+    #pack_rows("Suffrage Extensions", 1, 5, latex_align = "c") %>%
+    #pack_rows("Government Intervention", 6, 18, latex_align = "c") %>%
+    #pack_rows("Fiscal Legislation", 18, 22, latex_align = "c") %>%
+    kableExtra::kable_styling(latex_options = c("hold_position", "scale_down"))
 
 
 ## Now the "regular" descriptive statistics
@@ -157,4 +168,16 @@ summarytogether <- gt(rbind(fiscal2$`_data`, govtintervention2$`_data`, suffrage
 
 
 gtsave(summarytogether, './tables/summary_all_laws_together.tex')    
+
+
+
+custom_mean <- function(x){ 
+    out <- "N.A."
+    if(!is.na(mean(x, na.rm = TRUE))){ return(mean(x, na.rm = TRUE))}
+    return(out)
+}
+
+datasummary(data = mtcars %>%
+                mutate(carb = as.factor(carb), vs = as.factor(vs)), formula = carb ~ vs * wt*custom_mean)
+
 
