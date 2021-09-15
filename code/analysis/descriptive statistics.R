@@ -38,38 +38,23 @@ modelsummary::datasummary(data = datasets2, category*(year_law*law) ~ class * vo
 
 # Table with dissent
 dissent <- function(x) {
-    out <- 999
-    if(!is.na(mean(x, na.rm = TRUE))) {
-        mean_value <- mean(x, na.rm = TRUE)
-        return(min(length(x[x < mean_value])/length(x), length(x[x >= mean_value])/length(x)))
-    }
-    return(out)
-} 
-
-custom_mean <- function(x){ 
-    out <- "999"
-    if(!is.na(mean(x, na.rm = TRUE))){ return(mean(x, na.rm = TRUE))}
-    return(out)
-}
-
-dissent <- function(x) {
         mean_value <- mean(x, na.rm = TRUE)
         min(length(x[x < mean_value])/length(x), length(x[x >= mean_value])/length(x))
 } 
 
 notes <- list("Dissent is defined as the percentage of politicians of each faction having voted against the party line.",
-              "Party Line is defined as the median vote per party.")
+              "Party Line is defined as the median vote per party: 1 corresponds to 'Yes', 0 to 'No'.")
 
 knitr::opts_current$set(label = "descriptivestats_dissent")
 
 modelsummary::datasummary(data = datasets2, 
-                          (`Category` = category)*(`Year` = year_law)*(`Law` = law) ~ N*DropEmpty() + 
+                          (`Category` = category)*(`Law` = law)*(`Year` = year_law) ~ N*DropEmpty() + 
                               (vote * (`Party Line` = Median)*Arguments(fmt="%.0f") + #* Arguments(fmt="%.0f") 
                                 vote * (`Dissent` = dissent))*DropEmpty(empty="-") * class ,
                           notes = notes, 
                           title = "Dissent in Voting Behavior in Key Laws",
                           out = "kableExtra",
-                          output = "./tables/descriptivestats_dissent.tex"
+                         #output = "./tables/descriptivestats_dissent.tex"
                           ) %>%
     #pack_rows("Suffrage Extensions", 1, 5, latex_align = "c") %>%
     #pack_rows("Government Intervention", 6, 18, latex_align = "c") %>%
@@ -78,58 +63,41 @@ modelsummary::datasummary(data = datasets2,
 
 
 ## Now the "regular" descriptive statistics
-### Fiscal
-knitr::opts_current$set(label = "descriptives_fiscal")
+knitr::opts_current$set(label = "descriptives_all")
 modelsummary::datasummary(data = datasets2 %>%
-                              filter(category == "Fiscal Legislation"), 
-                          (wealth_timevote + 
-                               agricul_share + industry_share + services_share + aandeel_gem + percentage_aangesl + strikes +
-                                     tvs+socialistdum + socialistpercentage + turnout + ncm +
-                               tenure + long_elec_horiz + age_of_vote + age_of_entrance + rk_pct + hervormd_pct + gereformeerd_pct) ~ 
-                              N * DropEmpty() 
-                          + (Mean + Median + SD + Min + Max)* DropEmpty(),
-                          title = "Descriptive Statistics: Fiscal Legislation",
+                              mutate(category = dplyr::case_when(
+                                  category == "Suffrage Extension" ~ "Suffrage Extension (N=409)",
+                                  category == "Gov't Intervention" ~ "Gov't Intervention (N=1015)",
+                                  category == "Fiscal Legislation" ~ "Fiscal Legislation (N=549)"),
+                                  category = factor(category, 
+                                                    levels = c("Suffrage Extension (N=409)", 
+                                                               "Gov't Intervention (N=1015)",
+                                                               "Fiscal Legislation (N=549)"))),
+                          ((`Vote` = vote) + (`Personal Wealth`=wealth_timevote) + 
+                               (`% District in Agriculture` =agricul_share) + 
+                               (`% District in Industry` = industry_share) + 
+                               (`% District in Services` = services_share) + 
+                               (`Share District in Tot. Taxes`= aandeel_gem)+ 
+                               (`Share Tax Liable in District` = percentage_aangesl) + 
+                               (`Number of Strikes`=strikes) + 
+                               (`Vote Share` = tvs) + 
+                               (`Competed Against Socialist`=socialistdum)+ 
+                               (`% Socialist Vote in District`=socialistpercentage) + 
+                               (`Turnout` = turnout) + 
+                               (`Margin to Nearest Competitor`=ncm) +
+                               (`Tenure`=tenure) + 
+                               (`Long Electoral Horizon`=long_elec_horiz) +
+                               (`Age at Time of Vote`=age_of_vote) + 
+                               (`Age at Entry`=age_of_entrance) + 
+                               (`% Catholic` = rk_pct) + 
+                               (`% Dutch Reformed (Hervormd)` = hervormd_pct) + 
+                               (`% Dutch Reformed (Geref.)` = gereformeerd_pct)) ~ 
+                               category*(Mean + Median + SD)* DropEmpty(),
+                          title = "Descriptive Statistics",
                           out = "kableExtra",
-                          output = "./tables/descriptivestats_fiscal.tex"
+                          output = "./tables/descriptivestats_all.tex"
                           ) %>%
-    kableExtra::kable_styling(latex_options = "hold_position",
-                              font_size = 9) 
-
-### Suffrage
-knitr::opts_current$set(label = "descriptives_suffrage")
-modelsummary::datasummary(data = datasets2 %>%
-                              filter(category == "Suffrage Extension"), 
-                          (wealth_timevote + 
-                               agricul_share + industry_share + services_share + aandeel_gem + percentage_aangesl + strikes +
-                               tvs+socialistdum + socialistpercentage + turnout + ncm +
-                               tenure + long_elec_horiz + age_of_vote + age_of_entrance + rk_pct + hervormd_pct + gereformeerd_pct) ~ 
-                              N * DropEmpty() 
-                          + (Mean + Median + SD + Min + Max)* DropEmpty(),
-                          title = "Descriptive Statistics: Suffrage Extension",
-                          out = "kableExtra",
-                          output = "./tables/descriptivestats_suffrage.tex"
-                          ) %>%
-    kableExtra::kable_styling(latex_options = "hold_position",
-                              font_size = 9) 
-
-### Govt Intervention
-
-knitr::opts_current$set(label = "descriptives_govtintervention")
-modelsummary::datasummary(data = datasets2 %>%
-                              filter(category == "Gov't Intervention"), 
-                          (wealth_timevote + 
-                               agricul_share + industry_share + services_share + aandeel_gem + percentage_aangesl + strikes +
-                               tvs+socialistdum + socialistpercentage + turnout + ncm +
-                               tenure + long_elec_horiz + age_of_vote + age_of_entrance + rk_pct + hervormd_pct + gereformeerd_pct) ~ 
-                              N * DropEmpty() 
-                          + (Mean + Median + SD + Min + Max)* DropEmpty(),
-                         title = "Descriptive Statistics: Government Intervention",
-                          out = "kableExtra",
-                         output = "./tables/descriptivestats_govtintervention.tex"
-) %>%
-    kableExtra::kable_styling(latex_options = "hold_position",
-                              font_size = 9) 
-
+    kableExtra::kable_styling(latex_options = c("hold_position","scale_down"))
 
 ## Panel Table With All Three of Them
 
@@ -181,16 +149,3 @@ summarytogether <- gt(rbind(fiscal2$`_data`, govtintervention2$`_data`, suffrage
 
 
 gtsave(summarytogether, './tables/summary_all_laws_together.tex')    
-
-
-
-custom_mean <- function(x){ 
-    out <- "N.A."
-    if(!is.na(mean(x, na.rm = TRUE))){ return(mean(x, na.rm = TRUE))}
-    return(out)
-}
-
-datasummary(data = mtcars %>%
-                mutate(carb = as.factor(carb), vs = as.factor(vs)), formula = carb ~ vs * wt*custom_mean)
-
-
