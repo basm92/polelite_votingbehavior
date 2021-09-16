@@ -2,38 +2,42 @@
 
 \caption{\label{tab:harnas}OLS Estimates of Wealth on the Propensity to Vote for Fiscal Reforms - Endogeneity Test}
 \centering
-\begin{tabular}[t]{lccccccc}
+\begin{tabular}[t]{lcccccccc}
 \toprule
-  & (1) & (2) & (3) & (4) & (5) & (6) & (7)\\
+  & (1) & (2) & (3) & (4) & (5) & (6) & (7) & (8)\\
 \midrule
-Personal Wealth & \num{-0.041}** & \num{-0.038}** & \num{-0.039}** & \num{-0.038}* & \num{-0.039}** & \num{-0.039}** & \num{-0.040}**\\
- & (\num{0.016}) & (\num{0.017}) & (\num{0.017}) & (\num{0.023}) & (\num{0.017}) & (\num{0.017}) & (\num{0.018})\\
-Died Within 2 Years & \num{-0.397} & \num{-0.425}* & \num{-0.307} & \num{-0.350} & \num{-0.320} & \num{-0.318} & \num{-0.320}\\
- & (\num{0.241}) & (\num{0.250}) & (\num{0.257}) & (\num{0.326}) & (\num{0.262}) & (\num{0.263}) & (\num{0.265})\\
-Wealth x Died Within 2 Years & \num{0.034} & \num{0.036} & \num{0.027} & \num{0.031} & \num{0.029} & \num{0.028} & \num{0.029}\\
- & (\num{0.022}) & (\num{0.023}) & (\num{0.024}) & (\num{0.030}) & (\num{0.024}) & (\num{0.024}) & (\num{0.024})\\
-Amount of Strikes &  & \num{0.000} & \num{0.000} & \num{-0.008}* & \num{0.000} & \num{0.000} & \num{0.000}\\
- &  & (\num{0.001}) & (\num{0.001}) & (\num{0.004}) & (\num{0.001}) & (\num{0.001}) & (\num{0.001})\\
-Catholics in district &  &  & \num{-0.003}*** & \num{-0.003}** & \num{-0.003}*** & \num{-0.003}*** & \num{-0.003}***\\
- &  &  & (\num{0.001}) & (\num{0.001}) & (\num{0.001}) & (\num{0.001}) & (\num{0.001})\\
-Share Industrial &  &  &  & \num{-0.097} &  &  & \\
- &  &  &  & (\num{0.350}) &  &  & \\
-Vote Share &  &  &  &  & \num{0.031} & \num{0.032} & \num{0.034}\\
- &  &  &  &  & (\num{0.092}) & (\num{0.093}) & (\num{0.097})\\
-Tenure &  &  &  &  &  &  & \num{0.000}\\
- &  &  &  &  &  &  & (\num{0.000})\\
-Liberal & \num{0.500}*** & \num{0.523}*** & \num{0.436}*** & \num{0.470}*** & \num{0.436}*** & \num{0.437}*** & \num{0.438}***\\
- & (\num{0.047}) & (\num{0.047}) & (\num{0.060}) & (\num{0.075}) & (\num{0.060}) & (\num{0.060}) & (\num{0.060})\\
-Socialist & \num{0.629}*** & \num{0.664}*** & \num{0.536}*** & \num{0.541}*** & \num{0.539}*** & \num{0.540}*** & \num{0.542}***\\
- & (\num{0.061}) & (\num{0.066}) & (\num{0.081}) & (\num{0.111}) & (\num{0.081}) & (\num{0.081}) & (\num{0.083})\\
+Personal Wealth & \num{-0.041}** & \num{-0.038}** & \num{-0.037}** & \num{-0.036}** & \num{-0.036}** & \num{-0.036}** & \num{-0.037}** & \num{-0.039}**\\
+ & (\num{0.016}) & (\num{0.017}) & (\num{0.017}) & (\num{0.017}) & (\num{0.018}) & (\num{0.018}) & (\num{0.018}) & (\num{0.018})\\
+Died W 2 Yrs & \num{-0.397} & \num{-0.425}* & \num{-0.410} & \num{-0.377} & \num{-0.366} & \num{-0.354} & \num{-0.360} & \num{-0.286}\\
+ & (\num{0.241}) & (\num{0.250}) & (\num{0.256}) & (\num{0.265}) & (\num{0.266}) & (\num{0.269}) & (\num{0.271}) & (\num{0.272})\\
+Personal Wealth x Died W 2 Yrs & \num{0.034} & \num{0.036} & \num{0.035} & \num{0.031} & \num{0.030} & \num{0.029} & \num{0.030} & \num{0.025}\\
+ & (\num{0.022}) & (\num{0.023}) & (\num{0.024}) & (\num{0.024}) & (\num{0.024}) & (\num{0.025}) & (\num{0.025}) & (\num{0.025})\\
+Number of Strikes &  & \num{0.000} & \num{0.000} & \num{0.000} & \num{0.001} & \num{0.001} & \num{0.001} & \num{0.001}\\
+ &  & (\num{0.001}) & (\num{0.001}) & (\num{0.001}) & (\num{0.001}) & (\num{0.001}) & (\num{0.001}) & (\num{0.001})\\
+Vote Share &  &  & \num{-0.036} & \num{-0.041} & \num{-0.029} & \num{0.009} & \num{0.018} & \num{0.056}\\
+ &  &  & (\num{0.087}) & (\num{0.088}) & (\num{0.089}) & (\num{0.143}) & (\num{0.151}) & (\num{0.147})\\
+Share Socialist Vote in District &  &  &  & \num{-0.194} & \num{-0.211}* & \num{-0.216}* & \num{-0.215}* & \num{-0.188}\\
+ &  &  &  & (\num{0.126}) & (\num{0.125}) & (\num{0.126}) & (\num{0.127}) & (\num{0.128})\\
+Turnout &  &  &  &  & \num{0.150} & \num{0.139} & \num{0.144} & \num{0.042}\\
+ &  &  &  &  & (\num{0.145}) & (\num{0.156}) & (\num{0.158}) & (\num{0.154})\\
+Margin to Nearest Competitor &  &  &  &  &  & \num{-0.063} & \num{-0.067} & \num{-0.052}\\
+ &  &  &  &  &  & (\num{0.187}) & (\num{0.191}) & (\num{0.191})\\
+Tenure &  &  &  &  &  &  & \num{0.001} & \num{0.000}\\
+ &  &  &  &  &  &  & (\num{0.003}) & (\num{0.003})\\
+Share Catholic &  &  &  &  &  &  &  & \num{-0.301}**\\
+ &  &  &  &  &  &  &  & (\num{0.116})\\
+Liberal & \num{0.500}*** & \num{0.523}*** & \num{0.520}*** & \num{0.547}*** & \num{0.551}*** & \num{0.550}*** & \num{0.550}*** & \num{0.460}***\\
+ & (\num{0.047}) & (\num{0.047}) & (\num{0.048}) & (\num{0.055}) & (\num{0.054}) & (\num{0.055}) & (\num{0.055}) & (\num{0.068})\\
+Socialist & \num{0.629}*** & \num{0.664}*** & \num{0.656}*** & \num{0.706}*** & \num{0.713}*** & \num{0.712}*** & \num{0.715}*** & \num{0.596}***\\
+ & (\num{0.061}) & (\num{0.066}) & (\num{0.069}) & (\num{0.083}) & (\num{0.082}) & (\num{0.082}) & (\num{0.084}) & (\num{0.097})\\
 \midrule
-Law Dummies & Yes & Yes & Yes & Yes & Yes & Yes & Yes\\
-N & \num{313} & \num{295} & \num{285} & \num{209} & \num{285} & \num{285} & \num{285}\\
-Adj. R2 & \num{0.45} & \num{0.48} & \num{0.49} & \num{0.48} & \num{0.48} & \num{0.48} & \num{0.48}\\
+Law Fixed Effects & Yes & Yes & Yes & Yes & Yes & Yes & Yes & Yes\\
+N & \num{313} & \num{295} & \num{295} & \num{289} & \num{289} & \num{289} & \num{289} & \num{283}\\
+Adj. R2 & \num{0.45} & \num{0.48} & \num{0.48} & \num{0.47} & \num{0.47} & \num{0.47} & \num{0.47} & \num{0.48}\\
 \bottomrule
-\multicolumn{8}{l}{\rule{0pt}{1em}Vote is defined as 1 if the politician is in favor of the reform, 0 otherwise.}\\
-\multicolumn{8}{l}{\rule{0pt}{1em}The reference political allegiance is confessional. Personal Wealth is defined as log(1+Wealth at Death).}\\
-\multicolumn{8}{l}{\rule{0pt}{1em}Heteroskedasticity-robust standard errors in parenthesis. Results for lower house voting outcomes.}\\
-\multicolumn{8}{l}{\rule{0pt}{1em}* p $<$ 0.1, ** p $<$ 0.05, *** p $<$ 0.01}\\
+\multicolumn{9}{l}{\rule{0pt}{1em}Vote is defined as 1 if the politician is in favor of the reform, 0 otherwise.}\\
+\multicolumn{9}{l}{\rule{0pt}{1em}The reference political allegiance is confessional. Personal Wealth is defined as log(1+Wealth at Time of Vote).}\\
+\multicolumn{9}{l}{\rule{0pt}{1em}Heteroskedasticity-robust standard errors in parenthesis. Results for lower house voting outcomes.}\\
+\multicolumn{9}{l}{\rule{0pt}{1em}* p $<$ 0.1, ** p $<$ 0.05, *** p $<$ 0.01}\\
 \end{tabular}
 \end{table}
