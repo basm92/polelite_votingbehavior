@@ -1,14 +1,76 @@
 ## New table-creating file
-library(ivreg); library(modelsummary); library(tidyverse)
+library(ivreg); library(modelsummary); library(tidyverse); library(stargazer)
 library(xtable) ; library(kableExtra); library(viridis)
 
+# Common parameters for the models
+coefconvert <- c(
+    "log(1 + wealth_timevote)" = "Personal Wealth",
+    "strikes" = "Number of Strikes",
+    "tvs" = "Vote Share",
+    "socialistdum" = "Competed Against Socialist",
+    "socialistpercentage" = "% Socialist Vote in District",
+    "turnout" = "Turnout",
+    "ncm" = "Margin to Nearest Competitor",
+    "tenure" = "Tenure",
+    "long_elec_horiz" = "Long Electoral Horizon",
+    "age_of_vote" = "Age at Time of Vote",
+    "age_of_entrance" = "Age at Entry",
+    "rk_pct" = "% Catholic",
+    "hervormd_pct" = "% Protestant (Hervormd)",
+    "gereformeerd_pct" = "% Protestant (Geref.)",
+    "agricul_share" = "% District in Agriculture", 
+    "industry_share" = "% District in Industry",
+    "services_share" = "% District in Services",
+    "aandeel_gem" = "Share District in Tot. Taxes",
+    "percentage_aangesl" = "Share Tax Liable in District",
+    "classliberal" = "Liberal",
+    "classsocialist" = "Socialist"
+)
+
+gm <- tibble::tribble(
+    ~raw,        ~clean,          ~fmt,
+    "nobs",      "N",             0,
+    "adj.r.squared","Adj. R2", 2)
 
 ## Load datasets
-fiscal <- readRDS("./data/datasets/fiscal_lowerandupper.RDS")
-fiscal_iv <- readRDS("./data/datasets/fiscal_ivdata.RDS")
-suffrage <- readRDS("./data/datasets/electoral_lower.RDS")
-govtint <- readRDS("./data/datasets/social_lower.RDS")
+fiscal <- readRDS("./data/datasets/fiscal_lowerandupper.RDS") %>%
+    mutate(category = "fisc")
+fiscal_iv <- readRDS("./data/datasets/fiscal_ivdata.RDS") %>%
+    mutate(category = "fisc_iv")
+suffrage <- readRDS("./data/datasets/electoral_lower.RDS") %>%
+    mutate(category = "suffrage")
+govtint <- readRDS("./data/datasets/social_lower.RDS") %>%
+    mutate(category = "govtint")
 
+## Mutate couple of vars
+datasets <- list(suffrage, fiscal, fiscal_iv, govtint)
+
+datasets <- purrr::map_df(datasets, ~ .x %>%
+                              mutate(across(everything(), ~ as.character(.x)))) %>%
+    type_convert()
+# Now mutate the variables in this dataframe and then write them back to original dataframe
+datasets <- datasets %>%
+    mutate(
+        tenure = tenure/365,
+    long_elec_horiz = long_elec_horiz/365,
+    age_of_vote = age_of_vote/365,
+    age_of_entrance = age_of_entrance/365,
+    rk_pct = rk_pct/100,
+    hervormd_pct = hervormd_pct/100,
+    gereformeerd_pct = gereformeerd_pct/100,
+    aandeel_gem = aandeel_gem/100,
+    percentage_aangesl = percentage_aangesl/100,
+    socialistpercentage = socialistpercentage/100
+    )
+
+fiscal <- datasets %>%
+    filter(category == "fisc")
+suffrage <- datasets %>%
+    filter(category == "suffrage")
+govtint <- datasets %>%
+    filter(category == "govtint")
+fiscal_iv <- datasets %>%
+    filter(category == "fisc_iv")
 
 ## Baseline OLS suffrage
 model1 <- lm(data = suffrage %>%
@@ -16,11 +78,12 @@ model1 <- lm(data = suffrage %>%
                  mutate(tenure = tenure/365),
              formula = vote ~ log(1+wealth_timevote) + class + law)
 model2 <- update(model1, . ~ . + strikes)
-model3 <- update(model2, . ~ . + rk_pct)
-model4 <- update(model3, . ~ . + industry_share)
-model5 <- update(model3, . ~ . + tvs)
-model6 <- update(model5, . ~ . + turnout)
+model3 <- update(model2, . ~ . + tvs)
+model4 <- update(model3, . ~ . + socialistpercentage)
+model5 <- update(model4, . ~ . + turnout)
+model6 <- update(model5, . ~ . + ncm)
 model7 <- update(model6, . ~ . + tenure)
+model8 <- update(model7, . ~ . + rk_pct)
 
 electorallaw_ols <- list("(1)" = model1, 
                          "(2)" = model2, 
@@ -28,29 +91,14 @@ electorallaw_ols <- list("(1)" = model1,
                          "(4)" = model4, 
                          "(5)" = model5, 
                          "(6)" = model6, 
-                         "(7)" = model7)
-
-gm <- tibble::tribble(
-    ~raw,        ~clean,          ~fmt,
-    "nobs",      "N",             0,
-    "adj.r.squared","Adj. R2", 2)
-
+                         "(7)" = model7,
+                         "(8)" = model8
+                         )
 
 description <- tribble(
-    ~term, ~model1, ~model2, ~model3, ~model4, ~model5, ~model6, ~model7,
-    "Law Dummies", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes")
+    ~term, ~model1, ~model2, ~model3, ~model4, ~model5, ~model6, ~model7,~model8,
+    "Law Fixed Effects", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes")
 attr(description, 'position') <- c(19, 20, 21)
-
-coefconvert <- c("log(1 + wealth_timevote)" = "Personal Wealth",
-                 "strikes" = "Amount of Strikes",
-                 "rk_pct" = "Catholics in district",
-                 "industry_share" = "Share Industrial",
-                 "tvs" = "Vote Share",
-                 "turnout" = "Electoral Turnout",
-                 "tenure" = "Tenure",
-                 "classliberal" = "Liberal",
-                 "classsocialist" = "Socialist"
-)
 
 knitr::opts_current$set(label = "baseline_ols_suffrage")
 modelsummary(electorallaw_ols, 
@@ -61,14 +109,13 @@ modelsummary(electorallaw_ols,
              coef_omit = "Intercept|law",
              out = "kableExtra",
              add_rows = description,
-             output = "./tables/electorallaw_ols.tex",
+             #output = "./tables/electorallaw_ols.tex",
              title = "OLS Estimates of Wealth on the Propensity to Vote for Suffrage Expansion",
              notes = list("Heteroskedasticity-robust standard errors in parenthesis. Results for lower house voting outcomes.",
                           "The reference political allegiance is confessional. Personal Wealth is defined as log(1+Wealth at Death).",
                           "Vote is defined as 1 if the politician is in favor of the reform, 0 otherwise."
              )) %>%
-    kableExtra::kable_styling(latex_options = "hold_position",
-                              font_size = 9) 
+    kableExtra::kable_styling(latex_options = c("hold_position", "scale_down"))
 
 ## Baseline OLS govt intervention
 #### Tweede Kamer
@@ -77,11 +124,12 @@ model1 <- lm(data = govtint %>%
                  mutate(tenure = tenure/365),
              formula = vote ~ log(1+wealth_timevote) + class + law)
 model2 <- update(model1, . ~ . + strikes)
-model3 <- update(model2, . ~ . + rk_pct)
-model4 <- update(model3, . ~ . + industry_share)
-model5 <- update(model3, . ~ . + tvs)
-model6 <- update(model5, . ~ . + turnout)
+model3 <- update(model2, . ~ . + tvs)
+model4 <- update(model3, . ~ . + socialistpercentage)
+model5 <- update(model4, . ~ . + turnout)
+model6 <- update(model5, . ~ . + ncm)
 model7 <- update(model6, . ~ . + tenure)
+model8 <- update(model7, . ~ . + rk_pct)
 
 govtint_ols <- list("(1)" = model1, 
                     "(2)" = model2, 
@@ -89,28 +137,13 @@ govtint_ols <- list("(1)" = model1,
                     "(4)" = model4, 
                     "(5)" = model5, 
                     "(6)" = model6, 
-                    "(7)" = model7)
-
-gm <- tibble::tribble(
-    ~raw,        ~clean,          ~fmt,
-    "nobs",      "N",             0,
-    "adj.r.squared","Adj. R2", 2)
-
-coefconvert <- c("log(1 + wealth_timevote)" = "Personal Wealth",
-                 "strikes" = "Amount of Strikes",
-                 "rk_pct" = "Catholics in district",
-                 "industry_share" = "Share Industrial",
-                 "tvs" = "Vote Share",
-                 "turnout" = "Electoral Turnout",
-                 "tenure" = "Tenure",
-                 "classliberal" = "Liberal",
-                 "classsocialist" = "Socialist"
-)
+                    "(7)" = model7,
+                    "(8)" = model8)
 
 description <- tribble(
-    ~term, ~model1, ~model2, ~model3, ~model4, ~model5, ~model6, ~model7,
-    "Party + Law Controls", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes")
-attr(description, 'position') <- c(19,20,21)
+    ~term, ~model1, ~model2, ~model3, ~model4, ~model5, ~model6, ~model7, ~model8,
+    "Law Fixed Effects", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes")
+attr(description, 'position') <- c(21,22,23)
 
 knitr::opts_current$set(label = "baseline_ols_govtint")
 
@@ -122,17 +155,61 @@ modelsummary(govtint_ols,
              coef_omit = "Intercept|law",
              out = "kableExtra",
              add_rows = description,
-             output = "./tables/socialred_ols.tex",
+             #output = "./tables/socialred_ols.tex",
              title = "OLS Estimates of Wealth on the Propensity to Vote for Government Intervention",
              notes = list("Heteroskedasticity-robust standard errors in parenthesis. Results for lower house voting outcomes.",
                           "The reference political allegiance is confessional. Personal Wealth is defined as log(1+Wealth at Death).",
                           "Vote is defined as 1 if the politician is in favor of the reform, 0 otherwise."
              )) %>%
-    kableExtra::kable_styling(latex_options = "hold_position",
-                              font_size = 9) 
+    kableExtra::kable_styling(latex_options = c("hold_position", "scale_down"))
+
+## baseline ols fiscal
+
+model1 <- lm(data = fiscal %>%
+                 filter(house == "Tweede Kamer", class != "neutral") %>%
+                 mutate(tenure = tenure/365),
+             formula = vote ~ log(1+wealth_timevote) + class + law)
+model2 <- update(model1, . ~ . + strikes)
+model3 <- update(model2, . ~ . + tvs)
+model4 <- update(model3, . ~ . + socialistpercentage)
+model5 <- update(model4, . ~ . + turnout)
+model6 <- update(model5, . ~ . + ncm)
+model7 <- update(model6, . ~ . + tenure)
+model8 <- update(model7, . ~ . + rk_pct)
+
+fiscal_controls_ols <- list("(1)" = model1, 
+                    "(2)" = model2, 
+                    "(3)" = model3, 
+                    "(4)" = model4, 
+                    "(5)" = model5, 
+                    "(6)" = model6, 
+                    "(7)" = model7,
+                    "(8)" = model8)
+
+description <- tribble(
+    ~term, ~model1, ~model2, ~model3, ~model4, ~model5, ~model6, ~model7, ~model8,
+    "Law Fixed Effects", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes")
+attr(description, 'position') <- c(21,22,23)
+
+knitr::opts_current$set(label = "ols_controls")
+modelsummary(fiscal_controls_ols, 
+             stars = c("*" = .1, "**" = 0.05, "***" = 0.01),
+             vcov = "HC1",
+             gof_map = gm,
+             coef_map = coefconvert,
+             coef_omit = "Intercept|law",
+             out = "kableExtra",
+             add_rows = description,
+             #output = "./tables/fiscal_controls_ols.tex",
+             title = "OLS Estimates of Wealth on the Propensity to Vote for Fiscal Legislation",
+             notes = list("Heteroskedasticity-robust standard errors in parenthesis. Results for lower house voting outcomes.",
+                          "The reference political allegiance is confessional. Personal Wealth is defined as log(1+Wealth at Death).",
+                          "Vote is defined as 1 if the politician is in favor of the reform, 0 otherwise."
+             )) %>%
+    kableExtra::kable_styling(latex_options = c("hold_position","scale_down"))
 
 
-## Baseline OLS fiscal
+## OLS fiscal different houses
 baseline <- lm(data = fiscal,
                formula = vote ~ log(1 + wealth_timevote))
 model1 <- lm(data = fiscal,
@@ -187,68 +264,6 @@ modelsummary(first_regs,
              notes = list("Heteroskedasticity-robust standard errors in parentheses. The reference political allegiance is confessional.",
                           "Personal Wealth is defined as log(1+Wealth at Death).",
                           "Vote is defined as 1 if the politician is in favor of the reform, 0 otherwise.")) %>%
-    kableExtra::kable_styling(latex_options = "hold_position",
-                              font_size = 9) 
-
-## OLS Fiscal with full controls
-
-## Baseline OLS govt intervention
-#### Tweede Kamer
-model1 <- lm(data = fiscal %>%
-                 filter(house == "Tweede Kamer", class != "neutral") %>%
-                 mutate(tenure = tenure/365),
-             formula = vote ~ log(1+wealth_timevote) + class + law)
-model2 <- update(model1, . ~ . + strikes)
-model3 <- update(model2, . ~ . + rk_pct)
-model4 <- update(model3, . ~ . + industry_share)
-model5 <- update(model3, . ~ . + tvs)
-model6 <- update(model5, . ~ . + turnout)
-model7 <- update(model6, . ~ . + tenure)
-
-fiscal_controls_ols <- list("(1)" = model1, 
-                    "(2)" = model2, 
-                    "(3)" = model3, 
-                    "(4)" = model4, 
-                    "(5)" = model5, 
-                    "(6)" = model6, 
-                    "(7)" = model7)
-
-gm <- tibble::tribble(
-    ~raw,        ~clean,          ~fmt,
-    "nobs",      "N",             0,
-    "adj.r.squared","Adj. R2", 2)
-
-coefconvert <- c("log(1 + wealth_timevote)" = "Personal Wealth",
-                 "strikes" = "Amount of Strikes",
-                 "rk_pct" = "Catholics in district",
-                 "industry_share" = "Share Industrial",
-                 "tvs" = "Vote Share",
-                 "turnout" = "Electoral Turnout",
-                 "tenure" = "Tenure",
-                 "classliberal" = "Liberal",
-                 "classsocialist" = "Socialist"
-)
-
-description <- tribble(
-    ~term, ~model1, ~model2, ~model3, ~model4, ~model5, ~model6, ~model7,
-    "Party + Law Controls", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes")
-attr(description, 'position') <- c(19,20,21)
-
-knitr::opts_current$set(label = "ols_controls")
-modelsummary(fiscal_controls_ols, 
-             stars = c("*" = .1, "**" = 0.05, "***" = 0.01),
-             vcov = vcovHC,
-             gof_map = gm,
-             coef_map = coefconvert,
-             coef_omit = "Intercept|law",
-             out = "kableExtra",
-             add_rows = description,
-             output = "./tables/fiscal_controls_ols.tex",
-             title = "OLS Estimates of Wealth on the Propensity to Vote for Fiscal Legislation - Controls",
-             notes = list("Heteroskedasticity-robust standard errors in parenthesis. Results for lower house voting outcomes.",
-                          "The reference political allegiance is confessional. Personal Wealth is defined as log(1+Wealth at Death).",
-                          "Vote is defined as 1 if the politician is in favor of the reform, 0 otherwise."
-             )) %>%
     kableExtra::kable_styling(latex_options = "hold_position",
                               font_size = 9) 
 
