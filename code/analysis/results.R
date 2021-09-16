@@ -4,6 +4,7 @@ library(xtable) ; library(kableExtra); library(viridis)
 
 # Common parameters for the models
 coefconvert <- c(
+    "profdummy3" = "Father Politician",
     "log(1 + wealth_timevote)" = "Personal Wealth",
     "harnasTRUE" = "Died W 2 Yrs",
     "log(1 + wealth_timevote):harnasTRUE" = "Personal Wealth x Died W 2 Yrs",
@@ -313,36 +314,33 @@ modelsummary(harnas2,
 
 ## IV results
 #ivreg - baseline with profdummy3
-baseline <- ivreg(data = fiscal_iv %>%
-                      mutate(tenure = tenure/365,
-                             age_of_vote = age_of_vote/365) %>%
+
+fs1 <- lm(data = fiscal_iv %>%
+                 filter(class != "neutral"),
+             formula = log(1+wealth_timevote) ~ profdummy3 + class + law)
+iv1 <- ivreg(data = fiscal_iv %>%
                       filter(class != "neutral"),
                   formula = vote ~ log(1+wealth_timevote) + class + law | profdummy3 + class + law)
 
 # All models
-model2 <- update(baseline, . ~ . + strikes | . + strikes)
-model3 <- update(model2, . ~ . + rk_pct | . + rk_pct)
-model4 <- update(model3, . ~ . + industry_share | . + industry_share)
-model5 <- update(model3, . ~ . + tvs | . + tvs)
-model6 <- update(model5, . ~ . + turnout | . + turnout)
-model7 <- update(model6, . ~ . + tenure | . + tenure)
+fs2 <- update(fs1, . ~ . + strikes + rk_pct)
+iv2<- update(iv1, . ~ . + strikes + rk_pct | . + strikes + rk_pct)
+fs3 <- update(fs2, . ~ . + tvs + socialistpercentage + turnout + ncm + tenure)
+iv3 <- update(iv2, . ~ . +  tvs + socialistpercentage + turnout + ncm + tenure | . + tvs + socialistpercentage + turnout + ncm + tenure)
+fs4 <- update(fs3, . ~ . + industry_share)
+iv4 <- update(iv3, . ~ . + industry_share | . + industry_share)
 
-ivresults <- list("(1)" = baseline,
-                  "(2)" = model2,
-                  "(3)" = model3,
-                  "(4)" = model4,
-                  "(5)" = model5,
-                  "(6)" = model6,
-                  "(7)" = model7)
+ivresults <- list("(1)" = fs1,
+                  "(2)" = iv1,
+                  "(3)" = fs2,
+                  "(4)" = iv2,
+                  "(5)" = fs3,
+                  "(6)" = iv3,
+                  "(7)" = fs4,
+                  "(8)" = iv4)
 
 ### table
-gm <- tibble::tribble(
-    ~raw,        ~clean,          ~fmt,
-    "nobs",      "N",             0,
-    "adj.r.squared","Adj. R2", 2,
-)
-
-fstats <- ivresults %>%
+fstats <- ivresults[c(2,4,6,8)] %>%
     map_dbl(.f = ~ summary(.x) %>%
                 .$diagnostics %>%
                 .[1,3]) %>%
@@ -354,23 +352,45 @@ pvals <- ivresults %>%
                 .$diagnostics %>%
                 .[1,4])
 
-coefconvert <- c("log(1 + wealth_timevote)" = "Personal Wealth",
-                 "strikes" = "Amount of Strikes",
-                 "rk_pct" = "Catholics in district",
-                 "industry_share" = "Share Industrial",
-                 "tvs" = "Vote Share",
-                 "tenure" = "Tenure",
-                 "turnout" = "Turnout",
-                 "classsocialist" = "Socialist",
-                 "classliberal" = "Liberal"
-                 )
-
 description <- tribble(
-    ~term, ~model1, ~model2, ~model3, ~model4, ~model5, ~model6, ~model7,
-    "Law Dummies", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes",
-    "F-Stat. First stage", fstats[1], fstats[2], fstats[3], fstats[4], fstats[5], fstats[6], fstats[7])
+    ~term, ~model1, ~model2, ~model3, ~model4, ~model5, ~model6, ~model7, ~model8,
+    "Law Fixed Effects", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes", #,
+    "F-Stat. First stage", "", fstats[1], "", fstats[2], "", fstats[3], "", fstats[4])
 
-attr(description, 'position') <- c(20,21,22)
+gm <- tibble::tribble(
+    ~raw,        ~clean,          ~fmt,
+    "nobs",      "N",             0,
+    "adj.r.squared","Adj. R2", 2)
+
+# new coefmap
+coefconvert <- c(
+    "profdummy3" = "Father Politician",
+    "log(1 + wealth_timevote)" = "Personal Wealth",
+    "harnasTRUE" = "Died W 2 Yrs",
+    "log(1 + wealth_timevote):harnasTRUE" = "Personal Wealth x Died W 2 Yrs",
+    "strikes" = "Number of Strikes",
+    "rk_pct" = "Share Catholic",
+    "hervormd_pct" = "Share Protestant (Hervormd)",
+    "gereformeerd_pct" = "Share Protestant (Geref.)",
+    "tvs" = "Vote Share",
+    "socialistdum" = "Competed Against Socialist",
+    "socialistpercentage" = "Share Socialist Vote in District",
+    "age_of_vote" = "Age at Time of Vote",
+    "turnout" = "Turnout",
+    "ncm" = "Margin to Nearest Competitor",
+    "tenure" = "Tenure",
+    "long_elec_horiz" = "Long Electoral Horizon",
+    "age_of_entrance" = "Age at Entry",
+    "agricul_share" = "Share District in Agriculture", 
+    "industry_share" = "Share District in Industry",
+    "services_share" = "Share District in Services",
+    "aandeel_gem" = "Share District in Tot. Taxes",
+    "percentage_aangesl" = "Share Tax Liable in District",
+    "classliberal" = "Liberal",
+    "classsocialist" = "Socialist"
+)
+
+attr(description, 'position') <- c(25,26,27)
 
 knitr::opts_current$set(label = "ivresults")
 modelsummary(ivresults, 
@@ -387,8 +407,8 @@ modelsummary(ivresults,
                           "Personal Wealth is defined as log(1+Wealth at Death), and instrumented by Fathers profession.",
                           "The reference political allegiance is confessional. Vote is defined as 1 if the politician is in favor of the reform, 0 otherwise."
              )) %>%
-    kableExtra::kable_styling(latex_options = "hold_position",
-                              font_size = 9) 
+    add_header_above(c(" " = 1, rep(c("Personal Wealth" = 1, "Vote" = 1), 4))) %>%
+    kableExtra::kable_styling(latex_options = c("hold_position", "scale_down"))
 
 ## Iv results other
 
@@ -409,13 +429,7 @@ iv_results2 <- list("(1)" = baseline,
                      "(7)" = model19)
 
 ### table
-gm <- tibble::tribble(
-    ~raw,        ~clean,          ~fmt,
-    "nobs",      "N",             0,
-    "adj.r.squared","Adj. R2", 2,
-)
-
-fstats <- iv_results2 %>%
+fstats <- iv_results2[c(2,4,6,8)] %>%
     map_dbl(.f = ~ summary(.x) %>%
                 .$diagnostics %>%
                 .[1,3]) %>%
@@ -426,18 +440,6 @@ pvals <- iv_results2 %>%
     map_dbl(.f = ~ summary(.x) %>%
                 .$diagnostics %>%
                 .[1,4])
-
-coefconvert <- c("log(1 + wealth_timevote)" = "Personal Wealth",
-                 "agricul_share" = "Share Agricultural",
-                 "age_of_vote" = "Age of Vote",
-                 "hervormd_pct" = "Dutch Reformed in district",
-                 "ncm" = "Nearest Competitor Margin",
-                 "turnout" = "Turnout",
-                 "tvs" = "Vote Share",
-                 "socialistpercentage" = "Percentage Socialist Vote",
-                 "classsocialist" = "Socialist",
-                 "classliberal" = "Liberal"
-)
 
 description <- tribble(
     ~term, ~model1, ~model2, ~model3, ~model4, ~model5, ~model6, ~model7,
