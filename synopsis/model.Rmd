@@ -1,0 +1,69 @@
+---
+title: "Model"
+author: "Bas Machielsen"
+date: \today
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## A simple model of voting behavior
+
+I suppose that politicians make decisions according to the utility function:
+
+\begin{equation}\label{eq:utility}
+U(p_i, C_i) = -(p_i - p^*_i)^2 + \beta \cdot f(p_i, C_i) + \epsilon^p_i
+\end{equation}
+
+where $p_i$ is their vote, $p^*_i$ is the party line (an ideological bliss point for the political party as in e.g. Duggan & Martinelli, 2017) of politician $i$, and $f$ represents a mapping from the personal costs $C_i$ arising from the acceptance of the law to a politician's utility. Finally, $\epsilon^p_i$ is a random shock to utility, as in Mian, Sufi, Trebbi (2010). 
+ 
+ $p^*_i$ can be interpreted as follows: suppose $\beta = 0$, so that the only aspect politicians care about when deciding on a law is their ideological bliss point. Then, the utility function simplifies to:
+ 
+ $$
+ U(p_i) = -(p_i - p^*_i)^2
+ $$
+ 
+Politicians can only choose to vote in favor of or against a law. Hence, the choice space for politicians is always $p_i = \{ 0, 1 \}$. Again in the case of $\beta = 0$ (and no error terms), politicians would then chose $p_i = 1$ if $p^*_i > 0.5$ and $p_i = 0$ if $p^*_i < 0.5$, so as to maximize equation \ref{eq:utility}. The only factor influencing their decision-making is then their party alignment. More generally, politicians would solve the following problem:
+
+$$
+\max_{p_i \in \{ 0, 1 \}} \{ -(p_i - p^*_i)^2  + \beta \cdot f(p_i, C_i) + \epsilon^p_i\}
+$$
+
+which, after supposing that $f$ takes on the form:
+
+\begin{equation}
+f = \begin{cases}
+C (W_i) &\mbox{ if } p_i = 1 \\
+0 &\mbox{ otherwise }
+\end{cases}
+\end{equation}
+
+makes that politicians vote _in favor of the law_ if and only if:
+
+$$
+p_i = \begin{cases}
+1 &\mbox{ if } U(1, C_i) > U(0, C_i) \\
+0 &\mbox{ otherwise } 
+\end{cases}
+$$
+The condition $U(1, C_i) > U(0, C_i)$ is not deterministically determined, but is determined deterministically only up to the error terms. Specifically, using equation \ref{eq:utility} again:
+
+$$
+U(1, C_i) > U(0, C_i) \Rightarrow -(1-p^*_i)^2 + \beta C_i + \epsilon^1_i > -(P^*_i)^2 + \epsilon^0_i
+$$
+
+Rearranging this gives:
+
+$$
+-1 + 2p^*_i + \beta C_i > \epsilon^1_i - \epsilon^0_i 
+$$
+
+If we then assume a distribution for the difference of these $\epsilon$'s (a wide range of distributions can apply), we can determine the probability that $p_i = 1 \iff U(1, C_i) > U(0, C_i)$. To be concrete, suppose that $\epsilon^1_i - \epsilon^0_i \sim N(0,1)$. 
+
+Then, the probability $P(p_i = 1) = P(-1 + 2p^*_i + \beta C_i > \epsilon^1_i - \epsilon^0_i) = \Phi(-1 + 2p^*_i + \beta C_i)$, where $\Phi$ is the cdf of the standard normal distribution. Suppose also that $C_i = C(W_i) = \log W_i$. Then, if $\beta < 0$, the term inside $\Phi$ decreases as $W_i$ increases, so that the probability that a politician votes $p_i = 1$ decreases as $\log W_i$ increases. (In contrast, the probability of voting in favor increases as a function of a party's ideology $p^*_i \rightarrow 1$). 
+
+Empirically, a regression of $P(p_i = 1) = f(p^*_i, W_i)$ on $W_i$, controlled for $p^*_i$ would then identify the coefficient $\beta$.
+
+

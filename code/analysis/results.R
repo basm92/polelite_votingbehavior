@@ -277,7 +277,9 @@ description <- tribble(
 attr(description, 'position') <- c(25, 26, 27)
 
 model1 <- lm(data = fiscal %>%
-                   filter(house == "Tweede Kamer"), formula = vote ~ log(1+wealth_timevote) + harnas + log(1+wealth_timevote)*harnas + class + law)
+               # mutate(harnas = (fiscal$date_of_death - fiscal$date)/365 < 3) %>%
+                # mutate(harnas = (fiscal$date_of_death - fiscal$einde_periode)/365 < 2) %>%
+                filter(house == "Tweede Kamer"), formula = vote ~ log(1+wealth_timevote) + harnas + log(1+wealth_timevote)*harnas + class + law)
 model2 <- update(model1, . ~ . + strikes)
 model3 <- update(model2, . ~ . + tvs)
 model4 <- update(model3, . ~ . + socialistpercentage)
@@ -298,7 +300,7 @@ harnas2 <- list("(1)" = model1,
 knitr::opts_current$set(label = "harnas")
 modelsummary(harnas2, 
              stars = c("*" = .1, "**" = 0.05, "***" = 0.01),
-             vcov = vcovHC,
+             vcov = "HC1",
              gof_map = gm,
              coef_map = coefconvert,
              coef_omit = "Intercept|law",
@@ -547,4 +549,21 @@ modelsummary(ivresults,
 
 
 
+## Panel regression
+numbers <- fiscal %>%
+    group_by(b1_nummer) %>%
+    count() %>%
+    filter(n > 1) %>%
+    select(b1_nummer) %>%
+    pull()
+
+fiscal %>%
+    filter(house == "Tweede Kamer", is.element(b1_nummer, numbers)) %>%
+    plm::plm(formula = vote ~ log(1+wealth_timevote),
+             index = c("b1_nummer", "date"))
+
+test <- fiscal %>%
+    is.element(b1_nummer, numbers)) %>%
+    group_by(b1_nummer, date) %>%
+    count()
 

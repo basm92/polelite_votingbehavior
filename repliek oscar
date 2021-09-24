@@ -1,0 +1,45 @@
+Oscar repliek:
+	1. Waarom niet beroep? Omdat dat minder goed werkt (overfitting, lagere F-stat, hogere bias in small samples) en als beroep exogeen is, is een indicator van beroep dat ook
+	2.  geen goed instrument omdat te verwachten valt dat 'politieke families' (dwz) dat een vader ook politicus was mogelijk systematisch andere opvattingen over de verantwoordelijkheid van politici hebben die nauw verbonden zijn met hun ideologische positie.
+	2. Waarom exogeen? 
+		- Oscars probleem: instrument Z zou Y beinvloeden via andere kanalen dan X
+		- Instrument exogeen geconditioneerd op partij (aantal politieke families per partij is verschillend, maar gecondtioneerd is de variatie in pol. families exogeen
+		- Stel: politieke fam. zitten bij confessionelen, en confessionelen stemmen tegen
+		- Dan is er een correlatie tussen pol. fams en stemgedrag
+		- Maar deze verdwijnt condtioneel op partij: gegeven dat je confessioneel bent, geen correlatie tussen pol. fam en stemgedrag
+		- Waarom zouden mensen uit een pol. fam. anders stemmen op fiscale wetten dan mensen uit een niet pol. fam? 
+		- Argument 'statisme' niet geldig: als je een "statist" bent, kies je een bepaalde partij 
+		- Geen significante invloed op voting behavior is een toetsbare assumptie in andere wetten (mss doen voor robustness check)
+		
+	- Ander argument: andere IV-schattingen met plausibel-exogene variatie die niets met politieke families te maken hebben laten puntschattingen van dezelfde orde zien. 
+	
+	
+- Model: variabelen moeten consistenter met de empirische analyse: dus ook functionele vorm moet kloppen
+(Natuurlijk zijn de conclusies algemener, maar je regressie moet uit het model rollen)
+- I assume that voters do not observe each others votes etc. 
+
+- Dit biedt aanleiding om een term toe te voegen
+
+- Dit is wat we weten, dit is wat we willen verklaren
+- Politici hebben 
+
+- Interpretatie: gemiddelde vermogens veel kleiner, minder tegenstemmers in het begin van de 20e eeuw
+- Komt door vermogen, te weinig weerstand
+
+- Fiscaliteit is een vrije kwestie, vanuit puur materieel eigenbelang gestemd wordt
+- In andere aspecten is ideologie dominant
+
+- Stel, waren de pol. zo rijk als eerder -> doe deze simulatie
+
+- Interpretatie tabel met endogeneity test
+
+- Dinsdag/woensdag volgende versie
+- Threats to identification - rewrite
+- Coefficienten uitleggen
+
+- Donderdagochtend met Abe
+- Uiterlijk di sturen
+
+## Ga verder op pagina 12
+## Misschien tabellen 3 en 4 mergen (suffrage en govt intervention) en alleen de grootste modellen laten zien
+
