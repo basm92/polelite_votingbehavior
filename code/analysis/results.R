@@ -10,14 +10,14 @@ coefconvert <- c(
     "log(1 + wealth_timevote):harnasTRUE" = "Personal Wealth x Died W 2 Yrs",
     "strikes" = "Number of Strikes",
     "tvs" = "Vote Share",
-    "socialistdum" = "Competed Against Socialist",
-    "socialistpercentage" = "Share Socialist Vote in District",
     "age_of_vote" = "Age at Time of Vote",
     "turnout" = "Turnout",
     "ncm" = "Margin to Nearest Competitor",
     "tenure" = "Tenure",
     "long_elec_horiz" = "Long Electoral Horizon",
     "age_of_entrance" = "Age at Entry",
+    "socialistdum" = "Competed Against Socialist",
+    "socialistpercentage" = "Share Socialist Vote in District",
     "rk_pct" = "Share Catholic",
     "hervormd_pct" = "Share Protestant (Hervormd)",
     "gereformeerd_pct" = "Share Protestant (Geref.)",
@@ -128,10 +128,10 @@ model1 <- lm(data = govtint %>%
              formula = vote ~ log(1+wealth_timevote) + class + law)
 model2 <- update(model1, . ~ . + strikes)
 model3 <- update(model2, . ~ . + tvs)
-model4 <- update(model3, . ~ . + socialistpercentage)
-model5 <- update(model4, . ~ . + turnout)
-model6 <- update(model5, . ~ . + ncm)
-model7 <- update(model6, . ~ . + tenure)
+model4 <- update(model3, . ~ . + turnout)
+model5 <- update(model4, . ~ . + ncm)
+model6 <- update(model5, . ~ . + tenure)
+model7 <- update(model6, . ~ . + socialistpercentage)
 model8 <- update(model7, . ~ . + rk_pct)
 
 govtint_ols <- list("(1)" = model1, 
@@ -166,6 +166,54 @@ modelsummary(govtint_ols,
              )) %>%
     kableExtra::kable_styling(latex_options = c("hold_position", "scale_down"))
 
+## Baseline OLS Suffrage + Government intervention in one table
+model1 <- lm(data = suffrage %>%
+                 filter(house == "Tweede Kamer", class != "neutral"),
+             formula = vote ~ log(1+wealth_timevote) + class + law)
+model2 <- update(model1, . ~ . + strikes + tvs + age_of_vote + turnout +
+                     ncm + tenure + rk_pct)
+model3 <- update(model2, . ~ . + agricul_share)
+
+model4 <- lm(data = govtint %>%
+                 filter(house == "Tweede Kamer", class != "neutral"),
+             formula = vote ~ log(1+wealth_timevote) + class + law)
+model5 <- update(model4, . ~ . + strikes + tvs + age_of_vote + turnout +
+                     ncm + tenure + rk_pct)
+model6 <- update(model5, . ~ . + agricul_share)
+
+suffrage_gi_together <- list("(1)" = model1, 
+                         "(2)" = model2, 
+                         "(3)" = model3, 
+                         "(4)" = model4, 
+                         "(5)" = model5, 
+                         "(6)" = model6
+)
+
+description <- tribble(
+    ~term, ~model1, ~model2, ~model3, ~model4, ~model5, ~model6, 
+    "Law Fixed Effects", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes")
+attr(description, 'position') <- c(23,24,25)
+
+knitr::opts_current$set(label = "suffrage_govtint_together")
+
+modelsummary(suffrage_gi_together, 
+             stars = c("*" = .1, "**" = 0.05, "***" = 0.01),
+             vcov = "HC1",
+             gof_map = gm,
+             coef_map = coefconvert,
+             coef_omit = "Intercept|law",
+             out = "kableExtra",
+             add_rows = description,
+             output = "./tables/suffrage_gi_together.tex",
+             title = "OLS Estimates of Wealth on the Propensity to Vote for Reforms",
+             notes = list("Heteroskedasticity-robust standard errors in parentheses. Results for lower house voting outcomes.",
+                          "The reference political allegiance is confessional. Personal Wealth is defined as log(1+Wealth at Time of Vote).",
+                          "Vote is defined as 1 if the politician is in favor of the reform, 0 otherwise."
+             )) %>%
+    add_header_above(c(" " = 1, "Suffrage Extension" = 3, "Gov't Intervention" = 3)) %>%
+    kableExtra::kable_styling(latex_options = c("hold_position", "scale_down"))
+
+
 ## baseline ols fiscal
 
 model1 <- lm(data = fiscal %>%
@@ -174,10 +222,10 @@ model1 <- lm(data = fiscal %>%
              formula = vote ~ log(1+wealth_timevote) + class + law)
 model2 <- update(model1, . ~ . + strikes)
 model3 <- update(model2, . ~ . + tvs)
-model4 <- update(model3, . ~ . + socialistpercentage)
-model5 <- update(model4, . ~ . + turnout)
-model6 <- update(model5, . ~ . + ncm)
-model7 <- update(model6, . ~ . + tenure)
+model4 <- update(model3, . ~ . + turnout)
+model5 <- update(model4, . ~ . + ncm)
+model6 <- update(model5, . ~ . + tenure)
+model7 <- update(model6, . ~ . + socialistpercentage)
 model8 <- update(model7, . ~ . + rk_pct)
 
 fiscal_controls_ols <- list("(1)" = model1, 
@@ -282,10 +330,10 @@ model1 <- lm(data = fiscal %>%
                 filter(house == "Tweede Kamer"), formula = vote ~ log(1+wealth_timevote) + harnas + log(1+wealth_timevote)*harnas + class + law)
 model2 <- update(model1, . ~ . + strikes)
 model3 <- update(model2, . ~ . + tvs)
-model4 <- update(model3, . ~ . + socialistpercentage)
-model5 <- update(model4, . ~ . + turnout)
-model6 <- update(model5, . ~ . + ncm)
-model7 <- update(model6, . ~ . + tenure)
+model4 <- update(model3, . ~ . + turnout)
+model5 <- update(model4, . ~ . + ncm)
+model6 <- update(model5, . ~ . + tenure)
+model7 <- update(model6, . ~ . + socialistpercentage)
 model8 <- update(model7, . ~ . + rk_pct)
 
 harnas2 <- list("(1)" = model1,
@@ -372,12 +420,12 @@ coefconvert <- c(
     "harnasTRUE" = "Died W 2 Yrs",
     "log(1 + wealth_timevote):harnasTRUE" = "Personal Wealth x Died W 2 Yrs",
     "strikes" = "Number of Strikes",
+    "socialistdum" = "Competed Against Socialist",
+    "socialistpercentage" = "Share Socialist Vote in District",
     "rk_pct" = "Share Catholic",
     "hervormd_pct" = "Share Protestant (Hervormd)",
     "gereformeerd_pct" = "Share Protestant (Geref.)",
     "tvs" = "Vote Share",
-    "socialistdum" = "Competed Against Socialist",
-    "socialistpercentage" = "Share Socialist Vote in District",
     "age_of_vote" = "Age at Time of Vote",
     "turnout" = "Turnout",
     "ncm" = "Margin to Nearest Competitor",
@@ -548,22 +596,34 @@ modelsummary(ivresults,
     kableExtra::kable_styling(latex_options = c("hold_position", "scale_down"))
 
 
+## Make simulation predictions - with any model
+modelr::add_predictions(fiscal %>%
+                            filter(class != "neutral",
+                                   law != "Successiewet 1921", law != "Staatsschuldwet 1914",
+                                   wealth_timevote >= 0), model8) %>%
+    group_by(law) %>%
+    summarize(mean_wealth = mean(wealth_timevote, na.rm = TRUE), mean_prob = mean(pred, na.rm = TRUE))
 
-## Panel regression
-numbers <- fiscal %>%
-    group_by(b1_nummer) %>%
-    count() %>%
-    filter(n > 1) %>%
-    select(b1_nummer) %>%
-    pull()
 
-fiscal %>%
-    filter(house == "Tweede Kamer", is.element(b1_nummer, numbers)) %>%
-    plm::plm(formula = vote ~ log(1+wealth_timevote),
-             index = c("b1_nummer", "date"))
+modelr::add_predictions(fiscal %>%
+                            filter(class != "neutral",
+                                   law != "Successiewet 1921", law != "Staatsschuldwet 1914",
+                                   wealth_timevote >= 0) %>%
+                            mutate(wealth_timevote = 5 * wealth_timevote), model8) %>%
+    group_by(law) %>%
+    summarize(mean_wealth = mean(wealth_timevote, na.rm = TRUE), mean_prob = mean(pred, na.rm = TRUE))
 
-test <- fiscal %>%
-    is.element(b1_nummer, numbers)) %>%
-    group_by(b1_nummer, date) %>%
-    count()
+modelr::add_predictions(fiscal_iv %>%
+                            filter(class != "neutral",
+                                   law != "Successiewet 1921", law != "Staatsschuldwet 1914"), iv3) %>%
+    group_by(law) %>%
+    summarize(mean_wealth = mean(wealth_timevote, na.rm = TRUE), mean_prob = mean(pred, na.rm = TRUE), var_prob = var(pred, na.rm = TRUE))
+
+
+modelr::add_predictions(fiscal_iv %>%
+                            filter(class != "neutral",
+                                   law != "Successiewet 1921") %>%
+                            mutate(wealth_timevote = 100000 +  wealth_timevote), iv3) %>%
+    group_by(law) %>%
+    summarize(mean_wealth = mean(wealth_timevote, na.rm = TRUE), mean_prob = mean(pred, na.rm = TRUE))
 
