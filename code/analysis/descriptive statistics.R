@@ -18,7 +18,8 @@ datasets <- purrr::map_df(datasets, ~ .x %>%
 
 datasets2 <- datasets %>%
     filter(house == "Tweede Kamer", class != "neutral") %>%
-    mutate(law = fct_reorder(law, as.numeric(stringr::str_extract(law, "\\d{4}"))),
+    mutate(check = law,
+           law = fct_reorder(law, as.numeric(stringr::str_extract(law, "\\d{4}"))),
            year_law = stringr::str_extract(law, "[0-9]+"),
            category = factor(category, levels = c("Suffrage Extension", "Gov't Intervention", "Fiscal Legislation")),
            law = forcats::fct_relabel(law, ~ gsub("\\d{4}", "", .x)),
@@ -37,19 +38,41 @@ datasets2 <- datasets %>%
 modelsummary::datasummary(data = datasets2, category*(year_law*law) ~ class * vote*Mean * DropEmpty())
 
 # Table with dissent
+## Dissent function
 dissent <- function(x) {
         mean_value <- mean(x, na.rm = TRUE)
         min(length(x[x < mean_value])/length(x), length(x[x >= mean_value])/length(x))
 } 
+## median in words function
+custom_median <- function(x){
+    step1 <- median(x, na.rm = TRUE)
+    out <- if_else(step1 == 1, "Pro", "Con")
+    
+    return(out)
+}
+
+## accepted or rejected
+accepted <- function(check){
+    accepted_laws <- c("Successiwet 1878", "Successiewet 1911", "Successiewet 1916",
+                       "Successiewet 1921", "Staatsschuldwet 1914", "Inkomstenbelasting 1893",
+                       "Inkomstenbelasting 1914", "Kieswet 1887", "Kieswet 1896", "Kieswet 1918",
+                       "Kinderwetje 1874", "Leerplichtwet 1901", "Woningwet 1901", "Ongevallenwet 1901",
+                       "Antistakingswet 1903", "Arbeidscontractwet 1907", "Arbeidswet 1919",
+                       "Hoger Onderwijswet 1904", "Ziektewet 1913", "Wet Ouderdom Invaliditeit 1913")
+    
+    out <- if_else(is.element(check, accepted_laws), "Yes", "No")
+    return(out)
+}
 
 notes <- list("Dissent is defined as the percentage of politicians of each faction having voted against the party line.",
-              "Party Line is defined as the median vote per party: 1 corresponds to 'Yes', 0 to 'No'.")
+              "Party Line is defined as the median vote per party: 'Pro' if in favor, 'Con' if against.")
 
 knitr::opts_current$set(label = "descriptivestats_dissent")
+emptycol <- function(x) " "
 
 modelsummary::datasummary(data = datasets2, 
-                          (`Category` = category)*(`Law` = law)*(`Year` = year_law) ~ N*DropEmpty() + 
-                              (vote * (`Party Line` = Median)*Arguments(fmt="%.0f") + #* Arguments(fmt="%.0f") 
+                          (`Category` = category)*(`Law` = law)*(`Year` = year_law) ~ N*DropEmpty() + Median*vote*DropEmpty() + 
+                              (vote * (`Party Line` = custom_median) + #*Arguments(fmt="%.0f") + #* Arguments(fmt="%.0f") 
                                 vote * (`Dissent` = dissent))*DropEmpty(empty="-") * class ,
                           notes = notes, 
                           title = "Dissent in Voting Behavior in Key Laws",
