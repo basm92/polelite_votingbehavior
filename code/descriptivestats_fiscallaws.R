@@ -73,7 +73,7 @@ get_polid_tk <- function(df){
         
 }
 
-data <- list(inkomstenbelasting1893, inkomstenbelasting1914, 
+data <- list(inkomstenbelasting1872, inkomstenbelasting1893, inkomstenbelasting1914, 
              staatsschuldwet1914, successiewet1878, successiewet1911,
              successiewet1916, successiewet1921)
 
@@ -174,4 +174,4 @@ upperhouse %>%
 # Write a csv file with the data
 
 voting_fiscal_tk_ek <- bind_rows(lowerhouse, upperhouse)
-readr::write_csv(voting_fiscal_tk_ek, path = "./data/voting_behavior/votingbehavior_together.csv")
+readr::write_csv(voting_fiscal_tk_ek, file = "./data/voting_behavior/votingbehavior_together.csv")

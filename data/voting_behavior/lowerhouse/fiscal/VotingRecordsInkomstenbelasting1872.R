@@ -23,8 +23,7 @@ vote <- rep(1, length(politician))
 
 inkomstenbelasting1872 <- rbind(inkomstenbelasting1872, cbind(politician, vote)) %>%
     mutate(law = "Inkomstenbelasting 1872", date = "1872-05-02", house = "Tweede Kamer",
-           vote = as.numeric(vote),
-           date = lubridate::ymd(date))
+           vote = as.character(vote))
 
 
 #inkomstenbelasting1872 <- get_polid_tk(inkomstenbelasting1872)
