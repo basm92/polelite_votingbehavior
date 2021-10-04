@@ -430,9 +430,9 @@ ivdata <- df %>%
 
 ### Check - distribution of dummy per party
 
-ivdata %>%
-  group_by(class) %>%
-  summarize(mean = mean(profdummy1, na.rm = TRUE), sd = sd(profdummy1, na.rm = TRUE))
+test <- ivdata %>%
+  group_by(class, date) %>%
+  summarize(mean = mean(profdummy1, na.rm = TRUE), sd = sd(profdummy1, na.rm = TRUE), n = n())
 
 
 #saveRDS(ivdata, "./figures/ivdata.RDS")
