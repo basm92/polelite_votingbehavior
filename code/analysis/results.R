@@ -54,7 +54,7 @@ datasets <- purrr::map_df(datasets, ~ .x %>%
 # Now mutate the variables in this dataframe and then write them back to original dataframe
 datasets <- datasets %>%
     mutate(
-        tenure = tenure/365,
+    tenure = tenure/365,
     long_elec_horiz = long_elec_horiz/365,
     age_of_vote = age_of_vote/365,
     age_of_entrance = age_of_entrance/365,
@@ -67,13 +67,13 @@ datasets <- datasets %>%
     )
 
 fiscal <- datasets %>%
-    filter(category == "fisc")
+    filter(category == "fisc", law != "Staatsschuldwet 1914")
 suffrage <- datasets %>%
     filter(category == "suffrage")
 govtint <- datasets %>%
     filter(category == "govtint")
 fiscal_iv <- datasets %>%
-    filter(category == "fisc_iv")
+    filter(category == "fisc_iv", law != "Staatsschuldwet 1914")
 
 ## Baseline OLS suffrage
 model1 <- lm(data = suffrage %>%
@@ -251,7 +251,7 @@ modelsummary(fiscal_controls_ols,
              coef_omit = "Intercept|law",
              out = "kableExtra",
              add_rows = description,
-             output = "./tables/fiscal_controls_ols.tex",
+             #output = "./tables/fiscal_controls_ols.tex",
              title = "OLS Estimates of Wealth on the Propensity to Vote for Fiscal Legislation",
              notes = list("Heteroskedasticity-robust standard errors in parentheses. Results for lower house voting outcomes.",
                           "The reference political allegiance is confessional. Personal Wealth is defined as log(1+Wealth at Time of Vote).",
@@ -301,7 +301,7 @@ gm <- tibble::tribble(
 
 knitr::opts_current$set(label = "baseline_ols")
 modelsummary(first_regs, 
-             vcov = vcovHC,
+             vcov = "HC0",
              coef_omit = "Intercept|law",
              coef_map = c("log(1 + wealth_timevote)" = "Personal Wealth",
                           "classliberal" = "Liberal",
@@ -310,7 +310,7 @@ modelsummary(first_regs,
              gof_map = gm,
              out = "kableExtra",
              add_rows = description,
-             output = "./tables/baseline_ols.tex",
+             #output = "./tables/baseline_ols.tex",
              title = "OLS Estimates of Wealth on the Propensity to Vote for Fiscal Reforms",
              notes = list("Heteroskedasticity-robust standard errors in parentheses. The reference political allegiance is confessional.",
                           "Personal Wealth is defined as log(1+Wealth at Time of Vote).",
@@ -354,7 +354,7 @@ modelsummary(harnas2,
              coef_omit = "Intercept|law",
              out = "kableExtra",
              add_rows = description,
-             output = "./tables/harnas2.tex",
+             #output = "./tables/harnas2.tex",
              title = "OLS Estimates of Wealth on the Propensity to Vote for Fiscal Reforms - Endogeneity Test",
              notes = list("Heteroskedasticity-robust standard errors in parentheses. Results for lower house voting outcomes.",
                           "The reference political allegiance is confessional. Personal Wealth is defined as log(1+Wealth at Time of Vote).",
@@ -446,13 +446,13 @@ attr(description, 'position') <- c(25,26,27)
 knitr::opts_current$set(label = "ivresults")
 modelsummary(ivresults, 
              stars = c("*" = .1, "**" = 0.05, "***" = 0.01),
-             vcov = "HC",
+             vcov = "HC3",
              gof_map = gm,
              coef_map = coefconvert,
              coef_omit = "Intercept|law",
              out = "kableExtra",
              add_rows = description,
-             output = "./tables/iv_results.tex",
+             #output = "./tables/iv_results.tex",
              title = "IV Estimates of Wealth on the Propensity to Vote for Fiscal Reforms",
              notes = list("Heteroskedasticity-robust standard errors in parentheses. Results for lower house voting outcomes.",
                           "Personal Wealth is defined as log(1+Wealth at Death), and instrumented by Fathers profession.",
@@ -514,13 +514,13 @@ attr(description, 'position') <- c(25,26,27)
 knitr::opts_current$set(label = "ivresults2")
 modelsummary(ivresults2, 
              stars = c("*" = .1, "**" = 0.05, "***" = 0.01),
-             vcov = "HC",
+             vcov = "HC3",
              gof_map = gm,
              coef_map = coefconvert,
              coef_omit = "Intercept|law",
              out = "kableExtra",
              add_rows = description,
-             output = "./tables/iv_results2.tex",
+          #   output = "./tables/iv_results2.tex",
              title = "IV Estimates of Wealth on the Propensity to Vote for Fiscal Reforms",
              notes = list("Heteroskedasticity-robust standard errors in parentheses. Results for lower house voting outcomes.",
                           "Personal Wealth is defined as log(1+Wealth at Death), and instrumented by Fathers profession.",
@@ -555,7 +555,6 @@ ivresults <- list("(1)" = fs1,
                   "(7)" = fs4,
                   "(8)" = iv4)
 
-
 fstats <- ivresults[c(2,4,6,8)] %>%
     map_dbl(.f = ~ summary(.x) %>%
                 .$diagnostics %>%
@@ -579,13 +578,13 @@ attr(description, 'position') <- c(25,26,27)
 knitr::opts_current$set(label = "iv_results_inheritance")
 modelsummary(ivresults, 
              stars = c("*" = .1, "**" = 0.05, "***" = 0.01),
-             vcov = "HC1",
+             vcov = "HC0",
              gof_map = gm,
              coef_map = coefconvert,
              coef_omit = "Intercept|law",
              out = "kableExtra",
              add_rows = description,
-             output = "./tables/iv_results_exp_inherit.tex",
+             #output = "./tables/iv_results_exp_inherit.tex",
              title = "IV Estimates of Wealth on the Propensity to Vote for Fiscal Reforms",
              notes = list("Heteroskedasticity-robust standard errors in parentheses. Results for lower house voting outcomes.",
                           "Personal Wealth is defined as log(1+Wealth at Death), and instrumented by Expected inheritance.",
