@@ -79,7 +79,7 @@ fiscal_iv <- datasets %>%
 model1 <- lm(data = suffrage %>%
                  filter(house == "Tweede Kamer", class != "neutral") %>%
                  mutate(tenure = tenure/365),
-             formula = vote ~ log(1+wealth_timevote) + class + law)
+             formula = vote ~ wealth_timevote + class + law)
 model2 <- update(model1, . ~ . + strikes)
 model3 <- update(model2, . ~ . + tvs)
 model4 <- update(model3, . ~ . + age_of_vote)

@@ -31,17 +31,19 @@ p1 <- meanmedw_lh %>%
                group = Statistic, 
                linetype = Statistic)) + 
     geom_line() + 
-    theme_minimal() + 
+    theme_minimal() +
     xlab("Parliament") +
-    ylab("Wealth (guilders)") +
-    theme(axis.text.x = element_text(angle = 45), 
+    ylab("Wealth (defl. 1900 guilders)") +
+        theme(axis.text.x = element_text(angle = 45), 
           text = element_text(size=13),
           legend.position = c(0.9, 0.8),
           #panel.border = element_rect(colour = "black", fill=NA),
           legend.background = element_blank(),
           legend.box.background = element_rect(colour = "black")
     ) +
-    ggtitle("Panel A: Lower House") + 
+    ggtitle("Distribution of Politicians Avg. Wealth (Lower House)") + 
     scale_y_continuous(labels = scales::number_format(accuracy = 1),
                        limits=c(0,12e5)) +
     guides(linetype=guide_legend(title="Quantile"))
+
+ggplot2::ggsave("./figures/wealth_parl.pdf", p1, width = 8, height = 5)

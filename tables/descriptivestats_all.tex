@@ -1,33 +1,41 @@
-\begin{table}
+\begin{table}[!h]
 
 \caption{\label{tab:descriptives_all}Descriptive Statistics}
 \centering
-\begin{tabular}[t]{lrrrrrrrrr}
+\resizebox{\linewidth}{!}{
+\begin{tabular}[t]{lrrrrrrrr}
 \toprule
-\multicolumn{1}{c}{ } & \multicolumn{3}{c}{Suffrage Extension (N=409)} & \multicolumn{3}{c}{Gov't Intervention (N=1015)} & \multicolumn{3}{c}{Fiscal Legislation (N=549)} \\
-\cmidrule(l{3pt}r{3pt}){2-4} \cmidrule(l{3pt}r{3pt}){5-7} \cmidrule(l{3pt}r{3pt}){8-10}
-  & Mean & Median & SD & Mean  & Median  & SD  & Mean   & Median   & SD  \\
+\multicolumn{1}{c}{ } & \multicolumn{4}{c}{Suffrage Extension} & \multicolumn{4}{c}{Fiscal Legislation} \\
+\cmidrule(l{3pt}r{3pt}){2-5} \cmidrule(l{3pt}r{3pt}){6-9}
+  & N & Mean & Median & SD & N  & Mean  & Median  & SD \\
 \midrule
-Vote & \num{0.65} & \num{1.00} & \num{0.48} & \num{0.60} & \num{1.00} & \num{0.49} & \num{0.65} & \num{1.00} & \num{0.48}\\
-Personal Wealth & \num{150571.02} & \num{46888.74} & \num{306543.73} & \num{128635.07} & \num{26972.07} & \num{304165.53} & \num{123539.46} & \num{33808.06} & \num{252402.60}\\
-\% District in Agriculture & \num{0.09} & \num{0.06} & \num{0.10} & \num{0.13} & \num{0.08} & \num{0.12} & \num{0.11} & \num{0.06} & \num{0.11}\\
-\% District in Industry & \num{0.33} & \num{0.31} & \num{0.08} & \num{0.36} & \num{0.33} & \num{0.10} & \num{0.35} & \num{0.32} & \num{0.09}\\
-\% District in Services & \num{0.58} & \num{0.63} & \num{0.15} & \num{0.51} & \num{0.58} & \num{0.18} & \num{0.54} & \num{0.60} & \num{0.17}\\
-Share District in Tot. Taxes & \num{0.02} & \num{0.00} & \num{0.04} & \num{0.01} & \num{0.00} & \num{0.02} & \num{0.01} & \num{0.00} & \num{0.03}\\
-Share Tax Liable in District & \num{0.05} & \num{0.05} & \num{0.01} & \num{0.05} & \num{0.05} & \num{0.01} & \num{0.05} & \num{0.05} & \num{0.01}\\
-Number of Strikes & \num{1.71} & \num{0.00} & \num{6.48} & \num{8.07} & \num{1.00} & \num{20.25} & \num{9.71} & \num{0.00} & \num{28.43}\\
-Vote Share & \num{0.37} & \num{0.29} & \num{0.29} & \num{0.40} & \num{0.49} & \num{0.26} & \num{0.40} & \num{0.40} & \num{0.25}\\
-Competed Against Socialist & \num{0.00} & \num{0.00} & \num{0.00} & \num{0.44} & \num{0.00} & \num{0.50} & \num{0.54} & \num{1.00} & \num{0.50}\\
-\% Socialist Vote in District & \num{0.00} & \num{0.00} & \num{0.00} & \num{0.13} & \num{0.00} & \num{0.21} & \num{0.18} & \num{0.03} & \num{0.24}\\
-Turnout & \num{0.65} & \num{0.69} & \num{0.20} & \num{0.75} & \num{0.78} & \num{0.15} & \num{0.75} & \num{0.80} & \num{0.17}\\
-Margin to Nearest Competitor & \num{0.13} & \num{0.03} & \num{0.21} & \num{0.15} & \num{0.05} & \num{0.21} & \num{0.14} & \num{0.05} & \num{0.20}\\
-Tenure & \num{8.80} & \num{6.30} & \num{7.90} & \num{9.79} & \num{7.47} & \num{8.25} & \num{10.02} & \num{8.45} & \num{8.79}\\
-Long Electoral Horizon & \num{9.85} & \num{6.99} & \num{8.77} & \num{9.71} & \num{7.24} & \num{8.54} & \num{9.36} & \num{6.39} & \num{8.29}\\
-Age at Time of Vote & \num{52.02} & \num{51.19} & \num{9.65} & \num{52.81} & \num{51.78} & \num{10.47} & \num{52.91} & \num{51.84} & \num{10.49}\\
-Age at Entry & \num{43.22} & \num{41.57} & \num{8.89} & \num{43.02} & \num{41.62} & \num{8.94} & \num{42.89} & \num{40.96} & \num{8.81}\\
-\% Catholic & \num{0.34} & \num{0.25} & \num{0.30} & \num{0.36} & \num{0.27} & \num{0.30} & \num{0.34} & \num{0.27} & \num{0.28}\\
-\% Dutch Reformed (Hervormd) & \num{0.50} & \num{0.56} & \num{0.24} & \num{0.49} & \num{0.55} & \num{0.24} & \num{0.50} & \num{0.55} & \num{0.22}\\
-\% Dutch Reformed (Geref.) & \num{0.08} & \num{0.07} & \num{0.07} & \num{0.08} & \num{0.07} & \num{0.06} & \num{0.08} & \num{0.07} & \num{0.07}\\
+Vote & 409 & \num{0.65} & \num{1.00} & \num{0.48} & 540 & \num{0.68} & \num{1.00} & \num{0.47}\\
+Personal Wealth & 282 & \num{150571.02} & \num{46888.74} & \num{306543.73} & 347 & \num{124349.55} & \num{36450.11} & \num{243594.83}\\
+Liberal & 409 & \num{0.44} & \num{0.00} & \num{0.50} & 540 & \num{0.38} & \num{0.00} & \num{0.49}\\
+Confessional & 409 & \num{0.49} & \num{0.00} & \num{0.50} & 540 & \num{0.50} & \num{0.00} & \num{0.50}\\
+Socialist & 409 & \num{0.08} & \num{0.00} & \num{0.27} & 540 & \num{0.12} & \num{0.00} & \num{0.32}\\
+\% District in Agriculture & 286 & \num{0.09} & \num{0.06} & \num{0.10} & 356 & \num{0.10} & \num{0.06} & \num{0.11}\\
+\% District in Industry & 286 & \num{0.33} & \num{0.31} & \num{0.08} & 356 & \num{0.34} & \num{0.31} & \num{0.09}\\
+\% District in Services & 286 & \num{0.58} & \num{0.63} & \num{0.15} & 356 & \num{0.56} & \num{0.63} & \num{0.16}\\
+Share District in Tot. Taxes & 319 & \num{0.02} & \num{0.00} & \num{0.04} & 406 & \num{0.01} & \num{0.00} & \num{0.03}\\
+Share Tax Liable in District & 327 & \num{0.05} & \num{0.05} & \num{0.01} & 415 & \num{0.05} & \num{0.05} & \num{0.01}\\
+Number of Strikes & 337 & \num{1.71} & \num{0.00} & \num{6.48} & 468 & \num{6.10} & \num{0.00} & \num{21.11}\\
+Vote Share & 337 & \num{0.37} & \num{0.29} & \num{0.29} & 468 & \num{0.41} & \num{0.47} & \num{0.26}\\
+Competed Against Socialist & 335 & \num{0.00} & \num{0.00} & \num{0.00} & 461 & \num{0.40} & \num{0.00} & \num{0.49}\\
+\% Socialist Vote in District & 335 & \num{0.00} & \num{0.00} & \num{0.00} & 461 & \num{0.12} & \num{0.00} & \num{0.21}\\
+Turnout & 335 & \num{0.65} & \num{0.69} & \num{0.20} & 463 & \num{0.71} & \num{0.74} & \num{0.18}\\
+Margin to Nearest Competitor & 337 & \num{0.13} & \num{0.03} & \num{0.21} & 468 & \num{0.16} & \num{0.06} & \num{0.22}\\
+Tenure & 409 & \num{8.80} & \num{6.30} & \num{7.90} & 540 & \num{9.79} & \num{7.58} & \num{8.59}\\
+Long Electoral Horizon & 409 & \num{9.85} & \num{6.99} & \num{8.77} & 540 & \num{9.37} & \num{7.07} & \num{8.21}\\
+Age at Time of Vote & 409 & \num{52.02} & \num{51.19} & \num{9.65} & 540 & \num{52.69} & \num{51.81} & \num{10.19}\\
+Age at Entry & 409 & \num{43.22} & \num{41.57} & \num{8.89} & 540 & \num{42.91} & \num{41.42} & \num{8.69}\\
+\% Catholic & 332 & \num{0.34} & \num{0.25} & \num{0.30} & 452 & \num{0.34} & \num{0.26} & \num{0.28}\\
+\% Dutch Reformed (Hervormd) & 332 & \num{0.50} & \num{0.56} & \num{0.24} & 452 & \num{0.50} & \num{0.55} & \num{0.23}\\
+\% Dutch Reformed (Geref.) & 332 & \num{0.08} & \num{0.07} & \num{0.07} & 452 & \num{0.08} & \num{0.07} & \num{0.07}\\
+Harnas 2 & - & \num{NaN} & \num{NA} & \num{NA} & 540 & \num{0.32} & \num{0.00} & \num{0.47}\\
+Harnas 5 & - & \num{NaN} & \num{NA} & \num{NA} & 540 & \num{0.40} & \num{0.00} & \num{0.49}\\
+Father Politician & - & \num{NaN} & \num{NA} & \num{NA} & 501 & \num{0.19} & \num{0.00} & \num{0.39}\\
+Expected Inheritance & - & \num{NaN} & \num{NA} & \num{NA} & 171 & \num{66420.90} & \num{8983.11} & \num{263701.20}\\
 \bottomrule
-\end{tabular}
+\end{tabular}}
 \end{table}
