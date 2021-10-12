@@ -8,8 +8,15 @@ ihs <- function(x) { log(x + sqrt(x^2 + 1))}
 # Common parameters for the models
 coefconvert <- c(
     "profdummy3" = "Father Politician",
+    "exp_inherit" = "Expected Inheritance",
     "log(1 + wealth_timevote)" = "Personal Wealth",
+    "ihs(wealth_timevote)" = "Personal Wealth",
+    "ihs(wealth_timevote):categoryfisc" = "Personal Wealth x Fiscal",
+    "ihs(wealth_timevote):categorysuffrage" = "Personal Wealth x Suffrage",
     "harnasTRUE" = "Died W 2 Yrs",
+    "harnas" = "Died W 2 Yrs",
+    "harnas5" = "Died W 5 Yrs",
+    "ihs(wealth_timevote):harnas" = "Personal Wealth x Died W 2 Yrs",
     "log(1 + wealth_timevote):harnasTRUE" = "Personal Wealth x Died W 2 Yrs",
     "strikes" = "Number of Strikes",
     "tvs" = "Vote Share",
@@ -79,5 +86,5 @@ govtint <- datasets %>%
 fiscal_iv <- datasets %>%
     filter(category == "fisc_iv", law != "Staatsschuldwet 1914") %>%
     mutate(lawkind = if_else(str_detect(law, "Successie"), "Successie", "Inkomsten"),
-          # harnas = if_else(harnas = TRUE, 1, 0),
+           harnas = if_else((date_of_death - einde_periode)/365 < 2, 1, 0),
            harnas5 = if_else((date_of_death - einde_periode)/365 < 5, 1, 0))

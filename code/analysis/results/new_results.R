@@ -23,9 +23,27 @@ model5 <- lm(data = fiscal, formula = vote ~ ihs(wealth_timevote) + law + class 
                strikes+tvs+turnout+ncm+tenure+rk_pct + percentage_aangesl)
 
 ols_pooled <- list(model1, model2, model3, model4, model5)
-
-modelsummary(ols_pooled, stars = TRUE, vcov = "HC1")
-
+description <- tribble(
+  ~term, ~model1, ~model2, ~model3, ~model4, ~model5, 
+  "Law Fixed Effects", "Yes", "Yes", "Yes", "Yes", "Yes")
+attr(description, 'position') <- c(25,26,27)
+knitr::opts_current$set(label = "ols_pooled")
+modelsummary(ols_pooled, 
+             stars = c("*" = .1, "**" = 0.05, "***" = 0.01),
+             vcov = "HC1",
+             gof_map = gm,
+             coef_map = coefconvert,
+             coef_omit = "Intercept|law",
+             out = "kableExtra",
+             output = "./tables/ols_pooled.tex",
+             add_rows = description,
+             title = "OLS Estimates of Wealth on the Propensity to Vote for Suffrage and Fiscal Legislation",
+             notes = list("Heteroskedasticity-robust standard errors in parentheses. Results for lower house voting outcomes.",
+                          "The reference political allegiance is confessional. Personal Wealth is defined as ihs(Wealth at Time of Vote).",
+                          "Vote is defined as 1 if the politician is in favor of the reform, 0 otherwise.")
+) %>%
+  kableExtra::kable_styling(latex_options = c("hold_position", "scale_down")) %>%
+  kableExtra::add_header_above(c(" " = 1, "Pooled" = 3, "Suffrage" = 1, "Fiscal" = 1))
 
 # Suffrage (First three panels) and Fiscal (Second three panels)
 model1 <-lm(data = suffrage, formula = vote ~ ihs(wealth_timevote) + law + class)
@@ -35,14 +53,69 @@ model3 <- lm(data = suffrage, formula = vote ~ ihs(wealth_timevote) + law + clas
                strikes+tvs+turnout+ncm+tenure+rk_pct + percentage_aangesl)
 model4 <- lm(data = fiscal, formula = vote ~ ihs(wealth_timevote) + law + class)
 model5 <- lm(data = fiscal, formula = vote ~ ihs(wealth_timevote) + law + class + 
-               strikes+tvs+turnout+ncm+tenure+socialistpercentage+rk_pct)
+               strikes+tvs+turnout+ncm+tenure+rk_pct)
 model6 <- lm(data = fiscal, formula = vote ~ ihs(wealth_timevote) + law + class + 
                strikes+tvs+turnout+ncm+tenure+rk_pct + percentage_aangesl)
 
 hoihoi <- list(model1, model2, model3, model4, model5, model6)
-modelsummary(hoihoi, stars = T, vcov = "HC1", outpt = "kableExtra") %>%
+
+description <- tribble(
+  ~term, ~model1, ~model2, ~model3, ~model4, ~model5, ~model6,
+  "Law Fixed Effects", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes")
+attr(description, 'position') <- c(21, 22, 23)
+knitr::opts_current$set(label = "ols_separated")
+modelsummary(hoihoi, 
+             stars = c("*" = .1, "**" = 0.05, "***" = 0.01),
+             vcov = "HC1",
+             gof_map = gm,
+             coef_map = coefconvert,
+             coef_omit = "Intercept|law",
+             out = "kableExtra",
+             output = "./tables/ols_separated.tex",
+             add_rows = description,
+             title = "OLS Estimates of Wealth on the Propensity to Vote for Suffrage and Fiscal Legislation",
+             notes = list("Heteroskedasticity-robust standard errors in parentheses. Results for lower house voting outcomes.",
+                          "The reference political allegiance is confessional. Personal Wealth is defined as ihs(Wealth at Time of Vote).",
+                          "Vote is defined as 1 if the politician is in favor of the reform, 0 otherwise.")) %>%
   kableExtra::add_header_above(c(" " = 1, "Suffrage Extension" = 3, "Fiscal Legislation" = 3))
 
+
+## Endogeneity test
+suffrage_iv <- left_join(suffrage, fiscal_iv %>%
+                           select(b1_nummer, profdummy3, par_wealth, exp_inherit), 
+                         by = "b1_nummer") %>%
+  distinct() %>%
+  mutate(profdummy3 = profdummy3.y, 
+         harnas = if_else((date_of_death - einde_periode)/365 < 2, 1, 0),
+         harnas5 = if_else((date_of_death - einde_periode)/365 < 5, 1, 0),
+         exp_inherit = exp_inherit.y,
+         par_wealth = par_wealth.y)
+
+datasets2 <- bind_rows(fiscal_iv, suffrage_iv) %>%
+  filter(category == "fisc_iv" | category == "suffrage", 
+         house == "Tweede Kamer",
+         class != "neutral")
+
+model1 <- lm(formula = vote ~ ihs(wealth_timevote) + harnas + ihs(wealth_timevote):harnas + law + class, 
+             data = datasets2)
+model2 <- lm(formula = vote ~ ihs(wealth_timevote) + harnas + ihs(wealth_timevote):harnas + law + class +
+               strikes+tvs+turnout+ncm+tenure+rk_pct, 
+             data = datasets2)
+model3 <- lm(formula = vote ~ ihs(wealth_timevote) + harnas + ihs(wealth_timevote):harnas + law + class +
+               strikes+tvs+turnout+ncm+tenure+rk_pct, 
+             data = suffrage_iv)
+model4 <- lm(formula = vote ~ ihs(wealth_timevote) + harnas + ihs(wealth_timevote):harnas + law + class +
+                         strikes+tvs+turnout+ncm+tenure+rk_pct, 
+                       data = fiscal_iv)
+model5 <- lm(formula = vote ~ ihs(wealth_timevote) + harnas + ihs(wealth_timevote):harnas + law + class +
+               strikes+tvs+turnout+ncm+tenure+rk_pct+percentage_aangesl, 
+             data = suffrage_iv)
+model6 <-lm(formula = vote ~ ihs(wealth_timevote) + harnas + ihs(wealth_timevote):harnas + law + class +
+              strikes+tvs+turnout+ncm+tenure+rk_pct+percentage_aangesl, 
+            data = fiscal_iv)
+bido <- list(model1, model2, model3, model4, model5, model6)
+
+## Todo: make this table
 
 ## Iv results - profdummy 3 - fiscal 
 fs1 <- lm(data = fiscal_iv,

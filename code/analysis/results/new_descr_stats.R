@@ -75,7 +75,18 @@ modelsummary::datasummary(data = datasets2,
 
 ## Now the "regular" descriptive statistics
 source("./code/analysis/results/get_data.R")
-datasets2 <- bind_rows(fiscal_iv, suffrage) %>%
+
+suffrage_iv <- left_join(suffrage, fiscal_iv %>%
+                             select(b1_nummer, profdummy3, par_wealth, exp_inherit), 
+                         by = "b1_nummer") %>%
+    distinct() %>%
+    mutate(profdummy3 = profdummy3.y, 
+           harnas = if_else((date_of_death - einde_periode)/365 < 2, 1, 0),
+           harnas5 = if_else((date_of_death - einde_periode)/365 < 5, 1, 0),
+           exp_inherit = exp_inherit.y,
+           par_wealth = par_wealth.y)
+
+datasets2 <- bind_rows(fiscal_iv, suffrage_iv) %>%
     filter(category == "fisc_iv" | category == "suffrage", 
            house == "Tweede Kamer",
            class != "neutral") %>%
