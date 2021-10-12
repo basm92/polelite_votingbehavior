@@ -1,0 +1,43 @@
+\begin{table}
+
+\caption{\label{tab:ols_endogeneity}Endogeneity Test for Suffrage Extension and Fiscal Legislation}
+\centering
+\begin{tabular}[t]{lcccccc}
+\toprule
+  & Model 1 & Model 2 & Model 3 & Model 4 & Model 5 & Model 6\\
+\midrule
+Personal Wealth & \num{-0.008}* & \num{-0.010}** & \num{-0.012}* & \num{-0.013}* & \num{-0.009} & \num{-0.016}*\\
+ & (\num{0.004}) & (\num{0.004}) & (\num{0.007}) & (\num{0.007}) & (\num{0.006}) & (\num{0.008})\\
+Died W 2 Yrs & \num{0.028} & \num{0.033} & \num{0.032} & \num{0.023} & \num{0.031} & \num{-0.036}\\
+ & (\num{0.063}) & (\num{0.069}) & (\num{0.109}) & (\num{0.107}) & (\num{0.095}) & (\num{0.107})\\
+Personal Wealth x Died W 2 Yrs & \num{0.002} & \num{0.006} & \num{0.011} & \num{0.013} & \num{0.002} & \num{0.009}\\
+ & (\num{0.006}) & (\num{0.006}) & (\num{0.009}) & (\num{0.009}) & (\num{0.008}) & (\num{0.009})\\
+Number of Strikes &  & \num{0.000} & \num{0.004} & \num{0.003} & \num{0.000} & \num{-0.004}**\\
+ &  & (\num{0.001}) & (\num{0.003}) & (\num{0.004}) & (\num{0.001}) & (\num{0.002})\\
+Vote Share &  & \num{-0.055} & \num{-0.121} & \num{-0.144} & \num{0.027} & \num{0.033}\\
+ &  & (\num{0.101}) & (\num{0.143}) & (\num{0.140}) & (\num{0.127}) & (\num{0.131})\\
+Turnout &  & \num{-0.138} & \num{-0.153} & \num{-0.196} & \num{-0.085} & \num{-0.086}\\
+ &  & (\num{0.105}) & (\num{0.153}) & (\num{0.152}) & (\num{0.135}) & (\num{0.140})\\
+Margin to Nearest Competitor &  & \num{-0.074} & \num{-0.143} & \num{-0.148} & \num{-0.025} & \num{0.016}\\
+ &  & (\num{0.116}) & (\num{0.168}) & (\num{0.170}) & (\num{0.154}) & (\num{0.157})\\
+Tenure &  & \num{-0.004}* & \num{-0.004} & \num{-0.004} & \num{-0.004} & \num{-0.005}*\\
+ &  & (\num{0.002}) & (\num{0.004}) & (\num{0.004}) & (\num{0.003}) & (\num{0.003})\\
+Share Catholic &  & \num{-0.281}*** & \num{-0.130} & \num{-0.130} & \num{-0.443}*** & \num{-0.485}***\\
+ &  & (\num{0.077}) & (\num{0.120}) & (\num{0.121}) & (\num{0.096}) & (\num{0.097})\\
+Share Tax Liable in District &  &  &  & \num{0.661} &  & \num{3.343}\\
+ &  &  &  & (\num{2.826}) &  & (\num{2.051})\\
+Liberal & \num{0.457}*** & \num{0.376}*** & \num{0.365}*** & \num{0.361}*** & \num{0.389}*** & \num{0.368}***\\
+ & (\num{0.034}) & (\num{0.045}) & (\num{0.070}) & (\num{0.072}) & (\num{0.058}) & (\num{0.061})\\
+Socialist & \num{0.496}*** & \num{0.381}*** & \num{0.612}*** & \num{0.600}*** & \num{0.327}*** & \num{0.277}***\\
+ & (\num{0.043}) & (\num{0.060}) & (\num{0.106}) & (\num{0.111}) & (\num{0.072}) & (\num{0.086})\\
+\midrule
+Law Fixed Effects & Yes & Yes & Yes & Yes & Yes & Yes\\
+N & \num{629} & \num{571} & \num{257} & \num{249} & \num{314} & \num{275}\\
+Adj. R2 & \num{0.33} & \num{0.36} & \num{0.30} & \num{0.31} & \num{0.41} & \num{0.42}\\
+\bottomrule
+\multicolumn{7}{l}{\rule{0pt}{1em}Vote is defined as 1 if the politician is in favor of the reform, 0 otherwise.}\\
+\multicolumn{7}{l}{\rule{0pt}{1em}The reference political allegiance is confessional. Personal Wealth is defined as ihs(Wealth at Time of Vote).}\\
+\multicolumn{7}{l}{\rule{0pt}{1em}Heteroskedasticity-robust standard errors in parentheses. Results for lower house voting outcomes.}\\
+\multicolumn{7}{l}{\rule{0pt}{1em}* p $<$ 0.1, ** p $<$ 0.05, *** p $<$ 0.01}\\
+\end{tabular}
+\end{table}
