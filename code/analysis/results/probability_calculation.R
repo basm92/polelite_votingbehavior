@@ -3,7 +3,7 @@
 ## Two functions, one for scaling the probabilities
 ## One for giving wealth bonuses and simulating counterfactuals
 
-library(poibin)
+library(poibin); library(tidyverse); library(latex2exp)
 
 ihs <- function(x) { log(x + sqrt(x^2 + 1))}
 
@@ -12,15 +12,6 @@ winsorize <- function(x){
     x[x > 0.95] <- 0.95
     return(x)
 }
-
-# Load only the models which deliver spectacular predictions
-model_ols <- readRDS("./figures/model_ols.RDS")
-model_ols_data <- readRDS("./figures/model_ols_data.RDS") %>%
-    filter(class != "neutral")
-
-model_endog_ols <- readRDS("./figures/model_endog_ols.RDS")
-model_endog_ols_data <- readRDS("./figures/model_endog_ols_data.RDS") %>%
-    filter(class != "neutral")
 
 get_probabilities <- function(model, data, lawname, alpha_start = 1, alpha_end = 10){
     
@@ -86,4 +77,81 @@ get_probabilities2 <- function(model, data, lawname, beta_start = 1e5, beta_end 
     return(out)
 }
 
+create_dataframe <- function(model, data, set_laws){
+    
+    prob_and_law <- function(loi) {
+        get_probabilities(model, data, loi) %>%
+            mutate(law = loi)
+    }
+    
+    return(map_df(set_laws, ~ prob_and_law(.x)))
+    
+}
 
+create_dataframe2 <- function(model, data, set_laws){
+    
+    prob_and_law <- function(loi) {
+        get_probabilities2(model, data, loi) %>%
+            mutate(law = loi)
+    }
+    
+    return(map_df(set_laws, ~ prob_and_law(.x)))
+    
+}
+
+
+# Load only the models which deliver spectacular predictions
+validlaws <- c("Inkomstenbelasting 1872",
+  "Inkomstenbelasting 1893",
+  "Inkomstenbelasting 1914",
+  "Successiewet 1878",
+  "Successiewet 1911",
+  "Successiewet 1916")
+
+model_endog_ols <- readRDS("./figures/model_endog_ols.RDS")
+model_endog_ols_data <- readRDS("./figures/model_endog_ols_data.RDS") %>%
+    filter(class != "neutral")
+
+model_iv <- readRDS("./figures/model_iv2.RDS")
+model_iv_data <- readRDS("./figures/model_iv2_data.RDS") %>%
+    filter(class != "neutral")
+
+df <- create_dataframe(model_iv, model_iv_data %>%
+                           mutate(wealth_timevote = if_else(wealth_timevote > 0,
+                                                            wealth_timevote,
+                                                            0)), validlaws)
+
+df2 <- create_dataframe(model_endog_ols, model_endog_ols_data %>%
+                            mutate(
+                                wealth_timevote = if_else(wealth_timevote > 0,
+                                                      wealth_timevote,
+                                                      0)), validlaws)
+           
+p1 <- df %>%
+    ggplot(aes(x = wealth, y = probability, group = law, shape = law)) + 
+    geom_line() + 
+    geom_point() +
+    xlab(TeX("Scaled Wealth $\\alpha$")) +
+    ylab(TeX("P($Vote=1 | \\alpha W, X$)")) +
+    scale_shape_discrete(name="Law") + 
+    theme_bw() + 
+    theme(legend.position = "none") + 
+    ggtitle("Panel A: Ihs(Wealth)")
+
+df3 <- create_dataframe(model_iv_log, model_iv_log_data %>%
+                           mutate(wealth_timevote = if_else(wealth_timevote > 0,
+                                                            wealth_timevote,
+                                                            0)), validlaws)
+p2 <- df3 %>%
+    ggplot(aes(x = wealth, y = probability, group = law, shape = law)) + 
+    geom_line() + 
+    geom_point() +
+    xlab(TeX("Scaled Wealth $\\alpha$")) +
+    ylab(TeX("P($Vote=1 | \\alpha W, X$)")) +
+    scale_shape_discrete(name="Law") +
+    theme_bw() +
+    theme(legend.title = element_text(size=8), legend.text=element_text(size=8)) + 
+    ggtitle("Panel B: Log(Wealth)")
+
+fig <- cowplot::plot_grid(p1, p2, ncol = 2, rel_widths = c(0.4, 0.6))
+cowplot::save_plot(filename = "./figures/interpretation.pdf", fig, base_width= 10, base_height = 5)

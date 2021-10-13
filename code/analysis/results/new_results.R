@@ -232,6 +232,7 @@ modelsummary(ivresults,
 
 
 saveRDS(iv2, "./figures/model_iv2.RDS")
+saveRDS(fiscal_iv, "./figures/model_iv2_data.RDS")
 
 ## Inheritance results - fiscal 
 fs1 <- lm(data = fiscal_iv %>%
@@ -279,6 +280,9 @@ modelsummary(ivresults,
              )) %>%
   add_header_above(c(" " = 1, rep(c("Personal Wealth" = 1, "Vote" = 1), 3))) %>%
   kableExtra::kable_styling(latex_options = c("hold_position", "scale_down"))
+
+saveRDS(iv2, "./figures/model_inheritance_iv.RDS")
+saveRDS(fiscal_iv, "./figures/model_inheritance_iv_data.RDS")
 
 ## selection results
 datasets2 <- datasets2 %>%
@@ -368,4 +372,56 @@ gm <- tibble::tribble(
 modelsummary(modelz, 
              stars = T,
              gof_map = gm)
+
+saveRDS(model7, "./figures/model_probit.RDS")
+saveRDS(fiscal, "./figures/model_probit_data.RDS")
+
+## Results with log wealth instead of ihs
+fs1 <- lm(data = fiscal_iv,
+          formula = log(1+wealth_timevote) ~ profdummy3 + class + law)
+iv1 <- ivreg(data = fiscal_iv %>%
+               filter(class != "neutral"), 
+             formula = vote ~ log(1+wealth_timevote) + class + law | profdummy3 + class + law)
+fs2 <- update(fs1, . ~ . + rk_pct + tvs + socialistpercentage + turnout + ncm + tenure)
+iv2 <- update(iv1, . ~ . + rk_pct + tvs + socialistpercentage + turnout + ncm + tenure | . + rk_pct + tvs + socialistpercentage + turnout + ncm + tenure)
+fs3 <- update(fs2, . ~ . + industry_share)
+iv3 <- update(iv2, . ~ . + industry_share | . + industry_share)
+
+ivresults <- list(fs1, iv1, fs2, iv2, fs3, iv3)
+
+fstats <- ivresults[c(2,4,6)] %>%
+  map_dbl(.f = ~ summary(.x) %>%
+            .$diagnostics %>%
+            .[1,3]) %>%
+  round(2) %>%
+  as.character()
+
+description <- tribble(
+  ~term, ~model1, ~model2, ~model3, ~model4, ~model5, ~model6,
+  "Law Fixed Effects", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes", 
+  "Kleibergen-Paap F Stat.", "", fstats[1], "", fstats[2], "", fstats[3])
+
+attr(description, 'position') <- c(23,24)
+knitr::opts_current$set(label = "ivresults_fisc_log")
+modelsummary(ivresults, 
+             stars = c("*" = .1, "**" = 0.05, "***" = 0.01),
+             vcov = "HC3",
+             gof_map = gm,
+             coef_map = coefconvert,
+             coef_omit = "Intercept|law",
+             out = "kableExtra",
+             add_rows = description,
+             #output = "./tables/iv_results_fisc_log.tex",
+             title = "IV Estimates of Wealth on the Propensity to Vote for Fiscal Reforms",
+             notes = list("Heteroskedasticity-robust standard errors in parentheses. Results for lower house voting outcomes.",
+                          "Personal Wealth is defined as log(1+Wealth at Death), and instrumented by Fathers profession.",
+                          "The reference political allegiance is confessional. Vote is defined as 1 if the politician is in favor of the reform, 0 otherwise."
+             )) %>%
+  add_header_above(c(" " = 1, rep(c("Personal Wealth" = 1, "Vote" = 1), 3))) %>%
+  kableExtra::kable_styling(latex_options = c("hold_position", "scale_down"))
+
+
+saveRDS(iv2, "./figures/model_iv2_log.RDS")
+saveRDS(fiscal_iv, "./figures/model_iv2_log_data.RDS")
+
 
