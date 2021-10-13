@@ -146,4 +146,10 @@ modelsummary::datasummary(data = datasets2 ,
                           out = "kableExtra",
                           output = "./tables/descriptivestats_all.tex"
 ) %>%
-    kableExtra::kable_styling(latex_options = c("hold_position","scale_down"))
+    kableExtra::kable_styling(latex_options = c("hold_position","scale_down")) %>%
+    kableExtra::group_rows("Panel A: Dependent and Main Indep. Vars", 1, 5) %>%
+    kableExtra::group_rows("Panel B: District Characteristics", 6, 11) %>%
+    kableExtra::group_rows("Panel C: Electoral Characteristics", 12, 16) %>%
+    kableExtra::group_rows("Panel D: Politician Characteristics", 17, 20) %>%
+    kableExtra::group_rows("Panel E: Demographic Characteristics", 21, 23) %>%
+    kableExtra::group_rows("Panel F: IV-Related Variables", 24, 27)

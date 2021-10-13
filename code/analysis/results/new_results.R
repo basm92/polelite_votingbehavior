@@ -77,6 +77,9 @@ modelsummary(hoihoi,
                           "Vote is defined as 1 if the politician is in favor of the reform, 0 otherwise.")) %>%
   kableExtra::add_header_above(c(" " = 1, "Suffrage Extension" = 3, "Fiscal Legislation" = 3))
 
+saveRDS(fiscal, "./figures/model_ols_data.RDS")
+saveRDS(model5, "./figures/model_ols.RDS")
+
 
 ## Endogeneity test
 suffrage_iv <- left_join(suffrage, fiscal_iv %>%
@@ -134,6 +137,8 @@ modelsummary(bido,
                           "Vote is defined as 1 if the politician is in favor of the reform, 0 otherwise.")) %>%
   kableExtra::add_header_above(c(" " = 1, "Pooled" = 2, "Suffrage" = 2, "Fiscal" = 2))
 
+saveRDS(model6, "./figures/model_endog_ols.RDS")
+saveRDS(fiscal_iv, "./figures/model_endog_ols_data.RDS")
 ## Iv results for suffrage - null results
 
 suffrage_iv <- left_join(suffrage, fiscal_iv %>%
@@ -225,6 +230,9 @@ modelsummary(ivresults,
   add_header_above(c(" " = 1, rep(c("Personal Wealth" = 1, "Vote" = 1), 3))) %>%
   kableExtra::kable_styling(latex_options = c("hold_position", "scale_down"))
 
+
+saveRDS(iv2, "./figures/model_iv2.RDS")
+
 ## Inheritance results - fiscal 
 fs1 <- lm(data = fiscal_iv %>%
             mutate(exp_inherit = exp_inherit/100000) %>%
@@ -272,6 +280,48 @@ modelsummary(ivresults,
   add_header_above(c(" " = 1, rep(c("Personal Wealth" = 1, "Vote" = 1), 3))) %>%
   kableExtra::kable_styling(latex_options = c("hold_position", "scale_down"))
 
+## selection results
+datasets2 <- datasets2 %>%
+  mutate(observed = if_else(!is.na(wealth_timevote), 1, 0),
+         age_of_death = age_of_death/365,
+         agricul_share = agricul_share*100,
+         industry_share = industry_share*100)
+
+model1 <- lm(data = datasets2, observed ~ law + class)
+model2 <- update(model1, . ~ . + harnas + strikes + tvs + age_of_vote + turnout + tenure + ncm)
+model3 <- update(model2, . ~ . + rk_pct + percentage_aangesl)
+model4 <- lm(data =datasets2 %>%
+               filter(category == "suffrage"),
+             observed ~ law + class + harnas+tvs+age_of_vote+turnout+tenure+ncm)
+model5 <- update(model4, . ~ . + strikes+rk_pct+agricul_share+percentage_aangesl)
+model6 <- lm(data = datasets2 %>%
+               filter(category == "fisc_iv"), 
+             observed ~ law + class + harnas+tvs+age_of_vote+turnout+tenure+ncm)
+model7 <- update(model6, . ~ . + strikes+rk_pct+agricul_share+percentage_aangesl)
+
+selection <- list(model1, model2, model3, model4, model5, model6, model7)
+
+description <- tribble(
+  ~term, ~model1, ~model2, ~model3, ~model4, ~model5, ~model6, ~model7, 
+  "Law Fixed Effects", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes")
+
+attr(description, 'position') <- c(25, 26, 27)
+knitr::opts_current$set(label = "ols_selection")
+modelsummary(selection, 
+             stars = c("*" = .1, "**" = 0.05, "***" = 0.01),
+             vcov = "HC1",
+             gof_map = gm,
+             coef_map = coefconvert,
+             coef_omit = "Intercept|law",
+             out = "kableExtra",
+             output = "./tables/ols_selection.tex",
+             add_rows = description,
+             title = "Selection Equations for Suffrage Extension and Fiscal Legislation",
+             notes = list("Heteroskedasticity-robust standard errors in parentheses. Results for lower house voting outcomes.",
+                          "The reference political allegiance is confessional. The dependent variable is 1 if wealth observed, 0 otherwise.")) %>%
+  kableExtra::add_header_above(c(" " = 1, "Pooled" = 3, "Suffrage" = 2, "Fiscal" = 2)) %>%
+  kableExtra::kable_styling(latex_options = c("hold_position", "scale_down"))
+
 
 # logit results - suffrage
 model1 <- clogit(formula = vote ~ ihs(wealth_timevote) + strata(law) + strata(class), data = suffrage)
@@ -304,11 +354,10 @@ model3 <- update(model2, . ~ . + tvs)
 model4 <- update(model3, . ~ . + turnout)
 model5 <- update(model4, . ~ . + ncm)
 model6 <- update(model5, . ~ . + tenure)
-model7 <- update(model6, . ~ . + socialistpercentage)
-model8 <- update(model7, . ~ . + rk_pct)
-model9 <- update(model8, . ~ . + percentage_aangesl)
+model7 <- update(model6, . ~ . + rk_pct)
+model8 <- update(model7, . ~ . + percentage_aangesl)
 
-modelz <- list(model1, model2, model3, model4, model5, model6, model7, model8, model9)
+modelz <- list(model1, model2, model3, model4, model5, model6, model7, model8)
 
 gm <- tibble::tribble(
   ~raw,        ~clean,          ~fmt,
