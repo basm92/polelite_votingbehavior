@@ -1,0 +1,43 @@
+\begin{table}
+
+\caption{\label{tab:fisc_nw0_ols_iv}IV Analysis of Fiscal Legislation - Robustness Check}
+\centering
+\begin{tabular}[t]{lcccccc}
+\toprule
+  & Model 1 & Model 2 & Model 3 & Model 4 & Model 5 & Model 6\\
+\midrule
+Personal Wealth & \num{-0.007}* & \num{-0.006} & \num{-0.009}* & \num{-0.037}** & \num{-0.046}** & \num{-0.049}**\\
+ & (\num{0.004}) & (\num{0.004}) & (\num{0.004}) & (\num{0.016}) & (\num{0.021}) & (\num{0.022})\\
+Number of Strikes &  & \num{0.000} & \num{-0.002} &  & \num{-0.001} & \num{-0.012}*\\
+ &  & (\num{0.001}) & (\num{0.004}) &  & (\num{0.001}) & (\num{0.007})\\
+Vote Share &  & \num{0.009} & \num{0.013} &  & \num{-0.126} & \num{-0.089}\\
+ &  & (\num{0.125}) & (\num{0.131}) &  & (\num{0.159}) & (\num{0.158})\\
+Turnout &  & \num{-0.096} & \num{-0.055} &  & \num{0.128} & \num{0.183}\\
+ &  & (\num{0.144}) & (\num{0.150}) &  & (\num{0.201}) & (\num{0.213})\\
+Margin to Nearest Competitor &  & \num{-0.018} & \num{0.022} &  & \num{0.041} & \num{0.052}\\
+ &  & (\num{0.144}) & (\num{0.148}) &  & (\num{0.166}) & (\num{0.170})\\
+Tenure &  & \num{-0.003} & \num{-0.005}* &  & \num{-0.002} & \num{-0.004}\\
+ &  & (\num{0.003}) & (\num{0.003}) &  & (\num{0.003}) & (\num{0.003})\\
+Share Socialist Vote in District &  & \num{0.016} & \num{-0.202} &  & \num{-0.183} & \num{-0.275}\\
+ &  & (\num{0.160}) & (\num{0.193}) &  & (\num{0.208}) & (\num{0.223})\\
+Share Catholic &  & \num{-0.430}*** & \num{-0.473}*** &  & \num{-0.378}*** & \num{-0.420}***\\
+ &  & (\num{0.092}) & (\num{0.094}) &  & (\num{0.110}) & (\num{0.113})\\
+Share Tax Liable in District &  &  & \num{4.324}* &  &  & \num{6.088}**\\
+ &  &  & (\num{2.244}) &  &  & (\num{2.798})\\
+Liberal & \num{0.482}*** & \num{0.384}*** & \num{0.373}*** & \num{0.510}*** & \num{0.456}*** & \num{0.420}***\\
+ & (\num{0.043}) & (\num{0.054}) & (\num{0.057}) & (\num{0.051}) & (\num{0.074}) & (\num{0.070})\\
+Socialist & \num{0.518}*** & \num{0.337}*** & \num{0.332}*** & \num{0.558}*** & \num{0.482}*** & \num{0.482}***\\
+ & (\num{0.077}) & (\num{0.103}) & (\num{0.119}) & (\num{0.089}) & (\num{0.144}) & (\num{0.160})\\
+\midrule
+Law Fixed Effects & Yes & Yes & Yes & Yes & Yes & Yes\\
+Kleibergen-Paap F Stat. &  &  &  & 20.46 & 13.01 & 13.5\\
+N & \num{347} & \num{311} & \num{272} & \num{351} & \num{316} & \num{277}\\
+Adj. R2 & \num{0.36} & \num{0.41} & \num{0.43} & \num{0.22} & \num{0.20} & \num{0.24}\\
+\bottomrule
+\multicolumn{7}{l}{\rule{0pt}{1em}Vote is defined as 1 if the politician is in favor of the reform, 0 otherwise.}\\
+\multicolumn{7}{l}{\rule{0pt}{1em}The reference political allegiance is confessional.}\\
+\multicolumn{7}{l}{\rule{0pt}{1em}Personal Wealth is defined as ihs(Wealth at Death), and instrumented by Exp. Inheritance.}\\
+\multicolumn{7}{l}{\rule{0pt}{1em}Heteroskedasticity-robust standard errors in parentheses. Results for lower house voting outcomes.}\\
+\multicolumn{7}{l}{\rule{0pt}{1em}* p $<$ 0.1, ** p $<$ 0.05, *** p $<$ 0.01}\\
+\end{tabular}
+\end{table}

@@ -180,7 +180,7 @@ modelsummary(ivres,
              output = "./tables/iv_results_suffrage.tex",
              title = "IV Estimates of Wealth on the Propensity to Vote for Suffrage Extensions",
              notes = list("Heteroskedasticity-robust standard errors in parentheses. Results for lower house voting outcomes.",
-                          "Personal Wealth is defined as ihs(1+Wealth at Death), and instrumented by Fathers profession.",
+                          "Personal Wealth is defined as ihs(Wealth at Time of Vote), and instrumented by Fathers profession.",
                           "The reference political allegiance is confessional. Vote is defined as 1 if the politician is in favor of the reform, 0 otherwise."
              )) %>%
   add_header_above(c(" " = 1, rep(c("Personal Wealth" = 1, "Vote" = 1), 3))) %>%
@@ -224,7 +224,7 @@ modelsummary(ivresults,
              output = "./tables/iv_results_fisc.tex",
              title = "IV Estimates of Wealth on the Propensity to Vote for Fiscal Reforms",
              notes = list("Heteroskedasticity-robust standard errors in parentheses. Results for lower house voting outcomes.",
-                          "Personal Wealth is defined as ihs(1+Wealth at Death), and instrumented by Fathers profession.",
+                          "Personal Wealth is defined as ihs(Wealth at Time of Vote), and instrumented by Fathers profession.",
                           "The reference political allegiance is confessional. Vote is defined as 1 if the politician is in favor of the reform, 0 otherwise."
              )) %>%
   add_header_above(c(" " = 1, rep(c("Personal Wealth" = 1, "Vote" = 1), 3))) %>%
@@ -296,11 +296,11 @@ model2 <- update(model1, . ~ . + harnas + strikes + tvs + age_of_vote + turnout 
 model3 <- update(model2, . ~ . + rk_pct + percentage_aangesl)
 model4 <- lm(data =datasets2 %>%
                filter(category == "suffrage"),
-             observed ~ law + class + harnas+tvs+age_of_vote+turnout+tenure+ncm)
+             observed ~ law + class + strikes+ harnas+tvs+age_of_vote+turnout+tenure+ncm)
 model5 <- update(model4, . ~ . + strikes+rk_pct+agricul_share+percentage_aangesl)
 model6 <- lm(data = datasets2 %>%
                filter(category == "fisc_iv"), 
-             observed ~ law + class + harnas+tvs+age_of_vote+turnout+tenure+ncm)
+             observed ~ law + class + strikes+harnas+tvs+age_of_vote+turnout+tenure+ncm)
 model7 <- update(model6, . ~ . + strikes+rk_pct+agricul_share+percentage_aangesl)
 
 selection <- list(model1, model2, model3, model4, model5, model6, model7)
@@ -328,53 +328,90 @@ modelsummary(selection,
 
 
 # logit results - suffrage
-model1 <- clogit(formula = vote ~ ihs(wealth_timevote) + strata(law) + strata(class), data = suffrage)
-model2 <- update(model1, . ~ . + strikes)
-model3 <- update(model2, . ~ . + tvs)
-model4 <- update(model3, . ~ . + turnout)
-model5 <- update(model4, . ~ . + ncm)
-model6 <- update(model5, . ~ . + tenure)
-model7 <- update(model6, . ~ . + rk_pct)
-model8 <- update(model7, . ~ . + percentage_aangesl)
-
-modelz <- list(model1, model2, model3, model4, model5, model6, model7, model8)
-
-gm <- tibble::tribble(
-  ~raw,        ~clean,          ~fmt,
-  "nobs",      "N",             0,
-  "r.squared","$R^2$", 2,
-  "r.squared.max", "Max. $R^2$", 2)
-
-modelsummary(modelz, 
-             stars = T,
-             gof_map = gm)
-
-# Logit results - fiscal 
 library(survival)
+model1 <- clogit(formula = vote ~ ihs(wealth_timevote) + strata(law) + strata(class), data = suffrage)
+model2 <- update(model1, . ~ . + strikes + tvs + turnout + ncm + tenure)
+model3 <- update(model2, . ~ . + rk_pct + percentage_aangesl)
+model4 <- clogit(formula = vote ~ ihs(wealth_timevote) + strata(law) + strata(class), data = fiscal)
+model5 <- update(model4, . ~ . + strikes + tvs + turnout + ncm + tenure)
+model6 <- update(model5, . ~ . + rk_pct + percentage_aangesl)
 
-model1 <- clogit(formula = vote ~ ihs(wealth_timevote) + strata(law) + strata(class), data = fiscal)
-model2 <- update(model1, . ~ . + strikes)
-model3 <- update(model2, . ~ . + tvs)
-model4 <- update(model3, . ~ . + turnout)
-model5 <- update(model4, . ~ . + ncm)
-model6 <- update(model5, . ~ . + tenure)
-model7 <- update(model6, . ~ . + rk_pct)
-model8 <- update(model7, . ~ . + percentage_aangesl)
+modelz <- list(model1, model2, model3, model4, model5, model6)
 
-modelz <- list(model1, model2, model3, model4, model5, model6, model7, model8)
-
-gm <- tibble::tribble(
+gma <- tibble::tribble(
   ~raw,        ~clean,          ~fmt,
   "nobs",      "N",             0,
   "r.squared","$R^2$", 2,
   "r.squared.max", "Max. $R^2$", 2)
 
-modelsummary(modelz, 
-             stars = T,
-             gof_map = gm)
+description <- tribble(
+  ~term, ~model1, ~model2, ~model3, ~model4, ~model5, ~model6, 
+  "Party Fixed Effects", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes",
+  "Law Fixed Effects", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes")
 
-saveRDS(model7, "./figures/model_probit.RDS")
-saveRDS(fiscal, "./figures/model_probit_data.RDS")
+attr(description, 'position') <- c(17,18)
+knitr::opts_current$set(label = "logit_suffrage_fiscal")
+modelsummary(modelz, 
+             stars = c("*" = .1, "**" = 0.05, "***" = 0.01),
+             gof_map = gma,
+             coef_map = coefconvert,
+             coef_omit = "Intercept|law",
+             out = "kableExtra",
+             output = "./tables/logit_suffrage_fiscal.tex",
+             add_rows = description,
+             title = "Logit Analysis of Suffrage Extension and Fiscal Legislation",
+             notes = list("Standard errors in parentheses. Results for lower house voting outcomes.",
+                          "The reference political allegiance is confessional. The dependent variable is 1 if vote = yes, 0 otherwise.")) %>%
+  kableExtra::kable_styling(latex_options = c("hold_position", "scale_down")) %>%
+  kableExtra::add_header_above(c(" " = 1, "Suffrage" = 3, "Fiscal" = 3))
+
+## Results with NW0 instead of wealth_timevote - fiscal results
+ols1 <- lm(data = fiscal, formula = vote ~ ihs(nw0) + law + class)
+ols2 <- lm(data = fiscal, formula = vote ~ ihs(nw0) + law + class + 
+             strikes+tvs+socialistpercentage +turnout+ncm+tenure+rk_pct)
+ols3 <- lm(data = fiscal, formula = vote ~ ihs(nw0) + law + class + 
+             strikes+tvs+socialistpercentage+turnout+ncm+tenure+rk_pct + percentage_aangesl)
+iv1 <-ivreg(data = fiscal_iv %>%
+              filter(class != "neutral"), 
+            formula = vote ~ ihs(nw0) + class + law | profdummy3 + class + law)
+iv2 <- update(iv1, . ~ . + strikes + rk_pct + tvs + socialistpercentage + turnout + ncm + tenure | . + strikes + rk_pct + tvs + socialistpercentage + turnout + ncm + tenure)
+iv3 <- update(iv2, . ~ . + percentage_aangesl| . + percentage_aangesl)
+
+modelletjes <- list(ols1, ols2, ols3, iv1, iv2, iv3)
+
+fstats <- modelletjes[c(4,5,6)] %>%
+  map_dbl(.f = ~ summary(.x) %>%
+            .$diagnostics %>%
+            .[1,3]) %>%
+  round(2) %>%
+  as.character()
+
+description <- tribble(
+  ~term, ~model1, ~model2, ~model3, ~model4, ~model5, ~model6,
+  "Law Fixed Effects", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes", 
+  "Kleibergen-Paap F Stat.", " ", " ", " ", fstats[1], fstats[2], fstats[3])
+
+attr(description, 'position') <- c(23,24)
+knitr::opts_current$set(label = "fisc_nw0_ols_iv")
+
+modelsummary(modelletjes, 
+             stars = c("*" = .1, "**" = 0.05, "***" = 0.01),
+             gof_map = gm,
+             coef_map = coefconvert,
+             coef_omit = "Intercept|law",
+             out = "kableExtra",
+             output = "./tables/ols_iv_fisc_nw0.tex",
+             add_rows = description,
+             title = "IV Analysis of Fiscal Legislation - Robustness Check",
+             notes = list("Heteroskedasticity-robust standard errors in parentheses. Results for lower house voting outcomes.",
+                          "Personal Wealth is defined as ihs(Wealth at Death), and instrumented by Exp. Inheritance.",
+                          "The reference political allegiance is confessional.",
+                          "Vote is defined as 1 if the politician is in favor of the reform, 0 otherwise."
+             )) %>%
+  kableExtra::kable_styling(latex_options = c("hold_position", "scale_down")) %>%
+  kableExtra::add_header_above(c(" " = 1, "OLS" = 3, "IV" = 3))
+
+
 
 ## Results with log wealth instead of ihs
 fs1 <- lm(data = fiscal_iv,
@@ -411,7 +448,7 @@ modelsummary(ivresults,
              coef_omit = "Intercept|law",
              out = "kableExtra",
              add_rows = description,
-             #output = "./tables/iv_results_fisc_log.tex",
+             output = "./tables/iv_results_fisc_log.tex",
              title = "IV Estimates of Wealth on the Propensity to Vote for Fiscal Reforms",
              notes = list("Heteroskedasticity-robust standard errors in parentheses. Results for lower house voting outcomes.",
                           "Personal Wealth is defined as log(1+Wealth at Death), and instrumented by Fathers profession.",

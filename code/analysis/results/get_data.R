@@ -11,6 +11,7 @@ coefconvert <- c(
     "exp_inherit" = "Expected Inheritance",
     "log(1 + wealth_timevote)" = "Personal Wealth",
     "ihs(wealth_timevote)" = "Personal Wealth",
+    "ihs(nw0)" = "Personal Wealth",
     "ihs(wealth_timevote):categoryfisc" = "Personal Wealth x Fiscal",
     "ihs(wealth_timevote):categorysuffrage" = "Personal Wealth x Suffrage",
     "harnasTRUE" = "Died W 2 Yrs",
