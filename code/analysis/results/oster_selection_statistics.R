@@ -52,7 +52,7 @@ frisch_waugh_lovell <- function(data, ivs, dv, controls, trans = function(x) x){
 
 # estimate the first stage regression
 step1 <- model_iv_data %>%
-    lm(formula = ihs(wealth_timevote) ~ profdummy3 + tvs + strikes + tenure + turnout + socialistpercentage + rk_pct + law + class)
+    lm(formula = ihs(wealth_timevote) ~ profdummy3 + law + class)
 # save and merge fitted values
 step2 <- step1$fitted.values
 step3 <- merge(model_iv_data, step2, by.x = 0, by.y = 0)
@@ -60,14 +60,14 @@ step3 <- merge(model_iv_data, step2, by.x = 0, by.y = 0)
 # Make all the variables orthogonal to the law and class fixed effects
 step4 <- frisch_waugh_lovell(step3,
                              ivs = c("y",
-                                     "tvs", "strikes", "tenure", "turnout", "rk_pct", "socialistpercentage"),
+                                     "tvs", "turnout", "ncm", "tenure", "socialistpercentage", "rk_pct"),
                              dv = "vote",
                              controls = c("law", "class"))
 # use robomit o_delta on the partialed out data - same coefficients and relative r-sq. changes
 step5 <- robomit::o_delta(y = "resid_y",
                           x = "resid_var_of_interest",
-                          con = "resid_iv_tvs+resid_iv_strikes+resid_iv_tenure+resid_iv_turnout+resid_iv_rk_pct+resid_iv_socialistpercentage",
-                          R2max = 0.5,
+                          con = "resid_iv_tvs+resid_iv_turnout+resid_iv_ncm+resid_iv_tenure+resid_iv_socialistpercentage+resid_iv_rk_pct",
+                          R2max = 0.8,
                           type="lm",
                           data=step4)
 
