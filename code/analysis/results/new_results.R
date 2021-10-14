@@ -275,7 +275,7 @@ modelsummary(ivresults,
              output = "./tables/iv_results_fisc_inherit.tex",
              title = "IV Estimates of Wealth on the Propensity to Vote for Fiscal Reforms",
              notes = list("Heteroskedasticity-robust standard errors in parentheses. Results for lower house voting outcomes.",
-                          "Personal Wealth is defined as ihs(Wealth at Death), and instrumented by Exp. Inheritance.",
+                          "Personal Wealth is defined as ihs(Wealth at Time of Vote), and instrumented by Exp. Inheritance.",
                           "The reference political allegiance is confessional. Vote is defined as 1 if the politician is in favor of the reform, 0 otherwise."
              )) %>%
   add_header_above(c(" " = 1, rep(c("Personal Wealth" = 1, "Vote" = 1), 3))) %>%
@@ -361,7 +361,8 @@ modelsummary(modelz,
              add_rows = description,
              title = "Logit Analysis of Suffrage Extension and Fiscal Legislation",
              notes = list("Standard errors in parentheses. Results for lower house voting outcomes.",
-                          "The reference political allegiance is confessional. The dependent variable is 1 if vote = yes, 0 otherwise.")) %>%
+                          "The reference political allegiance is confessional.",
+                          "The dependent variable, Vote, is defined as 1 if the politician is in favor of the reform, 0 otherwise.")) %>%
   kableExtra::kable_styling(latex_options = c("hold_position", "scale_down")) %>%
   kableExtra::add_header_above(c(" " = 1, "Suffrage" = 3, "Fiscal" = 3))
 
@@ -451,7 +452,7 @@ modelsummary(ivresults,
              output = "./tables/iv_results_fisc_log.tex",
              title = "IV Estimates of Wealth on the Propensity to Vote for Fiscal Reforms",
              notes = list("Heteroskedasticity-robust standard errors in parentheses. Results for lower house voting outcomes.",
-                          "Personal Wealth is defined as log(1+Wealth at Death), and instrumented by Fathers profession.",
+                          "Personal Wealth is defined as log(1+Wealth at Time of Vote), and instrumented by Fathers profession.",
                           "The reference political allegiance is confessional. Vote is defined as 1 if the politician is in favor of the reform, 0 otherwise."
              )) %>%
   add_header_above(c(" " = 1, rep(c("Personal Wealth" = 1, "Vote" = 1), 3))) %>%

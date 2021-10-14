@@ -116,6 +116,10 @@ model_iv <- readRDS("./figures/model_iv2.RDS")
 model_iv_data <- readRDS("./figures/model_iv2_data.RDS") %>%
     filter(class != "neutral")
 
+model_iv_log <- readRDS("./figures/model_iv2_log.RDS")
+model_iv_log_data <- readRDS("./figures/model_iv2_log_data.RDS") %>%
+  filter(class != "neutral")
+
 df <- create_dataframe(model_iv, model_iv_data %>%
                            mutate(wealth_timevote = if_else(wealth_timevote > 0,
                                                             wealth_timevote,
@@ -153,5 +157,6 @@ p2 <- df3 %>%
     theme(legend.title = element_text(size=8), legend.text=element_text(size=8)) + 
     ggtitle("Panel B: Log(Wealth)")
 
-fig <- cowplot::plot_grid(p1, p2, ncol = 2, rel_widths = c(0.4, 0.6))
+fig <- cowplot::plot_grid(p1, p2, ncol = 2, rel_widths = c(0.42, 0.58))
 cowplot::save_plot(filename = "./figures/interpretation.pdf", fig, base_width= 10, base_height = 5)
+
