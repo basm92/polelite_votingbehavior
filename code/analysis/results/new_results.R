@@ -1,5 +1,6 @@
 # new_results
 source("./code/analysis/results/get_data.R")
+source("./code/analysis/results/oster_selection_statistics.R")
 
 ## Models - for both
 model1 <- datasets %>%
@@ -187,7 +188,8 @@ modelsummary(ivres,
   kableExtra::kable_styling(latex_options = c("hold_position", "scale_down"))
 
 ## Iv results - profdummy 3 - fiscal 
-fs1 <- lm(data = fiscal_iv,
+fs1 <- lm(data = fiscal_iv %>%
+            filter(class != "neutral"),
           formula = ihs(wealth_timevote) ~ profdummy3 + class + law)
 iv1 <- ivreg(data = fiscal_iv %>%
                filter(class != "neutral"), 
@@ -205,6 +207,16 @@ fstats <- ivresults[c(2,4,6)] %>%
             .[1,3]) %>%
   round(2) %>%
   as.character()
+
+compute_delta(fiscal_iv %>% filter(class != "neutral"), 
+              main_iv = "wealth_timevote", 
+              other_ivs = c("rk_pct", "tvs", "socialistpercentage","tenure", "turnout", "ncm", "industry_share"),
+              instrument = "profdummy3", 
+              dv = "vote", 
+              trans_iv = ihs, 
+              prtlout = c("law", "class"),
+              first_stage = "small", 
+              R2max = 0.75)
 
 description <- tribble(
   ~term, ~model1, ~model2, ~model3, ~model4, ~model5, ~model6,
@@ -238,7 +250,7 @@ saveRDS(fiscal_iv, "./figures/model_iv2_data.RDS")
 fs1 <- lm(data = fiscal_iv %>%
             mutate(exp_inherit = exp_inherit/100000) %>%
             filter(class != "neutral"),
-          formula = ihs(1+wealth_timevote) ~ exp_inherit + class + law)
+          formula = ihs(wealth_timevote) ~ exp_inherit + class + law)
 iv1 <- ivreg(data = fiscal_iv %>%
                filter(class != "neutral"), 
              formula = vote ~ ihs(wealth_timevote) + class + law | exp_inherit + class + law)
@@ -256,6 +268,16 @@ fstats <- ivresults[c(2,4,6)] %>%
             .[1,3]) %>%
   round(2) %>%
   as.character()
+
+compute_delta(fiscal_iv %>% filter(class != "neutral"), 
+              main_iv = "wealth_timevote", 
+              other_ivs = c("rk_pct", "tvs", "socialistpercentage","tenure", "turnout", "ncm", "percentage_aangesl"),
+              instrument = "exp_inherit", 
+              dv = "vote", 
+              trans_iv = ihs, 
+              prtlout = c("law", "class"),
+              first_stage = "small", 
+              R2max = 0.60)
 
 description <- tribble(
   ~term, ~model1, ~model2, ~model3, ~model4, ~model5, ~model6,
