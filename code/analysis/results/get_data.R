@@ -19,6 +19,8 @@ coefconvert <- c(
     "harnas5" = "Died W 5 Yrs",
     "ihs(wealth_timevote):harnas" = "Personal Wealth x Died W 2 Yrs",
     "log(1 + wealth_timevote):harnasTRUE" = "Personal Wealth x Died W 2 Yrs",
+    "polfam" = "Political Family",
+    "count_polfam" = "Political Family",
     "strikes" = "Number of Strikes",
     "tvs" = "Vote Share",
     "age_of_vote" = "Age at Time of Vote",

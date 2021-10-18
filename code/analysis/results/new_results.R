@@ -485,3 +485,30 @@ saveRDS(iv2, "./figures/model_iv2_log.RDS")
 saveRDS(fiscal_iv, "./figures/model_iv2_log_data.RDS")
 
 
+## Results of placebo test with government intervention
+polfams <- read_csv("./data/polid_data/political_families.csv")
+govtint <- govtint %>% left_join(polfams) %>%
+  rename(count_polfam = n)
+
+ols_begin <- lm(data = govtint, vote ~ ihs(wealth_timevote) + class + law)
+ols_n <- lm(data = govtint, vote ~ ihs(wealth_timevote) + count_polfam + class + law)
+ols2_n <- lm(data = govtint, vote ~ ihs(wealth_timevote) + count_polfam + strikes + rk_pct + tvs + socialistpercentage + turnout + ncm + tenure + industry_share + class + law)
+ols_polfam <- lm(data = govtint, vote ~ ihs(wealth_timevote) + polfam + class + law)
+ols2_polfam <- lm(data = govtint, vote ~ ihs(wealth_timevote) + polfam + strikes + rk_pct + tvs + socialistpercentage + turnout + ncm + tenure + industry_share + class + law)
+
+govtint_iv <- left_join(govtint, fiscal_iv %>%
+            select(b1_nummer, profdummy3, par_wealth, exp_inherit), 
+          by = "b1_nummer") %>%
+  distinct() %>%
+  mutate(profdummy3 = profdummy3.y, 
+         exp_inherit = exp_inherit.y,
+         par_wealth = par_wealth.y)
+  
+iv_profdummy3 <- ivreg(data = govtint_iv,
+                   formula = vote ~ ihs(wealth_timevote) + strikes + rk_pct + tvs + socialistpercentage + turnout + ncm + tenure + industry_share + class + law | profdummy3 +strikes + rk_pct + tvs + socialistpercentage + turnout + ncm + tenure + industry_share + class + law) 
+iv_polfam <- ivreg(data = govtint_iv,
+                    formula = vote ~ ihs(wealth_timevote) + strikes + rk_pct + tvs + socialistpercentage + turnout + ncm + tenure + industry_share + class + law | polfam + strikes + rk_pct + tvs + socialistpercentage + turnout + ncm + tenure + industry_share + class + law)
+
+results <- list(ols_begin, ols_n, ols2_n, ols_polfam, ols2_polfam, iv_profdummy3, iv_polfam)
+
+modelsummary::modelsummary(results, stars = T, vcov = "HC1")

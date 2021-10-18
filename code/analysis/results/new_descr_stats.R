@@ -1,4 +1,6 @@
 # new_descriptive_stats
+library(tidyverse); library(modelsummary)
+
 electoral <- readRDS("./data/datasets/electoral_lower.RDS") %>%
     mutate(category = "Suffrage Extension")
 fiscal <- readRDS("./data/datasets/fiscal_lowerandupper.RDS") %>%
@@ -40,7 +42,7 @@ dissent <- function(x) {
 ## median in words function
 custom_median <- function(x){
     step1 <- median(x, na.rm = TRUE)
-    out <- if_else(step1 == 1, "Pro", if_else(step1 == 0.5, "-", "Con"))
+    out <- if_else(step1 == 1, "Pro", if_else(step1 == 0.5, "None", "Con"))
     
     return(out)
 }
@@ -54,12 +56,22 @@ Status <- function(x){
 }
 
 notes <- list("Dissent is defined as the percentage of politicians of each faction having voted against the party line.",
-              "Party Line is defined as the median vote per party: 'Pro' if in favor, 'Con' if against. '-' if N.A. or equally split.")
+              "Party Line is defined as the median vote per party: 'Pro' if in favor, 'Con' if against, 'None' if no discerible party line (equally split), and '-' if N.A.")
 
 knitr::opts_current$set(label = "descriptivestats_dissent")
 
-modelsummary::datasummary(data = datasets2, 
-                          (`Category` = category)*(`Law` = law)*(`Year` = year_law) ~  N*DropEmpty() +
+modelsummary::datasummary(data = datasets2 %>%
+                              mutate(law = recode(law, 
+                                                  `Kieswet ` = "Electoral Law",
+                                                  `Inkomstenbelasting ` = "Income Tax",
+                                                  `Successiewet ` = "Inheritance Tax"
+                                                  ),
+                                     class = recode(class,
+                                                    `confessional` = "Confessional",
+                                                    `liberal` = "Liberal",
+                                                    `socialist` = "Socialist"
+                                     )), 
+                          (`Category` = category)*(`Law` = law)*(`Year` = year_law) ~  N*DropEmpty() + (` `=vote*(`Pct. In Favor`=Mean))*DropEmpty() +
                               (` `=vote*Status)*DropEmpty() + 
                               (vote * (`Party Line` = custom_median) + #*Arguments(fmt="%.0f") + #* Arguments(fmt="%.0f") 
                                    vote * (`Dissent` = dissent))*DropEmpty(empty="-") * class ,

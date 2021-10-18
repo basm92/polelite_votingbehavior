@@ -1,10 +1,11 @@
 - Belangrijke issues
 
 	- Discuss: Section 2.3 kan in de resultatensectie. Con: mooie overgang naar section 3. 
+	- Selection problemen + statistic
 	- Tabel met variabele definitions en sources. To do: korte uitleg van sources erbij in main text, tabel in zelfde format als descriptive statistics tabel
-	- Government intervention robustness check (with and without political families)
-	- Update tabellen met selection ratio
 	- Structuur conclusion
-	- Stuk over selection ratio toevoegen aan robustness checks
 	
-	
+Todo:
+	- maak sommige tabellen met selection ratio
+	- government intervention robustness check make table
+	- update variable sources table to align with descriptive statistics table
