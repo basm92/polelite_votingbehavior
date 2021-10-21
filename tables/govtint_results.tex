@@ -1,0 +1,45 @@
+\begin{table}
+
+\caption{\label{tab:govtint_results}OLS and IV Estimates of Wealth on the Propensity to Vote for Gov't Intervention}
+\centering
+\begin{tabular}[t]{lccccccc}
+\toprule
+  & Model 1 & Model 2 & Model 3 & Model 4 & Model 5 & Model 6 & Model 7\\
+\midrule
+Personal Wealth & \num{0.000} & \num{0.001} & \num{0.001} & \num{-0.001} & \num{-0.001} & \num{-0.039} & \num{0.002}\\
+ & (\num{0.002}) & (\num{0.003}) & (\num{0.003}) & (\num{0.003}) & (\num{0.003}) & (\num{0.143}) & (\num{0.014})\\
+Political Family &  & \num{-0.007} & \num{-0.017} & \num{-0.009} & \num{-0.010} &  & \\
+ &  & (\num{0.015}) & (\num{0.029}) & (\num{0.021}) & (\num{0.038}) &  & \\
+Number of Strikes &  &  &  & \num{0.002} & \num{0.002} & \num{0.000} & \num{0.002}\\
+ &  &  &  & (\num{0.002}) & (\num{0.002}) & (\num{0.003}) & (\num{0.002})\\
+Vote Share &  &  &  & \num{0.067} & \num{0.067} & \num{0.023} & \num{0.090}\\
+ &  &  &  & (\num{0.108}) & (\num{0.109}) & (\num{0.349}) & (\num{0.119})\\
+Turnout &  &  &  & \num{0.298}** & \num{0.299}** & \num{0.457} & \num{0.281}**\\
+ &  &  &  & (\num{0.130}) & (\num{0.131}) & (\num{0.621}) & (\num{0.142})\\
+Margin to Nearest Competitor &  &  &  & \num{-0.019} & \num{-0.017} & \num{-0.095} & \num{-0.073}\\
+ &  &  &  & (\num{0.132}) & (\num{0.132}) & (\num{0.212}) & (\num{0.133})\\
+Tenure &  &  &  & \num{-0.001} & \num{-0.001} & \num{-0.003} & \num{-0.001}\\
+ &  &  &  & (\num{0.003}) & (\num{0.003}) & (\num{0.004}) & (\num{0.003})\\
+Share Socialist Vote in District &  &  &  & \num{-0.184} & \num{-0.185} & \num{-0.354} & \num{-0.164}\\
+ &  &  &  & (\num{0.142}) & (\num{0.142}) & (\num{0.565}) & (\num{0.158})\\
+Share Catholic &  &  &  & \num{0.050} & \num{0.050} & \num{0.010} & \num{0.069}\\
+ &  &  &  & (\num{0.077}) & (\num{0.077}) & (\num{0.324}) & (\num{0.086})\\
+Share District in Industry &  &  &  & \num{-0.034} & \num{-0.032} & \num{0.096} & \num{-0.078}\\
+ &  &  &  & (\num{0.195}) & (\num{0.195}) & (\num{0.748}) & (\num{0.220})\\
+Liberal & \num{0.432}*** & \num{0.430}*** & \num{0.431}*** & \num{0.444}*** & \num{0.445}*** & \num{0.531} & \num{0.434}***\\
+ & (\num{0.031}) & (\num{0.031}) & (\num{0.031}) & (\num{0.047}) & (\num{0.046}) & (\num{0.383}) & (\num{0.060})\\
+Socialist & \num{0.518}*** & \num{0.519}*** & \num{0.519}*** & \num{0.518}*** & \num{0.517}*** & \num{0.616} & \num{0.496}***\\
+ & (\num{0.039}) & (\num{0.040}) & (\num{0.039}) & (\num{0.066}) & (\num{0.066}) & (\num{0.439}) & (\num{0.082})\\
+\midrule
+Law Fixed Effects & Yes & Yes & Yes & Yes & Yes & Yes & Yes\\
+Kleibergen-Paap F Stat. &  &  &  &  &  & 0.4 & 27.95\\
+N & \num{727} & \num{727} & \num{727} & \num{469} & \num{469} & \num{334} & \num{399}\\
+Adj. R2 & \num{0.46} & \num{0.46} & \num{0.46} & \num{0.43} & \num{0.43} & \num{0.22} & \num{0.42}\\
+\bottomrule
+\multicolumn{8}{l}{\rule{0pt}{1em}The reference political allegiance is confessional. Vote is defined as 1 if the politician is in favor of the reform, 0 otherwise.}\\
+\multicolumn{8}{l}{\rule{0pt}{1em}Personal Wealth is instrumented by Father Politician (Model 6) and Political Family (Model 7).}\\
+\multicolumn{8}{l}{\rule{0pt}{1em}Personal Wealth is defined as ihs(Wealth at Time of Vote).}\\
+\multicolumn{8}{l}{\rule{0pt}{1em}Heteroskedasticity-robust standard errors in parentheses. Results for lower house voting outcomes.}\\
+\multicolumn{8}{l}{\rule{0pt}{1em}* p $<$ 0.1, ** p $<$ 0.05, *** p $<$ 0.01}\\
+\end{tabular}
+\end{table}

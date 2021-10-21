@@ -492,8 +492,8 @@ govtint <- govtint %>% left_join(polfams) %>%
 
 ols_begin <- lm(data = govtint, vote ~ ihs(wealth_timevote) + class + law)
 ols_n <- lm(data = govtint, vote ~ ihs(wealth_timevote) + count_polfam + class + law)
-ols2_n <- lm(data = govtint, vote ~ ihs(wealth_timevote) + count_polfam + strikes + rk_pct + tvs + socialistpercentage + turnout + ncm + tenure + industry_share + class + law)
 ols_polfam <- lm(data = govtint, vote ~ ihs(wealth_timevote) + polfam + class + law)
+ols2_n <- lm(data = govtint, vote ~ ihs(wealth_timevote) + count_polfam + strikes + rk_pct + tvs + socialistpercentage + turnout + ncm + tenure + industry_share + class + law)
 ols2_polfam <- lm(data = govtint, vote ~ ihs(wealth_timevote) + polfam + strikes + rk_pct + tvs + socialistpercentage + turnout + ncm + tenure + industry_share + class + law)
 
 govtint_iv <- left_join(govtint, fiscal_iv %>%
@@ -509,6 +509,38 @@ iv_profdummy3 <- ivreg(data = govtint_iv,
 iv_polfam <- ivreg(data = govtint_iv,
                     formula = vote ~ ihs(wealth_timevote) + strikes + rk_pct + tvs + socialistpercentage + turnout + ncm + tenure + industry_share + class + law | polfam + strikes + rk_pct + tvs + socialistpercentage + turnout + ncm + tenure + industry_share + class + law)
 
-results <- list(ols_begin, ols_n, ols2_n, ols_polfam, ols2_polfam, iv_profdummy3, iv_polfam)
+results <- list(ols_begin, ols_n, ols_polfam, ols2_n,ols2_polfam, iv_profdummy3, iv_polfam)
 
-modelsummary::modelsummary(results, stars = T, vcov = "HC1")
+
+fstats <- results[c(6,7)] %>%
+  map_dbl(.f = ~ summary(.x) %>%
+            .$diagnostics %>%
+            .[1,3]) %>%
+  round(2) %>%
+  as.character()
+
+description <- tribble(
+  ~term, ~model1, ~model2, ~model3, ~model4, ~model5, ~model6, ~model7,
+  "Law Fixed Effects", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes",
+  "Kleibergen-Paap F Stat.", "", "", "", "", "", fstats[1], fstats[2])
+
+attr(description, 'position') <- c(25,26)
+knitr::opts_current$set(label = "govtint_results")
+modelsummary(results, 
+             stars = c("*" = .1, "**" = 0.05, "***" = 0.01),
+             vcov = "HC1",
+             gof_map = gm,
+             coef_map = coefconvert,
+             coef_omit = "Intercept|law",
+             out = "kableExtra",
+             add_rows = description,
+             output = "./tables/govtint_results.tex",
+             title = "OLS and IV Estimates of Wealth on the Propensity to Vote for Gov't Intervention",
+             notes = list("Heteroskedasticity-robust standard errors in parentheses. Results for lower house voting outcomes.",
+                          "Personal Wealth is defined as ihs(Wealth at Time of Vote).",
+                          "Personal Wealth is instrumented by Father Politician (Model 6) and Political Family (Model 7).",
+                          "The reference political allegiance is confessional. Vote is defined as 1 if the politician is in favor of the reform, 0 otherwise."
+             )) %>%
+  add_header_above(c(" " = 1, "-" = 1, "Count" =1 , "Dummy" = 1, "Count" = 1, "Dummy" = 1, "-" = 1, "Dummy" =1)) %>%
+  add_header_above(c(" " = 1, "OLS" = 5, "IV" = 2)) %>%
+  kableExtra::kable_styling(latex_options = c("hold_position", "scale_down"))
