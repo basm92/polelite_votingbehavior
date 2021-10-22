@@ -216,14 +216,15 @@ compute_delta(fiscal_iv %>% filter(class != "neutral"),
               trans_iv = ihs, 
               prtlout = c("law", "class"),
               first_stage = "small", 
-              R2max = 0.75)
+              R2max = 0.75)[1,2] %>% pull() %>% abs() %>% round(2)
 
 description <- tribble(
   ~term, ~model1, ~model2, ~model3, ~model4, ~model5, ~model6,
   "Law Fixed Effects", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes", 
-  "Kleibergen-Paap F Stat.", "", fstats[1], "", fstats[2], "", fstats[3])
+  "Kleibergen-Paap F Stat.", "", fstats[1], "", fstats[2], "", fstats[3],
+  "Selection Ratio", "", "", "", "20.88", "", "1.04")
 
-attr(description, 'position') <- c(23,24)
+attr(description, 'position') <- c(23,24,25)
 knitr::opts_current$set(label = "ivresults_fisc")
 modelsummary(ivresults, 
              stars = c("*" = .1, "**" = 0.05, "***" = 0.01),
@@ -271,20 +272,22 @@ fstats <- ivresults[c(2,4,6)] %>%
 
 compute_delta(fiscal_iv %>% filter(class != "neutral"), 
               main_iv = "wealth_timevote", 
-              other_ivs = c("rk_pct", "tvs", "socialistpercentage","tenure", "turnout", "ncm", "percentage_aangesl"),
+              other_ivs = c("rk_pct", "tvs", "socialistpercentage","tenure", "turnout", "ncm",
+                            "agricul_share", "percentage_aangesl"),
               instrument = "exp_inherit", 
               dv = "vote", 
               trans_iv = ihs, 
               prtlout = c("law", "class"),
               first_stage = "small", 
-              R2max = 0.60)
+              R2max = 0.75)
 
 description <- tribble(
   ~term, ~model1, ~model2, ~model3, ~model4, ~model5, ~model6,
   "Law Fixed Effects", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes", 
-  "Kleibergen-Paap F Stat.", "", fstats[1], "", fstats[2], "", fstats[3])
+  "Kleibergen-Paap F Stat.", "", fstats[1], "", fstats[2], "", fstats[3],
+  "Selection Ratio", "", "", "", "0.63", "", "0.55")
 
-attr(description, 'position') <- c(25, 26)
+attr(description, 'position') <- c(25, 26, 27)
 knitr::opts_current$set(label = "ivresults_fisc_inherit")
 modelsummary(ivresults, 
              stars = c("*" = .1, "**" = 0.05, "***" = 0.01),
@@ -427,7 +430,7 @@ modelsummary(modelletjes,
              add_rows = description,
              title = "IV Analysis of Fiscal Legislation - Robustness Check",
              notes = list("Heteroskedasticity-robust standard errors in parentheses. Results for lower house voting outcomes.",
-                          "Personal Wealth is defined as ihs(Wealth at Death), and instrumented by Exp. Inheritance.",
+                          "Personal Wealth is defined as ihs(Wealth at Death), and instrumented by Father Politician.",
                           "The reference political allegiance is confessional.",
                           "Vote is defined as 1 if the politician is in favor of the reform, 0 otherwise."
              )) %>%
