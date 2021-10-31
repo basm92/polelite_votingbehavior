@@ -1,9 +1,9 @@
 ---
-title: "Personal Wealth and Voting Behavior of Politicians"
+title: "Democratization, Personal Wealth of Politicians and Voting Behavior"
 author: "Bas Machielsen"
 institute: "Utrecht University"
 email: "a.h.machielsen@uu.nl"
-date: "12 February 2021"
+date: \today
 output: 
   beamer_presentation:
     includes:
@@ -18,98 +18,223 @@ library(tidyverse)
 library(ivreg)
 library(knitr)
 
-figures <- readRDS("../figures/figures_presentation.RDS")
-map1878 <- readRDS("../figures/presentation_map_1878.RDS")
-map1893 <- readRDS("../figures/presentation_map_1893.RDS")
-
-descr <- readRDS("../figures/descr.RDS")
-
-first_regs <- readRDS("../figures/first_regs.RDS")
-
-soc_rd_tk <- readRDS("../figures/social_redistribution_regressions.RDS")
-elect_law_res_tk <- readRDS("../figures/electoral_law_regressions.RDS")
-
-tk_fullctrls <- readRDS("../figures/tk_fullctrls.RDS")
-ek_fullctrls <- readRDS("../figures/ek_fullctrls.RDS")
-
-ivresults <- readRDS("../figures/ivresults.RDS")
-harnas <- readRDS("../figures/harnas.RDS")
-second_order <- readRDS("../figures/second_order_regs.RDS")
-
-list_of_laws_social <- readRDS("../figures/list_of_laws_social.RDS")
-list_of_laws_elections <- readRDS("../figures/list_of_laws_elections.RDS")
 ```
-
-# Dissertation
-
-## PhD Thesis
-
-- Theme: Politicians and personal interests
-  - Consequences for economic growth & development (Netherlands, 19th and early 20th centuries)
-
-- Ch. 1: The wealth of the Dutch political elite
-
-- Ch. 2: Does personal wealth influence voting behavior? (This paper)
-
-- Ch. 3: Being elected in national politics $\rightarrow$ becoming richer?
 
 # Motivation
 
 ## Motivation
 
-- Theoretical:
-    - Politicians as agents of electorate as principals (Duggan & Martinelli, 2017)
-    - Politicians have opportunities to pursue their own interest (Mian et al., 2010)
-    - Wealth effects of voting outcomes
+- From about 1850 to 1920, a wave of democratization and liberalization swept over Western Europe, bringing about universal suffrage and an expansion of government. 
 
-- Historical:
-    - Party discipline and ideology as most important factors in late 19th and early 20th century (e.g. Lijphart 1975, De Jong, 1999)
-    - Personal interests overlooked
+- The double transition from autocracy to parliamentary democracy, and from passive government to a welfare state, has been widely studied in various disciplines. 
+  - Threat of revolution (Acemoglu and Robinson, 2000)
+  - Electoral expedience (Lizzeri and Perisco, 2004)
+  - Electoral competition (Llavador and Oxoby, 2005)
+  
+- The conception of politicians' self-interest in these studies revolves around safeguarding political power. 
+
+- However, politicians might also care about a more superficial form of self-interest:  their personal wealth (Ferraz and Finan, 2009; Tahoun and Van Lent,2019).
+
+## This study
+
+- I use the setting of the Netherlands to analyze politicians' voting behavior in parliament on all suffrage extensions and tax hikes between 1872-1921
+  - Inheritance taxation (\textit{Successiewet})
+  - Income taxation (\textit{Inkomstenbelasting})
+
+- I employ newly-collected probate inventories collected from various archival sources to identify the relationship between politicians' personal wealth and their voting behavior. 
+
+- Using data on the portfolio composition of politicians' wealth, I estimate their net wealth at the time of voting, and relate this to the voting outcome.
+
+- I provide instrumental variable (IV) estimates of personal wealth on the propensity to vote for reforms.
+  - Politician's wealth is instrumental by parental wealth by an indicator whether the politician’s father was also politically active.
+  - I undertake various efforts to make the exclusion restriction plausible.
 
 ## Results - Overview
 
 - Major finding: richer politicians are more likely to vote against fiscal legislation than _ceteris paribus_ poorer politicians
 
-  - There is a direct effect of fiscal legislation on personal future wealth \hyperlink{fiscal}{\beamerbutton{Background}}
+  - Instrumental variable analyses suggest there is a direct effect of fiscal legislation on personal future wealth. 
 
-- The effects are absent in legislation _not directly affecting_ politicians' personal wealth:
-
-  - Suffrage expansion, other gov't intervention \hyperlink{otherresults}{\beamerbutton{Results}}
+  - The effects are robust to the inclusion of many control variables and alternative instruments, but they are absent in legislation _not directly affecting_ politicians' personal wealth (suffrage extensions)
   
 - Consistent with the historiography, ideology and party are major determinants of voting behavior
 
-  - But the effect of personal wealth implies that a 20% increase/decrease would suffice to dominate the effect of party affiliation. 
-
-## Approach
-
-- Hypothesis: personal wealth influences voting behavior
-
-- Voting behavior: voting records from lower & upper house \hyperlink{votingrecords}{\beamerbutton{Voting Data}}
-
-  - Wealth: \textit{Memories van Successie} \hyperlink{memories}{\beamerbutton{Wealth Data}}
-  - Control variables suggested by the literature
-  - Various specifications in upper and lower houses
+  - But the effect of personal wealth is strong enough to materially influence the voting outcome
   
-- Robustness checks
+- Pioneering laws are the primary drivers for the effect
   
+  - Consistent with politicians the effect being more pronounced when expected costs of acceptance are higher
+
+# Background
+
+## Suffrage Extensions
+
+- From 1848 onward, government formation and legislative power were subjected to parliamentary control
+
+- Initially, very few very enfranchised: based on tax burden (\textit{Censuskiesrecht}) (van der Kolk et al., 2018)
+
+  - Failed attempt at expansion in 1872: questions of suffrage and income taxation were intertwined
+  - In 1887, constitutional revisions granted suffrage to significantly more men, other criteria than taxation included. 
+  - Followed by another failed attempt in 1892 and a significant expansion in 1896.
+
+- Main causes of disagreement: specific numbers and precise criteria. Not a debate dominated by abstract principles. 
+
+## Fiscal Legislation
+
+- From the 1850’s onward, the government oversaw liberalization and harmonization in all sorts of domains (Knippenberg et al., 2000).
+
+-  Nevertheless government size was still very limited, and while defense spending slightly decreased following more modest geopolitical ambitions (Van den Berg and Vis, 2013), government expenditures per capita did not see a structural increase (van Riel, 2018).
+
+- This started to change from the 1870's onward: 
+  - In 1878, a law project passed which introduced inheritance taxation for lineal descendants. 
+  - In 1893, liberal government introduced the first income taxation. 
+
+- These precedents set the path for successive increases in rates based on the architecture set by the two preceding laws.
+
+## Personal Impact on Politicians
+
+```{r, out.width="0.7\\linewidth", include=TRUE, fig.align="center", fig.cap=c("Tax Rates on Income (Left) and Wealth (Right)"), echo=FALSE}
+knitr::include_graphics("../figures/tax_rates.pdf")
+```
+
+# Method
+
+## Empirical Model
+
+- I firstly pool all laws, and model $V = \text{Pr}(p_i = 1)$ as a function of a politician's wealth and party, augmented by controls:
+
+\[
+V_{i, j} = \alpha + \beta \cdot \text{ihs } \text{Wealth}_{i,j} + \delta \cdot \text{Party}_{i} + \gamma \cdot \text{LawDum}_{j} + \eta \cdot \text{Controls}_{i,j} + \varepsilon_{i,j}
+\]
+
+- In other specifications, I separately estimate regressions for suffrage extensions and fiscal legislation.
+
+- I use the following recursive relationship to estimate a politician's wealth at the time of voting on law $k$ as a function of their (deflated) wealth at death: 
+
+\[
+\text{Wealth}_{i,t+1} = \sum_{J} \text{AssetShare}_{i,j,t} \cdot \text{AssetReturn}_{i,j,[t,t+1]}
+\]
+
+
+## Endogeneity 
+
+- Even after correcting for differential wealth returns, politicians' wealth could be endogenously determined, because particular voting behavior might be rewarded by interest groups, and other behavior is not (Fisman et al., 2014, Tahoun and van Lent, 2019)
+
+- I use a dummy variable indicating whether a politician died within $x \in \{2,5\}$  years after having cast the vote on a particular law, and estimate the following model:
+
+\begin{multline*}
+V_{i, j} = \alpha + \beta_1 \cdot \text{ihs } \text{Wealth}_{i,j} + \beta_2 \cdot \text{Died within X years}_i + \\
+\beta_3 \cdot \text{ihs } \text{Wealth x Died within X years }_{i,j} + \\
+\beta_4 \cdot \text{Party}_i + \beta_5 \cdot \text{LawDum}_j + \gamma \cdot \text{Controls}_{i,j} + \varepsilon_{i,j}
+\end{multline*}
+
+## Endogeneity
+
+- There might still be many reasons why the this approach does not isolate the effect of personal wealth on voting behavior. 
+  - For example, politicians’ consumption and investment behavior might be correlated with their voting behavior: politicians who vote against might have consumed more of their income, reducing the observed correlation between personal wealth and  voting  behavior.  
+  - More generally, unobserved politician fixed effects might be correlated with wealth. 
+  
+- I use instrumental variable estimation to address this. 
+  - Two unrelated instruments: _Father Politician_ and _Expected Inheritance_
+
+- Threats to identification imply that instrument might in itself suffer from endogeneity bias.
+  - Politicians whose fathers were politically active could share a latent encompassing ideology (e.g. a penchant for increasing the size of the government)
+  - They could therefore be inclined to vote in favor of laws that expand government
+  - Robustness checks to make exclusion restriction plausible
+
+# Results
+
+## Descriptive Statistics
+
+\input{../tables/descriptivestats_dissent.tex}
+
+## OLS Estimates
+
+- OLS Estimates of Wealth on the Propensity to Vote for Suffrage and Fiscal Legislation
+  - Results show small but significant relationship
+
+\begin{table}[!h]
+
+\centering
+\resizebox{\paperheight}{!}{
+\begin{tabular}[t]{lccccc}
+\toprule
+\multicolumn{1}{c}{ } & \multicolumn{3}{c}{Pooled} & \multicolumn{1}{c}{Suffrage} & \multicolumn{1}{c}{Fiscal} \\
+\cmidrule(l{3pt}r{3pt}){2-4} \cmidrule(l{3pt}r{3pt}){5-5} \cmidrule(l{3pt}r{3pt}){6-6}
+  & Model 1 & Model 2 & Model 3 & Model 4 & Model 5\\
+\midrule
+Personal Wealth &  & \num{-0.007}*** &  & \num{-0.008} & \num{-0.009}*\\
+ &  & (\num{0.003}) &  & (\num{0.005}) & (\num{0.005})\\
+Personal Wealth x Fiscal &  &  & \num{-0.007}** &  & \\
+ &  &  & (\num{0.004}) &  \vphantom{1} & \\
+Personal Wealth x Suffrage &  &  & \num{-0.007}* &  & \\
+ &  &  & (\num{0.004}) &  & \\
+Liberal & \num{0.385}*** & \num{0.433}*** & \num{0.433}*** & \num{0.383}*** & \num{0.373}***\\
+ & (\num{0.027}) & (\num{0.033}) & (\num{0.033}) & (\num{0.071}) & (\num{0.062})\\
+Socialist & \num{0.523}*** & \num{0.602}*** & \num{0.602}*** & \num{0.568}*** & \num{0.281}***\\
+ & (\num{0.034}) & (\num{0.047}) & (\num{0.047}) & (\num{0.113}) & (\num{0.080})\\
+\midrule
+Law Fixed Effects & Yes & Yes & Yes & Yes & Yes\\
+N & \num{1028} & \num{675} & \num{675} & \num{249} & \num{270}\\
+Adj. R2 & \num{0.35} & \num{0.36} & \num{0.36} & \num{0.29} & \num{0.43}\\
+\bottomrule
+\multicolumn{6}{l}{\rule{0pt}{1em}Vote is defined as 1 if the politician is in favor of the reform, 0 otherwise.}\\
+\multicolumn{6}{l}{\rule{0pt}{1em}The reference political allegiance is confessional. Personal Wealth is defined as ihs(Wealth at Time of Vote).}\\
+\multicolumn{6}{l}{\rule{0pt}{1em}Heteroskedasticity-robust standard errors in parentheses. Results for lower house voting outcomes.}\\
+\multicolumn{6}{l}{\rule{0pt}{1em}Control variables omitted from the table.}\\
+\multicolumn{6}{l}{\rule{0pt}{1em}* p $<$ 0.1, ** p $<$ 0.05, *** p $<$ 0.01}\\
+\end{tabular}}
+\end{table}
+
+## Endogeneity Test
+
+\begin{table}
+
+\caption{\label{tab:ols_endogeneity}Endogeneity Test for Suffrage Extension and Fiscal Legislation}
+\centering
+\resizebox{\paperheight}{!}{
+\begin{tabular}[t]{lcccccc}
+\toprule
+\multicolumn{1}{c}{ } & \multicolumn{2}{c}{Pooled} & \multicolumn{2}{c}{Suffrage} & \multicolumn{2}{c}{Fiscal} \\
+\cmidrule(l{3pt}r{3pt}){2-3} \cmidrule(l{3pt}r{3pt}){4-5} \cmidrule(l{3pt}r{3pt}){6-7}
+  & Model 1 & Model 2 & Model 3 & Model 4 & Model 5 & Model 6\\
+\midrule
+Personal Wealth & \num{-0.008}* & \num{-0.010}** & \num{-0.012}* & \num{-0.013}* & \num{-0.009} & \num{-0.016}*\\
+ & (\num{0.004}) & (\num{0.004}) & (\num{0.007}) & (\num{0.007}) & (\num{0.006}) & (\num{0.008})\\
+Died W 2 Yrs & \num{0.028} & \num{0.033} & \num{0.032} & \num{0.023} & \num{0.031} & \num{-0.036}\\
+ & (\num{0.063}) & (\num{0.069}) & (\num{0.109}) & (\num{0.107}) & (\num{0.095}) & (\num{0.107})\\
+Personal Wealth x Died W 2 Yrs & \num{0.002} & \num{0.006} & \num{0.011} & \num{0.013} & \num{0.002} & \num{0.009}\\
+ & (\num{0.006}) & (\num{0.006}) & (\num{0.009}) & (\num{0.009}) & (\num{0.008}) & (\num{0.009})\\
+Liberal & \num{0.457}*** & \num{0.376}*** & \num{0.365}*** & \num{0.361}*** & \num{0.389}*** & \num{0.368}***\\
+ & (\num{0.034}) & (\num{0.045}) & (\num{0.070}) & (\num{0.072}) & (\num{0.058}) & (\num{0.061})\\
+Socialist & \num{0.496}*** & \num{0.381}*** & \num{0.612}*** & \num{0.600}*** & \num{0.327}*** & \num{0.277}***\\
+ & (\num{0.043}) & (\num{0.060}) & (\num{0.106}) & (\num{0.111}) & (\num{0.072}) & (\num{0.086})\\
+\midrule
+Law Fixed Effects & Yes & Yes & Yes & Yes & Yes & Yes\\
+N & \num{629} & \num{571} & \num{257} & \num{249} & \num{314} & \num{275}\\
+Adj. R2 & \num{0.33} & \num{0.36} & \num{0.30} & \num{0.31} & \num{0.41} & \num{0.42}\\
+\bottomrule
+\multicolumn{7}{l}{\rule{0pt}{1em}Vote is defined as 1 if the politician is in favor of the reform, 0 otherwise.}\\
+\multicolumn{7}{l}{\rule{0pt}{1em}The reference political allegiance is confessional. Personal Wealth is defined as ihs(Wealth at Time of Vote).}\\
+\multicolumn{7}{l}{\rule{0pt}{1em}Heteroskedasticity-robust standard errors in parentheses. Results for lower house voting outcomes.}\\
+\multicolumn{7}{l}{\rule{0pt}{1em}Control variables omitted from the table.}\\
+\multicolumn{7}{l}{\rule{0pt}{1em}* p $<$ 0.1, ** p $<$ 0.05, *** p $<$ 0.01}\\
+\end{tabular}}
+\end{table}
+
+## IV Estimates
+
+## Robustness Checks
+
+
+
+
+  
+<!--
 ## Descriptive Statistics
 
 - Preliminary evidence of the importance of wealth
 
-```{r echo = FALSE}
-descr[[1]] %>%
-  knitr::kable(caption = "Eerste Kamer", 
-               digits = 0)
-
-```
-
-## Descriptive Statistics
-
-```{r echo = FALSE}
-descr[[2]] %>%
-  knitr::kable(caption = "Tweede Kamer",
-               digits = 0)
-```
 
 ## Descriptive Statistics 
 
@@ -130,69 +255,16 @@ descr[[2]] %>%
 - This estimate addresses the influence of wealth  _within-party_.
 - Plausible magnitude: a 1% increase in wealth decreases the probability of voting in favor with 1.8 percentage point.
 
-```{r echo = FALSE, results='asis'}
-stargazer(first_regs,
-          covariate.labels = c("Wealth"),
-          dep.var.labels = "Vote",
-          omit = c("law", "class"),
-          omit.stat = c("adj.rsq", "ser","f"),
-          add.lines = list(c("House", "Both", "Both", "TK", "EK"),
-                           c("Controls", "None", "Party", "Party", "Party")
-          ),
-          notes.append = T,
-          notes = c("Robust standard errors in parentheses"),
-          header = F,
-          font.size = "tiny",
-          column.sep.width = "1pt",
-          title = "Baseline regressions"
-)
-
-```
-
 ## Baseline Results - Full controls (TK)
 
 - Effect keeps existing after controlling for religion, region, constituent interests, political position
 
-```{r echo = FALSE, results = 'asis'}
-stargazer(tk_fullctrls,
-          covariate.labels = c("Wealth"),
-          dep.var.labels = "Vote",
-          omit = c("law", "class", "rk_pct", "agricul_share","strikes"),
-          omit.stat = c("adj.rsq", "ser","f"),
-          add.lines = list(c("House", "TK", "TK", "TK", "TK"),
-                           c("Basic Controls", "Law+Party", "Law+Party", "Law+Party", "Law+Party"),
-                           c("Other Controls", "None", "Strikes", "2 + Religion", "3 + Economy")
-          ),
-          notes.append = T,
-          header = F,
-          font.size = "tiny",
-          column.sep.width = "1pt",
-          title = "Estimates with various sets of controls"
-          )
-```
 
 ## Baseline Results - Full controls (EK)
 
 - In the Upper house, the results are less robust to the inclusion of controls
   - Though the coefficient borders on significance and the point estimate is negative
-  
-```{r echo = FALSE, results='asis'}
-stargazer(ek_fullctrls,
-          covariate.labels = c("Wealth"),
-          dep.var.labels = "Vote",
-          omit = c("law", "class", "age_of_entrance", "age_of_vote", "tenure"),
-          omit.stat = c("adj.rsq", "ser","f"),
-          add.lines = list(c("House", "EK", "EK", "EK", "EK"),
-                           c("Controls", "Party", "1 + Tenure", "2 + Age of Vote", "3 + Age of Entry")
-          ),
-          notes.append = T,
-          notes = c("Robust standard errors in parentheses"),
-          header = F,
-          font.size = "tiny",
-          column.sep.width = "1pt",
-          title = "Estimates with various sets of controls")
 
-```
 
 ## Alternative Explanations
 
@@ -211,52 +283,15 @@ stargazer(ek_fullctrls,
 
 - Dying shortly after leaving office leaves little time to accumulate wealth from interest groups
   
-```{r echo = FALSE, results='asis'}
-stargazer(harnas,
-          column.labels = c("<2 yr", "<2 yr", "<5 yr", "<5 yr"),
-          covariate.labels = c("Wealth x No", "Wealth x Yes"),
-          dep.var.labels = "Vote",
-          omit = c("law", "class"),
-          omit.stat = c("adj.rsq", "ser","f"),
-          add.lines = list(c("House", "Both", "Both", "Both", "Both"),
-                           c("Controls", "Party", "Party+Law",   "Party", "Party+Law")
-                           ),
-          notes.append = T,
-          notes = c("Robust standard errors in parentheses"),
-          header = F,
-          font.size = "tiny",
-          column.sep.width = "1pt",
-          title = "Robustness analyses")
-
-```
 
 ## Alternative Explanations: Parental Wealth
 
 - Wealth of politicians' parents proxies for politicians' wealth before voting
     - No direct influence on politicians' voting behavior (other than through politicians' wealth)
-    
-```{r echo = FALSE, warning = FALSE, out.width="160px", out.height="120px", fig.align='center'}
-ivresults[[1]]
-```
 
 ## IV Estimates (Preliminary)
 
 \label{iv}
-
-- No significance yet, but same magnitude as OLS estimates. 
-
-```{r echo = FALSE, warning = FALSE, message = FALSE, results = 'asis'}
-stargazer(ivresults[[2]], ivresults[[3]],
-          dep.var.labels = c("Wealth", "Vote"),
-          omit = c("class"),
-          omit.stat = c("adj.rsq", "ser","f"),
-          notes.append = T,
-          header = F,
-          font.size = "tiny",
-          column.sep.width = "1pt",
-          add.lines = list(c("Controls", "Party", "Party")),
-          title = "IV estimates")
-```
 
 # Conclusion
 
@@ -285,9 +320,6 @@ stargazer(ivresults[[2]], ivresults[[3]],
 
 - After about 1870, majority of government revenues came from __taxation__. 
 
-```{r echo=FALSE, out.width="250px", out.height="175px", fig.align='center'}
-figures[[1]]
-```
 
 ## Fiscal Reforms
 
@@ -296,9 +328,6 @@ figures[[1]]
   - Fiscal reforms encompassed (mildly) _progressive_ taxes
   - Lagged effects
 
-```{r echo = FALSE, out.width="250px", out.height="150px", fig.align='center'}
-figures[[2]]
-```
 
 ## Fiscal Reforms
 
@@ -357,18 +386,6 @@ figures[[2]]
 
 ## Descriptive Statistics
 
-- A correlation between region (religion) and voting behavior?
-
-```{r echo = FALSE, out.width="300px", out.height="150px", fig.align='center'}
-map1878
-```
-
-## Descriptive Statistics
-
-```{r  echo = FALSE, out.width="300px", out.height="150px", fig.align='center'}
-map1893
-```
-
 # Appendix: Method
 
 ## Empirical Challenges
@@ -407,85 +424,19 @@ V_{i, k} = \alpha + \beta_1 \cdot \text{Wealth}_{i,k} + \beta_2 \cdot \text{Weal
 ## Robustness Checks: Other Laws
 
 
-```{r, echo=FALSE}
-list_of_laws_elections %>%
-  knitr::kable()
-```
-
-## Robustness Checks: Other Laws
-
-```{r, echo=FALSE}
-list_of_laws_social %>%
-  knitr::kable()
-```
-
 
 
 ## Robustness Checks: Social Redistribution
 
 \label{otherresults}
 
-```{r echo = FALSE, results = 'asis'}
-
-stargazer(soc_rd_tk,
-          covariate.labels = c("Wealth"),
-          dep.var.labels = "Vote",
-          omit = c("law", "class", "strikes", "rk_pct", "agricul_share", "ncm"),
-          omit.stat = c("adj.rsq", "ser","f"),
-          add.lines = list(c("Controls", "Strikes", "1+Religion", "2+Economy", "3+Electoral"),
-                           c("House", "TK", "TK", "TK", "TK")
-          ),
-          #          notes.append = T,
-          #          notes = c("Robust standard errors in parentheses"),
-          header = F,
-                    font.size = "tiny",
-          column.sep.width = "1pt",
-          title = "Social Redistribution")
-```
-
 ## Robustness Checks: Suffrage Expansion
 
-```{r echo = FALSE, results = 'asis'}
-
-stargazer(elect_law_res_tk,
-          covariate.labels = c("Wealth"),
-          dep.var.labels = "Vote",
-          omit = c("law", "class", "strikes", "rk_pct", "agricul_share", "ncm"),
-          omit.stat = c("adj.rsq", "ser","f"),
-          add.lines = list(c("Controls", "Strikes", "1+Religion", "2+Economy", "3+Electoral"),
-                           c("House", "TK", "TK", "TK", "TK")
-          ),
-          #          notes.append = T,
-          #          notes = c("Robust standard errors in parentheses"),
-          header = F,
-                    font.size = "tiny",
-          column.sep.width = "1pt",
-          title = "Suffrage Extension")
-
-```
 
 ## Robustness Checks: Wealth Composition
 
-```{r echo = FALSE, results='asis'}
-stargazer(second_order,
-          covariate.labels = c("Real Estate", "Foreign Assets", "Shares"),
-          dep.var.labels = "Vote",
-          omit = c("law", "class"),
-          omit.stat = c("adj.rsq", "ser","f"),
-          add.lines = list(c("House", "Both", "Both", "Both", "Both", "Both", "Both"),
-                           c("Controls", "Party", "Party+Law", 
-                             "Party", "Party+Law",
-                             "Party", "Party+Law")
-          ),
-          notes.append = T,
-          notes = c("Robust standard errors in parentheses"),
-          header = F,
-          font.size = "tiny",
-          column.sep.width = "1pt",
-          title = "Second-order effects"
-)
-
-```
 
 # The End
+
+-->
 

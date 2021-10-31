@@ -1,9 +1,12 @@
-\begin{table}
+\begin{table}[!h]
 
 \caption{\label{tab:ols_pooled}OLS Estimates of Wealth on the Propensity to Vote for Suffrage and Fiscal Legislation}
 \centering
+\resizebox{\linewidth}{!}{
 \begin{tabular}[t]{lccccc}
 \toprule
+\multicolumn{1}{c}{ } & \multicolumn{3}{c}{Pooled} & \multicolumn{1}{c}{Suffrage} & \multicolumn{1}{c}{Fiscal} \\
+\cmidrule(l{3pt}r{3pt}){2-4} \cmidrule(l{3pt}r{3pt}){5-5} \cmidrule(l{3pt}r{3pt}){6-6}
   & Model 1 & Model 2 & Model 3 & Model 4 & Model 5\\
 \midrule
 Personal Wealth &  & \num{-0.007}*** &  & \num{-0.008} & \num{-0.009}*\\
@@ -39,5 +42,5 @@ Adj. R2 & \num{0.35} & \num{0.36} & \num{0.36} & \num{0.29} & \num{0.43}\\
 \multicolumn{6}{l}{\rule{0pt}{1em}The reference political allegiance is confessional. Personal Wealth is defined as ihs(Wealth at Time of Vote).}\\
 \multicolumn{6}{l}{\rule{0pt}{1em}Heteroskedasticity-robust standard errors in parentheses. Results for lower house voting outcomes.}\\
 \multicolumn{6}{l}{\rule{0pt}{1em}* p $<$ 0.1, ** p $<$ 0.05, *** p $<$ 0.01}\\
-\end{tabular}
+\end{tabular}}
 \end{table}
