@@ -63,7 +63,7 @@ library(knitr)
   
 - Pioneering laws are the primary drivers for the effect
   
-  - Consistent with politicians the effect being more pronounced when expected costs of acceptance are higher
+  - Consistent with the effect being more pronounced when expected costs of acceptance are higher
 
 # Background
 
@@ -90,6 +90,12 @@ library(knitr)
   - In 1893, liberal government introduced the first income taxation. 
 
 - These precedents set the path for successive increases in rates based on the architecture set by the two preceding laws.
+
+## Parliamentary Wealth over Time
+
+```{r, out.width="0.7\\linewidth", include=TRUE, fig.align="center", fig.cap=c("Parliamentary Wealth over Time"), echo=FALSE}
+knitr::include_graphics("../figures/wealth_parl.pdf")
+```
 
 ## Personal Impact on Politicians
 
@@ -186,11 +192,22 @@ Adj. R2 & \num{0.35} & \num{0.36} & \num{0.36} & \num{0.29} & \num{0.43}\\
 \end{tabular}}
 \end{table}
 
-## Endogeneity Test
+## Alternative Explanations
+
+- The effect of personal wealth on the likelihood to vote in favor of fiscal legislation seems to be robust to the inclusion of many controls
+
+- But politicians who voted againsts could have been rewarded by interest groups
+  - Wealth at death is higher because of voting profile $\rightarrow$ coefficient might be _overestimated_
+
+- Test whether there is a difference in the relationship between wealth and voting behavior for politicians who died early and those who did not
+  - The group who died shortly after voting is unlikely to have had opportunities to amass rents
+  - If there is a substantial difference, reverse causality could play a large role
+  
+## Alternative Explanations: Died Shortly After Vote
+
+- The coefficient on personal wealth is significant in both analyses, as well as in the pooled case. 
 
 \begin{table}
-
-\caption{\label{tab:ols_endogeneity}Endogeneity Test for Suffrage Extension and Fiscal Legislation}
 \centering
 \resizebox{\paperheight}{!}{
 \begin{tabular}[t]{lcccccc}
@@ -224,12 +241,277 @@ Adj. R2 & \num{0.33} & \num{0.36} & \num{0.30} & \num{0.31} & \num{0.41} & \num{
 
 ## IV Estimates
 
-## Robustness Checks
+- There are still various reasons why this coefficient might not reflect the true relationship between personal wealth and voting behavior.
 
+- Politicians’ consumption and investment behavior might be correlated with their voting behavior: politicians who vote against might have consumed more of their income, reducing the observed correlation between personal wealth and voting behavior.  
 
-
-
+- More generally, unobserved politician fixed effects might be correlated with wealth (omitted variable bias)
   
+- I use instrumental variable estimation to address this. 
+  - Two unrelated instruments: _Father Politician_ and _Expected Inheritance_
+  
+## IV Estimates: Suffrage Extensions
+
+- Father Politician is a good predictor for politicians' wealth. 
+- No precise relationship between personal wealth and propensity to vote in favor of suffrage extension.
+
+\begin{table}[!h]
+\centering
+\resizebox{\paperheight}{!}{
+\begin{tabular}[t]{lcccccc}
+\toprule
+\multicolumn{1}{c}{ } & \multicolumn{1}{c}{Personal Wealth} & \multicolumn{1}{c}{Vote} & \multicolumn{1}{c}{Personal Wealth} & \multicolumn{1}{c}{Vote} & \multicolumn{1}{c}{Personal Wealth} & \multicolumn{1}{c}{Vote} \\
+\cmidrule(l{3pt}r{3pt}){2-2} \cmidrule(l{3pt}r{3pt}){3-3} \cmidrule(l{3pt}r{3pt}){4-4} \cmidrule(l{3pt}r{3pt}){5-5} \cmidrule(l{3pt}r{3pt}){6-6} \cmidrule(l{3pt}r{3pt}){7-7}
+  & Model 1 & Model 2 & Model 3 & Model 4 & Model 5 & Model 6\\
+\midrule
+Father Politician & \num{2.125}*** &  & \num{1.826}** &  & \num{1.329}* & \\
+ & (\num{0.676}) &  & (\num{0.788}) &  & (\num{0.793}) & \\
+Personal Wealth &  & \num{-0.028} &  & \num{-0.046} &  & \num{-0.085}\\
+ &  & (\num{0.030}) &  & (\num{0.042}) &  & (\num{0.076})\\
+Liberal & \num{1.376}** & \num{0.446}*** & \num{0.930} & \num{0.394}*** & \num{1.134}* & \num{0.400}***\\
+ & (\num{0.667}) & (\num{0.069}) & (\num{0.667}) & (\num{0.086}) & (\num{0.683}) & (\num{0.120})\\
+Socialist & \num{0.768} & \num{0.500}*** & \num{3.782}*** & \num{0.699}*** & \num{4.397}*** & \num{0.847}**\\
+ & (\num{1.800}) & (\num{0.107}) & (\num{0.992}) & (\num{0.183}) & (\num{1.375}) & (\num{0.338})\\
+\midrule
+Law Fixed Effects & Yes & Yes & Yes & Yes & Yes & Yes\\
+Kleibergen-Paap F Stat. &  & 9.5 &  & 6.43 &  & 3.77\\
+N & \num{236} & \num{236} & \num{213} & \num{213} & \num{180} & \num{180}\\
+Adj. R2 & \num{0.05} & \num{0.23} & \num{0.07} & \num{0.13} & \num{0.17} & \num{-0.16}\\
+\bottomrule
+\multicolumn{7}{l}{\rule{0pt}{1em}Heteroskedasticity-robust standard errors in parentheses. Results for lower house voting outcomes.}\\
+\multicolumn{7}{l}{\rule{0pt}{1em}Controls omitted from the table.}\\
+\multicolumn{7}{l}{\rule{0pt}{1em}* p $<$ 0.1, ** p $<$ 0.05, *** p $<$ 0.01}\\
+\end{tabular}}
+\end{table}
+
+## IV Estimates: Fiscal Legislation
+
+- Father Politician is a good predictor for politicians' wealth. 
+- Significant and negative relationship between personal wealth and propensity to vote in favor of suffrage extension.
+  - About 2-3 times the effect size of the OLS analyses.
+
+\begin{table}[!h]
+\centering
+\resizebox{\paperheight}{!}{
+\begin{tabular}[t]{lcccccc}
+\toprule
+\multicolumn{1}{c}{ } & \multicolumn{1}{c}{Personal Wealth} & \multicolumn{1}{c}{Vote} & \multicolumn{1}{c}{Personal Wealth} & \multicolumn{1}{c}{Vote} & \multicolumn{1}{c}{Personal Wealth} & \multicolumn{1}{c}{Vote} \\
+\cmidrule(l{3pt}r{3pt}){2-2} \cmidrule(l{3pt}r{3pt}){3-3} \cmidrule(l{3pt}r{3pt}){4-4} \cmidrule(l{3pt}r{3pt}){5-5} \cmidrule(l{3pt}r{3pt}){6-6} \cmidrule(l{3pt}r{3pt}){7-7}
+  & Model 1 & Model 2 & Model 3 & Model 4 & Model 5 & Model 6\\
+\midrule
+Father Politician & \num{2.965}*** &  & \num{2.424}*** &  & \num{2.156}*** & \\
+ & (\num{0.497}) &  & (\num{0.515}) &  & (\num{0.570}) & \\
+Personal Wealth &  & \num{-0.041}** &  & \num{-0.049}** &  & \num{-0.062}**\\
+ &  & (\num{0.018}) &  & (\num{0.023}) &  & (\num{0.031})\\
+Liberal & \num{1.349}** & \num{0.522}*** & \num{1.971}*** & \num{0.454}*** & \num{1.567}** & \num{0.448}***\\
+ & (\num{0.592}) & (\num{0.052}) & (\num{0.745}) & (\num{0.078}) & (\num{0.766}) & (\num{0.086})\\
+Socialist & \num{1.977}* & \num{0.534}*** & \num{3.823}** & \num{0.450}*** & \num{3.957}** & \num{0.447}***\\
+ & (\num{1.125}) & (\num{0.067}) & (\num{1.547}) & (\num{0.120}) & (\num{1.687}) & (\num{0.150})\\
+\midrule
+Law Fixed Effects & Yes & Yes & Yes & Yes & Yes & Yes\\
+Kleibergen-Paap F Stat. &  & 20.58 &  & 13.41 &  & 12.36\\
+Selection Ratio &  &  &  & 20.88 &  & 1.04\\
+N & \num{346} & \num{346} & \num{312} & \num{312} & \num{240} & \num{240}\\
+Adj. R2 & \num{0.11} & \num{0.22} & \num{0.11} & \num{0.22} & \num{0.13} & \num{0.18}\\
+\bottomrule
+\multicolumn{7}{l}{\rule{0pt}{1em}Heteroskedasticity-robust standard errors in parentheses. Results for lower house voting outcomes.}\\
+\multicolumn{7}{l}{\rule{0pt}{1em}* p $<$ 0.1, ** p $<$ 0.05, *** p $<$ 0.01}\\
+\end{tabular}}
+\end{table}
+
+## IV Estimates: Fiscal Legislation - Expected Inheritance
+
+- Relationship persists when using a completely unrelated (and also plausible) instrument. 
+
+\begin{table}[!h]
+\centering
+\resizebox{\paperheight}{!}{
+\begin{tabular}[t]{lcccccc}
+\toprule
+\multicolumn{1}{c}{ } & \multicolumn{1}{c}{Personal Wealth} & \multicolumn{1}{c}{Vote} & \multicolumn{1}{c}{Personal Wealth} & \multicolumn{1}{c}{Vote} & \multicolumn{1}{c}{Personal Wealth} & \multicolumn{1}{c}{Vote} \\
+\cmidrule(l{3pt}r{3pt}){2-2} \cmidrule(l{3pt}r{3pt}){3-3} \cmidrule(l{3pt}r{3pt}){4-4} \cmidrule(l{3pt}r{3pt}){5-5} \cmidrule(l{3pt}r{3pt}){6-6} \cmidrule(l{3pt}r{3pt}){7-7}
+  & Model 1 & Model 2 & Model 3 & Model 4 & Model 5 & Model 6\\
+\midrule
+Expected Inheritance & \num{0.262}*** &  & \num{0.237}** &  & \num{0.235}*** & \\
+ & (\num{0.088}) &  & (\num{0.111}) &  & (\num{0.084}) & \\
+Personal Wealth &  & \num{-0.031}* &  & \num{-0.033}* &  & \num{-0.041}**\\
+ &  & (\num{0.017}) &  & (\num{0.017}) &  & (\num{0.020})\\
+Liberal & \num{1.573} & \num{0.544}*** & \num{2.389}* & \num{0.545}*** & \num{0.754} & \num{0.401}***\\
+ & (\num{1.042}) & (\num{0.073}) & (\num{1.318}) & (\num{0.124}) & (\num{0.899}) & (\num{0.141})\\
+Socialist & \num{0.082} & \num{0.511}*** & \num{1.440} & \num{0.478}*** & \num{0.029} & \num{0.349}**\\
+ & (\num{1.553}) & (\num{0.087}) & (\num{1.993}) & (\num{0.144}) & (\num{1.623}) & (\num{0.163})\\
+\midrule
+Law Fixed Effects & Yes & Yes & Yes & Yes & Yes & Yes\\
+Kleibergen-Paap F Stat. &  & 2.33 &  & 2.1 &  & 2.41\\
+Selection Ratio &  &  &  & 0.63 &  & 0.55\\
+N & \num{171} & \num{171} & \num{152} & \num{152} & \num{108} & \num{108}\\
+Adj. R2 & \num{0.07} & \num{0.27} & \num{0.08} & \num{0.28} & \num{0.14} & \num{0.29}\\
+\bottomrule
+\multicolumn{7}{l}{\rule{0pt}{1em}Heteroskedasticity-robust standard errors in parentheses. Results for lower house voting outcomes.}\\
+\multicolumn{7}{l}{\rule{0pt}{1em}* p $<$ 0.1, ** p $<$ 0.05, *** p $<$ 0.01}\\
+\end{tabular}}
+\end{table}
+
+## Impact on Probability of Acceptance
+
+```{r, out.width="0.7\\linewidth", include=TRUE, fig.align="center", fig.cap=c("Wealth and Probability of Acceptance"), echo=FALSE}
+knitr::include_graphics("../figures/interpretation.pdf")
+```
+
+# Conclusion
+
+## Conclusion
+
+- I find a significant and persistent negative effect of politicians' personal wealth on the tendency to vote in favor of tax increases
+  - Dissent politicians prioritize tend to prioritize their finances
+  - The effect is economically significant: poorer parliaments would have approved rejected laws sooner, and richer parliaments who have rejected taxation-increasing laws that have been accepted
+  - Implication for democratization literature: direct evidence that the personal profile of politicians influences government size
+
+- Relationship between personal wealth and voting behavior is absent in the case of suffrage extension
+
+# Robustness Checks
+
+## Robustness Checks - Logit Results
+
+\begin{table}[!h]
+\caption{\label{tab:logit_suffrage_fiscal}Logit Analysis of Suffrage Extension and Fiscal Legislation}
+\centering
+\resizebox{0.8 \paperheight}{!}{
+\begin{tabular}[t]{lcccccc}
+\toprule
+\multicolumn{1}{c}{ } & \multicolumn{3}{c}{Suffrage} & \multicolumn{3}{c}{Fiscal} \\
+\cmidrule(l{3pt}r{3pt}){2-4} \cmidrule(l{3pt}r{3pt}){5-7}
+  & Model 1 & Model 2 & Model 3 & Model 4 & Model 5 & Model 6\\
+\midrule
+Personal Wealth & \num{-0.039} & \num{-0.042} & \num{-0.038} & \num{-0.049}* & \num{-0.063}* & \num{-0.076}*\\
+ & (\num{0.029}) & (\num{0.030}) & (\num{0.032}) & (\num{0.029}) & (\num{0.034}) & (\num{0.039})\\
+Number of Strikes &  & \num{0.060} & \num{0.046} &  & \num{0.007} & \num{-0.081}\\
+ &  & (\num{0.064}) & (\num{0.061}) &  & (\num{0.031}) & (\num{0.131})\\
+Vote Share &  & \num{-0.484} & \num{-0.615} &  & \num{0.006} & \num{0.786}\\
+ &  & (\num{0.771}) & (\num{0.785}) &  & (\num{0.882}) & (\num{1.022})\\
+Turnout &  & \num{0.075} & \num{-0.337} &  & \num{0.161} & \num{-0.516}\\
+ &  & (\num{0.853}) & (\num{0.919}) &  & (\num{1.099}) & (\num{1.285})\\
+Margin to Nearest Competitor &  & \num{-0.779} & \num{-0.804} &  & \num{-0.356} & \num{-0.404}\\
+ &  & (\num{1.009}) & (\num{1.030}) &  & (\num{0.968}) & (\num{1.093})\\
+Tenure &  & \num{-0.019} & \num{-0.018} &  & \num{-0.005} & \num{-0.035}\\
+ &  & (\num{0.020}) & (\num{0.020}) &  & (\num{0.021}) & (\num{0.023})\\
+Share Catholic &  &  & \num{-0.249} &  &  & \num{-3.130}***\\
+ &  &  & (\num{0.643}) &  &  & (\num{0.831})\\
+Share Tax Liable in District &  &  & \num{5.445} &  &  & \num{30.544}\\
+ &  &  & (\num{16.118}) &  &  & (\num{20.464})\\
+\midrule
+Party Fixed Effects & Yes & Yes & Yes & Yes & Yes & Yes\\
+Law Fixed Effects & Yes & Yes & Yes & Yes & Yes & Yes\\
+N & \num{282} & \num{260} & \num{249} & \num{342} & \num{315} & \num{270}\\
+$R^2$ & \num{0.01} & \num{0.03} & \num{0.03} & \num{0.01} & \num{0.01} & \num{0.10}\\
+Max. $R^2$ & \num{0.58} & \num{0.59} & \num{0.58} & \num{0.48} & \num{0.49} & \num{0.50}\\
+\bottomrule
+\multicolumn{7}{l}{\rule{0pt}{1em}The dependent variable, Vote, is defined as 1 if the politician is in favor of the reform, 0 otherwise.}\\
+\multicolumn{7}{l}{\rule{0pt}{1em}The reference political allegiance is confessional.}\\
+\multicolumn{7}{l}{\rule{0pt}{1em}Standard errors in parentheses. Results for lower house voting outcomes.}\\
+\multicolumn{7}{l}{\rule{0pt}{1em}* p $<$ 0.1, ** p $<$ 0.05, *** p $<$ 0.01}\\
+\end{tabular}}
+\end{table}
+
+## Robustness Checks - Wealth at Death
+
+\begin{table}[!h]
+\caption{\label{tab:fisc_nw0_ols_iv}IV Analysis of Fiscal Legislation - Robustness Check}
+\centering
+\resizebox{\paperheight}{!}{
+\begin{tabular}[t]{lcccccc}
+\toprule
+\multicolumn{1}{c}{ } & \multicolumn{3}{c}{OLS} & \multicolumn{3}{c}{IV} \\
+\cmidrule(l{3pt}r{3pt}){2-4} \cmidrule(l{3pt}r{3pt}){5-7}
+  & Model 1 & Model 2 & Model 3 & Model 4 & Model 5 & Model 6\\
+\midrule
+Personal Wealth & \num{-0.007}* & \num{-0.006} & \num{-0.009}* & \num{-0.037}** & \num{-0.046}** & \num{-0.049}**\\
+ & (\num{0.004}) & (\num{0.004}) & (\num{0.004}) & (\num{0.016}) & (\num{0.021}) & (\num{0.022})\\
+Liberal & \num{0.482}*** & \num{0.384}*** & \num{0.373}*** & \num{0.510}*** & \num{0.456}*** & \num{0.420}***\\
+ & (\num{0.043}) & (\num{0.054}) & (\num{0.057}) & (\num{0.051}) & (\num{0.074}) & (\num{0.070})\\
+Socialist & \num{0.518}*** & \num{0.337}*** & \num{0.332}*** & \num{0.558}*** & \num{0.482}*** & \num{0.482}***\\
+ & (\num{0.077}) & (\num{0.103}) & (\num{0.119}) & (\num{0.089}) & (\num{0.144}) & (\num{0.160})\\
+\midrule
+Law Fixed Effects & Yes & Yes & Yes & Yes & Yes & Yes\\
+Kleibergen-Paap F Stat. &  &  &  & 20.46 & 13.01 & 13.5\\
+N & \num{347} & \num{311} & \num{272} & \num{351} & \num{316} & \num{277}\\
+Adj. R2 & \num{0.36} & \num{0.41} & \num{0.43} & \num{0.22} & \num{0.20} & \num{0.24}\\
+\bottomrule
+\multicolumn{7}{l}{\rule{0pt}{1em}Heteroskedasticity-robust standard errors in parentheses. Results for lower house voting outcomes.}\\
+\multicolumn{7}{l}{\rule{0pt}{1em}* p $<$ 0.1, ** p $<$ 0.05, *** p $<$ 0.01}\\
+\end{tabular}}
+\end{table}
+
+## Robustness Checks - Log Wealth
+
+\begin{table}[!h]
+
+\caption{\label{tab:ivresults_fisc_log}IV Estimates of Wealth on the Propensity to Vote for Fiscal Reforms}
+\centering
+\resizebox{\paperheight}{!}{
+\begin{tabular}[t]{lcccccc}
+\toprule
+\multicolumn{1}{c}{ } & \multicolumn{1}{c}{Personal Wealth} & \multicolumn{1}{c}{Vote} & \multicolumn{1}{c}{Personal Wealth} & \multicolumn{1}{c}{Vote} & \multicolumn{1}{c}{Personal Wealth} & \multicolumn{1}{c}{Vote} \\
+\cmidrule(l{3pt}r{3pt}){2-2} \cmidrule(l{3pt}r{3pt}){3-3} \cmidrule(l{3pt}r{3pt}){4-4} \cmidrule(l{3pt}r{3pt}){5-5} \cmidrule(l{3pt}r{3pt}){6-6} \cmidrule(l{3pt}r{3pt}){7-7}
+  & Model 1 & Model 2 & Model 3 & Model 4 & Model 5 & Model 6\\
+\midrule
+Father Politician & \num{1.368}*** &  & \num{1.287}*** &  & \num{1.567}*** & \\
+ & (\num{0.177}) &  & (\num{0.189}) &  & (\num{0.221}) & \\
+Personal Wealth &  & \num{-0.084}** &  & \num{-0.093}** &  & \num{-0.091}**\\
+ &  & (\num{0.038}) &  & (\num{0.043}) &  & (\num{0.040})\\
+Liberal & \num{0.406}** & \num{0.520}*** & \num{0.377} & \num{0.384}*** & \num{0.348} & \num{0.380}***\\
+ & (\num{0.189}) & (\num{0.050}) & (\num{0.247}) & (\num{0.064}) & (\num{0.280}) & (\num{0.073})\\
+Socialist & \num{-0.679} & \num{0.423}*** & \num{-0.062} & \num{0.249}** & \num{1.462}** & \num{0.341}***\\
+ & (\num{0.427}) & (\num{0.078}) & (\num{0.624}) & (\num{0.098}) & (\num{0.601}) & (\num{0.113})\\
+\midrule
+Law Fixed Effects & Yes & Yes & Yes & Yes & Yes & Yes\\
+Kleibergen-Paap F Stat. &  & 43.07 &  & 33.97 &  & 42.59\\
+N & \num{321} & \num{321} & \num{292} & \num{292} & \num{230} & \num{230}\\
+Adj. R2 & \num{0.20} & \num{0.31} & \num{0.15} & \num{0.33} & \num{0.19} & \num{0.33}\\
+\bottomrule
+\multicolumn{7}{l}{\rule{0pt}{1em}Heteroskedasticity-robust standard errors in parentheses. Results for lower house voting outcomes.}\\
+\multicolumn{7}{l}{\rule{0pt}{1em}* p $<$ 0.1, ** p $<$ 0.05, *** p $<$ 0.01}\\
+\end{tabular}}
+\end{table}
+
+## Robustness Checks - Exclusion Restriction
+
+- In this set of laws, it is unlikely that wealth affects voting behavior. 
+- No indication of direct effect of Political Family on voting behavior either. 
+  - Implying the exclusion restriction for the other set of laws likely holds. 
+
+\begin{table}[!h]
+\centering
+\resizebox{\paperheight}{!}{
+\begin{tabular}[t]{lccccccc}
+\toprule
+\multicolumn{1}{c}{ } & \multicolumn{5}{c}{OLS} & \multicolumn{2}{c}{IV} \\
+\cmidrule(l{3pt}r{3pt}){2-6} \cmidrule(l{3pt}r{3pt}){7-8}
+\multicolumn{1}{c}{ } & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{Count} & \multicolumn{1}{c}{Dummy} & \multicolumn{1}{c}{Count} & \multicolumn{1}{c}{Dummy} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{Dummy} \\
+\cmidrule(l{3pt}r{3pt}){2-2} \cmidrule(l{3pt}r{3pt}){3-3} \cmidrule(l{3pt}r{3pt}){4-4} \cmidrule(l{3pt}r{3pt}){5-5} \cmidrule(l{3pt}r{3pt}){6-6} \cmidrule(l{3pt}r{3pt}){7-7} \cmidrule(l{3pt}r{3pt}){8-8}
+  & Model 1 & Model 2 & Model 3 & Model 4 & Model 5 & Model 6 & Model 7\\
+\midrule
+Personal Wealth & \num{0.000} & \num{0.001} & \num{0.001} & \num{-0.001} & \num{-0.001} & \num{-0.039} & \num{0.002}\\
+ & (\num{0.002}) & (\num{0.003}) & (\num{0.003}) & (\num{0.003}) & (\num{0.003}) & (\num{0.143}) & (\num{0.014})\\
+Political Family &  & \num{-0.007} & \num{-0.017} & \num{-0.009} & \num{-0.010} &  & \\
+ &  & (\num{0.015}) & (\num{0.029}) & (\num{0.021}) & (\num{0.038}) &  & \\
+Liberal & \num{0.432}*** & \num{0.430}*** & \num{0.431}*** & \num{0.444}*** & \num{0.445}*** & \num{0.531} & \num{0.434}***\\
+ & (\num{0.031}) & (\num{0.031}) & (\num{0.031}) & (\num{0.047}) & (\num{0.046}) & (\num{0.383}) & (\num{0.060})\\
+Socialist & \num{0.518}*** & \num{0.519}*** & \num{0.519}*** & \num{0.518}*** & \num{0.517}*** & \num{0.616} & \num{0.496}***\\
+ & (\num{0.039}) & (\num{0.040}) & (\num{0.039}) & (\num{0.066}) & (\num{0.066}) & (\num{0.439}) & (\num{0.082})\\
+\midrule
+Law Fixed Effects & Yes & Yes & Yes & Yes & Yes & Yes & Yes\\
+Kleibergen-Paap F Stat. &  &  &  &  &  & 0.4 & 27.95\\
+N & \num{727} & \num{727} & \num{727} & \num{469} & \num{469} & \num{334} & \num{399}\\
+Adj. R2 & \num{0.46} & \num{0.46} & \num{0.46} & \num{0.43} & \num{0.43} & \num{0.22} & \num{0.42}\\
+\bottomrule
+\multicolumn{8}{l}{\rule{0pt}{1em}Personal Wealth is instrumented by Father Politician (Model 6) and Political Family (Model 7).}\\
+\multicolumn{8}{l}{\rule{0pt}{1em}Heteroskedasticity-robust standard errors in parentheses. Results for lower house voting outcomes.}\\
+\multicolumn{8}{l}{\rule{0pt}{1em}* p $<$ 0.1, ** p $<$ 0.05, *** p $<$ 0.01}\\
+\end{tabular}}
+\end{table}
+
+
 <!--
 ## Descriptive Statistics
 
