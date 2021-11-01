@@ -363,11 +363,14 @@ knitr::include_graphics("../figures/interpretation.pdf")
 ## Conclusion
 
 - I find a significant and persistent negative effect of politicians' personal wealth on the tendency to vote in favor of tax increases
-  - Dissent politicians prioritize tend to prioritize their finances
-  - The effect is economically significant: poorer parliaments would have approved rejected laws sooner, and richer parliaments who have rejected taxation-increasing laws that have been accepted
+  - Dissenting politicians prioritize tend to prioritize their finances
+  - The effect is economically significant: poorer parliaments would have approved rejected laws sooner, and richer parliaments would have rejected taxation-increasing laws that have been accepted
   - Implication for democratization literature: direct evidence that the personal profile of politicians influences government size
 
-- Relationship between personal wealth and voting behavior is absent in the case of suffrage extension
+- Partial explanation for why government size increased slowly over the nineteenth century (cf. Lindert, 2004) is the domination of politics by wealthy elites. 
+  - Exogenous negative wealth shocks facilitated expansion.
+
+- Clear relationship between personal wealth and voting behavior is absent in the case of suffrage extension
 
 # Robustness Checks
 
