@@ -31,6 +31,7 @@ p1 <- meanmedw_lh %>%
                group = Statistic, 
                linetype = Statistic)) + 
     geom_line() + 
+    geom_point() +
     theme_minimal() +
     xlab("Parliament") +
     ylab("Wealth (defl. 1900 guilders)") +

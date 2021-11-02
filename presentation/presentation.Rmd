@@ -81,7 +81,7 @@ knitr::include_graphics("../figures/tax_rates.pdf")
 
 ## Legislation and Politicians
 
-- __Suffrage extensions:__ Initially, very few very enfranchised: based on tax burden. 
+- __Suffrage extensions:__ Initially, very few enfranchised: based on tax burden. 
   - Failed attempt at expansion in 1872, extensions in 1887, 1896 and 1917 (universal male suffrage). 
   - Main causes of disagreement: specific numbers and precise criteria. Not a debate dominated by abstract principles. 
   - Large effect on the electorate, but likely no effect for politicians personally.
@@ -112,11 +112,11 @@ V_{i, j} = \alpha + \beta \cdot \text{ihs } \text{Wealth}_{i,j} + \delta \cdot \
 
 ## Two Ways to Address Endogeneity
 
-- Even after correcting for differential wealth returns, politicians' wealth could be endogenously determined
+- Even after correcting for differential wealth returns, politicians' wealth could be endogenously determined.
   - Particular voting behavior might be rewarded by interest groups (Fisman et al., 2014, Tahoun and van Lent, 2019)
   - I test whether there is a difference in the personal wealth - voting behavior relationship between politicians who died shortly after having vote and those who did not. 
 
-- There might still be many reasons why the this approach does not isolate the effect of personal wealth on voting behavior. 
+- There might still be many reasons why this approach does not isolate the effect of personal wealth on voting behavior. 
   - E.g. politicians’ consumption and investment behavior might be correlated with their voting behavior: politicians who vote against might have consumed more of their income, reducing the observed correlation between personal wealth and  voting  behavior.  
   - More generally, unobserved politician fixed effects might be correlated with wealth. 
   
@@ -169,7 +169,7 @@ Adj. R2 & \num{0.35} & \num{0.36} & \num{0.36} & \num{0.29} & \num{0.43}\\
 
 - The effect of personal wealth on the likelihood to vote in favor of fiscal legislation seems to be robust to the inclusion of many controls
 
-- But politicians who voted againsts could have been rewarded by interest groups
+- But politicians who voted against could have been rewarded by interest groups
   - Wealth at death is higher because of voting profile $\rightarrow$ coefficient might be _overestimated_
 
 - Test whether there is a difference in the relationship between wealth and voting behavior for politicians who died early and those who did not
