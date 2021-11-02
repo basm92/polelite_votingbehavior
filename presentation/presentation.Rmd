@@ -41,9 +41,9 @@ library(knitr)
   - Inheritance taxation (\textit{Successiewet})
   - Income taxation (\textit{Inkomstenbelasting})
 
-- I employ newly-collected probate inventories collected from various archival sources to identify the relationship between politicians' personal wealth and their voting behavior. 
+- I employ probate inventories collected from archival sources to identify the relationship between politicians' personal wealth and their voting behavior. 
 
-- Using data on the portfolio composition of politicians' wealth, I estimate their net wealth at the time of voting, and relate this to the voting outcome.
+- Using data on the portfolio composition of politicians' wealth, I estimate politicians' net wealth at the time of voting, and relate this to the voting outcome.
 
 - I provide instrumental variable (IV) estimates of personal wealth on the propensity to vote for reforms.
   - Politician's wealth is instrumented by parental wealth by an indicator whether the politician’s father was also politically active.
@@ -66,18 +66,6 @@ library(knitr)
 
 # Background
 
-## Parliamentary Wealth over Time
-
-```{r, out.width="0.7\\linewidth", include=TRUE, fig.align="center", fig.cap=c("Parliamentary Wealth over Time"), echo=FALSE}
-knitr::include_graphics("../figures/wealth_parl.pdf")
-```
-
-## Personal Impact on Politicians
-
-```{r, out.width="0.7\\linewidth", include=TRUE, fig.align="center", fig.cap=c("Tax Rates on Income (Left) and Wealth (Right)"), echo=FALSE}
-knitr::include_graphics("../figures/tax_rates.pdf")
-```
-
 
 ## Legislation and Politicians
 
@@ -90,6 +78,19 @@ knitr::include_graphics("../figures/tax_rates.pdf")
   - In 1878, a law project passed which introduced inheritance taxation for lineal descendants.
   - In 1893, first income taxation introduced. Precedents for successive increases in rates. 
   - Potentially large effect on politicians' personal finances. 
+  
+## Parliamentary Wealth over Time
+
+```{r, out.width="0.7\\linewidth", include=TRUE, fig.align="center", fig.cap=c("Parliamentary Wealth over Time"), echo=FALSE}
+knitr::include_graphics("../figures/wealth_parl.pdf")
+```
+
+## Personal Impact on Politicians
+
+```{r, out.width="0.7\\linewidth", include=TRUE, fig.align="center", fig.cap=c("Tax Rates on Income (Left) and Wealth (Right)"), echo=FALSE}
+knitr::include_graphics("../figures/tax_rates.pdf")
+```
+
 
 # Method
 
