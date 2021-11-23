@@ -1,11 +1,16 @@
-- Belangrijke issues
+- Downward bias because of endogenous party choice -> which is made on the basis of self-interest
+- 1850 onwards French council Assets conversion bill -> check out and refer
 
-	- Discuss: Section 2.3 kan in de resultatensectie. Con: mooie overgang naar section 3. 
-	- Selection problemen + statistic
-	- Tabel met variabele definitions en sources. To do: korte uitleg van sources erbij in main text, tabel in zelfde format als descriptive statistics tabel
-	- Structuur conclusion
+- Does the parliamentary wealth gap scale when correcting for GDP growth?
+
+- Report the reduced form estimates (with expected inheritance)
+- Father politician:
+	- Show a dynamic graph of share of politicians who has father politician over time
+	- All variation might be concentrated in the early parliaments
+	- Otherwise it might be due to changes in the pool of politicians over time
 	
-Todo:
-	- maak sommige tabellen met selection ratio
-	- government intervention robustness check make table
-	- update variable sources table to align with descriptive statistics table
+- Reason for these results: suffrage extensions
+	- Make a living in politics or not
+
+- Write paper more accessibly: primer about political parties, who are they, when established
+- And also about the bicameral system in the Netherlands
