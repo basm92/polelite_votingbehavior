@@ -260,8 +260,15 @@ fs2 <- update(fs1, . ~ .  + tvs + socialistpercentage + turnout + ncm + tenure +
 iv2 <- update(iv1, . ~ . + tvs + socialistpercentage + turnout + ncm + tenure + rk_pct | . + tvs + socialistpercentage + turnout + ncm + tenure + rk_pct)
 fs3 <- update(fs2, . ~ . + agricul_share + percentage_aangesl)
 iv3 <- update(iv2, . ~ . + agricul_share + percentage_aangesl | . + agricul_share + percentage_aangesl)
+#add two reduced form results
+rf1 <- lm(data = fiscal_iv %>%
+            mutate(exp_inherit = exp_inherit/100000) %>%
+            filter(class != "neutral"),
+          formula = vote ~ exp_inherit + class + law)
+rf2 <- update(rf1, . ~ . + tvs + socialistpercentage + turnout + ncm + tenure + rk_pct)
+rf3 <- update(rf2, . ~ . + agricul_share + percentage_aangesl)
 
-ivresults <- list(fs1, iv1, fs2, iv2, fs3, iv3)
+ivresults <- list(fs1, iv1, fs2, iv2, fs3, iv3, rf2, rf3)
 
 fstats <- ivresults[c(2,4,6)] %>%
   map_dbl(.f = ~ summary(.x) %>%
@@ -269,6 +276,8 @@ fstats <- ivresults[c(2,4,6)] %>%
             .[1,3]) %>%
   round(2) %>%
   as.character()
+
+fstats <- c(fstats, "8.14", "5.64")
 
 compute_delta(fiscal_iv %>% filter(class != "neutral"), 
               main_iv = "wealth_timevote", 
@@ -282,10 +291,10 @@ compute_delta(fiscal_iv %>% filter(class != "neutral"),
               R2max = 0.75)
 
 description <- tribble(
-  ~term, ~model1, ~model2, ~model3, ~model4, ~model5, ~model6,
-  "Law Fixed Effects", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes", 
-  "Kleibergen-Paap F Stat.", "", fstats[1], "", fstats[2], "", fstats[3],
-  "Selection Ratio", "", "", "", "0.63", "", "0.55")
+  ~term, ~model1, ~model2, ~model3, ~model4, ~model5, ~model6, ~model7, ~model8,
+  "Law Fixed Effects", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes",
+  "Kleibergen-Paap F Stat.", "", fstats[1], "", fstats[2], "", fstats[3], fstats[4], fstats[5],
+  "Selection Ratio", "", "", "", "0.63", "", "0.55", "", "")
 
 attr(description, 'position') <- c(25, 26, 27)
 knitr::opts_current$set(label = "ivresults_fisc_inherit")
@@ -303,7 +312,7 @@ modelsummary(ivresults,
                           "Personal Wealth is defined as ihs(Wealth at Time of Vote), and instrumented by Exp. Inheritance.",
                           "The reference political allegiance is confessional. Vote is defined as 1 if the politician is in favor of the reform, 0 otherwise."
              )) %>%
-  add_header_above(c(" " = 1, rep(c("Personal Wealth" = 1, "Vote" = 1), 3))) %>%
+  add_header_above(c(" " = 1, rep(c("Personal Wealth" = 1, "Vote" = 1), 3), "Reduced Form" = 2)) %>%
   kableExtra::kable_styling(latex_options = c("hold_position", "scale_down"))
 
 saveRDS(iv2, "./figures/model_inheritance_iv.RDS")
