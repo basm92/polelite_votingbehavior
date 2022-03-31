@@ -1,6 +1,8 @@
 ---
 title: "Democratization, Personal Wealth of Politicians and Voting Behavior"
-author: "Bas Machielsen"
+author: | 
+  | Bas Machielsen
+  | EHS 2022
 institute: "Utrecht University"
 email: "a.h.machielsen@uu.nl"
 date: \today
@@ -26,7 +28,7 @@ library(knitr)
 
 - Between 1850 to 1920, a wave of democratization and liberalization swept over Western Europe, bringing about universal suffrage and an expansion of government. 
 
-- The double transition from autocracy to parliamentary democracy, and from passive government to a welfare state, has been widely studied in various disciplines. 
+- The double transition from autocracy to parliamentary democracy, and from passive government to engagement in social spending, has been widely studied in various disciplines. 
   - Threat of revolution (Acemoglu and Robinson, 2000)
   - Electoral expedience (Lizzeri and Perisco, 2004)
   - Electoral competition (Llavador and Oxoby, 2005)
