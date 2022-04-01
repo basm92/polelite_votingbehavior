@@ -14,3 +14,16 @@
 
 - Write paper more accessibly: primer about political parties, who are they, when established
 - And also about the bicameral system in the Netherlands
+
+
+- EHS 2022
+
+	- Control for clubs and or network effects
+	- Find econometric model
+	
+	- Where did the revenue go? 
+		- Public goods or other sources (maybe benefitting politicians)
+	
+	- Host: cluster by politician or by dynasty (in case of family ties)
+	- Falsification exercise (no results in religious laws)
+	- F-stats wonky (check)
