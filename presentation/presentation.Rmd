@@ -54,7 +54,7 @@ library(knitr)
 
 - Major finding: richer politicians are more likely to vote against fiscal legislation than _ceteris paribus_ poorer politicians
 
-  - Instrumental variable analyses suggest there is a direct effect of fiscal legislation on personal future wealth. 
+  - Instrumental variable analyses suggest there is a direct effect of politicians' personal wealth on accepting fiscal legislation. 
 
 - The effects are absent in suffrage extensions
   
