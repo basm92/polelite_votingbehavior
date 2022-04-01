@@ -48,7 +48,7 @@ library(knitr)
 - Using data on the portfolio composition of politicians' wealth, I estimate politicians' net wealth at the time of voting, and relate this to the voting outcome.
 
 - I provide instrumental variable (IV) estimates of personal wealth on the propensity to vote for reforms.
-  - Politician's wealth is instrumented by parental wealth by an indicator whether the politician’s father was also politically active.
+  - Politician's wealth is instrumented by parental wealth and by an indicator whether the politician’s father was also politically active.
 
 ## Results - Overview
 
