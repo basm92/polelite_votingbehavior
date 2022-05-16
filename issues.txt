@@ -18,8 +18,9 @@
 
 - EHS 2022
 
-	- Control for clubs and or network effects
+	- Control for clubs, dynasties and or network effects
 	- Find econometric model
+	- Friends with rich people -> peer effects 
 	
 	- Where did the revenue go? 
 		- Public goods or other sources (maybe benefitting politicians)
