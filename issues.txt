@@ -27,4 +27,8 @@
 	
 	- Host: cluster by politician or by dynasty (in case of family ties)
 	- Falsification exercise (no results in religious laws)
+		- This also counters peer groups and clubs explanation (type this)
 	- F-stats wonky (check)
+	
+	- Also lower bound because: budget deficit -> politicians search for least painful way -> make the most efficient law (smallest costs), so smallest self-interest incentives
+	- Direct effect vs. indirect effect (selection into political parties)

@@ -2,7 +2,7 @@
 title: "Democratization, Personal Wealth of Politicians and Voting Behavior"
 author: | 
   | Bas Machielsen
-  | EHS 2022
+  | Seminar Ministerie van Financiën
 institute: "Utrecht University"
 email: "a.h.machielsen@uu.nl"
 date: \today
