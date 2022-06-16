@@ -3,7 +3,6 @@
 
 - Does the parliamentary wealth gap scale when correcting for GDP growth?
 
-- Report the reduced form estimates (with expected inheritance)
 - Father politician:
 	- Show a dynamic graph of share of politicians who has father politician over time
 	- All variation might be concentrated in the early parliaments
