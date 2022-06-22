@@ -30,4 +30,5 @@
 	- F-stats wonky (check)
 	
 	- Also lower bound because: budget deficit -> politicians search for least painful way -> make the most efficient law (smallest costs), so smallest self-interest incentives
-	- Direct effect vs. indirect effect (selection into political parties)
+	
+	- law * party dummies analysis
