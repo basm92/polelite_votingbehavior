@@ -1,0 +1,37 @@
+\begin{table}
+
+\caption{\label{tab:ivresults_suffrage_otherclassific}IV Estimates of Wealth on the Propensity to Vote for Suffrage Extensions}
+\centering
+\begin{tabular}[t]{lcccccc}
+\toprule
+  & Model 1 & Model 2 & Model 3 & Model 4 & Model 5 & Model 6\\
+\midrule
+Father Politician & \num{1.933}*** &  & \num{1.708} &  & \num{1.412} & \\
+ & (\num{0.682}) &  &  &  &  & \\
+Personal Wealth &  & \num{-0.020} &  & \num{-0.029} &  & \num{-0.050}\\
+ &  & (\num{0.032}) &  &  &  & \\
+Vote Share &  &  & \num{-3.446} & \num{-0.263} & \num{-3.379} & \num{-0.468}\\
+Turnout &  &  & \num{2.639} & \num{0.059} & \num{3.197} & \num{0.204}\\
+Margin to Nearest Competitor &  &  & \num{1.194} & \num{-0.022} & \num{0.447} & \num{0.021}\\
+Tenure &  &  & \num{0.008} & \num{-0.005} & \num{0.034} & \num{-0.005}\\
+Share Catholic &  &  & \num{4.585} & \num{0.060} & \num{2.834} & \num{0.041}\\
+Share District in Industry &  &  &  &  & \num{-1.737} & \num{-0.298}\\
+Share Tax Liable in District &  &  &  &  & \num{-1.330} & \num{-0.072}\\
+Liberal & \num{2.754}*** & \num{0.460}*** & \num{5.046} & \num{0.503} & \num{5.557} & \num{0.574}\\
+ & (\num{1.032}) & (\num{0.111}) &  &  &  & \\
+Socialist & \num{0.448} & \num{0.359}*** & \num{8.444} & \num{0.579} & \num{9.656} & \num{0.706}\\
+ & (\num{2.842}) & (\num{0.125}) &  &  &  & \\
+Protestant & \num{2.459}** & \num{-0.028} & \num{4.149} & \num{0.044} & \num{3.909} & \num{0.082}\\
+ & (\num{1.120}) & (\num{0.139}) &  &  &  & \\
+\midrule
+Law Fixed Effects & Yes & Yes & Yes & Yes & Yes & Yes\\
+Kleibergen-Paap F Stat. &  & 8.06 &  & 5.58 &  & 4.23\\
+N & \num{236} & \num{236} & \num{213} & \num{213} & \num{180} & \num{180}\\
+Adj. R2 & \num{0.09} & \num{0.28} & \num{0.10} & \num{0.25} & \num{0.20} & \num{0.16}\\
+\bottomrule
+\multicolumn{7}{l}{\rule{0pt}{1em}The reference political allegiance is Catholic. Vote is defined as 1 if the politician is in favor of the reform, 0 otherwise.}\\
+\multicolumn{7}{l}{\rule{0pt}{1em}Personal Wealth is defined as ihs(Wealth at Time of Vote), and instrumented by Fathers profession.}\\
+\multicolumn{7}{l}{\rule{0pt}{1em}Heteroskedasticity-robust standard errors in parentheses. Results for lower house voting outcomes.}\\
+\multicolumn{7}{l}{\rule{0pt}{1em}* p $<$ 0.1, ** p $<$ 0.05, *** p $<$ 0.01}\\
+\end{tabular}
+\end{table}

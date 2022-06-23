@@ -1,0 +1,44 @@
+\begin{table}
+
+\caption{\label{tab:ols_pooled_lawpartyint}OLS Estimates of Wealth on the Propensity to Vote for Suffrage and Fiscal Legislation}
+\centering
+\begin{tabular}[t]{lccccc}
+\toprule
+  & Model 1 & Model 2 & Model 3 & Model 4 & Model 5\\
+\midrule
+Personal Wealth &  & \num{-0.007}** &  & \num{-0.006} & \num{-0.010}**\\
+ &  & (\num{0.003}) &  & (\num{0.005}) & (\num{0.005})\\
+Personal Wealth x Fiscal &  &  & \num{-0.007}* &  & \\
+ &  &  & (\num{0.004}) &  \vphantom{1} & \\
+Personal Wealth x Suffrage &  &  & \num{-0.007} &  & \\
+ &  &  & (\num{0.004}) &  & \\
+Number of Strikes &  &  &  & \num{0.003} & \num{-0.003}\\
+ &  &  &  & (\num{0.005}) & (\num{0.004})\\
+Vote Share &  &  &  & \num{-0.106} & \num{0.047}\\
+ &  &  &  & (\num{0.137}) & (\num{0.129})\\
+Turnout &  &  &  & \num{-0.081} & \num{-0.026}\\
+ &  &  &  & (\num{0.155}) & (\num{0.149})\\
+Margin to Nearest Competitor &  &  &  & \num{-0.127} & \num{-0.005}\\
+ &  &  &  & (\num{0.173}) & (\num{0.145})\\
+Tenure &  &  &  & \num{-0.003} & \num{-0.003}\\
+ &  &  &  & (\num{0.004}) & (\num{0.003})\\
+Share Catholic &  &  &  & \num{-0.051} & \num{-0.457}***\\
+ &  &  &  & (\num{0.113}) & (\num{0.093})\\
+Share Tax Liable in District &  &  &  & \num{1.004} & \num{3.320}\\
+ &  &  &  & (\num{2.746}) & (\num{2.197})\\
+Liberal & \num{0.307}*** & \num{0.254}** & \num{0.255}** & \num{0.509}*** & \num{0.151}\\
+ & (\num{0.088}) & (\num{0.104}) & (\num{0.104}) & (\num{0.123}) & (\num{0.102})\\
+Socialist & \num{0.262}** & \num{0.373}** & \num{0.373}** & \num{0.353} & \num{0.629}***\\
+ & (\num{0.103}) & (\num{0.182}) & (\num{0.183}) & (\num{0.263}) & (\num{0.180})\\
+\midrule
+Law Fixed Effects & Yes & Yes & Yes & Yes & Yes\\
+Law x Party Fixed Effects & Yes & Yes & Yes & Yes & Yes\\
+N & \num{1028} & \num{675} & \num{675} & \num{249} & \num{270}\\
+Adj. R2 & \num{0.42} & \num{0.40} & \num{0.40} & \num{0.29} & \num{0.46}\\
+\bottomrule
+\multicolumn{6}{l}{\rule{0pt}{1em}Vote is defined as 1 if the politician is in favor of the reform, 0 otherwise.}\\
+\multicolumn{6}{l}{\rule{0pt}{1em}The reference political allegiance is confessional. Personal Wealth is defined as ihs(Wealth at Time of Vote).}\\
+\multicolumn{6}{l}{\rule{0pt}{1em}Heteroskedasticity-robust standard errors in parentheses. Results for lower house voting outcomes.}\\
+\multicolumn{6}{l}{\rule{0pt}{1em}* p $<$ 0.1, ** p $<$ 0.05, *** p $<$ 0.01}\\
+\end{tabular}
+\end{table}

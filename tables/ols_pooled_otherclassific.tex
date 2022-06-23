@@ -1,0 +1,45 @@
+\begin{table}
+
+\caption{\label{tab:ols_pooled_otherclassific}OLS Estimates of Wealth on the Propensity to Vote for Suffrage and Fiscal Legislation}
+\centering
+\begin{tabular}[t]{lccccc}
+\toprule
+  & Model 1 & Model 2 & Model 3 & Model 4 & Model 5\\
+\midrule
+Personal Wealth &  & \num{-0.008}*** &  & \num{-0.009}* & \num{-0.010}**\\
+ &  & (\num{0.003}) &  & (\num{0.005}) & (\num{0.005})\\
+Personal Wealth x Fiscal &  &  & \num{-0.008}** &  & \\
+ &  &  & (\num{0.004}) &  \vphantom{1} & \\
+Personal Wealth x Suffrage &  &  & \num{-0.009}** &  & \\
+ &  &  & (\num{0.004}) &  & \\
+Number of Strikes &  &  &  & \num{0.001} & \num{-0.004}***\\
+ &  &  &  & (\num{0.002}) & (\num{0.001})\\
+Vote Share &  &  &  & \num{-0.149} & \num{-0.034}\\
+ &  &  &  & (\num{0.149}) & (\num{0.107})\\
+Turnout &  &  &  & \num{-0.065} & \num{0.074}\\
+ &  &  &  & (\num{0.154}) & (\num{0.135})\\
+Margin to Nearest Competitor &  &  &  & \num{-0.130} & \num{0.049}\\
+ &  &  &  & (\num{0.175}) & (\num{0.126})\\
+Tenure &  &  &  & \num{-0.004} & \num{-0.004}\\
+ &  &  &  & (\num{0.003}) & (\num{0.003})\\
+Share Catholic &  &  &  & \num{-0.007} & \num{-0.268}*\\
+ &  &  &  & (\num{0.177}) & (\num{0.146})\\
+Share Tax Liable in District &  &  &  & \num{-1.744} & \num{-0.051}\\
+ &  &  &  & (\num{3.050}) & (\num{1.961})\\
+Liberal & \num{0.388}*** & \num{0.486}*** & \num{0.487}*** & \num{0.443}*** & \num{0.469}***\\
+ & (\num{0.032}) & (\num{0.037}) & (\num{0.037}) & (\num{0.136}) & (\num{0.109})\\
+Socialist & \num{0.495}*** & \num{0.622}*** & \num{0.622}*** & \num{0.474}*** & \num{0.467}***\\
+ & (\num{0.038}) & (\num{0.056}) & (\num{0.056}) & (\num{0.181}) & (\num{0.139})\\
+Protestant & \num{-0.083}** & \num{-0.024} & \num{-0.023} & \num{-0.032} & \num{-0.064}\\
+ & (\num{0.039}) & (\num{0.049}) & (\num{0.050}) & (\num{0.141}) & (\num{0.113})\\
+\midrule
+Law Fixed Effects & Yes & Yes & Yes & Yes & Yes\\
+N & \num{1017} & \num{675} & \num{675} & \num{253} & \num{308}\\
+Adj. R2 & \num{0.38} & \num{0.41} & \num{0.41} & \num{0.32} & \num{0.52}\\
+\bottomrule
+\multicolumn{6}{l}{\rule{0pt}{1em}Vote is defined as 1 if the politician is in favor of the reform, 0 otherwise.}\\
+\multicolumn{6}{l}{\rule{0pt}{1em}The reference political allegiance is Catholic. Personal Wealth is defined as ihs(Wealth at Time of Vote).}\\
+\multicolumn{6}{l}{\rule{0pt}{1em}Heteroskedasticity-robust standard errors in parentheses. Results for lower house voting outcomes.}\\
+\multicolumn{6}{l}{\rule{0pt}{1em}* p $<$ 0.1, ** p $<$ 0.05, *** p $<$ 0.01}\\
+\end{tabular}
+\end{table}

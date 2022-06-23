@@ -40,7 +40,10 @@ coefconvert <- c(
     "aandeel_gem" = "Share District in Tot. Taxes",
     "percentage_aangesl" = "Share Tax Liable in District",
     "classliberal" = "Liberal",
-    "classsocialist" = "Socialist"
+    "classsocialist" = "Socialist",
+    "new_classificliberal" = "Liberal",
+    "new_classificsocialist" = "Socialist",
+    "new_classificprotestant" = "Protestant"
 )
 
 gm <- tibble::tribble(
@@ -74,9 +77,11 @@ datasets <- datasets %>%
         rk_pct = rk_pct/100,
         hervormd_pct = hervormd_pct/100,
         gereformeerd_pct = gereformeerd_pct/100,
-        aandeel_gem = aandeel_gem/100,
-        percentage_aangesl = percentage_aangesl/100,
-        socialistpercentage = socialistpercentage/100
+        aandeel_gem = as.numeric(aandeel_gem)/100,
+        percentage_aangesl = as.numeric(percentage_aangesl)/100,
+        socialistpercentage = socialistpercentage/100,
+        wealth_timevote = as.numeric(wealth_timevote),
+        tvs = as.numeric(tvs)
     )
 
 fiscal <- datasets %>%

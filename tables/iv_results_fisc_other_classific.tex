@@ -1,0 +1,45 @@
+\begin{table}
+
+\caption{\label{tab:ivresults_fisc_other_classific}IV Estimates of Wealth on the Propensity to Vote for Fiscal Reforms}
+\centering
+\begin{tabular}[t]{lcccccc}
+\toprule
+  & Model 1 & Model 2 & Model 3 & Model 4 & Model 5 & Model 6\\
+\midrule
+Father Politician & \num{2.951}*** &  & \num{2.535}*** &  & \num{2.216}*** & \\
+ & (\num{0.493}) &  & (\num{0.537}) &  & (\num{0.579}) & \\
+Personal Wealth &  & \num{-0.029}* &  & \num{-0.032}* &  & \num{-0.036}\\
+ &  & (\num{0.016}) &  & (\num{0.019}) &  & (\num{0.025})\\
+Vote Share &  &  & \num{-2.908} & \num{-0.142} & \num{-3.086} & \num{-0.150}\\
+ &  &  & (\num{2.081}) & (\num{0.129}) & (\num{2.188}) & (\num{0.159})\\
+Turnout &  &  & \num{4.838}** & \num{0.195} & \num{4.359}** & \num{0.141}\\
+ &  &  & (\num{2.082}) & (\num{0.164}) & (\num{1.836}) & (\num{0.175})\\
+Margin to Nearest Competitor &  &  & \num{1.475} & \num{0.061} & \num{2.619} & \num{0.093}\\
+ &  &  & (\num{2.293}) & (\num{0.133}) & (\num{2.131}) & (\num{0.162})\\
+Tenure &  &  & \num{0.039} & \num{-0.003} & \num{0.014} & \num{-0.006}*\\
+ &  &  & (\num{0.034}) & (\num{0.003}) & (\num{0.039}) & (\num{0.003})\\
+Share Socialist Vote in District &  &  & \num{-4.967}** & \num{-0.231} & \num{-5.792}** & \num{-0.262}\\
+ &  &  & (\num{2.398}) & (\num{0.155}) & (\num{2.727}) & (\num{0.200})\\
+Share Catholic &  &  & \num{5.615}*** & \num{-0.262} & \num{2.027} & \num{-0.383}**\\
+ &  &  & (\num{2.041}) & (\num{0.189}) & (\num{1.601}) & (\num{0.178})\\
+Share District in Industry &  &  &  &  & \num{5.093} & \num{-0.141}\\
+ &  &  &  &  & (\num{5.345}) & (\num{0.344})\\
+Liberal & \num{2.158}*** & \num{0.624}*** & \num{5.415}*** & \num{0.545}*** & \num{3.049}** & \num{0.488}***\\
+ & (\num{0.805}) & (\num{0.059}) & (\num{1.608}) & (\num{0.147}) & (\num{1.363}) & (\num{0.140})\\
+Socialist & \num{2.214}* & \num{0.570}*** & \num{7.153}*** & \num{0.467}** & \num{5.046}** & \num{0.371}**\\
+ & (\num{1.242}) & (\num{0.073}) & (\num{2.242}) & (\num{0.181}) & (\num{2.261}) & (\num{0.188})\\
+Protestant & \num{1.094} & \num{0.038} & \num{3.239}** & \num{-0.078} & \num{0.995} & \num{-0.143}\\
+ & (\num{1.069}) & (\num{0.077}) & (\num{1.534}) & (\num{0.138}) & (\num{1.133}) & (\num{0.137})\\
+\midrule
+Law Fixed Effects & Yes & Yes & Yes & Yes & Yes & Yes\\
+Kleibergen-Paap F Stat. &  & 20.61 &  & 15.06 &  & 13.04\\
+Selection Ratio &  &  &  & 0.96 &  & 1.91\\
+N & \num{346} & \num{346} & \num{312} & \num{312} & \num{240} & \num{240}\\
+Adj. R2 & \num{0.12} & \num{0.40} & \num{0.14} & \num{0.44} & \num{0.14} & \num{0.45}\\
+\bottomrule
+\multicolumn{7}{l}{\rule{0pt}{1em}The reference political allegiance is confessional. Vote is defined as 1 if the politician is in favor of the reform, 0 otherwise.}\\
+\multicolumn{7}{l}{\rule{0pt}{1em}Personal Wealth is defined as ihs(Wealth at Time of Vote), and instrumented by Fathers profession.}\\
+\multicolumn{7}{l}{\rule{0pt}{1em}Heteroskedasticity-robust standard errors in parentheses. Results for lower house voting outcomes.}\\
+\multicolumn{7}{l}{\rule{0pt}{1em}* p $<$ 0.1, ** p $<$ 0.05, *** p $<$ 0.01}\\
+\end{tabular}
+\end{table}
